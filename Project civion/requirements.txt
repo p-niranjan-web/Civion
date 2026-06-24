@@ -1,0 +1,7 @@
+pandas
+groq
+pypdf
+fastapi
+uvicorn
+python-multipart
+fpdf2
