@@ -281,3 +281,7 @@ async def get_download(file_id: str):
     if os.path.exists(file_path):
         return FileResponse(file_path, media_type="application/pdf", filename="Optimized_Specification.pdf")
     raise HTTPException(status_code=404, detail="File not found")
+@app.get("/")
+def read_root():
+    return {"message": "Civion AI Backend is Running Successfully!"}
+
