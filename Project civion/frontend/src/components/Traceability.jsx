@@ -1,5 +1,3 @@
-import React from 'react';
-
 /* ──────────────────────────────────────────────
    Traceability
    Source-quote mapping table linking every

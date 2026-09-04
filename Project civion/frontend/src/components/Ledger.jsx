@@ -1,5 +1,3 @@
-import React from 'react';
-
 /* ──────────────────────────────────────────────
    Category definitions
    Each category has a display name and an array

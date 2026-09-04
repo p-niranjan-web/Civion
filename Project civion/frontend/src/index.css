@@ -1226,3 +1226,173 @@ tr:hover td {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
+/* ============================================================
+   EXPOSURE SELECTOR
+   ============================================================ */
+.exposure-selector {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.exposure-selector-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.exposure-selector-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.2px;
+}
+
+.exposure-chip {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--brand-green);
+  background: var(--brand-green-subtle);
+  border: 1px solid rgba(0, 232, 122, 0.3);
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
+.exposure-mode-toggle {
+  display: flex;
+  gap: 6px;
+}
+
+.exposure-mode-toggle button {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 7px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.exposure-mode-toggle button.active {
+  background: var(--brand-green-subtle);
+  border-color: rgba(0, 232, 122, 0.4);
+  color: var(--brand-green);
+  font-weight: 600;
+}
+
+.exposure-mode-toggle button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.exposure-select {
+  width: 100%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 13px;
+  padding: 9px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.exposure-select:focus {
+  outline: none;
+  border-color: var(--brand-green);
+}
+
+.exposure-wizard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exposure-wizard-q {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.exposure-wizard-running {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.exposure-wizard-choices {
+  display: flex;
+  gap: 8px;
+}
+
+.exposure-wizard-choices button {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.exposure-wizard-choices button:hover:not(:disabled) {
+  border-color: var(--brand-green);
+  background: var(--brand-green-subtle);
+  color: var(--brand-green);
+}
+
+.exposure-link-btn {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 2px 0;
+}
+
+.exposure-link-btn:hover:not(:disabled) {
+  color: var(--brand-green);
+}
+
+.exposure-wizard-result {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.exposure-wizard-result-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.exposure-wizard-result-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--brand-green);
+}
+
+.exposure-wizard-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 2px;
+}
+
+.exposure-hint {
+  font-size: 11px;
+  color: var(--accent-amber);
+  line-height: 1.4;
+  margin-top: -8px;
+}

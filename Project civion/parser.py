@@ -43,17 +43,28 @@ def get_file_hash(pdf_path):
         hasher.update(buf)
     return hasher.hexdigest()
 
-def parse_user_specification(pdf_path):
+def parse_user_specification(pdf_path, detected_exposure=None):
     """
     Step 1: Check cache for deterministic results.
     Step 2: Extract raw text from PDF.
     Step 3: Sequential Multi-Agent Extraction Chain.
     Step 4: Merge results into unified structured JSON with source_quotes.
+
+    detected_exposure: optional environmental exposure condition already
+    determined outside the document (user-selected or derived via the
+    exposure questionnaire). When provided, the extraction agents are told
+    to fetch only the values that apply to that exposure case, and the
+    value is stamped onto the final JSON used for the compliance check.
     """
     # ---------------------------------------------------------
     # CACHE CHECK
     # ---------------------------------------------------------
     file_hash = get_file_hash(pdf_path)
+    if detected_exposure:
+        # Fold the detected exposure into the cache key so re-running the
+        # same document with a different exposure type is not served a
+        # stale extraction.
+        file_hash = hashlib.sha256(f"{file_hash}:{detected_exposure}".encode()).hexdigest()
     cache_dir = "downloads/cache"
     os.makedirs(cache_dir, exist_ok=True)
     cache_file = os.path.join(cache_dir, f"{file_hash}.json")
@@ -71,12 +82,28 @@ def parse_user_specification(pdf_path):
     text_chunk = clean_text[:12000]
 
     system_instruction = "You are a civil engineering parser. Output STRICTLY valid JSON. Do NOT invent values. If missing, return null."
+
+    # ---------------------------------------------------------
+    # DETECTED EXPOSURE CONTEXT (additive instruction only)
+    # ---------------------------------------------------------
+    exposure_context = ""
+    if detected_exposure:
+        exposure_context = (
+            f"\n    IMPORTANT CONTEXT: The applicable environmental exposure condition for this "
+            f"structure has ALREADY been determined externally to be \"{detected_exposure}\". "
+            f"The document may describe specifications for a single exposure condition, or it may "
+            f"list several different exposure cases/scenarios. If more than one exposure case is "
+            f"present, extract ONLY the values that apply to the \"{detected_exposure}\" exposure "
+            f"case and ignore the values given for the other exposure cases. Always set the "
+            f"\"exposure\" field to \"{detected_exposure}\".\n"
+        )
     
     # ---------------------------------------------------------
     # AGENT 1: Environmental & Geographical Limits
     # ---------------------------------------------------------
     prompt_env = f"""
     Extract environmental and geographical limits from the text.
+    {exposure_context}
     Return exact JSON structure:
     {{
       "exposure": ["Mild", "Moderate", "Severe", "Very Severe", "Extreme"],
@@ -104,6 +131,7 @@ def parse_user_specification(pdf_path):
     prompt_mat = f"""
     Extract concrete material specifications from the text.
     NOTE: Explicitly extract "concrete_type" exactly as "Plain Concrete" or "Reinforced Concrete". Do not use fallbacks.
+    {exposure_context}
     Return exact JSON structure:
     {{
       "concrete_type": ["Plain Concrete", "Reinforced Concrete"],
@@ -172,7 +200,18 @@ def parse_user_specification(pdf_path):
                 merged_data[k] = v
                 
     merged_data["source_quotes"] = merged_quotes
-    
+
+    # ---------------------------------------------------------
+    # STAMP DETECTED EXPOSURE ONTO THE FINAL JSON
+    # (this JSON is consumed by the downstream compliance check)
+    # ---------------------------------------------------------
+    if detected_exposure:
+        merged_data["exposure"] = detected_exposure
+        if not merged_data["source_quotes"].get("exposure"):
+            merged_data["source_quotes"]["exposure"] = (
+                f"Exposure condition determined outside the document: {detected_exposure}"
+            )
+
     # Save to cache
     with open(cache_file, 'w') as f:
         json.dump(merged_data, f)

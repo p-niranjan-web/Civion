@@ -6,11 +6,12 @@ import { useState, useEffect } from 'react';
  * based on the score threshold (red < 40, amber 40-69, green >= 70).
  */
 const RadialGauge = ({ score = 0, size = 180, strokeWidth = 10, label }) => {
-  const [animatedOffset, setAnimatedOffset] = useState(null);
-
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const targetOffset = circumference - (score / 100) * circumference;
+
+  // Start on an empty ring; the effect fills it in after mount.
+  const [animatedOffset, setAnimatedOffset] = useState(circumference);
 
   // Determine color from score thresholds
   const getColor = (s) => {
@@ -21,16 +22,23 @@ const RadialGauge = ({ score = 0, size = 180, strokeWidth = 10, label }) => {
 
   const color = getColor(score);
 
-  // Trigger the stroke-dashoffset animation after mount
+  // Trigger the stroke-dashoffset animation after mount (and whenever the
+  // score changes): reset to an empty ring, then transition to the target.
+  // The state updates run inside async callbacks so the ring still animates
+  // from empty on every score change without a synchronous setState here.
   useEffect(() => {
-    // Start fully offset (empty ring)
-    setAnimatedOffset(circumference);
+    let timer;
+    const raf = requestAnimationFrame(() => {
+      setAnimatedOffset(circumference);
+      timer = setTimeout(() => {
+        setAnimatedOffset(targetOffset);
+      }, 50);
+    });
 
-    const timer = setTimeout(() => {
-      setAnimatedOffset(targetOffset);
-    }, 50);
-
-    return () => clearTimeout(timer);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(timer);
+    };
   }, [score, circumference, targetOffset]);
 
   return (
@@ -61,7 +69,7 @@ const RadialGauge = ({ score = 0, size = 180, strokeWidth = 10, label }) => {
           strokeWidth={strokeWidth}
           strokeLinecap="round"
           strokeDasharray={circumference}
-          strokeDashoffset={animatedOffset !== null ? animatedOffset : circumference}
+          strokeDashoffset={animatedOffset}
           style={{
             transition: 'stroke-dashoffset 1.2s ease-out',
             filter: `drop-shadow(0 0 12px ${color}40)`,

@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import ExposureSelector from './ExposureSelector';
 
 /**
  * Sidebar — Left panel with logo, drag-and-drop upload zone,
@@ -14,6 +15,8 @@ const Sidebar = ({
   onDownloadReport,
   activeTab,
   setActiveTab,
+  exposure,
+  onExposureChange,
 }) => {
   const fileInputRef = useRef(null);
   const [dragActive, setDragActive] = useState(false);
@@ -122,14 +125,24 @@ const Sidebar = ({
         )}
       </div>
 
+      {/* Exposure condition (direct pick or guided questionnaire) */}
+      <ExposureSelector
+        value={exposure}
+        onChange={onExposureChange}
+        disabled={loading}
+      />
+
       {/* Run Audit button */}
       <button
         className="btn-primary btn-full-width"
-        disabled={!file || loading}
+        disabled={!file || !exposure || loading}
         onClick={onRunAudit}
       >
-        {loading ? 'Analyzing...' : 'Run Compliance Audit'}
+        {loading ? 'Analyzing...' : auditData ? 'Re-run Compliance Audit' : 'Run Compliance Audit'}
       </button>
+      {file && !exposure && (
+        <p className="exposure-hint">Set the environmental exposure condition to run the audit.</p>
+      )}
 
       {/* Error banner */}
       {error && <div className="error-banner">{error}</div>}

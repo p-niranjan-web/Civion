@@ -1,4 +1,4 @@
-from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi import FastAPI, File, UploadFile, HTTPException, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse, FileResponse
 from pydantic import BaseModel
@@ -32,19 +32,22 @@ class ChatRequest(BaseModel):
     audit_context: dict = None
 
 @app.post("/api/audit")
-async def audit_pdf(file: UploadFile = File(...)):
+async def audit_pdf(file: UploadFile = File(...), exposure: str = Form(None)):
     if not file.filename.endswith('.pdf'):
         raise HTTPException(status_code=400, detail="Only PDF files are supported.")
-        
+
+    # Exposure condition supplied by the user (direct pick or questionnaire).
+    detected_exposure = exposure.strip() if isinstance(exposure, str) and exposure.strip() else None
+
     try:
         # Create a temporary file to save the uploaded PDF
         with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_pdf:
             content = await file.read()
             temp_pdf.write(content)
             temp_pdf_path = temp_pdf.name
-            
+
         # Run parsing
-        extracted_json = parse_user_specification(temp_pdf_path)
+        extracted_json = parse_user_specification(temp_pdf_path, detected_exposure=detected_exposure)
         
         # Clean up temp file
         os.remove(temp_pdf_path)

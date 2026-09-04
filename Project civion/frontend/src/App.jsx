@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import Ledger from './components/Ledger';
@@ -14,6 +14,7 @@ const API_BASE = window.location.hostname === 'localhost' || window.location.hos
 function App() {
   // Global State
   const [file, setFile] = useState(null);
+  const [exposure, setExposure] = useState(null);
   const [auditData, setAuditData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -58,7 +59,8 @@ function App() {
     
     const formData = new FormData();
     formData.append('file', file);
-    
+    if (exposure) formData.append('exposure', exposure);
+
     try {
       // Simulate frontend processing stages
       const stage2Timer = setTimeout(() => setScannerStage(2), 1500);
@@ -247,6 +249,8 @@ function App() {
         onDownloadReport={downloadReport}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
+        exposure={exposure}
+        onExposureChange={setExposure}
       />
 
       <main className="main-content">
