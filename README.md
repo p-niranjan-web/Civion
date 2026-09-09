@@ -54,6 +54,22 @@ pip install -r requirements.txt
 
 ### Run the backend
 
+**Option A: Using a `.env` file (Recommended for convenience)**
+
+Create a file named `.env` in `Project civion/`:
+
+```env
+GROQ_API_KEY=your_groq_api_key_here
+```
+
+Then start the backend:
+
+```powershell
+python -m uvicorn api.main:app --reload --port 8000
+```
+
+**Option B: Setting the environment variable in terminal**
+
 **PowerShell (Windows):**
 
 ```powershell
@@ -77,9 +93,7 @@ Uvicorn running on http://127.0.0.1:8000
 Leave this terminal open. Verify by opening http://127.0.0.1:8000 in a browser —
 you should see `{"message":"Civion AI Backend is Running Successfully!"}`.
 
-> The `GROQ_API_KEY` must be set in the **same terminal** that runs uvicorn.
-> A new terminal does not remember it. To set it permanently on Windows:
-> `setx GROQ_API_KEY "your_key"` (then reopen the terminal).
+> **Note:** If you use a `.env` file in `Project civion/`, uvicorn will automatically load the `GROQ_API_KEY` every time you run it.
 
 ---
 
