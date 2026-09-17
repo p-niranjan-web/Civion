@@ -17,6 +17,8 @@ const Sidebar = ({
   setActiveTab,
   exposure,
   onExposureChange,
+  concreteType,
+  onConcreteTypeChange,
 }) => {
   const fileInputRef = useRef(null);
   const [dragActive, setDragActive] = useState(false);
@@ -131,6 +133,25 @@ const Sidebar = ({
         onChange={onExposureChange}
         disabled={loading}
       />
+
+      {/* Concrete type — used to resolve specs that give requirements as a
+          table keyed by both exposure class and concrete type. */}
+      <div className="exposure-selector glass-panel">
+        <div className="exposure-selector-head">
+          <span className="exposure-selector-title">Concrete Type</span>
+          {concreteType && <span className="exposure-chip">{concreteType}</span>}
+        </div>
+        <select
+          className="exposure-select"
+          value={concreteType}
+          onChange={(e) => onConcreteTypeChange(e.target.value)}
+          disabled={loading}
+        >
+          <option value="">Auto-detect from document</option>
+          <option value="Reinforced Concrete">Reinforced Concrete</option>
+          <option value="Plain Concrete">Plain Concrete</option>
+        </select>
+      </div>
 
       {/* Run Audit button */}
       <button
