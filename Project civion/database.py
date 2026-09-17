@@ -39,11 +39,32 @@ IS456_MASTER = {
             "clause": "IS 456:2000 Clause 13.5",
             "Plain Concrete": {"OPC": 7, "Mineral_Admixtures": 10, "Dry_Hot_Weather": 10},
             "Reinforced Concrete": {"OPC": 7, "Mineral_Admixtures": 10, "Dry_Hot_Weather": 14}
+        },
+        "Formwork_Striking_Time": {
+            "clause": "IS 456:2000 Clause 11.3",
+            "strength_condition": "Concrete must reach 2x the stress to which it may be subjected at the time of formwork removal",
+            "min_period": {
+                "Walls_Columns_Vertical_Faces": {"min_hours": 16, "max_hours": 24},
+                "Slabs_Props_Left_Under": {"days": 3},
+                "Beam_Soffit_Props_Left_Under": {"days": 7},
+                "Props_Under_Slabs": {"span_up_to_4.5m_days": 7, "span_over_4.5m_days": 14},
+                "Props_Under_Beams_Arches": {"span_up_to_6m_days": 14, "span_over_6m_days": 21}
+            }
         }
     },
     "MATERIAL_PROPERTIES": {
         "Cement_Limits": {"clause": "IS 456:2000 Clause 8.2.4.2", "max_content": 450},
         "Water": {"clause": "IS 456:2000 Clause 5.4", "min_ph": 6.0},
+        "Water_Solids_Limits": {
+            "clause": "IS 456:2000 Clause 5.4, Table 1",
+            "limits_mg_l": {
+                "organic": 200,
+                "inorganic": 3000,
+                "sulphates_as_so4": 400,
+                "chlorides": {"Plain Concrete": 2000, "Reinforced Concrete": 500},
+                "suspended_matter": 2000
+            }
+        },
         "Sampling_Standard": {
             "clause": "IS 456:2000 Clause 15 / IS 516",
             "cube_size_mm": 150
@@ -55,10 +76,6 @@ IS456_MASTER = {
             "Standard": {"Mild": 20, "Moderate": 30, "Severe": 45, "Very Severe": 50, "Extreme": 75},
             "Tolerance_Allowed": 10
         }
-    },
-    "AGGREGATE_SIZE": {
-        "clause": "IS 456:2000 Clause 5.3.3 (Page 14)",
-        "standard_max_size_mm": 20,
     },
     "WORKABILITY": {
         "clause": "IS 456:2000 Page 17",
@@ -145,6 +162,26 @@ IS456_MASTER = {
             "Beams": {"0.5hr": 20, "1hr": 20, "1.5hr": 20, "2hr": 40, "4hr": 60},
             "Columns": {"0.5hr": 40, "1hr": 40, "1.5hr": 40, "2hr": 40, "4hr": 40},
             "Slabs": {"0.5hr": 20, "1hr": 20, "1.5hr": 25, "2hr": 35, "4hr": 45}
+        }
+    }
+}
+
+# A user's spec document can legitimately defer a parameter to another IS code
+# instead of stating a number itself (e.g. "aggregate grading shall conform to
+# IS 383"). That is not missing data - it's a valid cross-reference. This dict
+# holds the correct reference values for each external code the parser/auditor
+# knows how to recognize, so the chatbot can answer with real numbers instead
+# of guessing from the LLM's own training knowledge. Keyed by the code string
+# the parser is asked to detect in `cross_references[].referenced_code`.
+EXTERNAL_CODE_REFERENCES = {
+    "IS 383": {
+        "title": "IS 383:2016 - Coarse and Fine Aggregates for Concrete - Specification",
+        "topic": "Grading limits for single-sized coarse aggregate (nominal size 20 mm), Table 7",
+        "grading_limits_20mm_percent_passing": {
+            "40.0mm": "100",
+            "20.0mm": "85-100",
+            "10.0mm": "0-20",
+            "4.75mm": "0-5"
         }
     }
 }

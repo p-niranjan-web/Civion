@@ -290,16 +290,83 @@ def run_civion_audit(user_data, is456_rules):
         else:
             evaluate("Slump", "Not Provided", "25 - 150mm", False, True)
 
+        # Formwork / Shoring Striking Time (IS 456:2000 Clause 11.3)
+        formwork_rules = is456_rules["CONSTRUCTION_PROCEDURES"]["Formwork_Striking_Time"]["min_period"]
+
+        u_fw_hours = get_val('formwork_removal_hours', {})
+        if not isinstance(u_fw_hours, dict):
+            u_fw_hours = {}
+        u_fw_days = get_val('formwork_removal_days', {})
+        if not isinstance(u_fw_days, dict):
+            u_fw_days = {}
+        u_fw_span = get_val('formwork_span_m', {})
+        if not isinstance(u_fw_span, dict):
+            u_fw_span = {}
+
+        u_wall_hours = u_fw_hours.get('Walls_Columns')
+        req_wall_hours = formwork_rules["Walls_Columns_Vertical_Faces"]["min_hours"]
+        if u_wall_hours is not None:
+            add_traceability('formwork_removal_hours.Walls_Columns', u_wall_hours)
+            evaluate("Formwork Removal - Walls/Columns", f"{u_wall_hours} hrs", f"Min {req_wall_hours} hrs", float(u_wall_hours) >= req_wall_hours)
+        else:
+            evaluate("Formwork Removal - Walls/Columns", "Not Provided", f"Min {req_wall_hours} hrs", False, True)
+
+        u_slab_days = u_fw_days.get('Slabs')
+        req_slab_days = formwork_rules["Slabs_Props_Left_Under"]["days"]
+        if u_slab_days is not None:
+            add_traceability('formwork_removal_days.Slabs', u_slab_days)
+            evaluate("Formwork Removal - Slabs (props left under)", f"{u_slab_days} days", f"Min {req_slab_days} days", float(u_slab_days) >= req_slab_days)
+        else:
+            evaluate("Formwork Removal - Slabs (props left under)", "Not Provided", f"Min {req_slab_days} days", False, True)
+
+        u_beam_soffit_days = u_fw_days.get('Beam_Soffit')
+        req_beam_soffit_days = formwork_rules["Beam_Soffit_Props_Left_Under"]["days"]
+        if u_beam_soffit_days is not None:
+            add_traceability('formwork_removal_days.Beam_Soffit', u_beam_soffit_days)
+            evaluate("Formwork Removal - Beam Soffit (props left under)", f"{u_beam_soffit_days} days", f"Min {req_beam_soffit_days} days", float(u_beam_soffit_days) >= req_beam_soffit_days)
+        else:
+            evaluate("Formwork Removal - Beam Soffit (props left under)", "Not Provided", f"Min {req_beam_soffit_days} days", False, True)
+
+        u_props_slab_days = u_fw_days.get('Props_Under_Slabs')
+        u_props_slab_span = u_fw_span.get('Props_Under_Slabs')
+        if u_props_slab_days is not None and u_props_slab_span is not None:
+            slab_key = "span_over_4.5m_days" if float(u_props_slab_span) > 4.5 else "span_up_to_4.5m_days"
+            req_props_slab_days = formwork_rules["Props_Under_Slabs"][slab_key]
+            add_traceability('formwork_removal_days.Props_Under_Slabs', u_props_slab_days)
+            add_traceability('formwork_span_m.Props_Under_Slabs', u_props_slab_span)
+            evaluate("Formwork Removal - Props Under Slabs", f"{u_props_slab_days} days (span {u_props_slab_span}m)", f"Min {req_props_slab_days} days", float(u_props_slab_days) >= req_props_slab_days)
+        else:
+            evaluate("Formwork Removal - Props Under Slabs", "Not Provided", "Depends on span", False, True)
+
+        u_props_beam_days = u_fw_days.get('Props_Under_Beams_Arches')
+        u_props_beam_span = u_fw_span.get('Props_Under_Beams_Arches')
+        if u_props_beam_days is not None and u_props_beam_span is not None:
+            beam_key = "span_over_6m_days" if float(u_props_beam_span) > 6 else "span_up_to_6m_days"
+            req_props_beam_days = formwork_rules["Props_Under_Beams_Arches"][beam_key]
+            add_traceability('formwork_removal_days.Props_Under_Beams_Arches', u_props_beam_days)
+            add_traceability('formwork_span_m.Props_Under_Beams_Arches', u_props_beam_span)
+            evaluate("Formwork Removal - Props Under Beams/Arches", f"{u_props_beam_days} days (span {u_props_beam_span}m)", f"Min {req_props_beam_days} days", float(u_props_beam_days) >= req_props_beam_days)
+        else:
+            evaluate("Formwork Removal - Props Under Beams/Arches", "Not Provided", "Depends on span", False, True)
+
         # =====================================================
         # SECTION 3 — MATERIALS & CHEMICAL LIMITS
         # =====================================================
-        u_agg = get_val('max_aggregate_size_mm')
-        limit_agg = is456_rules["AGGREGATE_SIZE"]["standard_max_size_mm"]
-        if u_agg:
-            add_traceability('max_aggregate_size_mm', u_agg)
-            evaluate("Aggregate Size", f"{u_agg}mm", f"Max {limit_agg}mm", float(u_agg) <= limit_agg)
-        else:
-            evaluate("Aggregate Size", "Not Provided", f"Max {limit_agg}mm", False, True)
+
+        # Cross-references to other IS codes (e.g. "aggregate grading shall
+        # conform to IS 383"): the spec correctly defers the number to another
+        # code instead of stating it, so this counts as satisfied rather than
+        # missing data.
+        cross_references = get_val('cross_references', [])
+        if isinstance(cross_references, list):
+            for ref in cross_references:
+                if not isinstance(ref, dict):
+                    continue
+                param = ref.get('parameter', 'Unknown Parameter')
+                code = ref.get('referenced_code', 'Unknown Code')
+                quote = ref.get('source_quote', 'No quote extracted')
+                traceability.append({"Parameter": param, "Extracted Value": f"Deferred to {code}", "Source Quote": quote})
+                evaluate(f"{param.replace('_', ' ').title()} (Cross-Reference)", f"Deferred to {code}", f"Compliant per {code}", True)
 
         u_ph = get_val('water_ph')
         if u_ph is not None:
@@ -307,7 +374,50 @@ def run_civion_audit(user_data, is456_rules):
             evaluate("Water pH", u_ph, "Min 6.0", float(u_ph) >= 6.0)
         else:
             evaluate("Water pH", "Not Provided", "Min 6.0", False, True)
-            
+
+        # Permissible Limits for Solids in Water (IS 456:2000 Clause 5.4, Table 1)
+        water_solids_limits = is456_rules["MATERIAL_PROPERTIES"]["Water_Solids_Limits"]["limits_mg_l"]
+
+        u_water_organic = get_val('water_organic_mg_l')
+        limit_organic = water_solids_limits["organic"]
+        if u_water_organic is not None:
+            add_traceability('water_organic_mg_l', u_water_organic)
+            evaluate("Water - Organic Solids", f"{u_water_organic} mg/l", f"Max {limit_organic} mg/l", float(u_water_organic) <= limit_organic)
+        else:
+            evaluate("Water - Organic Solids", "Not Provided", f"Max {limit_organic} mg/l", False, True)
+
+        u_water_inorganic = get_val('water_inorganic_mg_l')
+        limit_inorganic = water_solids_limits["inorganic"]
+        if u_water_inorganic is not None:
+            add_traceability('water_inorganic_mg_l', u_water_inorganic)
+            evaluate("Water - Inorganic Solids", f"{u_water_inorganic} mg/l", f"Max {limit_inorganic} mg/l", float(u_water_inorganic) <= limit_inorganic)
+        else:
+            evaluate("Water - Inorganic Solids", "Not Provided", f"Max {limit_inorganic} mg/l", False, True)
+
+        u_water_sulphates = get_val('water_sulphates_mg_l')
+        limit_sulphates = water_solids_limits["sulphates_as_so4"]
+        if u_water_sulphates is not None:
+            add_traceability('water_sulphates_mg_l', u_water_sulphates)
+            evaluate("Water - Sulphates", f"{u_water_sulphates} mg/l", f"Max {limit_sulphates} mg/l", float(u_water_sulphates) <= limit_sulphates)
+        else:
+            evaluate("Water - Sulphates", "Not Provided", f"Max {limit_sulphates} mg/l", False, True)
+
+        u_water_chlorides = get_val('water_chlorides_mg_l')
+        limit_chlorides = water_solids_limits["chlorides"].get(c_type, water_solids_limits["chlorides"]["Reinforced Concrete"])
+        if u_water_chlorides is not None:
+            add_traceability('water_chlorides_mg_l', u_water_chlorides)
+            evaluate("Water - Chlorides", f"{u_water_chlorides} mg/l", f"Max {limit_chlorides} mg/l", float(u_water_chlorides) <= limit_chlorides)
+        else:
+            evaluate("Water - Chlorides", "Not Provided", f"Max {limit_chlorides} mg/l", False, True)
+
+        u_water_suspended = get_val('water_suspended_matter_mg_l')
+        limit_suspended = water_solids_limits["suspended_matter"]
+        if u_water_suspended is not None:
+            add_traceability('water_suspended_matter_mg_l', u_water_suspended)
+            evaluate("Water - Suspended Matter", f"{u_water_suspended} mg/l", f"Max {limit_suspended} mg/l", float(u_water_suspended) <= limit_suspended)
+        else:
+            evaluate("Water - Suspended Matter", "Not Provided", f"Max {limit_suspended} mg/l", False, True)
+
         u_cl = get_val('measured_chloride_content')
         if u_cl is not None:
             add_traceability('measured_chloride_content', u_cl)

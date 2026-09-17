@@ -8,7 +8,6 @@ const metricMap = {
   'Min Cement Content': 'specified_min_cement',
   'W/C Ratio':         'specified_wc',
   'Sampling Sets':     'specified_sampling_sets',
-  'Aggregate Size':    'max_aggregate_size_mm',
   'Mixing Time':       'mixing_time_minutes',
   'Curing Days':       'curing_days',
 };
@@ -30,8 +29,6 @@ const getSliderConfig = (key) => {
     case 'specified_wc':
     case 'max_wc':
       return { min: 0.3, max: 0.7, step: 0.01 };
-    case 'max_aggregate_size_mm':
-      return { min: 10, max: 40, step: 5 };
     case 'mixing_time_minutes':
       return { min: 1, max: 10, step: 1 };
     case 'curing_days':
