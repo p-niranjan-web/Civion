@@ -1,6 +1,6 @@
 pandas
 groq
-pypdf
+pdfplumber
 fastapi
 uvicorn
 python-multipart
