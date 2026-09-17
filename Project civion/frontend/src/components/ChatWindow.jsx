@@ -1,4 +1,17 @@
 import { useEffect, useRef } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import 'katex/dist/katex.min.css';
+
+// The LLM occasionally emits stray raw HTML (e.g. "<br>") instead of Markdown
+// line breaks. react-markdown escapes raw HTML by default (shown as literal
+// text), so normalize known tags to Markdown before rendering.
+const normalizeMarkdown = (content) =>
+  content
+    .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/<\/?(p|div)\s*\/?>/gi, '\n');
 
 /**
  * ChatWindow — Collapsible bottom chat panel with auto-scroll,
@@ -85,7 +98,16 @@ const ChatWindow = ({
                 msg.role === 'user' ? 'msg-user' : 'msg-assistant'
               }`}
             >
-              {msg.content}
+              {msg.role === 'user' ? (
+                msg.content
+              ) : (
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm, remarkMath]}
+                  rehypePlugins={[rehypeKatex]}
+                >
+                  {normalizeMarkdown(msg.content)}
+                </ReactMarkdown>
+              )}
             </div>
           ))}
 

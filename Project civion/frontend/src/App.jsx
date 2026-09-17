@@ -15,6 +15,7 @@ function App() {
   // Global State
   const [file, setFile] = useState(null);
   const [exposure, setExposure] = useState(null);
+  const [concreteType, setConcreteType] = useState(''); // '' = auto-detect from document
   const [auditData, setAuditData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -60,6 +61,7 @@ function App() {
     const formData = new FormData();
     formData.append('file', file);
     if (exposure) formData.append('exposure', exposure);
+    if (concreteType) formData.append('concrete_type', concreteType);
 
     try {
       // Simulate frontend processing stages
@@ -95,7 +97,6 @@ function App() {
             "Min Cement Content": "specified_min_cement",
             "W/C Ratio": "specified_wc",
             "Sampling Sets": "specified_sampling_sets",
-            "Aggregate Size": "max_aggregate_size_mm",
             "Mixing Time": "mixing_time_minutes",
             "Curing Days": "curing_days"
           };
@@ -139,7 +140,7 @@ function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           messages: newMessages,
-          audit_context: auditData?.raw_extracted_data || null
+          audit_context: auditData || null
         })
       });
       
@@ -251,6 +252,8 @@ function App() {
         setActiveTab={setActiveTab}
         exposure={exposure}
         onExposureChange={setExposure}
+        concreteType={concreteType}
+        onConcreteTypeChange={setConcreteType}
       />
 
       <main className="main-content">

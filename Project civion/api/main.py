@@ -11,8 +11,8 @@ from fpdf import FPDF
 
 from parser import parse_user_specification
 from auditor import run_civion_audit
-from database import IS456_MASTER
-from config import get_groq_client
+from database import IS456_MASTER, EXTERNAL_CODE_REFERENCES
+from config import get_groq_client, GROQ_MODEL
 
 os.makedirs("downloads", exist_ok=True)
 
@@ -32,12 +32,19 @@ class ChatRequest(BaseModel):
     audit_context: dict = None
 
 @app.post("/api/audit")
-async def audit_pdf(file: UploadFile = File(...), exposure: str = Form(None)):
+async def audit_pdf(
+    file: UploadFile = File(...),
+    exposure: str = Form(None),
+    concrete_type: str = Form(None),
+):
     if not file.filename.endswith('.pdf'):
         raise HTTPException(status_code=400, detail="Only PDF files are supported.")
 
     # Exposure condition supplied by the user (direct pick or questionnaire).
     detected_exposure = exposure.strip() if isinstance(exposure, str) and exposure.strip() else None
+    # Optional concrete-type hint - lets table-based specs be resolved to the
+    # correct (exposure x concrete type) cell.
+    detected_concrete_type = concrete_type.strip() if isinstance(concrete_type, str) and concrete_type.strip() else None
 
     try:
         # Create a temporary file to save the uploaded PDF
@@ -47,7 +54,11 @@ async def audit_pdf(file: UploadFile = File(...), exposure: str = Form(None)):
             temp_pdf_path = temp_pdf.name
 
         # Run parsing
-        extracted_json = parse_user_specification(temp_pdf_path, detected_exposure=detected_exposure)
+        extracted_json = parse_user_specification(
+            temp_pdf_path,
+            detected_exposure=detected_exposure,
+            detected_concrete_type=detected_concrete_type,
+        )
         
         # Clean up temp file
         os.remove(temp_pdf_path)
@@ -75,10 +86,55 @@ async def chat(request: ChatRequest):
         
         # Build the system prompt
         system_prompt = "You are Civion AI, a professional civil engineering compliance assistant."
+
+        rules_str = json.dumps(IS456_MASTER, separators=(",", ":"))
+        system_prompt += f"\n\nHere is the full IS 456:2000 rule base this project uses (clauses, tables, and limits):\n{rules_str}"
+
         if request.audit_context:
-            # Add context to system prompt
-            context_str = json.dumps(request.audit_context, indent=2)
-            system_prompt += f"\n\nYou are currently assisting the user with the following audit report context:\n{context_str}\n\nDo not use informal language or emojis. Provide clear, professional engineering guidance based on IS 456:2000."
+            # Trim the payload: drop `traceability` (its source quotes are already
+            # duplicated inside raw_extracted_data.source_quotes) and only keep
+            # non-passing ledger rows, since chat questions are almost always about
+            # failures/warnings, not the ~40 checks that already passed.
+            trimmed_context = {
+                "counts": request.audit_context.get("counts"),
+                "failed_and_warning_checks": [
+                    row for row in request.audit_context.get("ledger", [])
+                    if row.get("Status") != "Pass"
+                ],
+                "raw_extracted_data": request.audit_context.get("raw_extracted_data"),
+            }
+            context_str = json.dumps(trimmed_context, separators=(",", ":"))
+            system_prompt += f"\n\nYou are currently assisting the user with the following audit report context:\n{context_str}"
+
+            # If the spec defers any parameter to another IS code (e.g. "aggregate
+            # grading shall conform to IS 383"), pull the real reference values for
+            # only those cited codes so the model quotes actual numbers instead of
+            # guessing from its own training knowledge.
+            raw_data = request.audit_context.get("raw_extracted_data") or {}
+            cited_codes = {
+                ref.get("referenced_code")
+                for ref in (raw_data.get("cross_references") or [])
+                if isinstance(ref, dict) and ref.get("referenced_code") in EXTERNAL_CODE_REFERENCES
+            }
+            if cited_codes:
+                external_refs = {code: EXTERNAL_CODE_REFERENCES[code] for code in cited_codes}
+                external_refs_str = json.dumps(external_refs, separators=(",", ":"))
+                system_prompt += (
+                    f"\n\nThe spec defers some requirements to these external codes; here are their "
+                    f"actual reference values (use these, do not guess):\n{external_refs_str}"
+                )
+
+        system_prompt += (
+            "\n\nGrounding rules: base every answer strictly on the IS 456 rule base and audit report context "
+            "provided above. Cite the specific clause/table when giving a requirement. If the answer to the "
+            "user's question is not covered by the provided rule base or audit context, say so explicitly instead "
+            "of guessing or relying on general/outside knowledge of concrete codes.\n\n"
+            "Formatting rules: respond in clean standard Markdown only. Never use raw HTML tags such as <br>, "
+            "<p>, or <div> — use blank lines to separate paragraphs and '-' for bullet lists instead. Write "
+            "mathematical expressions and formulas using LaTeX syntax: $...$ for inline math and $$...$$ for "
+            "block/display equations, never plain-text fraction notation.\n\n"
+            "Do not use informal language or emojis. Provide clear, professional engineering guidance based on IS 456:2000."
+        )
             
         # Format messages for Groq API
         formatted_messages = [{"role": "system", "content": system_prompt}]
@@ -88,7 +144,7 @@ async def chat(request: ChatRequest):
             formatted_messages.append({"role": role, "content": msg.get("content", "")})
             
         chat_completion = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=GROQ_MODEL,
             messages=formatted_messages,
             temperature=0.3
         )
