@@ -1,0 +1,25 @@
+{
+  "keywords_file": "C:\\Users\\IkramCC\\Downloads\\CIVION\\Civion\\Project civion\\experiments\\fallback_search\\keywords.json",
+  "null_params": [
+    "water_ph",
+    "measured_chloride_content",
+    "measured_so3_percent",
+    "freezing_thawing_exposure",
+    "soil_total_so3_percent",
+    "soil_extract_2_1_so3_gl",
+    "groundwater_so3_gl",
+    "specified_grade",
+    "specified_max_cement",
+    "specified_characteristic_strength",
+    "specified_sigma",
+    "transport_time_minutes",
+    "specified_slump_mm",
+    "total_volume_m3",
+    "specified_sampling_sets",
+    "sampling_cube_size_mm",
+    "fire_resistance_rating",
+    "member_covers.Beams",
+    "member_covers.Columns",
+    "member_covers.Slabs"
+  ]
+}

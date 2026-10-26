@@ -1,0 +1,93 @@
+{
+  "group": "production_curing",
+  "text": "## PART 3 - EXECUTION > 3.6 CONCRETE\n- A. Concrete is prepared by mixing graded aggregates along with cement, water and approved admixtures, in a specified proportion. Mixing shall be done using a mechanical mixer. Manual hand mixing shall be permitted in specific cases with the written permission of the ER on account of small quantity or location or any other reason acceptable to the ER.\n- B. Cement Concrete.\n1. This shall be classified as plain cement concrete or reinforced cement concrete. Plain cement concrete shall be used in leveling courses under foundations, floors, copings etc. Reinforced cement concrete shall be used typically at all locations.\n- a. Concrete shall be classified by its compressive strength at the 28th day. The concrete grades shall be as designated in table 2 of IS 456 and are given as ready reference in Table - 4.\n- b. It shall be the responsibility of the Contractor to carry out design mixes and approval of the same shall be obtained from the ER at least 35 days in advance from the actual pouring of concrete at site in the permanent Work. The basic aim of mix design shall be to find the most economic proportion of cement, aggregates and water which will give the desired strength of concrete, proper workability and durability. Also it is important that the mix should be easily worked with the help of equipment available at site. The operations involved at site are, measurement of materials, their mixing, placing, compacting, finishing required and curing. The design shall be carried out strictly to IS specifications and IS code practice 456, SP 23 and SP 24.\n- c. The Contractor shall ensure that the minimum cement content per cubic\n\n- meter of reinforced concrete should not be less than that stipulated in table 23, 24, 25 and 26 of SP 23 and Table 5 and Table 6 herein.\n- d. For expected strength of cubes tested on the 28 th day the design mix at preliminary test and work site shall be as per IS 456, SP 23 and SP 24. The water cement ratio shall be between 0.5 to 0.52. Additional water may be permitted only at the discretion of the ER. The slump shall be 25 mm to 35 mm depending upon the location and type of Work. Higher slump with use of plasticizers shall be permitted.\n- C. Design Mix And Trial Mixes\n1. The Contractor shall submit the mix designs that he proposes to use at site to the ER for review at least 5 weeks in advance of planned use, The mix design shall also give basic details, when tested according to Is 1199 and IS 2386 - Part III, such as.\n- a. Slump\n- b. Vee - Bee Test\n- c. Bleeding\n- d. Cement required for one cubic meter of concrete\n- e. Compacting factor\n2. On receipt of this, the ER may immediately order a work site test to be performed before the final approval. This shall be done with mixer and materials actually being used at site.\n3. 5 cubes shall be taken from each of the 3 batches to test the mix. Cubes shall be cast, stored, cured, transported and tested per IS 516. The test may be carried out at site or laboratory as approved by the ER.\n4. Trial mixes shall be approved provided that average strength of 3 consecutive cubes is not less than that specified and that one out of three may give a value less than specified but limited to a maximum of 90% of the specified strength.\n5. In case the trial mix falls below the above criteria, the ER shall order fresh trial mixes to be made as before, until the desired strength is arrived at.\n6. This design mix and trial mix hold good so long as the materials continue to be of the same quality and from the same sources. For any change, the ER may order fresh design mix and trial mixes to be carried out before the same is used at site.\n7. It is the responsibility of the Contractor to prepare and get the cubes tested and to provide all the material, labour, moulds, equipment, casting and curing required.\n8. The Contractor shall provide and maintain all the equipment and staff at the site throughout to carry out the following tests in an approved testing laboratory, hereinafter referred to as the Contractor's laboratory.\n\n- a. Grading of coarse and fine aggregates.\n- b. Silt content of sand.\n- c. Moisture content of coarse and fine aggregates.\n- d. Slump.\n- e. Concrete cube strength.\n9. The Contractor shall maintain full records of all above tests in a register.\n10. The format of records shall be prepared in consultation with the ER and either he or his representative shall have full access to the Contractor's laboratory..\n- D. Mixing Of Concrete\n1. Weight batching shall be preferred at site but subject to the ER's approval it may be permit designed mixes to be converted to volumetric equivalents if requested in writing by the Contractor on specific grounds. The Contractor shall provide required boxes to measure the ingredients of concrete.\n2. The Contractor shall provide concrete batch mixers, vibrators, weight batches conforming to relevant IS specification. The capacity and number of mixers and vibrators required at site from time to time shall be to the approval of the ER. No equipment from site shall be removed without the prior written approval of the ER. The Contractor shall also maintain a platform weighing scale of capacity 300 kg with fraction upto 100 gms at the site.\n3. As directed by the ER, a weekly or periodic calibration of all machines shall be done and records of these calibrations shall be maintained in a register. Regular maintenance of machinery shall also be carried out on a weekly basis or as directed by the manufacturer of machines.\n4. The mixer shall be run for a minimum period of 2 minutes after all materials are loaded in full quantity. The concrete produced shall be uniform in colour and consistency.\n- a. Excessive mixing requiring the addition of water to preserve the required consistency shall not be permitted. Mix concrete to a consistency which can be readily placed without segregation.\n- b. Equip mixers with a device for measuring and dispensing admixtures. When required, the slump of concrete may be increased prior to placement by the use of a high range water reducing admixture.\n5. Hand-Mixed Concrete: When hand-mixed concrete is allowed and approved for certain parts of the Work, mix on watertight platforms. Proportion cement, sand and aggregate loose by volume, carefully measured. Thoroughly mix sand and cement together dry until the mixture is of uniform color. Add the aggregate and turn the\n\n- mass over until the mixture is uniform and homogeneous. Add water by sprinkling and turn the mass over until it is uniformly mixed and of the required consistency.\n6. Retempering: No water shall be added to the mix after the initial batching operation. Concrete which is placed after the unauthorized addition of water is subject to removal.\n7. When required, the slump of concrete as delivered to the site may be increased prior to placement by the use of a high range water reducing admixture. Dosage of superplasticizer shall be within the guidelines established by the manufacturer and agreed to by the ER. Alternative Mix Design Reports with the recommended site dosage(s) of superplasticizer shall be submitted prior to use.\n8. The placing temperature of concrete shall not be more than 34 o C. If it is more, the ER may order addition of ice or chilled water to the concrete at no additional cost to the Employer. Also the Contractor shall take the following precautions:\n- a. Mixers and weight batches shall be painted with white colour\n- b. Aggregate storing bins shall not be exposed to the Sun.\n- c. Water shall be sprinkled on aggregates well before concreting to keep the temperature low.",
+  "response": {
+    "exposure": "Moderate",
+    "freezing_thawing_exposure": null,
+    "water_ph": null,
+    "soil_total_so3_percent": null,
+    "soil_extract_2_1_so3_gl": null,
+    "groundwater_so3_gl": null,
+    "concrete_type": "Reinforced Concrete",
+    "specified_grade": null,
+    "cement_type": null,
+    "specified_min_cement": null,
+    "specified_max_cement": null,
+    "specified_wc": null,
+    "specified_characteristic_strength": null,
+    "specified_sigma": null,
+    "mixing_time_minutes": 2,
+    "transport_time_minutes": null,
+    "compaction_method": "mechanical vibrator",
+    "curing_days": null,
+    "specified_slump_mm": null,
+    "total_volume_m3": null,
+    "specified_sampling_sets": null,
+    "sampling_cube_size_mm": null,
+    "measured_chloride_content": null,
+    "measured_so3_percent": null,
+    "fire_resistance_rating": null,
+    "member_covers": {
+      "Beams": null,
+      "Columns": null,
+      "Slabs": null
+    },
+    "water_organic_mg_l": null,
+    "water_inorganic_mg_l": null,
+    "water_sulphates_mg_l": null,
+    "water_chlorides_mg_l": null,
+    "water_suspended_matter_mg_l": null,
+    "cross_references": [
+      {
+        "parameter": "mix design approval",
+        "referenced_code": "IS 456",
+        "source_quote": "The design shall be carried out strictly to IS specifications and IS code practice 456"
+      },
+      {
+        "parameter": "mix design guidelines",
+        "referenced_code": "SP 23",
+        "source_quote": "minimum cement content per cubic meter of reinforced concrete should not be less than that stipulated in table 23, 24, 25 and 26 of SP 23"
+      },
+      {
+        "parameter": "mix design guidelines",
+        "referenced_code": "SP 24",
+        "source_quote": "The design shall be carried out strictly to IS specifications and IS code practice 456, SP 23 and SP 24"
+      },
+      {
+        "parameter": "trial mix testing",
+        "referenced_code": "IS 1199",
+        "source_quote": "when tested according to Is 1199 and IS 2386 - Part III"
+      },
+      {
+        "parameter": "trial mix testing",
+        "referenced_code": "IS 2386",
+        "source_quote": "when tested according to Is 1199 and IS 2386 - Part III"
+      },
+      {
+        "parameter": "cube curing and testing",
+        "referenced_code": "IS 516",
+        "source_quote": "Cubes shall be cast, stored, cured, transported and tested per IS 516"
+      }
+    ],
+    "source_quotes": {
+      "exposure": "The applicable environmental exposure condition for this structure has ALREADY been determined externally to be \"Moderate\".",
+      "concrete_type": "Reinforced cement concrete shall be used typically at all locations.",
+      "mixing_time_minutes": "The mixer shall be run for a minimum period of 2 minutes after all materials are loaded in full quantity.",
+      "compaction_method": "The Contractor shall provide concrete batch mixers, vibrators, weight batches conforming to relevant IS specification."
+    }
+  },
+  "call": {
+    "name": "extract[7] production_curing",
+    "model": "openai/gpt-oss-120b",
+    "reasoning_effort": "low",
+    "prompt_tokens": 2861,
+    "completion_tokens": 1147,
+    "total_tokens": 4008,
+    "retries": 0,
+    "wall_s": 63.46,
+    "error": null,
+    "est_prompt_tokens": 3060,
+    "group": "production_curing",
+    "text_chars": 7639
+  }
+}
