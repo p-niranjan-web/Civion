@@ -24,7 +24,9 @@ TABLE_QUOTE_RULE = """TABLE QUOTES: when a value is read from a table, its sourc
     only the header text of the column you used (e.g. "REINFORCED CONCRETE -
     MINIMUM CEMENT CONTENT"), still verbatim. Line 2: the whole data row the
     value is in, copied verbatim with its row label and its "|" separators.
-    Never merge header text and cell text into one line and never reword a cell."""
+    For a field that holds a whole table, add further data rows of the same
+    table, one per line. Never merge header text and cell text into one line
+    and never reword a cell."""
 
 
 # Remarks are shown to the user next to the ledger row; they never change a result.

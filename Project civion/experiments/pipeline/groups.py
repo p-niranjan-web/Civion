@@ -136,7 +136,8 @@ GROUPS = {
               '[{"from_m3": float, "to_m3": float or null, "samples": int, "extra_per_m3": float or null}]',
               "minimum sampling frequency rule: one entry per quantity band (e.g. '5 to 15 cu.m -> 2 samples'); "
               "the open-ended last band ('more than 50: 4 + one per additional 50 cu.m') has to_m3 null and "
-              "extra_per_m3 50",
+              "extra_per_m3 50. Its quote goes in source_quotes (table header row + one band row). If the rule "
+              "appears more than once, use the most complete copy and add a remark.",
               ("sample", "samples", "frequency", "cu.m")),
         ],
         [],

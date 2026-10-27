@@ -100,17 +100,21 @@ def number_in(n, text):
 def table_quote_found(quote, tables, value=None):
     """Return (found, problems, info). found only if line 1 is part of a
     table's header row and line 2 part of a data row of the same table."""
-    lines = [l for l in str(quote).splitlines() if l.strip()]
-    if len(lines) != 2:
-        return False, [f"table quote must be 2 lines (header row + data row), got {len(lines)}"], {}
-    head, row = norm_row(lines[0]), norm_row(lines[1])
+    # Line 1 = header row; every further line = a data row of the same table
+    # (a whole-table value such as a grading table may quote several rows).
+    # Markdown separator lines ("|---|") in the quote are ignored.
+    lines = [l for l in str(quote).splitlines() if l.strip() and not SEPARATOR.match(l.strip())]
+    if len(lines) < 2:
+        return False, [f"table quote must be a header row + data row(s), got {len(lines)} line(s)"], {}
+    head, rows = norm_row(lines[0]), [norm_row(l) for l in lines[1:]]
+    row = rows[0]
     head_in = [t for t in tables if head and head in t["header"]]
-    both = [t for t in head_in if row and any(row in r for r in t["rows"])]
+    both = [t for t in head_in if all(r and any(r in tr for tr in t["rows"]) for r in rows)]
     problems = []
     if not head_in:
         problems.append(f"line 1 is not part of any table header row: {lines[0][:80]}")
     elif not both:
-        problems.append(f"line 2 is not a data row of that table: {lines[1][:80]}")
+        problems.append(f"a quoted row is not a data row of that table: {lines[1][:80]}")
     info = {"table_line": both[0]["line"]} if both else {}
     # Extra signal (does not affect found): is the extracted number in the quoted row?
     if both and isinstance(value, (int, float)) and not isinstance(value, bool):

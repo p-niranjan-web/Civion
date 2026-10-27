@@ -1,0 +1,151 @@
+{
+  "group": "aggregates",
+  "field": "fine_aggregate_grading",
+  "batch": 1,
+  "text": "### [S027.U12] PART 2 - PRODUCTS > 2.8 AGGREGATES FOR CONCRETE\nNote :-1The Presence of mica in the fine aggregate has been found to reduce considerably the durability and compressive strength of concrete and further investigations are underway to determine and extent of the deleterious effect of mica. It is advisable, therefore, to investigate the mica content of fine aggregate and make suitable allowance for the possible reduction in the strength of concrete mortar.\n\nNote :-2 The aggregate shall not contain harmful organic impurities (tested in accordance with IS : 2386 [part - ii]) in sufficient quantities to affect adversely the strength or durability of concrete. A fine aggregate which fails in the test for organic impurities may be used, provided that, when tested for the effect of organic impurities on the strength of mortar, the relative strength at 7 and 28 days, reported in accordance with 7 of IS : 2386 [ Part - VI] - 1963 is not less than 95% percent.\n\n### [S028.U1] PART 2 - PRODUCTS > 2.8 AGGREGATES FOR CONCRETE > TABLE - 9 GRADING OF COARSE AGGREGATES > [TABLE] TABLE - 9 GRADING OF COARSE AGGREGATES / [IS 383 - Table 2]\n[IS 383 - Table 2]\n| IS Sieve Designation | Percentage passing for single - sized Aggregate of Nominal Size - 63 mm | Percentage passing for single - sized Aggregate of Nominal Size - 40 mm | Percentage passing for single - sized Aggregate of Nominal Size - 20 mm | Percentage passing for single - sized Aggregate of Nominal Size - 16 mm | Percentage passing for single - sized Aggregate of Nominal Size - 12.5 mm | Percentage passing for single - sized Aggregate of Nominal Size - 10 mm | Percentage passing for Graded Aggregate of Nominal Size - 40 mm | Percentage passing for Graded Aggregate of Nominal Size - 20 mm | Percentage passing for Graded Aggregate of Nominal Size - 16 mm | Percentage passing for Graded Aggregate of Nominal Size - 12.5 mm |\n|------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|-----------------------------------------------------------------------------|---------------------------------------------------------------------------|-------------------------------------------------------------------|-------------------------------------------------------------------|-------------------------------------------------------------------|---------------------------------------------------------------------|\n| (1) | (2) | (3) | (4) | (5) | (6) | (7) | (8) | (9) | (10) | (11) |\n| 80 mm | 100 | -- | -- | -- | -- | -- | 100 | -- | -- | -- |\n| 63 mm | 85 to 100 | 100 | -- | -- | -- | -- | -- | -- | -- | -- |\n| 40 mm | 0 to 30 | 85 to 100 | 100 | -- | -- | -- | 95 to 100 | 100 | -- | -- |\n| 20 mm | 0 to 5 | 0 to 20 | 85 to 100 | 100 | -- | -- | 30 to 70 | 95 to 100 | 100 | 100 |\n| 16 mm | -- | -- | -- | 85 to 100 | 100 | -- | -- | -- | 90 to 100 | -- |\n| 12.5 mm | -- | -- | -- | -- | 85 to 100 | 100 | -- | -- | -- | 90 to 100 |\n| 10 mm | 0 to 5 | 0 to 5 | 0 to 20 | 0 to 30 | 0 to 45 | 85 to 100 | 10 to 35 | 25 to 55 | 30 to 70 | 40 to 85 |\n| 4.75 mm | -- | -- | 0 to 5 | 0 to 5 | 0 to 10 | 0 to 20 | 0 to 5 | 0 to 10 | 0 to 10 | 0 to 10 |\n| 2.36 mm | -- | -- | -- | -- | -- | 0 to 5 | -- | -- | -- | -- |\nCELLS OF THE TABLE ABOVE (row label: column header = value; for reading only, quote the table):\n(1): Percentage passing for single - sized Aggregate of Nominal Size - 63 mm = (2); Percentage passing for single - sized Aggregate of Nominal Size - 40 mm = (3); Percentage passing for single - sized Aggregate of Nominal Size - 20 mm = (4); Percentage passing for single - sized Aggregate of Nominal Size - 16 mm = (5); Percentage passing for single - sized Aggregate of Nominal Size - 12.5 mm = (6); Percentage passing for single - sized Aggregate of Nominal Size - 10 mm = (7); Percentage passing for Graded Aggregate of Nominal Size - 40 mm = (8); Percentage passing for Graded Aggregate of Nominal Size - 20 mm = (9); Percentage passing for Graded Aggregate of Nominal Size - 16 mm = (10); Percentage passing for Graded Aggregate of Nominal Size - 12.5 mm = (11)\n80 mm: Percentage passing for single - sized Aggregate of Nominal Size - 63 mm = 100; Percentage passing for Graded Aggregate of Nominal Size - 40 mm = 100\n63 mm: Percentage passing for single - sized Aggregate of Nominal Size - 63 mm = 85 to 100; Percentage passing for single - sized Aggregate of Nominal Size - 40 mm = 100\n40 mm: Percentage passing for single - sized Aggregate of Nominal Size - 63 mm = 0 to 30; Percentage passing for single - sized Aggregate of Nominal Size - 40 mm = 85 to 100; Percentage passing for single - sized Aggregate of Nominal Size - 20 mm = 100; Percentage passing for Graded Aggregate of Nominal Size - 40 mm = 95 to 100; Percentage passing for Graded Aggregate of Nominal Size - 20 mm = 100\n20 mm: Percentage passing for single - sized Aggregate of Nominal Size - 63 mm = 0 to 5; Percentage passing for single - sized Aggregate of Nominal Size - 40 mm = 0 to 20; Percentage passing for single - sized Aggregate of Nominal Size - 20 mm = 85 to 100; Percentage passing for single - sized Aggregate of Nominal Size - 16 mm = 100; Percentage passing for Graded Aggregate of Nominal Size - 40 mm = 30 to 70; Percentage passing for Graded Aggregate of Nominal Size - 20 mm = 95 to 100; Percentage passing for Graded Aggregate of Nominal Size - 16 mm = 100; Percentage passing for Graded Aggregate of Nominal Size - 12.5 mm = 100\n16 mm: Percentage passing for single - sized Aggregate of Nominal Size - 16 mm = 85 to 100; Percentage passing for single - sized Aggregate of Nominal Size - 12.5 mm = 100; Percentage passing for Graded Aggregate of Nominal Size - 16 mm = 90 to 100\n12.5 mm: Percentage passing for single - sized Aggregate of Nominal Size - 12.5 mm = 85 to 100; Percentage passing for single - sized Aggregate of Nominal Size - 10 mm = 100; Percentage passing for Graded Aggregate of Nominal Size - 12.5 mm = 90 to 100\n10 mm: Percentage passing for single - sized Aggregate of Nominal Size - 63 mm = 0 to 5; Percentage passing for single - sized Aggregate of Nominal Size - 40 mm = 0 to 5; Percentage passing for single - sized Aggregate of Nominal Size - 20 mm = 0 to 20; Percentage passing for single - sized Aggregate of Nominal Size - 16 mm = 0 to 30; Percentage passing for single - sized Aggregate of Nominal Size - 12.5 mm = 0 to 45; Percentage passing for single - sized Aggregate of Nominal Size - 10 mm = 85 to 100; Percentage passing for Graded Aggregate of Nominal Size - 40 mm = 10 to 35; Percentage passing for Graded Aggregate of Nominal Size - 20 mm = 25 to 55; Percentage passing for Graded Aggregate of Nominal Size - 16 mm = 30 to 70; Percentage passing for Graded Aggregate of Nominal Size - 12.5 mm = 40 to 85\n4.75 mm: Percentage passing for single - sized Aggregate of Nominal Size - 20 mm = 0 to 5; Percentage passing for single - sized Aggregate of Nominal Size - 16 mm = 0 to 5; Percentage passing for single - sized Aggregate of Nominal Size - 12.5 mm = 0 to 10; Percentage passing for single - sized Aggregate of Nominal Size - 10 mm = 0 to 20; Percentage passing for Graded Aggregate of Nominal Size - 40 mm = 0 to 5; Percentage passing for Graded Aggregate of Nominal Size - 20 mm = 0 to 10; Percentage passing for Graded Aggregate of Nominal Size - 16 mm = 0 to 10; Percentage passing for Graded Aggregate of Nominal Size - 12.5 mm = 0 to 10\n2.36 mm: Percentage passing for single - sized Aggregate of Nominal Size - 10 mm = 0 to 5\n\n### [S029.U1] PART 2 - PRODUCTS > 2.8 AGGREGATES FOR CONCRETE > TABLE - 10 / GRADING OF FINE AGGREGATES > [TABLE] TABLE - 10 / GRADING OF FINE AGGREGATES / [IS 383 - Table 4]\n[IS 383 - Table 4]\n| IS Sieve Designation | Percentage Passing for - Grading Zone I | Percentage Passing for - Grading Zone II | Percentage Passing for - Grading Zone III | Percentage Passing for - Grading Zone IV |\n|------------------------|-------------------------------------------|--------------------------------------------|---------------------------------------------|--------------------------------------------|\n| 10 mm | 100 | 100 | 100 | 100 |\n| 4.75 mm | 90 to 100 | 90 to 100 | 90 to 100 | 95 to 100 |\n| 2.36 mm | 60 to 95 | 75 to 100 | 85 to 100 | 95 to 100 |\n| 1.18 mm | 30 to 70 | 55 to 90 | 75 to 100 | 90 to 100 |\n| 600 micron | 15 to 34 | 35 to 59 | 60 to 79 | 80 to 100 |\n| 300 micron | 5 to 20 | 8 to 30 | 12 to 40 | 15 to 50 |\n| 150 micron | 0 to 10 | 0 to 10 | 0 to 10 | 0 to 15 |",
+  "response": {
+    "fine_aggregate_grading": {
+      "zone I": {
+        "10 mm": [
+          100,
+          100
+        ],
+        "4.75 mm": [
+          90,
+          100
+        ],
+        "2.36 mm": [
+          60,
+          95
+        ],
+        "1.18 mm": [
+          30,
+          70
+        ],
+        "600 um": [
+          15,
+          34
+        ],
+        "300 um": [
+          5,
+          20
+        ],
+        "150 um": [
+          0,
+          10
+        ]
+      },
+      "zone II": {
+        "10 mm": [
+          100,
+          100
+        ],
+        "4.75 mm": [
+          90,
+          100
+        ],
+        "2.36 mm": [
+          75,
+          100
+        ],
+        "1.18 mm": [
+          55,
+          90
+        ],
+        "600 um": [
+          35,
+          59
+        ],
+        "300 um": [
+          8,
+          30
+        ],
+        "150 um": [
+          0,
+          10
+        ]
+      },
+      "zone III": {
+        "10 mm": [
+          100,
+          100
+        ],
+        "4.75 mm": [
+          90,
+          100
+        ],
+        "2.36 mm": [
+          85,
+          100
+        ],
+        "1.18 mm": [
+          75,
+          100
+        ],
+        "600 um": [
+          60,
+          79
+        ],
+        "300 um": [
+          12,
+          40
+        ],
+        "150 um": [
+          0,
+          10
+        ]
+      },
+      "zone IV": {
+        "10 mm": [
+          100,
+          100
+        ],
+        "4.75 mm": [
+          95,
+          100
+        ],
+        "2.36 mm": [
+          95,
+          100
+        ],
+        "1.18 mm": [
+          90,
+          100
+        ],
+        "600 um": [
+          80,
+          100
+        ],
+        "300 um": [
+          15,
+          50
+        ],
+        "150 um": [
+          0,
+          15
+        ]
+      }
+    },
+    "cross_references": [],
+    "source_quotes": {
+      "fine_aggregate_grading": "| IS Sieve Designation | Percentage Passing for - Grading Zone I | Percentage Passing for - Grading Zone II | Percentage Passing for - Grading Zone III | Percentage Passing for - Grading Zone IV |\n| 10 mm | 100 | 100 | 100 | 100 |\n| 4.75 mm | 90 to 100 | 90 to 100 | 90 to 100 | 95 to 100 |\n| 2.36 mm | 60 to 95 | 75 to 100 | 85 to 100 | 95 to 100 |\n| 1.18 mm | 30 to 70 | 55 to 90 | 75 to 100 | 90 to 100 |\n| 600 micron | 15 to 34 | 35 to 59 | 60 to 79 | 80 to 100 |\n| 300 micron | 5 to 20 | 8 to 30 | 12 to 40 | 15 to 50 |\n| 150 micron | 0 to 10 | 0 to 10 | 0 to 10 | 0 to 15 |"
+    },
+    "remarks": {}
+  },
+  "call": {
+    "name": "extract[aggregates.fine_aggregate_grading#1]",
+    "model": "openai/gpt-oss-120b",
+    "reasoning_effort": "low",
+    "prompt_tokens": 3645,
+    "completion_tokens": 733,
+    "total_tokens": 4378,
+    "retries": 1,
+    "wall_s": 1842.48,
+    "error": null,
+    "est_prompt_tokens": 3275,
+    "group": "aggregates",
+    "field": "fine_aggregate_grading",
+    "batch": 1,
+    "text_chars": 8719
+  }
+}

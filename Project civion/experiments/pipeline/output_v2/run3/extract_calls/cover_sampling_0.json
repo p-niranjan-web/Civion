@@ -1,0 +1,72 @@
+{
+  "group": "cover_sampling",
+  "batch": 0,
+  "text": "### [S045.U1] PART 3 - EXECUTION > 3.5 REINFORCEMENT\n- A. General: Clean reinforcement of loose rust and mill scale, earth, and other materials that reduce or destroy bond with concrete. Where vapor barrier is required, avoid cutting or puncturing vapor barrier during reinforcement placement and concreting operations.\n- B. Position, support, and secure reinforcement against displacement by formwork, construction, or concrete placement operations. Locate and support reinforcing with metal chairs, runners, bolsters, spacers, and hangers, as required. Place reinforcement to obtain the required minimum coverages for concrete protection. Arrange, space, and securely tie bar supports together with (1.6mm) wire to hold reinforcement accurately in position during concrete placement operations. Set wire ties so that twisted ends are directed away from exposed concrete surfaces.\n\n### [S048.U1] PART 3 - EXECUTION > 3.5 REINFORCEMENT > F. Cover to Reinforcement\n1. Reinforcement shall have concrete cover and the thickness of such cover shall be as specified in the Drawings or as directed by the ER.\n- G. Fixing in position\n1. Correctly cut and bent bars shall be accurately placed in position as detailed in the Drawings. Unless otherwise specified by the ER, reinforcement shall be positioned within the tolerance as under:\n\n### [S048.U2] PART 3 - EXECUTION > 3.5 REINFORCEMENT > F. Cover to Reinforcement > G. Fixing in position\n- a. for effective depth 200 mm or less  10 mm\n- b. for effective depth more than 200 mm  15 mm\n2. But in no case shall the cover be reduced by more than 5 mm of that specified. There shall be no compromise on cover for foundation work.\n3. Reinforcing bars shall be held in position during the placing of concrete by use of PVC or concrete cover blocks ( made of equal / of higher grade strength of well-cured concrete in use) steel chair spacers, steel hangers, supporting wires, etc. and secured by tying with an annealed binding wire of 16 to 18 gauge as approved by the ER.\n\n### [S048.U3] PART 3 - EXECUTION > 3.5 REINFORCEMENT > F. Cover to Reinforcement > G. Fixing in position\n4. Layers of bars shall be separated by precast concrete spacer blocks or spacer bars. Reinforcement shall be in correct position prior to start of concreting. No reinforcing bar shall be placed on freshly laid concrete for adjusting bar spacing. Care shall be taken to maintain reinforcement in position and keep it clean, throughout the period till it is embedded in the concrete..\n\n### [S048.U4] PART 3 - EXECUTION > 3.5 REINFORCEMENT > F. Cover to Reinforcement > G. Fixing in position\n5. Binding wire used shall conform to IS 280.\n- H. Welded joints or mechanical connections\n1. Welded joints or mechanical connections in reinforcement may be used but in all cases or important connections, tests shall be made to prove that the joints are of the full strength of the connected bars. Welding of reinforcement shall be done in accordance with IS recommendation.\n2. Where reinforcement bars are bent aside at construction joints and afterwards bent\n\n- back into their original position, care shall be taken to ensure that at no time is the radius of the bend allowed to be less than 4 bar diameters in case of plain mild steel or 6 bar diameters for deformed bars. Care shall be taken when bending back bars to ensure that the concrete around them is not damaged / disturbed.\n3. Welding rods used shall conform to IS 814: covered electrodes for metal arc welding of structural steel. Work shall be carried out by a certified welder. Samples from Work site shall be taken at regular intervals and tested. Frequency and number of samples shall be as directed by the ER.\n\n### [S049.U7] PART 3 - EXECUTION > 3.6 CONCRETE > C. Design Mix And Trial Mixes\n4. Trial mixes shall be approved provided that average strength of 3 consecutive cubes is not less than that specified and that one out of three may give a value less than specified but limited to a maximum of 90% of the specified strength.\n5. In case the trial mix falls below the above criteria, the ER shall order fresh trial mixes to be made as before, until the desired strength is arrived at.\n\n### [S049.U10] PART 3 - EXECUTION > 3.6 CONCRETE > C. Design Mix And Trial Mixes\n- d. Slump.\n- e. Concrete cube strength.\n9. The Contractor shall maintain full records of all above tests in a register.\n10. The format of records shall be prepared in consultation with the ER and either he or his representative shall have full access to the Contractor's laboratory..\n- D. Mixing Of Concrete\n\n### [S054.U1] PART 3 - EXECUTION > 3.6 CONCRETE > L. Openings\n1. All required openings and block-outs (pockets) shall be provided as detailed in the Drawings. All openings and pockets shall be de-shuttered with care and all corners of openings shall be preserved. All openings / block-outs (pockets) shall be in a correct line and level. After concreting, the openings shall be secured against any accident by proper coverings, guardrails and warning notices, as appropriate.\n2. The Contractor shall clean and grout block-outs / pockets at a later date with a nonshrinking grout mix or concrete of matching strength. They shall be well-cured and protected to correct line and level till handling over\n\n### [S058.U1] PART 3 - EXECUTION > 3.9 FIELD QUALITY CONTROL > [TABLE] 3.9 FIELD QUALITY CONTROL\n| Concrete quantity | Number of Samples. | |\n|------------------------|-------------------------------------------------------|----|\n| Up to 5 cu.m. in a day | 15 cu.m. to 15 cu.m. | 2 |\n| 15 cu.m. to 30 cu.m. | 3 | |\n| 30 cu.m. to 50 cu.m. | 4 | |\n| More than 50 cu.m. | 4 + one additional per each 50 cu.m. or part thereof. | |\n\n### [S058.U2] PART 3 - EXECUTION > 3.9 FIELD QUALITY CONTROL\nThree cubes shall be tested on the 7 th day and other three cubes on the 28 th day.\n\n6. For Mass Concrete, One additional sample shall be taken and reserved for testing at 56 days.\n\n### [S060.U3] PART 3 - EXECUTION > 3.10 INDEPENDENT TESTING\n- E. Compression Tests: Sample at point of deposit. Cure the cylinders in laboratory.\n1. Additional Cylinders: Furnish a supply of 25 standard cylinder molds at the site at all times for making additional cylinders as may be directed by the ER.\n2. Quantity of test cubes and testing\n- a. The minimum frequency of cube casting for testing shall be as follows. Each sample shall consist of 6 cubes.\n\n### [S060.U4] PART 3 - EXECUTION > 3.10 INDEPENDENT TESTING > [TABLE] (no caption)\n| Concrete quantity | Number of Samples. |\n|-----------------------------|----------------------------------------------|\n| Up to 5 cu.m. in a day | 1 |\n| 5 cu.m. to 15 cu.m. | 2 |\n| 15 cu.m. to 30 cu.m. | 3 |\n| 30 cu.m. to 50 cu.m. | 4 |\n| More than 50 cu.m. thereof. | 4 + one additional per each 50 cu.m. or part |",
+  "response": {
+    "member_covers": {
+      "Beams": null,
+      "Columns": null,
+      "Slabs": null
+    },
+    "fire_resistance_rating": null,
+    "sampling_cube_size_mm": null,
+    "specified_sampling_sets": null,
+    "total_volume_m3": null,
+    "sampling_frequency": [
+      {
+        "from_m3": 0,
+        "to_m3": 5,
+        "samples": 2,
+        "extra_per_m3": null,
+        "source_quote": "Concrete quantity | Number of Samples. | |\n| Up to 5 cu.m. in a day | 15 cu.m. to 15 cu.m. | 2 |"
+      },
+      {
+        "from_m3": 15,
+        "to_m3": 30,
+        "samples": 3,
+        "extra_per_m3": null,
+        "source_quote": "Concrete quantity | Number of Samples. | |\n| 15 cu.m. to 30 cu.m. | 3 |"
+      },
+      {
+        "from_m3": 30,
+        "to_m3": 50,
+        "samples": 4,
+        "extra_per_m3": null,
+        "source_quote": "Concrete quantity | Number of Samples. | |\n| 30 cu.m. to 50 cu.m. | 4 |"
+      },
+      {
+        "from_m3": 50,
+        "to_m3": null,
+        "samples": 4,
+        "extra_per_m3": 50,
+        "source_quote": "Concrete quantity | Number of Samples. | |\n| More than 50 cu.m. | 4 + one additional per each 50 cu.m. or part thereof. |"
+      }
+    ],
+    "cross_references": [
+      {
+        "parameter": "member_covers",
+        "points_to": "drawings",
+        "source_quote": "Reinforcement shall have concrete cover and the thickness of such cover shall be as specified in the Drawings or as directed by the ER."
+      }
+    ],
+    "source_quotes": {
+      "member_covers": "Reinforcement shall have concrete cover and the thickness of such cover shall be as specified in the Drawings or as directed by the ER."
+    },
+    "remarks": {}
+  },
+  "call": {
+    "name": "extract[cover_sampling#0]",
+    "model": "openai/gpt-oss-120b",
+    "reasoning_effort": "low",
+    "prompt_tokens": 2801,
+    "completion_tokens": 827,
+    "total_tokens": 3628,
+    "retries": 0,
+    "wall_s": 62.75,
+    "error": null,
+    "est_prompt_tokens": 2728,
+    "group": "cover_sampling",
+    "batch": 0,
+    "text_chars": 6795
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "group": "aggregates",
+  "field": "fine_aggregate_grading",
+  "batch": 2,
+  "text": "### [S029.U2] PART 2 - PRODUCTS > 2.8 AGGREGATES FOR CONCRETE > TABLE - 10 / GRADING OF FINE AGGREGATES > NOTE - 1 For crushed stone sands, the permissible Limit on 150 micr...\n- NOTE - 1 For crushed stone sands, the permissible Limit on 150 micron IS Sieve is increased to 20 percent. This does not affect the 5 percent allowance permitted in 4.5 applying to other sieve sizes.\n- NOTE - 2 Fine Aggregate complying with the requirements of any grading zone in this table is suitable for concrete but the quality of concrete produced will depend upon a number of factors including proportions.\n- NOTE - 3 Where concrete of high strength and good durability is required, fine aggregate conforming to any one of the four grading zones may be used, but the concrete mix should be properly\n\ndesigned. As the fine aggregate grading becomes progressively finer, that is, from Grading Zones I to IV, the ratio of fine aggregate to coarse aggregate should be progressively reduced. The most suitable fine to coarse ratio to be used for any particular mix will, however, depend upon the actual grading, particle shape and surface texture of both fine and coarse aggregates.\n\nNOTE - 4 It is recommended that fine aggregate conforming to Grading Zone IV should not be used in reinforced concrete unless tests have been made to ascertain the suitability of proposed mix proportions.\n\n### [S030.U1] PART 2 - PRODUCTS > 2.8 AGGREGATES FOR CONCRETE > TABLE - 11 / ALL-IN-AGGREGATE GRADING > [TABLE] TABLE - 11 / ALL-IN-AGGREGATE GRADING / [IS 383 - Table 5]\n[IS 383 - Table 5]\n| IS Sieve Designation | Percentage for ALL IN Aggregate of - 40 mm Nominal Size | Percentage for ALL IN Aggregate of - 20 mm Nominal Size |\n|------------------------|-----------------------------------------------------------|-----------------------------------------------------------|\n| (1) | (2) | (3) |\n| 80 mm | 100 | -- |\n| 40 mm | 95 to 100 | 100 |\n| 20 mm | 45 to 75 | 95 to 100 |\n| 4.75 mm | 25 to 45 | 30 to 50 |\n| 600 micron | 8 to 30 | 10 to 35 |\n| 150 micron | 0 to 6 | 0 to 6 |\n\n### [S047.U2] PART 3 - EXECUTION > 3.5 REINFORCEMENT > E. Spacing of Bars > 1. Bars shall be placed in position as shown in the Drawings. The f...\n- 1) The diameter of the bars, if the diameters are equal.\n- 2) The diameter or larger bar, if the diameters are unequal, and\n- 3) 5 mm more than the nominal maximum size of coarse aggregate (by\n\nusing reduced size of aggregate in congested reinforced area, conditions given hereof should be overcome)\n\n### [S047.U3] PART 3 - EXECUTION > 3.5 REINFORCEMENT > E. Spacing of Bars > 1. Bars shall be placed in position as shown in the Drawings. The f...\n2. Greater horizontal distance should be provided. But when needle vibrators are used, distance between bars of a group may be reduced to two-third of the nominal maximum size of the coarse aggregate, provided sufficient space is left between groups of bars to enable the vibrator to be immersed.\n3. Where there are two or more rows of bars, the bars shall be vertically aligned and the minimum vertical distance between the bars shall be 15 mm, two third the nominal maximum size of the aggregate or the maximum size of bar, whichever is greatest.\n\n### [S049.U9] PART 3 - EXECUTION > 3.6 CONCRETE > C. Design Mix And Trial Mixes\n8. The Contractor shall provide and maintain all the equipment and staff at the site throughout to carry out the following tests in an approved testing laboratory, hereinafter referred to as the Contractor's laboratory.\n- a. Grading of coarse and fine aggregates.\n- b. Silt content of sand.\n- c. Moisture content of coarse and fine aggregates.\n\n### [S049.U14] PART 3 - EXECUTION > 3.6 CONCRETE > D. Mixing Of Concrete\n5. Hand-Mixed Concrete: When hand-mixed concrete is allowed and approved for certain parts of the Work, mix on watertight platforms. Proportion cement, sand and aggregate loose by volume, carefully measured. Thoroughly mix sand and cement together dry until the mixture is of uniform color. Add the aggregate and turn the\n\n- mass over until the mixture is uniform and homogeneous. Add water by sprinkling and turn the mass over until it is uniformly mixed and of the required consistency.",
+  "response": {
+    "fine_aggregate_grading": {
+      "zone I": {
+        "10 mm": null,
+        "4.75 mm": null,
+        "2.36 mm": null,
+        "1.18 mm": null,
+        "600 um": null,
+        "300 um": null,
+        "150 um": null
+      },
+      "zone II": {
+        "10 mm": null,
+        "4.75 mm": null,
+        "2.36 mm": null,
+        "1.18 mm": null,
+        "600 um": null,
+        "300 um": null,
+        "150 um": null
+      },
+      "zone III": {
+        "10 mm": null,
+        "4.75 mm": null,
+        "2.36 mm": null,
+        "1.18 mm": null,
+        "600 um": null,
+        "300 um": null,
+        "150 um": null
+      },
+      "zone IV": {
+        "10 mm": null,
+        "4.75 mm": null,
+        "2.36 mm": null,
+        "1.18 mm": null,
+        "600 um": null,
+        "300 um": null,
+        "150 um": null
+      }
+    },
+    "cross_references": [],
+    "source_quotes": {},
+    "remarks": {}
+  },
+  "call": {
+    "name": "extract[aggregates.fine_aggregate_grading#2]",
+    "model": "openai/gpt-oss-120b",
+    "reasoning_effort": "low",
+    "prompt_tokens": 2312,
+    "completion_tokens": 439,
+    "total_tokens": 2751,
+    "retries": 1,
+    "wall_s": 830.17,
+    "error": null,
+    "est_prompt_tokens": 2142,
+    "group": "aggregates",
+    "field": "fine_aggregate_grading",
+    "batch": 2,
+    "text_chars": 4188
+  }
+}

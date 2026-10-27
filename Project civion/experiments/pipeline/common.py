@@ -10,6 +10,7 @@ The API key is never printed: config.get_groq_client() reads it and we only
 ever log usage numbers and error messages.
 """
 import json
+import os
 import re
 import sys
 import time
@@ -31,6 +32,20 @@ WINDOW_S = 60.0
 _recent = []
 # Every call made in this process: name, MEASURED usage, wall time, retries.
 CALL_LOG = []
+
+
+# Some networks drop the large TLS ClientHello that OpenSSL 3.5 sends by default
+# (post-quantum key share): the handshake to Groq times out while curl works.
+# CIVION_CLASSIC_TLS=1 limits the handshake to one classic curve. Off by default.
+CLASSIC_TLS = os.environ.get("CIVION_CLASSIC_TLS") == "1"
+
+
+def _classic_tls_client():
+    import ssl
+    import httpx
+    ctx = ssl.create_default_context()
+    ctx.set_ecdh_curve("prime256v1")
+    return httpx.Client(verify=ctx, timeout=120)
 
 
 def est_tokens(text):
@@ -58,6 +73,8 @@ def call_groq(name, system_prompt, user_prompt, expected_completion=1500, max_re
     from config import get_groq_client, GROQ_MODEL
 
     client = get_groq_client()
+    if CLASSIC_TLS:
+        client = client.with_options(http_client=_classic_tls_client())
     expected = est_tokens(system_prompt + user_prompt) + expected_completion
     entry = {"name": name, "model": GROQ_MODEL, "reasoning_effort": reasoning_effort, "prompt_tokens": None,
              "completion_tokens": None, "total_tokens": None, "retries": 0,

@@ -1,0 +1,5 @@
+[clean] 137801 -> 136124 chars; 102 image markers; 0 header/footer lines (0 distinct)
+[sections] 62 sections, 17 tables
+  [call] localize: prompt=None completion=None wall=16.7s retries=0 ERROR=Request timed out.
+[localize] picked 0 ids -> 0 sections + 0 standalone tables; 0 chars; parents added by rule: []; unknown ids: []
+Stage A failed: Request timed out.

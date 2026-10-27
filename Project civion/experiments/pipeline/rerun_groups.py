@@ -7,7 +7,7 @@ Usage: python rerun_groups.py --from-run run2 --out table_quotes_check durabilit
 import argparse
 import shutil
 
-from common import HERE, call_groq, est_tokens, read_json, write_json
+from common import HERE, read_json, write_json
 import extract_v2
 import verify
 
@@ -22,16 +22,8 @@ def main(from_run, out, group_ids, exposure, concrete_type, max_call_tokens=5000
     extraction, quotes = {}, {}
     for gid in group_ids:
         g_units = [u for u in units if gid in routing.get(u["id"], [])]
-        template = est_tokens(extract_v2.SYSTEM + extract_v2.build_prompt(gid, "", exposure, concrete_type))
-        batches = extract_v2.make_batches(g_units, max_call_tokens - template - completion_reserve)
-        results = []
-        for b, text in enumerate(batches):
-            parsed, call = call_groq(f"extract[{gid}#{b}]", extract_v2.SYSTEM,
-                                     extract_v2.build_prompt(gid, text, exposure, concrete_type),
-                                     expected_completion=completion_reserve)
-            results.append((b, parsed or {}))
-            write_json(dst / "extract_calls" / f"{gid}_{b}.json",
-                       {"group": gid, "batch": b, "text": text, "response": parsed, "call": call})
+        results, _ = extract_v2.extract_group(gid, g_units, dst, exposure, concrete_type,
+                                              max_call_tokens, completion_reserve)
         values, q, _, _, _ = extract_v2.merge_group(gid, results)
         extraction.update(values)
         quotes.update(q)

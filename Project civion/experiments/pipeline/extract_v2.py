@@ -19,6 +19,7 @@ import time
 
 from common import OUT_DIR, PROJECT_ROOT, call_groq, est_tokens, read_json, write_json
 from groups import ALL_PARAMS, GROUPS
+from database import PARAMETERS
 from prompt_rules import REFERENCES_RULE, REMARKS_RULE, TABLE_QUOTE_RULE
 
 FORMWORK_FIELDS = ["formwork_removal_hours", "formwork_removal_days", "formwork_span_m"]
@@ -28,14 +29,20 @@ MEMBERS = ["Beams", "Columns", "Slabs"]
 # Groups whose answers are large tables need a bigger completion budget:
 # group -> (max tokens per call, completion reserve).
 GROUP_BUDGETS = {"aggregates": (6000, 2500)}
+# Groups extracted one field per call. Tried for "aggregates" on BLR: no gain
+# (the 11-column coarse grading table was still misread), 4x the tokens.
+SPLIT_BY_FIELD = set()
 PARAM_NAMES = set(ALL_PARAMS) | {"member_covers"}
+# {group: {item: value}} fields are merged cell by cell across batches.
+TABLE_FIELDS = {f for f, s in PARAMETERS.items() if s["shape"] in ("set_max", "set_range")}
 
 SYSTEM = "You are a civil engineering parser. Output STRICTLY valid JSON. Do NOT invent values. If missing, return null."
 
 
-def build_prompt(group_id, units_text, exposure, concrete_type):
+def build_prompt(group_id, units_text, exposure, concrete_type, only=None):
     g = GROUPS[group_id]
-    fields = "\n".join(f'      "{p.name}": {p.type},   // {p.rule}' for p in g.params)
+    params = [p for p in g.params if only is None or p.name == only]
+    fields = "\n".join(f'      "{p.name}": {p.type},   // {p.rule}' for p in params)
     notes = "".join(f"\n    NOTE: {n}" for n in g.notes)
     return f"""
     Extract the "{g.title}" parameters of a concrete specification into ONE JSON object.
@@ -68,8 +75,8 @@ def build_prompt(group_id, units_text, exposure, concrete_type):
 def unit_block(u):
     # Docling pads table cells with runs of spaces; drop them to save tokens
     # (verify.py ignores pipe spacing, so quotes still match the document).
-    text = "\n".join(re.sub(r" {2,}", " ", line) if line.lstrip().startswith("|") else line
-                     for line in u["text"].splitlines())
+    lines = u["text"].splitlines()
+    text = "\n".join(re.sub(r" {2,}", " ", line) if line.lstrip().startswith("|") else line for line in lines)
     return f"### [{u['id']}] {' > '.join(u['heading_path'])}\n{text}"
 
 
@@ -87,13 +94,44 @@ def make_batches(units, budget_tokens):
 
 
 def is_empty(v):
-    return v is None or v == "" or v == [] or v == {}
+    # A table answer whose cells are all null ({"zone I": {"10 mm": null}}) is empty too.
+    if isinstance(v, dict):
+        return all(is_empty(x) for x in v.values())
+    return v is None or v == "" or v == []
+
+
+def merge_table(name, group_id, results):
+    """Cell-by-cell union of a {group: {item: value}} field across batches; the
+    first value in document order wins, disagreements are conflicts."""
+    merged, conflicts, quote = {}, [], None
+    for i, r in results:
+        v = r.get(name)
+        if not isinstance(v, dict):
+            continue
+        for g, items in v.items():
+            for item, cell in (items.items() if isinstance(items, dict) else []):
+                if is_empty(cell):
+                    continue
+                old = merged.setdefault(g, {}).get(item)
+                if old is None:
+                    merged[g][item] = cell
+                elif json.dumps(old) != json.dumps(cell):
+                    conflicts.append({"field": f"{name}.{g}.{item}", "group": group_id,
+                                      "candidates": [{"batch": "first", "value": old}, {"batch": i, "value": cell}]})
+        quote = quote or (r.get("source_quotes") or {}).get(name)
+    return merged or None, quote, conflicts
 
 
 def merge_group(group_id, results):
     """results: [(batch_idx, parsed)] -> (values, quotes, conflicts, xrefs, remarks)."""
     values, quotes, conflicts = {}, {}, []
     for p in GROUPS[group_id].params:
+        if p.name in TABLE_FIELDS:
+            values[p.name], q, c = merge_table(p.name, group_id, results)
+            if q and values[p.name]:
+                quotes[p.name] = q
+            conflicts += c
+            continue
         if p.name == "member_covers":
             covers = {}
             for m in MEMBERS:
@@ -131,7 +169,7 @@ def merge_group(group_id, results):
             if f in PARAM_NAMES and text and f not in remarks:
                 remarks[f] = str(text)
     for c in conflicts:
-        f = c["field"]
+        f = c["field"].split(".")[0] if c["field"].split(".")[0] in TABLE_FIELDS else c["field"]
         vals = ", ".join(json.dumps(x["value"], ensure_ascii=False) for x in c["candidates"])
         note = f"The document states different values ({vals}); the first in document order is audited."
         remarks[f] = f"{remarks[f]} {note}" if f in remarks else note
@@ -149,6 +187,28 @@ def fallback_hook(extraction, out_dir):
     return {"keywords_found": kw.exists(), "null_params": nulls}
 
 
+def extract_group(gid, g_units, out_dir, exposure, concrete_type, max_call_tokens=5000, completion_reserve=1200):
+    """All calls of one group -> ([(batch_key, parsed)], [call logs]). Groups in
+    SPLIT_BY_FIELD get one pass per field; their results merge like batches."""
+    call_max, reserve = GROUP_BUDGETS.get(gid, (max_call_tokens, completion_reserve))
+    passes = [p.name for p in GROUPS[gid].params] if gid in SPLIT_BY_FIELD else [None]
+    results, calls = [], []
+    for only in passes:
+        template = est_tokens(SYSTEM + build_prompt(gid, "", exposure, concrete_type, only))
+        batches = make_batches(g_units, call_max - template - reserve)
+        for b, text in enumerate(batches):
+            key = f"{gid}{'.' + only if only else ''}#{b}"
+            parsed, call = call_groq(f"extract[{key}]", SYSTEM,
+                                     build_prompt(gid, text, exposure, concrete_type, only),
+                                     expected_completion=reserve)
+            call.update(group=gid, field=only, batch=b, text_chars=len(text))
+            calls.append(call)
+            results.append((len(results), parsed or {}))
+            write_json(out_dir / "extract_calls" / f"{key.replace('#', '_')}.json",
+                       {"group": gid, "field": only, "batch": b, "text": text, "response": parsed, "call": call})
+    return results, calls
+
+
 def main(out_dir=OUT_DIR, exposure="Moderate", concrete_type="Reinforced Concrete",
          max_call_tokens=5000, completion_reserve=1200):
     t0 = time.perf_counter()
@@ -164,19 +224,9 @@ def main(out_dir=OUT_DIR, exposure="Moderate", concrete_type="Reinforced Concret
                 extraction[p.name] = None
             print(f"[extract_v2] {gid}: no units routed - all fields null")
             continue
-        call_max, reserve = GROUP_BUDGETS.get(gid, (max_call_tokens, completion_reserve))
-        template = est_tokens(SYSTEM + build_prompt(gid, "", exposure, concrete_type))
-        budget = call_max - template - reserve
-        batches = make_batches(g_units, budget)
-        results = []
-        for b, text in enumerate(batches):
-            parsed, call = call_groq(f"extract[{gid}#{b}]", SYSTEM, build_prompt(gid, text, exposure, concrete_type),
-                                     expected_completion=reserve)
-            call.update(group=gid, batch=b, text_chars=len(text))
-            calls.append(call)
-            results.append((b, parsed or {}))
-            write_json(out_dir / "extract_calls" / f"{gid}_{b}.json",
-                       {"group": gid, "batch": b, "text": text, "response": parsed, "call": call})
+        results, g_calls = extract_group(gid, g_units, out_dir, exposure, concrete_type,
+                                         max_call_tokens, completion_reserve)
+        calls += g_calls
         values, q, c, x, rm = merge_group(gid, results)
         remarks.update(rm)
         extraction.update(values)
