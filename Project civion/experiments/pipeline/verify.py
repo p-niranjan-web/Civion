@@ -76,7 +76,7 @@ def check_quotes(extraction, clean_md):
     for x in extraction.get("cross_references") or []:
         q = x.get("source_quote")
         ok, missing = quote_found(q, clean_norm) if q else (False, ["<no quote>"])
-        rows.append({"field": f"cross_ref:{x.get('parameter')}->{x.get('referenced_code')}",
+        rows.append({"field": f"cross_ref:{x.get('parameter')}->{(x.get('points_to') or x.get('referenced_code'))}",
                      "quote": q, "found": ok, "missing_fragments": missing})
     return rows
 

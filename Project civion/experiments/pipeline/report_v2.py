@@ -104,7 +104,7 @@ def main():
     row("Unique doc chars sent to extraction", lambda r: f"{r['unique_chars']:,} ({100 * r['unique_chars'] / r['clean_chars']:.0f}%)")
     row("Parameters found (of 28: 26 params, covers counted per member)", lambda r: r["found"])
     row("Cross-references", lambda r: len(r["ext"].get("cross_references") or []))
-    for k in ["PASS", "FAIL", "MISSING", "WARNING"]:
+    for k in ["PASS", "REFERENCE", "FAIL", "MISSING", "WARNING"]:
         row(f"Audit {k}", lambda r, k=k: r["counts"].get(k, 0))
     row("Source quotes not found in clean.md (deterministic check)",
         lambda r: "-" if r["quote_check"] is None else sum(1 for q in r["quote_check"] if q["found"] is False))
@@ -175,8 +175,8 @@ def main():
             L.append("")
     L.append(f"Cross-references ({fname}):\n")
     for x in rf["ext"].get("cross_references") or []:
-        qc = next((q for q in rf["quote_check"] if q["field"] == f"cross_ref:{x.get('parameter')}->{x.get('referenced_code')}"), None)
-        L.append(f"- {x.get('parameter')} -> {x.get('referenced_code')}: \"{fmt(x.get('source_quote'), 140)}\""
+        qc = next((q for q in rf["quote_check"] if q["field"] == f"cross_ref:{x.get('parameter')}->{(x.get('points_to') or x.get('referenced_code'))}"), None)
+        L.append(f"- {x.get('parameter')} -> {(x.get('points_to') or x.get('referenced_code'))}: \"{fmt(x.get('source_quote'), 140)}\""
                  + ("" if not qc or qc["found"] else "  **(quote NOT found in clean.md)**"))
     bad = [q for q in rf["quote_check"] if q["found"] is False]
     L.append(f"\nQuote check ({fname}): {sum(1 for q in rf['quote_check'] if q['found'])} found, {len(bad)} not found"

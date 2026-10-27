@@ -6,6 +6,21 @@ import hashlib
 import os
 from config import get_groq_client, GROQ_MODEL
 
+# Shared with experiments/pipeline/extract_v2.py so both prompts stay identical.
+REFERENCES_RULE = """REFERENCES: A spec may state a requirement not as a value but by
+    pointing elsewhere: to another IS code (e.g. "Grading of coarse aggregate
+    shall conform to the requirements of IS 383.") or to a non-code source
+    (e.g. "Nominal cover shall be as specified in the Drawings."). This is NOT
+    missing data - do NOT treat it as a failure. Add one entry to
+    "cross_references" per such statement: "parameter" = the exact field name
+    from the JSON structure when the reference is about one of those fields
+    (e.g. "member_covers"), otherwise a short snake_case name (e.g.
+    "coarse_aggregate_grading"); "points_to" = the code exactly as written
+    (e.g. "IS 383") or "drawings" or the other source named; "source_quote" =
+    the exact sentence. If the same text also states a value, extract the
+    value as usual too. If there are no such references, return an empty list."""
+
+
 def extract_text_from_pdf(pdf_path):
     """Extract text page-by-page, keeping table rows intact.
 
@@ -233,16 +248,10 @@ def parse_user_specification(pdf_path, detected_exposure=None, detected_concrete
       "formwork_removal_hours": {{ "Walls_Columns": float }},
       "formwork_removal_days": {{ "Slabs": float, "Beam_Soffit": float, "Props_Under_Slabs": float, "Props_Under_Beams_Arches": float }},
       "formwork_span_m": {{ "Props_Under_Slabs": float, "Props_Under_Beams_Arches": float }},
-      "cross_references": [ {{ "parameter": "string - which requirement is being deferred, e.g. coarse_aggregate_grading", "referenced_code": "string like 'IS 383'", "source_quote": "exact quote from text" }} ],
+      "cross_references": [ {{ "parameter": "field name from above, or a short snake_case name", "points_to": "IS code like 'IS 383', or 'drawings' / other source", "source_quote": "exact quote from text" }} ],
       "source_quotes": {{ "<field>": "exact quote from text for every non-null field above" }}
     }}
-    CROSS-REFERENCES: A spec may state a requirement not as a number but by
-    deferring it to another IS code (e.g. "Grading of coarse aggregate shall
-    conform to the requirements of IS 383."). This is NOT missing data - do
-    NOT return null for it and do NOT treat it as a failure. Instead add one
-    entry to "cross_references" per such statement, naming the parameter it
-    concerns, the exact code referenced (e.g. "IS 383"), and the exact quote.
-    If there are no such deferrals, return an empty list.
+    {REFERENCES_RULE}
     Text: {text_chunk}
     """
     merged_data = run_agent(client, system_instruction, prompt_all) or {}

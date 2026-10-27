@@ -98,7 +98,7 @@ async def chat(request: ChatRequest):
                 "counts": request.audit_context.get("counts"),
                 "failed_and_warning_checks": [
                     row for row in request.audit_context.get("ledger", [])
-                    if row.get("Status") != "Pass"
+                    if row.get("Status") not in ("Pass", "Reference")
                 ],
                 "raw_extracted_data": request.audit_context.get("raw_extracted_data"),
             }
@@ -111,9 +111,10 @@ async def chat(request: ChatRequest):
             # guessing from its own training knowledge.
             raw_data = request.audit_context.get("raw_extracted_data") or {}
             cited_codes = {
-                ref.get("referenced_code")
+                ref.get("points_to") or ref.get("referenced_code")
                 for ref in (raw_data.get("cross_references") or [])
-                if isinstance(ref, dict) and ref.get("referenced_code") in EXTERNAL_CODE_REFERENCES
+                if isinstance(ref, dict)
+                and (ref.get("points_to") or ref.get("referenced_code")) in EXTERNAL_CODE_REFERENCES
             }
             if cited_codes:
                 external_refs = {code: EXTERNAL_CODE_REFERENCES[code] for code in cited_codes}
@@ -180,7 +181,7 @@ async def download_report(payload: dict):
         pdf.set_font("Helvetica", size=12)
         pdf.cell(0, 8, f"Total Checks: {counts.get('total', 0)}", new_x="LMARGIN", new_y="NEXT")
         pdf.set_text_color(0, 180, 80) # Green
-        pdf.cell(0, 8, f"Passed: {counts.get('pass', 0)}", new_x="LMARGIN", new_y="NEXT")
+        pdf.cell(0, 8, f"Passed: {counts.get('pass', 0)} (of which references: {counts.get('reference', 0)})", new_x="LMARGIN", new_y="NEXT")
         pdf.set_text_color(220, 40, 80) # Red
         pdf.cell(0, 8, f"Failed: {counts.get('fail', 0)}", new_x="LMARGIN", new_y="NEXT")
         pdf.set_text_color(220, 140, 0) # Orange

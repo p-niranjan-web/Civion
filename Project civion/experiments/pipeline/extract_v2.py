@@ -10,14 +10,15 @@ in document order is used AND every candidate goes to extraction["conflicts"]
 so merging across groups is a union; cross_references are deduplicated.
 
 The shared rules (no invented values, null if missing, exposure-table
-resolution, concrete-type column, cross-references) are copied from
-parser.py's prompt; the per-field rules come from groups.py.
+resolution, concrete-type column) are copied from parser.py's prompt;
+the references rule is imported from parser.py; the per-field rules come from groups.py.
 """
 import json
 import time
 
 from common import OUT_DIR, PROJECT_ROOT, call_groq, est_tokens, read_json, write_json
 from groups import ALL_PARAMS, GROUPS
+from parser import REFERENCES_RULE
 
 FORMWORK_FIELDS = ["formwork_removal_hours", "formwork_removal_days", "formwork_span_m"]
 SITE_FIELDS = ["soil_total_so3_percent", "soil_extract_2_1_so3_gl", "groundwater_so3_gl"]
@@ -43,17 +44,11 @@ def build_prompt(group_id, units_text, exposure, concrete_type):
     SOURCE QUOTES: for every non-null field, copy the supporting text VERBATIM
     from the excerpts - a whole sentence, or the whole table row including its
     row label - not just the number.{notes}
-    CROSS-REFERENCES: A spec may state a requirement not as a number but by
-    deferring it to another IS code (e.g. "Grading of coarse aggregate shall
-    conform to the requirements of IS 383."). This is NOT missing data - do
-    NOT return null for it and do NOT treat it as a failure. Instead add one
-    entry to "cross_references" per such statement, naming the parameter it
-    concerns, the exact code referenced (e.g. "IS 383"), and the exact quote.
-    If there are no such deferrals, return an empty list.
+    {REFERENCES_RULE}
     Return exactly:
     {{
 {fields}
-      "cross_references": [ {{ "parameter": "string - which requirement is being deferred, e.g. coarse_aggregate_grading", "referenced_code": "string like 'IS 383'", "source_quote": "exact quote" }} ],
+      "cross_references": [ {{ "parameter": "field name from above, or a short snake_case name", "points_to": "IS code like 'IS 383', or 'drawings' / other source", "source_quote": "exact quote" }} ],
       "source_quotes": {{ "<field>": "verbatim quote for every non-null field" }}
     }}
     EXCERPTS:
@@ -163,7 +158,7 @@ def main(out_dir=OUT_DIR, exposure="Moderate", concrete_type="Reinforced Concret
 
     seen, dedup = set(), []
     for x in xrefs:
-        key = (str(x.get("parameter", "")).lower(), str(x.get("referenced_code", "")).replace(" ", "").upper())
+        key = (str(x.get("parameter", "")).lower(), str(x.get("points_to") or x.get("referenced_code") or "").replace(" ", "").upper())
         if key not in seen:
             seen.add(key)
             dedup.append(x)

@@ -26,6 +26,8 @@ def audit_status(row):
         return "PASS"
     if row["Status"] == "Fail":
         return "FAIL"
+    if row["Status"] == "Reference":
+        return "REFERENCE"
     if row["Extracted Value"] == "Not Provided":
         return "MISSING"
     return "WARNING"
@@ -178,7 +180,7 @@ def report():
         metric = row["Metric"]
         status = audit_status(row)
         field = METRIC_FIELDS.get(metric)
-        if field is None and metric.endswith("(Cross-Reference)"):
+        if field is None and metric.endswith(("(Cross-Reference)", "(Reference)")):
             field = "cross_references"
         if metric.startswith("Formwork"):
             field = "formwork_* (skipped by design)"
@@ -200,7 +202,7 @@ def report():
     if ext.get("cross_references"):
         L.append("Cross-references extracted:\n")
         for x in ext["cross_references"]:
-            L.append(f"- {x.get('parameter')} -> {x.get('referenced_code')}: \"{fmt(x.get('source_quote'))}\"")
+            L.append(f"- {x.get('parameter')} -> {(x.get('points_to') or x.get('referenced_code'))}: \"{fmt(x.get('source_quote'))}\"")
         L.append("")
     conflicts = {k: v for k, v in (ext.get("_candidates") or {}).items()
                  if len({str(c['value']) for c in v}) > 1}
