@@ -23,3 +23,11 @@ Running list of problems found while building Civion, for the final report.
 - **Sampling table garbled (verified in both pdfplumber and PyMuPDF output).** The text reads "Up to 5 cu.m. in a day 15 cu.m. to 15 cu.m. 2". This is probably "1" plus "5 cu.m. to 15 cu.m." merged together. Still to be checked visually in the PDF.
 
 
+
+## 4. Extraction and audit (shapes work, Oct 2026)
+- **Wide table misread by the LLM (verified).** BLR's 11-column coarse grading table: 29/38 cells correct (values shifted columns). → Fixed: the LLM only maps columns, Python reads the cells (42/42), 2026-10-27.
+- **Same input, different answer (verified).** Both curing sentences were in the same call in run2 and run4: run2 gave 7 days, run4 gave 14 (7 + 7). Grading tables were read in run3 but returned as "as per IS 383" in run4.
+- **Groq daily token cap (verified).** After ~200k tokens in a day, Groq made each call wait 14–30 min. The headers only show 8,000 tokens/min and 1,000 requests/day.
+- **TLS handshake timeout on one network (verified).** Python (OpenSSL 3.5) could not connect to Groq while curl could; fixed for the pipeline with `CIVION_CLASSIC_TLS=1`.
+- **Long outline breaks section picking (verified).** NMP Noida (81 sections): Groq returned empty output ("json_validate_failed") 3 times; run skipped.
+- **Layout differences the fixed schema cannot hold (from reading NMP / Colombo).** See `experiments/shapes/LAYOUT_LIMITATIONS.md`.
