@@ -1,10 +1,18 @@
 # Pipelines and runs (all on the BLR spec unless noted)
 
 ## Pipelines
-- **v1** - clean -> sections -> one LLM call picks the relevant sections from the headings -> extraction in
-  fixed batches over that text. Result kept in `v1_results/` (12 calls, 42k tokens).
-- **v2** - same section picking, plus: sections split into units (clauses / tables) -> LLM routes each unit
-  to parameter groups -> one extraction call per group (batched if large). Runs in `output_v2/<run>/`.
+- **v1** (`localize.py`, `extract.py`; result in `v1_results/`, 12 calls, 42k tokens)
+  1. One LLM call sees only the heading outline, picks the relevant sections and tags each with a topic
+     (materials / durability_grade / production_curing / cover_sampling).
+  2. The picked text is packed by topic into chunks of at most ~5,000 tokens. Each call sends ONE chunk
+     (not the whole scoped document) with the WHOLE JSON schema (all fields).
+  3. Merge: per field, the answer from a call whose topic owns that field wins; all candidates are kept.
+- **v2** (`route.py`, `extract_v2.py`; runs in `output_v2/<run>/`)
+  1. Same section picking, plus safety nets that add sub-sections and sections with cue words.
+  2. Sections are split into units (one clause or one table each).
+  3. Routing calls tag each unit with the parameter groups it can feed (a unit may feed several).
+  4. One extraction call per group: only THAT group's fields + only the units routed to it (batched if
+     large). Groups are fixed and listed in `groups.py`.
 
 ## v2 runs (`output_v2/`)
 | Run | What it is |
