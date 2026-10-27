@@ -1,0 +1,34 @@
+{
+  "group": "production",
+  "field": null,
+  "batch": 2,
+  "text": "### [S055.U1] PART 3 - EXECUTION > 3.6 CONCRETE > P. Curing\n1. After concrete has begun to harden i.e. about 1 to 2 hours after placement, it shall be protected from quick drying with moist or damped Hessian cloth or any other material approved by the ER. Starting 24 hours after placement of the concrete, the surface shall be cured by flooding with water or covering with damp Hessian cloth for a period of 7 days to keep it moist.\n2. For the next 7 days the surface shall be kept wet all the time by sprinkling water continuously.\n3. For Mass Concrete: Curing period shall be 14 days.\n4. For membrane curing, details as listed in 12.5 of SP 24 shall be followed.\n\n### [S059.U5] PART 3 - EXECUTION > 3.9 FIELD QUALITY CONTROL > 7. Acceptance of Work\n- A. Contractor's Quality Control Responsibilities: Contractor is solely responsible for quality control of the Work and shall develop and maintain a Quality Control Program for the Work.\n- B. Certification: Certify, by written report submitted on a weekly basis, for each level, that the elevations, finish lines and building lines of the formwork systems are within specified tolerances, as substantiated by transit survey and that embedments and inserts have been installed within tolerance. Perform survey at locations indicated by the ER (minimum one per bay per floor) of formwork immediately before casting of concrete.\n\n### [S060.U2] PART 3 - EXECUTION > 3.10 INDEPENDENT TESTING\n- C. Monitoring of Concrete Placement: Continuously observe concrete placement operations on a full-time basis, record such observations on a daily basis, and submit reports of the results.\n- D. Monitoring of Contractor's Testing: Monitor Contractor's non-destructive strength testing for form removal and termination of curing.\n\n### [S060.U3] PART 3 - EXECUTION > 3.10 INDEPENDENT TESTING\n- E. Compression Tests: Sample at point of deposit. Cure the cylinders in laboratory.\n1. Additional Cylinders: Furnish a supply of 25 standard cylinder molds at the site at all times for making additional cylinders as may be directed by the ER.\n2. Quantity of test cubes and testing\n- a. The minimum frequency of cube casting for testing shall be as follows. Each sample shall consist of 6 cubes.\n\n### [S060.U9] PART 3 - EXECUTION > 3.10 INDEPENDENT TESTING > b. Three cubes shall be tested on the 7 th day and other three cube...\n- e. Compression Test Reports: Present at least the following data in tabular form and distribute immediately after recording the test results.\n- 1) Identity of job, Contractor, supplier.\n- 2) Identity of mix and required strength.\n- 3) Pour location of sampled concrete.\n- 4) Slump, water content, air content, truck number, time and date sampled, air temperature, concrete temperature, consistency.\n\n### [S060.U10] PART 3 - EXECUTION > 3.10 INDEPENDENT TESTING > b. Three cubes shall be tested on the 7 th day and other three cube...\n- 5) Curing history.\n- 6) Date tested.\n- 7) Compressive strength.\n- 8) Type of fracture.\n- 9) Compliance with specifications (yes or no)\n- F. Slump Tests: First truck each day, each sample for cylinders, and as often as necessary thereafter. Provide a slump cone and rod available for use at all times. Verify water content in accordance with AASHTO T318, \"Measurement of Water Content of Fresh Concrete Using the Microwave Oven\" as required by the ER, but not less than one test per day.",
+  "response": {
+    "mixing_time_minutes": null,
+    "transport_time_minutes": null,
+    "compaction_method": null,
+    "specified_slump_mm": null,
+    "curing_days": 14,
+    "cross_references": [],
+    "source_quotes": {
+      "curing_days": "For the next 7 days the surface shall be kept wet all the time by sprinkling water continuously."
+    },
+    "remarks": {}
+  },
+  "call": {
+    "name": "extract[production#2]",
+    "model": "openai/gpt-oss-120b",
+    "reasoning_effort": "low",
+    "prompt_tokens": 1900,
+    "completion_tokens": 206,
+    "total_tokens": 2106,
+    "retries": 0,
+    "wall_s": 1.25,
+    "error": null,
+    "est_prompt_tokens": 1849,
+    "group": "production",
+    "field": null,
+    "batch": 2,
+    "text_chars": 3385
+  }
+}

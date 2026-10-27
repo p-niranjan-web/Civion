@@ -1,33 +1,27 @@
 # Civion work status (updated by Claude Code)
 
-Last update: 2026-10-27 (during Part 3)
+Last update: 2026-10-27, end of Part 3
 
-## State: WORKING - nothing needed from you yet
+## State: DONE - waiting for your answers to 7 open questions (nothing running)
 
-Progress: about 75 %
+Progress: 100 % of what was agreed (NMP run skipped, as you decided).
 
-## Done and committed
-- Part 1: REFERENCE status (backend + UI), table quotes = header row + data row (verify.py checks it).
-- Part 2: catalogue of BLR requirement shapes (experiments/shapes/catalogue.md).
-- Part 3:
-  - Fixed transport time (no IS 456 limit) and workability bands (IS 456 cl 7.1).
-  - database.py restructured: every audited parameter declares a shape; IS 383:2016 tables added
-    (values typed from the IS 383 PDF, not from BLR).
-  - auditor.py: one check per shape. 40/40 hand-built test cases pass.
-  - Remarks (e.g. "w/c 0.55 in table vs 0.5-0.52 in mix clause") shown in the Ledger.
-  - HOW_TO_ADD_PARAMETER.md at the repo root.
+## Read these
+- Final report: experiments/shapes/CHANGES_SHAPES.md
+- Parameter x document list: experiments/shapes/doc_coverage.md
+- Tokens v1 / v2 / v2-shapes (input/output per step): experiments/pipeline/report_v2.md section 7
 
-## Running now (SLOW - Groq limit)
-- Re-extracting the aggregate tables from BLR (coarse grading came out with shifted columns; testing
-  one-field-per-call extraction). 10 of 12 calls done.
-- ISSUE: Groq free-tier usage limit reached; Groq now makes each call wait 14-30 min (daily token cap).
-  Code is fine. Optional for you: a second Groq API key, or wait for the reset (usually within a day).
+## Results in one line each
+- 40/40 hand-built audit tests pass; all existing parameters behave as before (one sampling bug fixed).
+- BLR run4: 20 pass, 5 fail, 19 missing, 6 references; 20/20 quotes verified in the document.
+- Aggregates: deleterious limits work (18/18). Fine/all-in grading worked in run3, gave REFERENCE in run4.
+  Coarse grading (11-column table) is misread by the LLM - not working.
 
-## Still to do
-1. Check the aggregate re-extraction against BLR's own tables.
-2. Run NMP Noida through the pipeline; write experiments/shapes/doc_coverage.md
-   (parameter x document list).
-3. Final report: experiments/shapes/CHANGES_SHAPES.md.
-
-## Waiting for your reply on
-- Nothing right now.
+## Waiting for your reply on (details in CHANGES_SHAPES.md, "Open questions")
+1. Build a Python table reader for wide tables (LLM only picks the table)?
+2. Prompt: extract the table when a doc has both a table and "as per IS 383"?
+3. References to non-IS codes (BS, ASTM): keep as pass, or warn?
+4. Build the "extras" list (unaudited requirements, collapsed UI section)?
+5. Curing with PPC/PSC = 10 days (IS 456 cl 13.5.1)?
+6. Old known issues (#2, #3, strength check) - leave for now?
+7. App's Groq client has the same TLS timeout on this network - add the workaround there too?

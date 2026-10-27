@@ -1,0 +1,70 @@
+{
+  "group": "cover_sampling",
+  "field": null,
+  "batch": 1,
+  "text": "### [S058.U2] PART 3 - EXECUTION > 3.9 FIELD QUALITY CONTROL\nThree cubes shall be tested on the 7 th day and other three cubes on the 28 th day.\n\n6. For Mass Concrete, One additional sample shall be taken and reserved for testing at 56 days.\n\n### [S060.U3] PART 3 - EXECUTION > 3.10 INDEPENDENT TESTING\n- E. Compression Tests: Sample at point of deposit. Cure the cylinders in laboratory.\n1. Additional Cylinders: Furnish a supply of 25 standard cylinder molds at the site at all times for making additional cylinders as may be directed by the ER.\n2. Quantity of test cubes and testing\n- a. The minimum frequency of cube casting for testing shall be as follows. Each sample shall consist of 6 cubes.\n\n### [S060.U4] PART 3 - EXECUTION > 3.10 INDEPENDENT TESTING > [TABLE] (no caption)\n| Concrete quantity | Number of Samples. |\n|-----------------------------|----------------------------------------------|\n| Up to 5 cu.m. in a day | 1 |\n| 5 cu.m. to 15 cu.m. | 2 |\n| 15 cu.m. to 30 cu.m. | 3 |\n| 30 cu.m. to 50 cu.m. | 4 |\n| More than 50 cu.m. thereof. | 4 + one additional per each 50 cu.m. or part |\n\n### [S060.U5] PART 3 - EXECUTION > 3.10 INDEPENDENT TESTING > b. Three cubes shall be tested on the 7 th day and other three cube...\n- b. Three cubes shall be tested on the 7 th day and other three cubes on the 28 th day.\n- c. For Mass Concrete, One additional sample shall be taken and reserved for testing at 56 days.\n- d. Acceptance of Work\n\nThis shall be as given in IS 456, SP 23 and SP 24. Part or element of Work shall be deemed to be accepted, provided the results of the 28 th day cube testing conform to the criteria stated as under",
+  "response": {
+    "member_covers": {
+      "Beams": null,
+      "Columns": null,
+      "Slabs": null
+    },
+    "fire_resistance_rating": null,
+    "sampling_cube_size_mm": null,
+    "specified_sampling_sets": null,
+    "total_volume_m3": null,
+    "sampling_frequency": [
+      {
+        "from_m3": 0,
+        "to_m3": 5,
+        "samples": 1,
+        "extra_per_m3": null
+      },
+      {
+        "from_m3": 5,
+        "to_m3": 15,
+        "samples": 2,
+        "extra_per_m3": null
+      },
+      {
+        "from_m3": 15,
+        "to_m3": 30,
+        "samples": 3,
+        "extra_per_m3": null
+      },
+      {
+        "from_m3": 30,
+        "to_m3": 50,
+        "samples": 4,
+        "extra_per_m3": null
+      },
+      {
+        "from_m3": 50,
+        "to_m3": null,
+        "samples": 4,
+        "extra_per_m3": 50
+      }
+    ],
+    "cross_references": [],
+    "source_quotes": {
+      "sampling_frequency": "| Concrete quantity | Number of Samples. |\n| Up to 5 cu.m. in a day | 1 |\n| 5 cu.m. to 15 cu.m. | 2 |\n| 15 cu.m. to 30 cu.m. | 3 |\n| 30 cu.m. to 50 cu.m. | 4 |\n| More than 50 cu.m. thereof. | 4 + one additional per each 50 cu.m. or part |"
+    },
+    "remarks": {}
+  },
+  "call": {
+    "name": "extract[cover_sampling#1]",
+    "model": "openai/gpt-oss-120b",
+    "reasoning_effort": "low",
+    "prompt_tokens": 1666,
+    "completion_tokens": 487,
+    "total_tokens": 2153,
+    "retries": 0,
+    "wall_s": 62.16,
+    "error": null,
+    "est_prompt_tokens": 1503,
+    "group": "cover_sampling",
+    "field": null,
+    "batch": 1,
+    "text_chars": 1645
+  }
+}

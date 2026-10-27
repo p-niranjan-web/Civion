@@ -1,0 +1,50 @@
+[clean] 137801 -> 136124 chars; 102 image markers; 0 header/footer lines (0 distinct)
+[sections] 62 sections, 17 tables
+  [call] localize: prompt=2171 completion=2937 wall=8.04s retries=0
+[localize] picked 53 ids -> 42 sections + 0 standalone tables; 87032 chars; parents added by rule: ['S002', 'S045']; unknown ids: []
+  [pace] 5108 tokens used in last 60s; sleeping 60.5s
+  [call] route[0]: prompt=3309 completion=1141 wall=63.44s retries=0
+  [pace] 4450 tokens used in last 60s; sleeping 60.5s
+  [call] route[1]: prompt=3598 completion=886 wall=63.08s retries=0
+  [pace] 4484 tokens used in last 60s; sleeping 60.5s
+  [call] route[2]: prompt=3180 completion=1078 wall=63.99s retries=0
+  [pace] 4258 tokens used in last 60s; sleeping 60.5s
+  [call] route[3]: prompt=3087 completion=985 wall=63.48s retries=0
+  [pace] 4072 tokens used in last 60s; sleeping 60.5s
+  [call] route[4]: prompt=2494 completion=689 wall=62.57s retries=0
+[route] scope 44 sections (2 added by safety nets) -> 127 units in 5 batches; 23 routed to no group; retried 0, defaulted 0
+  grade_strength: 17 units, ~1747 tok (EST)
+  durability: 35 units, ~7400 tok (EST)
+  materials: 23 units, ~4637 tok (EST)
+  production: 40 units, ~5398 tok (EST)
+  cover_sampling: 18 units, ~2753 tok (EST)
+  aggregates: 27 units, ~7672 tok (EST)
+  [pace] 3183 tokens used in last 60s; sleeping 60.5s
+  [call] extract[grade_strength#0]: prompt=3127 completion=104 wall=61.38s retries=0
+  [pace] 3231 tokens used in last 60s; sleeping 60.5s
+  [call] extract[durability#0]: prompt=3553 completion=573 wall=62.72s retries=0
+  [pace] 4126 tokens used in last 60s; sleeping 60.5s
+  [call] extract[durability#1]: prompt=3712 completion=130 wall=61.77s retries=0
+  [pace] 3842 tokens used in last 60s; sleeping 60.5s
+  [call] extract[durability#2]: prompt=2915 completion=240 wall=62.33s retries=0
+  [pace] 3155 tokens used in last 60s; sleeping 60.5s
+  [call] extract[materials#0]: prompt=3675 completion=185 wall=61.72s retries=0
+  [pace] 3860 tokens used in last 60s; sleeping 60.5s
+  [call] extract[materials#1]: prompt=3147 completion=516 wall=62.75s retries=0
+  [pace] 3663 tokens used in last 60s; sleeping 60.5s
+  [call] extract[production#0]: prompt=3678 completion=237 wall=61.81s retries=0
+  [pace] 3915 tokens used in last 60s; sleeping 60.5s
+  [call] extract[production#1]: prompt=3574 completion=372 wall=61.95s retries=0
+  [call] extract[production#2]: prompt=1900 completion=206 wall=1.25s retries=0
+  [pace] 6052 tokens used in last 60s; sleeping 59.1s
+  [pace] 2106 tokens used in last 60s; sleeping 1.3s
+  [call] extract[cover_sampling#0]: prompt=3743 completion=1023 wall=63.37s retries=0
+  [pace] 4766 tokens used in last 60s; sleeping 60.4s
+  [call] extract[cover_sampling#1]: prompt=1666 completion=487 wall=62.16s retries=0
+  [pace] 2153 tokens used in last 60s; sleeping 60.5s
+  [call] extract[aggregates#0]: prompt=3345 completion=374 wall=62.72s retries=0
+  [pace] 3719 tokens used in last 60s; sleeping 60.5s
+  [call] extract[aggregates#1]: prompt=3248 completion=1492 wall=64.47s retries=0
+  [pace] 4740 tokens used in last 60s; sleeping 60.5s
+  [call] extract[aggregates#2]: prompt=3600 completion=657 wall=63.2s retries=0
+[run_v2] run4 done in 1140.0s; audit counts {'pass': 20, 'fail': 5, 'warning': 19, 'reference': 6, 'total': 44}
