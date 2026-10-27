@@ -20,6 +20,7 @@ import time
 from common import OUT_DIR, PROJECT_ROOT, call_groq, est_tokens, read_json, write_json
 from groups import ALL_PARAMS, GROUPS
 from database import PARAMETERS
+import table_reader
 from prompt_rules import REFERENCES_RULE, REMARKS_RULE, TABLE_QUOTE_RULE
 
 FORMWORK_FIELDS = ["formwork_removal_hours", "formwork_removal_days", "formwork_span_m"]
@@ -35,6 +36,9 @@ SPLIT_BY_FIELD = set()
 PARAM_NAMES = set(ALL_PARAMS) | {"member_covers"}
 # {group: {item: value}} fields are merged cell by cell across batches.
 TABLE_FIELDS = {f for f, s in PARAMETERS.items() if s["shape"] in ("set_max", "set_range")}
+# Grading tables (sieve rows x designation columns): the model names the table
+# and its columns, Python reads the cells (table_reader.py).
+READ_BY_PYTHON = {f for f, s in PARAMETERS.items() if s["shape"] == "set_range"}
 
 SYSTEM = "You are a civil engineering parser. Output STRICTLY valid JSON. Do NOT invent values. If missing, return null."
 
@@ -187,6 +191,22 @@ def fallback_hook(extraction, out_dir):
     return {"keywords_found": kw.exists(), "null_params": nulls}
 
 
+def read_tables(parsed, units_by_id):
+    """Replace a {"table", "columns"} answer for a READ_BY_PYTHON field by the
+    cells read from the document (table_reader.py); the quote is set from the
+    table's own lines. A failed read becomes null with a remark."""
+    for f in READ_BY_PYTHON:
+        answer = parsed.get(f)
+        if not (isinstance(answer, dict) and "columns" in answer):
+            continue
+        cells, quote_or_problem = table_reader.read_table(answer, units_by_id)
+        parsed[f] = cells
+        if cells:
+            parsed.setdefault("source_quotes", {})[f] = quote_or_problem
+        else:
+            parsed.setdefault("remarks", {})[f] = f"Table could not be read: {quote_or_problem}"
+
+
 def extract_group(gid, g_units, out_dir, exposure, concrete_type, max_call_tokens=5000, completion_reserve=1200):
     """All calls of one group -> ([(batch_key, parsed)], [call logs]). Groups in
     SPLIT_BY_FIELD get one pass per field; their results merge like batches."""
@@ -203,6 +223,8 @@ def extract_group(gid, g_units, out_dir, exposure, concrete_type, max_call_token
                                      expected_completion=reserve)
             call.update(group=gid, field=only, batch=b, text_chars=len(text))
             calls.append(call)
+            if parsed:
+                read_tables(parsed, {u["id"]: u for u in g_units})
             results.append((len(results), parsed or {}))
             write_json(out_dir / "extract_calls" / f"{key.replace('#', '_')}.json",
                        {"group": gid, "field": only, "batch": b, "text": text, "response": parsed, "call": call})

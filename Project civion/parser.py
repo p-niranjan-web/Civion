@@ -249,8 +249,9 @@ def parse_user_specification(pdf_path, detected_exposure=None, detected_concrete
     cells marked "--". Use exactly these names (sieves as "4.75 mm", "600 um"):
     {table_keys_hint()}
     "sampling_frequency" is the quantity-of-concrete -> number-of-samples rule.
-    If the document only says such a requirement is "as per IS 383" (or another
-    code), leave the field null and add a cross_references entry instead.
+    If the document has its own table, always fill the field from it, even when
+    it also says "as per IS 383" (add that cross_references entry too). Only if
+    there is no table at all, leave the field null and add the cross_references entry.
     {TABLE_QUOTE_RULE}
     {REFERENCES_RULE}
     {REMARKS_RULE}

@@ -150,19 +150,25 @@ GROUPS = {
             P("aggregate_deleterious_limits", '{"<aggregate kind>": {"<substance>": float}}',
               "maximum percentages of deleterious materials, per aggregate kind and substance",
               ("deleterious", "clay lumps", "lignite", "finer than 75")),
-            P("coarse_aggregate_grading", '{"<designation>": {"<sieve>": [low, high]}}',
-              "percentage passing limits for coarse aggregate per nominal size (single-sized / graded)",
+            P("coarse_aggregate_grading", '{"table": "<excerpt id, e.g. S012.U3>", "columns": {"<column header copied verbatim>": "<designation>"}}',
+              "the coarse aggregate grading table (percentage passing per IS sieve): give its excerpt id and, for "
+              "each column, which nominal-size designation it is (single-sized / graded). Do not copy the cells.",
               ("grading", "coarse aggregate", "single", "graded", "percentage passing")),
-            P("fine_aggregate_grading", '{"<zone>": {"<sieve>": [low, high]}}',
-              "percentage passing limits for fine aggregate per grading zone",
+            P("fine_aggregate_grading", '{"table": "<excerpt id, e.g. S012.U3>", "columns": {"<column header copied verbatim>": "<designation>"}}',
+              "the fine aggregate grading table: its excerpt id and, for each column, which grading zone it is. "
+              "Do not copy the cells.",
               ("grading", "fine aggregate", "zone", "sand")),
-            P("all_in_aggregate_grading", '{"<nominal size>": {"<sieve>": [low, high]}}',
-              "percentage passing limits for all-in aggregate per nominal size",
+            P("all_in_aggregate_grading", '{"table": "<excerpt id, e.g. S012.U3>", "columns": {"<column header copied verbatim>": "<designation>"}}',
+              "the all-in aggregate grading table: its excerpt id and, for each column, which nominal size it is. "
+              "Do not copy the cells.",
               ("all-in", "all in", "grading")),
         ],
-        ["Fill these only from a table or list that states the limits; a single value v is [v, v]; skip cells "
-         'marked "--". If the document only says aggregates conform to IS 383, leave the field null and add a '
-         "cross_references entry. Use exactly these names (sieves written like '4.75 mm', '600 um'):\n    "
+        ["Fill these only from a table that states the limits (deleterious limits: a single value v is v; skip "
+         'cells marked "--"). If the document has its own table, ALWAYS fill the field from it, even when it also '
+         "says the aggregate shall conform to IS 383 (then add that cross_references entry too). Leave the field "
+         "null only when there is no table at all. Python reads the grading cells, so for the grading fields give "
+         "only the table id and the column -> designation map; the source quote is filled in automatically. "
+         "Use exactly these names (sieves written like '4.75 mm', '600 um'):\n    "
          + table_keys_hint()],
     ),
 }
