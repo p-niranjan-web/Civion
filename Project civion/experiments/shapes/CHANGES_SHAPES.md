@@ -38,7 +38,7 @@ Branch `pipeline-localization`. Ground truth = IS 456:2000 and IS 383:2016 PDFs 
   row(s) of the same table). common.py: opt-in `CIVION_CLASSIC_TLS=1`. run_v2.py: `--input`.
 - **Frontend** (approved) - Ledger: REFERENCE badge, quote, remark; Dashboard: summary line.
 - **test_dummy_audit.py** - cases per shape + schema-sync check.
-- **HOW_TO_ADD_PARAMETER.md** (repo root), **STATUS.md**.
+- **HOW_TO_ADD_PARAMETER.md** (repo root).
 
 ## Shapes
 
