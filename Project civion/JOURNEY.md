@@ -140,3 +140,13 @@ Docling was run locally (it could not be tested in a cloud sandbox because its m
 **First keyword test** (quick draft on the PyMuPDF4LLM output): it kept 21% of the document (~6,000 tokens), but found nothing for cement content and standard deviation, probably because those values sit inside tables.
 
 **Current direction:** with Docling's reliable headings, localize mainly by **heading detection**, plus separate **table detection**. A table can be recognised by its Markdown rows (`| … |`), and the line just above it can be taken as its caption. This should keep real tables while ignoring sentences that only mention one (e.g. "as per Table 6"). *(not verified yet)*
+
+---
+
+## Stage 6 – Reading wide tables (aggregate grading)
+
+**Problem:** the LLM misread BLR's coarse aggregate grading table (11 columns, one per nominal size). It shifted values into the wrong column: only 29 of 38 cells were correct. Extracting one field per call did not help.
+
+**Fix:** the LLM no longer copies the cells. It only says which table it is and which column is which size (e.g. column "…Graded Aggregate of Nominal Size - 20 mm" = `graded 20 mm`). Python then reads every cell and builds the source quote from the table's own lines.
+
+**Result (BLR):** coarse 42/42, fine 28/28, all-in 11/11 cells correct, and all three are checked against IS 383:2016.
