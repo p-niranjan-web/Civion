@@ -14,15 +14,21 @@ resolution, concrete-type column) are copied from parser.py's prompt;
 the references and table-quote rules come from prompt_rules.py; the per-field rules come from groups.py.
 """
 import json
+import re
 import time
 
 from common import OUT_DIR, PROJECT_ROOT, call_groq, est_tokens, read_json, write_json
 from groups import ALL_PARAMS, GROUPS
-from prompt_rules import REFERENCES_RULE, TABLE_QUOTE_RULE
+from prompt_rules import REFERENCES_RULE, REMARKS_RULE, TABLE_QUOTE_RULE
 
 FORMWORK_FIELDS = ["formwork_removal_hours", "formwork_removal_days", "formwork_span_m"]
 SITE_FIELDS = ["soil_total_so3_percent", "soil_extract_2_1_so3_gl", "groundwater_so3_gl"]
 MEMBERS = ["Beams", "Columns", "Slabs"]
+
+# Groups whose answers are large tables need a bigger completion budget:
+# group -> (max tokens per call, completion reserve).
+GROUP_BUDGETS = {"aggregates": (6000, 2500)}
+PARAM_NAMES = set(ALL_PARAMS) | {"member_covers"}
 
 SYSTEM = "You are a civil engineering parser. Output STRICTLY valid JSON. Do NOT invent values. If missing, return null."
 
@@ -46,11 +52,13 @@ def build_prompt(group_id, units_text, exposure, concrete_type):
     row label - not just the number.
     {TABLE_QUOTE_RULE}{notes}
     {REFERENCES_RULE}
+    {REMARKS_RULE}
     Return exactly:
     {{
 {fields}
       "cross_references": [ {{ "parameter": "field name from above, or a short snake_case name", "points_to": "IS code like 'IS 383', or 'drawings' / other source", "source_quote": "exact quote" }} ],
-      "source_quotes": {{ "<field>": "verbatim quote for every non-null field" }}
+      "source_quotes": {{ "<field>": "verbatim quote for every non-null field" }},
+      "remarks": {{ "<field>": "one short sentence, only when ambiguous" }}
     }}
     EXCERPTS:
 {units_text}
@@ -58,7 +66,11 @@ def build_prompt(group_id, units_text, exposure, concrete_type):
 
 
 def unit_block(u):
-    return f"### [{u['id']}] {' > '.join(u['heading_path'])}\n{u['text']}"
+    # Docling pads table cells with runs of spaces; drop them to save tokens
+    # (verify.py ignores pipe spacing, so quotes still match the document).
+    text = "\n".join(re.sub(r" {2,}", " ", line) if line.lstrip().startswith("|") else line
+                     for line in u["text"].splitlines())
+    return f"### [{u['id']}] {' > '.join(u['heading_path'])}\n{text}"
 
 
 def make_batches(units, budget_tokens):
@@ -79,7 +91,7 @@ def is_empty(v):
 
 
 def merge_group(group_id, results):
-    """results: [(batch_idx, parsed)] -> (values, quotes, conflicts, xrefs)."""
+    """results: [(batch_idx, parsed)] -> (values, quotes, conflicts, xrefs, remarks)."""
     values, quotes, conflicts = {}, {}, []
     for p in GROUPS[group_id].params:
         if p.name == "member_covers":
@@ -110,7 +122,20 @@ def merge_group(group_id, results):
             conflicts.append({"field": p.name, "group": group_id, "chosen": cands[0][1],
                               "candidates": [{"batch": i, "value": v, "quote": q} for i, v, q in cands]})
     xrefs = [x for _, r in results for x in (r.get("cross_references") or []) if isinstance(x, dict)]
-    return values, quotes, conflicts, xrefs
+    # Remarks: the model's own (first one per field), plus one per conflict so
+    # the user sees that the document states more than one value.
+    remarks = {}
+    for _, r in results:
+        model_remarks = r.get("remarks") if isinstance(r.get("remarks"), dict) else {}
+        for f, text in model_remarks.items():
+            if f in PARAM_NAMES and text and f not in remarks:
+                remarks[f] = str(text)
+    for c in conflicts:
+        f = c["field"]
+        vals = ", ".join(json.dumps(x["value"], ensure_ascii=False) for x in c["candidates"])
+        note = f"The document states different values ({vals}); the first in document order is audited."
+        remarks[f] = f"{remarks[f]} {note}" if f in remarks else note
+    return values, quotes, conflicts, xrefs, remarks
 
 
 def fallback_hook(extraction, out_dir):
@@ -130,7 +155,7 @@ def main(out_dir=OUT_DIR, exposure="Moderate", concrete_type="Reinforced Concret
     units = read_json(out_dir / "units.json")
     routing = read_json(out_dir / "routing.json")["routing"]
     calls, extraction, conflicts, xrefs = [], {}, [], []
-    quotes = {}
+    quotes, remarks = {}, {}
     (out_dir / "extract_calls").mkdir(exist_ok=True)
     for gid in GROUPS:
         g_units = [u for u in units if gid in routing.get(u["id"], [])]
@@ -139,19 +164,21 @@ def main(out_dir=OUT_DIR, exposure="Moderate", concrete_type="Reinforced Concret
                 extraction[p.name] = None
             print(f"[extract_v2] {gid}: no units routed - all fields null")
             continue
+        call_max, reserve = GROUP_BUDGETS.get(gid, (max_call_tokens, completion_reserve))
         template = est_tokens(SYSTEM + build_prompt(gid, "", exposure, concrete_type))
-        budget = max_call_tokens - template - completion_reserve
+        budget = call_max - template - reserve
         batches = make_batches(g_units, budget)
         results = []
         for b, text in enumerate(batches):
             parsed, call = call_groq(f"extract[{gid}#{b}]", SYSTEM, build_prompt(gid, text, exposure, concrete_type),
-                                     expected_completion=completion_reserve)
+                                     expected_completion=reserve)
             call.update(group=gid, batch=b, text_chars=len(text))
             calls.append(call)
             results.append((b, parsed or {}))
             write_json(out_dir / "extract_calls" / f"{gid}_{b}.json",
                        {"group": gid, "batch": b, "text": text, "response": parsed, "call": call})
-        values, q, c, x = merge_group(gid, results)
+        values, q, c, x, rm = merge_group(gid, results)
+        remarks.update(rm)
         extraction.update(values)
         quotes.update(q)
         conflicts += c
@@ -174,5 +201,6 @@ def main(out_dir=OUT_DIR, exposure="Moderate", concrete_type="Reinforced Concret
     extraction["cross_references"] = dedup
     extraction["source_quotes"] = quotes
     extraction["conflicts"] = conflicts
+    extraction["remarks"] = remarks
     hook = fallback_hook(extraction, out_dir)
     return extraction, {"wall_s": round(time.perf_counter() - t0, 2), "calls": calls, "fallback_hook": hook}

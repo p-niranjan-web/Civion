@@ -198,3 +198,226 @@ EXTERNAL_CODE_REFERENCES = {
         }
     }
 }
+
+
+# =====================================================================
+# IS 383:2016 (Coarse and fine aggregate for concrete), values checked
+# against the code text. Ranges are [min, max] percent passing.
+# Designation and sieve names here are the names the extraction must use.
+# =====================================================================
+IS383_2016 = {
+    "TABLE_2_DELETERIOUS": {
+        "clause": "IS 383:2016 Clause 5.2.1, Table 2",
+        # percent by mass, max. A material with no entry has no limit in that column.
+        "limits": {
+            "fine uncrushed":      {"coal and lignite": 1.00, "clay lumps": 1.00, "finer than 75 um": 3.00,
+                                    "shale": 1.00, "total": 5.00},
+            "fine crushed":        {"coal and lignite": 1.00, "clay lumps": 1.00, "finer than 75 um": 15.00,
+                                    "total": 2.00},
+            "fine mixed":          {"coal and lignite": 1.00, "clay lumps": 1.00, "finer than 75 um": 12.00,
+                                    "total": 2.00},
+            "fine manufactured":   {"coal and lignite": 1.00, "clay lumps": 1.00, "finer than 75 um": 10.00,
+                                    "shale": 1.00, "total": 2.00},
+            "coarse uncrushed":    {"coal and lignite": 1.00, "clay lumps": 1.00, "finer than 75 um": 1.00,
+                                    "soft fragments": 3.00, "total": 5.00},
+            "coarse crushed":      {"coal and lignite": 1.00, "clay lumps": 1.00, "finer than 75 um": 1.00,
+                                    "total": 2.00},
+            "coarse manufactured": {"coal and lignite": 1.00, "clay lumps": 1.00, "finer than 75 um": 1.00,
+                                    "soft fragments": 3.00, "total": 2.00},
+        },
+    },
+    "TABLE_7_COARSE_GRADING": {
+        "clause": "IS 383:2016 Clauses 6.1 and 6.2, Table 7",
+        "limits": {
+            "single-sized 63 mm":   {"80 mm": [100, 100], "63 mm": [85, 100], "40 mm": [0, 30], "20 mm": [0, 5],
+                                     "10 mm": [0, 5]},
+            "single-sized 40 mm":   {"63 mm": [100, 100], "40 mm": [85, 100], "20 mm": [0, 20], "10 mm": [0, 5]},
+            "single-sized 20 mm":   {"40 mm": [100, 100], "20 mm": [85, 100], "10 mm": [0, 20], "4.75 mm": [0, 5]},
+            "single-sized 16 mm":   {"20 mm": [100, 100], "16 mm": [85, 100], "10 mm": [0, 30], "4.75 mm": [0, 5]},
+            "single-sized 12.5 mm": {"16 mm": [100, 100], "12.5 mm": [85, 100], "10 mm": [0, 45], "4.75 mm": [0, 10]},
+            "single-sized 10 mm":   {"12.5 mm": [100, 100], "10 mm": [85, 100], "4.75 mm": [0, 20], "2.36 mm": [0, 5]},
+            "graded 40 mm":         {"80 mm": [100, 100], "40 mm": [90, 100], "20 mm": [30, 70], "10 mm": [10, 35],
+                                     "4.75 mm": [0, 5]},
+            "graded 20 mm":         {"40 mm": [100, 100], "20 mm": [90, 100], "10 mm": [25, 55], "4.75 mm": [0, 10]},
+            "graded 16 mm":         {"20 mm": [100, 100], "16 mm": [90, 100], "10 mm": [30, 70], "4.75 mm": [0, 10]},
+            "graded 12.5 mm":       {"20 mm": [100, 100], "12.5 mm": [90, 100], "10 mm": [40, 85], "4.75 mm": [0, 10]},
+        },
+    },
+    "TABLE_9_FINE_GRADING": {
+        "clause": "IS 383:2016 Clause 6.3, Table 9",
+        # Note 1 (crushed stone sand: 150 um up to 20 %) and the 5 % allowance of cl 6.3 apply to
+        # test results of an actual sand, not to the limits a specification states; not used here.
+        "limits": {
+            "zone I":   {"10 mm": [100, 100], "4.75 mm": [90, 100], "2.36 mm": [60, 95], "1.18 mm": [30, 70],
+                         "600 um": [15, 34], "300 um": [5, 20], "150 um": [0, 10]},
+            "zone II":  {"10 mm": [100, 100], "4.75 mm": [90, 100], "2.36 mm": [75, 100], "1.18 mm": [55, 90],
+                         "600 um": [35, 59], "300 um": [8, 30], "150 um": [0, 10]},
+            "zone III": {"10 mm": [100, 100], "4.75 mm": [90, 100], "2.36 mm": [85, 100], "1.18 mm": [75, 100],
+                         "600 um": [60, 79], "300 um": [12, 40], "150 um": [0, 10]},
+            "zone IV":  {"10 mm": [100, 100], "4.75 mm": [95, 100], "2.36 mm": [95, 100], "1.18 mm": [90, 100],
+                         "600 um": [80, 100], "300 um": [15, 50], "150 um": [0, 15]},
+        },
+    },
+    "TABLE_10_ALL_IN_GRADING": {
+        "clause": "IS 383:2016 Clause 6.4, Table 10",
+        "limits": {
+            "40 mm": {"80 mm": [100, 100], "40 mm": [95, 100], "20 mm": [45, 75], "4.75 mm": [25, 45],
+                      "600 um": [8, 30], "150 um": [0, 6]},
+            "20 mm": {"40 mm": [100, 100], "20 mm": [95, 100], "4.75 mm": [30, 50], "600 um": [10, 35],
+                      "150 um": [0, 6]},
+        },
+    },
+}
+
+
+# =====================================================================
+# PARAMETERS - one entry per audited value, in ledger order.
+#
+# Key = field name in the extraction JSON (parser.py schema and
+# experiments/pipeline/groups.py use the same name).
+#   metric     - ledger row name
+#   shape      - which comparison auditor.py runs (see SHAPES)
+#   unit       - shown next to values
+#   clause     - IS clause the limit comes from
+#   limit      - the IS value, OR
+#   limit_from - where to read it: ["IS456" or "IS383", key, key, ...];
+#                "{concrete_type}", "{exposure}", "{cement_type}" are filled
+#                in from the audit context (exposure is chosen by the user)
+#   default    - limit used when limit_from finds nothing (unknown type etc.)
+#   from       - "user" (chosen in the UI, not extracted) or "derived" (computed
+#                by the auditor); absent = extracted from the document
+#
+# Any parameter the document does not state but points to another code or
+# to the drawings becomes a REFERENCE row (auditor.py, for every shape).
+# =====================================================================
+SHAPES = {
+    "defined":   "Only has to be stated; IS gives no number to compare.",
+    "min":       "value >= limit. A stated range is judged by its lower end.",
+    "max":       "value <= limit. A stated range is judged by its upper end.",
+    "range":     "value (or both ends of a stated range) inside [low, high].",
+    "equals":    "value == limit.",
+    "not_in":    "text must not contain any word of the limit list.",
+    "set_max":   "{group: {item: value}}: every item IS also lists must be <= the IS value.",
+    "set_range": "{group: {item: [low, high]}}: every stated range must lie inside the IS range.",
+    "sampling":  "volume bands [{from_m3, to_m3, samples, extra_per_m3}]: each band >= IS sampling rule.",
+    # Single-use rules (one parameter each; too specific for a general shape):
+    "cover":           "member_covers: per member, max(Table 16 for exposure, Table 16A for fire rating).",
+    "strength_window": "characteristic strength vs grade +/- k*sigma (pre-existing check, unchanged).",
+    "sampling_count":  "number of samples for a stated total volume (IS 456 cl 15.2.2).",
+    "sulphate_cement": "cement type required by the sulphate class (IS 456 Table 4).",
+}
+
+PARAMETERS = {
+    # ---- context and site (exposure and concrete type come from the user) ----
+    "concrete_type": {"metric": "Concrete Type", "shape": "defined", "from": "user", "clause": "IS 456:2000 Table 5"},
+    "exposure": {"metric": "Environmental Exposure", "shape": "defined", "from": "user", "clause": "IS 456:2000 Table 3"},
+    "cement_type": {"metric": "Cement Type", "shape": "defined", "clause": "IS 456:2000 Clause 5.1"},
+    "soil_total_so3_percent": {"metric": "Soil Total SO3", "shape": "defined", "unit": "%", "requirement": "Limit depends on class",
+                               "clause": "IS 456:2000 Table 4"},
+    "soil_extract_2_1_so3_gl": {"metric": "Soil Extract SO3", "shape": "defined", "unit": "g/l", "requirement": "Limit depends on class",
+                                "clause": "IS 456:2000 Table 4"},
+    "groundwater_so3_gl": {"metric": "Groundwater SO3", "shape": "defined", "unit": "g/l", "requirement": "Limit depends on class",
+                           "clause": "IS 456:2000 Table 4"},
+    "sulphate_cement": {"metric": "Sulfate Cement Type", "shape": "sulphate_cement", "from": "derived",
+                        "clause": "IS 456:2000 Table 4"},
+    "freezing_thawing_exposure": {"metric": "Freezing and Thawing", "shape": "defined", "requirement": "Defined",
+                                  "clause": "IS 456:2000 Clause 8.2.2"},
+
+    # ---- grade, strength, durability (Table 5 limits may be raised by Table 4 / cl 8.2.2) ----
+    "specified_grade": {"metric": "Concrete Grade", "shape": "min", "unit": "grade",
+                        "clause": "IS 456:2000 Table 5",
+                        "limit_from": ["IS456", "TABLE_5_DURABILITY", "{concrete_type}", "{exposure}", "min_grade"],
+                        "default": "M20"},
+    "specified_min_cement": {"metric": "Min Cement Content", "shape": "min", "unit": "kg/m³",
+                             "clause": "IS 456:2000 Table 5",
+                             "limit_from": ["IS456", "TABLE_5_DURABILITY", "{concrete_type}", "{exposure}", "min_cement"],
+                             "default": 300},
+    "specified_max_cement": {"metric": "Max Cement Content", "shape": "max", "unit": "kg/m³",
+                             "clause": "IS 456:2000 Clause 8.2.4.2",
+                             "limit_from": ["IS456", "MATERIAL_PROPERTIES", "Cement_Limits", "max_content"]},
+    "specified_wc": {"metric": "W/C Ratio", "shape": "max",
+                     "clause": "IS 456:2000 Table 5",
+                     "limit_from": ["IS456", "TABLE_5_DURABILITY", "{concrete_type}", "{exposure}", "max_wc"],
+                     "default": 0.55},
+    "specified_sigma": {"metric": "Standard Deviation (sigma)", "shape": "defined", "unit": "N/mm²", "requirement": "Based on Grade",
+                        "clause": "IS 456:2000 Table 8"},
+    "specified_characteristic_strength": {"metric": "Characteristic Strength", "shape": "strength_window",
+                                          "unit": "N/mm²", "clause": "IS 456:2000 Table 11"},
+
+    # ---- cover ----
+    "fire_resistance_rating": {"metric": "Fire Resistance Rating", "shape": "defined", "requirement": "Required for cover",
+                               "clause": "IS 456:2000 Table 16A"},
+    "member_covers": {"metric": "Cover", "shape": "cover", "unit": "mm",
+                      "clause": "IS 456:2000 Table 16 and Table 16A"},
+
+    # ---- production ----
+    "mixing_time_minutes": {"metric": "Mixing Time", "shape": "min", "unit": "mins",
+                            "clause": "IS 456:2000 Clause 10.3.1",
+                            "limit_from": ["IS456", "CONSTRUCTION_PROCEDURES", "Mixing", "min_time_mins"]},
+    "transport_time_minutes": {"metric": "Transportation Time", "shape": "defined", "unit": "mins", "requirement": "Stated (IS 456 cl 13.1 sets no time limit)",
+                               "clause": "IS 456:2000 Clause 13.1 (sets no time limit)"},
+    "compaction_method": {"metric": "Compaction Method", "shape": "not_in",
+                          "clause": "IS 456:2000 Clause 13.3",
+                          "limit_from": ["IS456", "CONSTRUCTION_PROCEDURES", "Compaction", "prohibited"]},
+    "curing_days": {"metric": "Curing Days", "shape": "min", "unit": "days",
+                    "clause": "IS 456:2000 Clause 13.5.1",
+                    "limit_from": ["IS456", "CONSTRUCTION_PROCEDURES", "Curing", "{concrete_type}", "{cement_type}"],
+                    "default": 7},
+    "specified_slump_mm": {"metric": "Slump", "shape": "range", "unit": "mm",
+                           "clause": "IS 456:2000 Clause 7.1",
+                           "limit_from": ["IS456", "WORKABILITY", "overall_slump_mm"]},
+
+    # ---- water (IS 456 cl 5.4, Table 1) ----
+    "water_ph": {"metric": "Water pH", "shape": "min", "clause": "IS 456:2000 Clause 5.4",
+                 "limit_from": ["IS456", "MATERIAL_PROPERTIES", "Water", "min_ph"]},
+    "water_organic_mg_l": {"metric": "Water - Organic Solids", "shape": "max", "unit": "mg/l",
+                           "clause": "IS 456:2000 Clause 5.4, Table 1",
+                           "limit_from": ["IS456", "MATERIAL_PROPERTIES", "Water_Solids_Limits", "limits_mg_l", "organic"]},
+    "water_inorganic_mg_l": {"metric": "Water - Inorganic Solids", "shape": "max", "unit": "mg/l",
+                             "clause": "IS 456:2000 Clause 5.4, Table 1",
+                             "limit_from": ["IS456", "MATERIAL_PROPERTIES", "Water_Solids_Limits", "limits_mg_l", "inorganic"]},
+    "water_sulphates_mg_l": {"metric": "Water - Sulphates", "shape": "max", "unit": "mg/l",
+                             "clause": "IS 456:2000 Clause 5.4, Table 1",
+                             "limit_from": ["IS456", "MATERIAL_PROPERTIES", "Water_Solids_Limits", "limits_mg_l", "sulphates_as_so4"]},
+    "water_chlorides_mg_l": {"metric": "Water - Chlorides", "shape": "max", "unit": "mg/l",
+                             "clause": "IS 456:2000 Clause 5.4, Table 1",
+                             "limit_from": ["IS456", "MATERIAL_PROPERTIES", "Water_Solids_Limits", "limits_mg_l", "chlorides", "{concrete_type}"],
+                             "default": 500},
+    "water_suspended_matter_mg_l": {"metric": "Water - Suspended Matter", "shape": "max", "unit": "mg/l",
+                                    "clause": "IS 456:2000 Clause 5.4, Table 1",
+                                    "limit_from": ["IS456", "MATERIAL_PROPERTIES", "Water_Solids_Limits", "limits_mg_l", "suspended_matter"]},
+
+    # ---- chemical limits of the concrete ----
+    "measured_chloride_content": {"metric": "Chloride Content", "shape": "max", "unit": "kg/m³",
+                                  "clause": "IS 456:2000 Table 7",
+                                  "limit_from": ["IS456", "CHLORIDE_LIMITS", "max_chloride_kg_m3", "{concrete_type}"],
+                                  "default": 0.6},
+    "measured_so3_percent": {"metric": "Sulphate (SO3) Content", "shape": "max", "unit": "%",
+                             "clause": "IS 456:2000 Clause 8.2.4.1",
+                             "limit_from": ["IS456", "SULPHATE_LIMITS", "max_water_soluble_so3_percent"]},
+
+    # ---- aggregates (IS 383:2016) ----
+    "aggregate_deleterious_limits": {"metric": "Aggregate - Deleterious Materials", "shape": "set_max", "unit": "%",
+                                     "clause": "IS 383:2016 Table 2",
+                                     "limit_from": ["IS383", "TABLE_2_DELETERIOUS", "limits"]},
+    "coarse_aggregate_grading": {"metric": "Coarse Aggregate Grading", "shape": "set_range", "unit": "% passing",
+                                 "clause": "IS 383:2016 Table 7",
+                                 "limit_from": ["IS383", "TABLE_7_COARSE_GRADING", "limits"]},
+    "fine_aggregate_grading": {"metric": "Fine Aggregate Grading", "shape": "set_range", "unit": "% passing",
+                               "clause": "IS 383:2016 Table 9",
+                               "limit_from": ["IS383", "TABLE_9_FINE_GRADING", "limits"]},
+    "all_in_aggregate_grading": {"metric": "All-in Aggregate Grading", "shape": "set_range", "unit": "% passing",
+                                 "clause": "IS 383:2016 Table 10",
+                                 "limit_from": ["IS383", "TABLE_10_ALL_IN_GRADING", "limits"]},
+
+    # ---- sampling ----
+    "total_volume_m3": {"metric": "Total Volume", "shape": "defined", "unit": "m³", "requirement": "Required for sampling",
+                        "clause": "IS 456:2000 Clause 15.2.2"},
+    "sampling_cube_size_mm": {"metric": "Cube Size", "shape": "equals", "unit": "mm",
+                              "clause": "IS 456:2000 Clause 15 / IS 516",
+                              "limit_from": ["IS456", "MATERIAL_PROPERTIES", "Sampling_Standard", "cube_size_mm"]},
+    "specified_sampling_sets": {"metric": "Sampling Sets", "shape": "sampling_count",
+                                "clause": "IS 456:2000 Clause 15.2.2"},
+    "sampling_frequency": {"metric": "Sampling Frequency", "shape": "sampling",
+                           "clause": "IS 456:2000 Clause 15.2.2"},
+}

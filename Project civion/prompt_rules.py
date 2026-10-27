@@ -25,3 +25,30 @@ TABLE_QUOTE_RULE = """TABLE QUOTES: when a value is read from a table, its sourc
     MINIMUM CEMENT CONTENT"), still verbatim. Line 2: the whole data row the
     value is in, copied verbatim with its row label and its "|" separators.
     Never merge header text and cell text into one line and never reword a cell."""
+
+
+# Remarks are shown to the user next to the ledger row; they never change a result.
+REMARKS_RULE = """REMARKS: when the document is ambiguous about a field - it states two
+    different values, a value that applies only in some cases, or a value that
+    conflicts with another clause - add "remarks": {"<field>": "one short factual
+    sentence"}. Add no remark when the value is clear."""
+
+
+def table_keys_hint():
+    """Allowed group/item names for the IS 383 table fields, taken from database.py
+    so the extraction uses exactly the names the auditor looks up."""
+    from database import IS383_2016
+
+    def names(table):
+        limits = IS383_2016[table]["limits"]
+        groups = list(limits)
+        items = list(dict.fromkeys(i for g in limits.values() for i in g))
+        return groups, items
+    out = []
+    for field, table in [("aggregate_deleterious_limits", "TABLE_2_DELETERIOUS"),
+                         ("coarse_aggregate_grading", "TABLE_7_COARSE_GRADING"),
+                         ("fine_aggregate_grading", "TABLE_9_FINE_GRADING"),
+                         ("all_in_aggregate_grading", "TABLE_10_ALL_IN_GRADING")]:
+        groups, items = names(table)
+        out.append(f'"{field}" groups: {", ".join(groups)}; items: {", ".join(items)}')
+    return "\n    ".join(out)

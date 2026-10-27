@@ -32,7 +32,7 @@ def main(from_run, out, group_ids, exposure, concrete_type, max_call_tokens=5000
             results.append((b, parsed or {}))
             write_json(dst / "extract_calls" / f"{gid}_{b}.json",
                        {"group": gid, "batch": b, "text": text, "response": parsed, "call": call})
-        values, q, _, _ = extract_v2.merge_group(gid, results)
+        values, q, _, _, _ = extract_v2.merge_group(gid, results)
         extraction.update(values)
         quotes.update(q)
     extraction["source_quotes"] = quotes

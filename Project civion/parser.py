@@ -5,7 +5,7 @@ import pdfplumber
 import hashlib
 import os
 from config import get_groq_client, GROQ_MODEL
-from prompt_rules import REFERENCES_RULE, TABLE_QUOTE_RULE
+from prompt_rules import REFERENCES_RULE, REMARKS_RULE, TABLE_QUOTE_RULE, table_keys_hint
 
 
 def extract_text_from_pdf(pdf_path):
@@ -203,7 +203,7 @@ def parse_user_specification(pdf_path, detected_exposure=None, detected_concrete
     {{
       "exposure": "Mild|Moderate|Severe|Very Severe|Extreme",
       "freezing_thawing_exposure": bool,
-      "water_ph": float,
+      "water_ph": "float, or [low, high] if a range is stated",
       "soil_total_so3_percent": float,
       "soil_extract_2_1_so3_gl": float,
       "groundwater_so3_gl": float,
@@ -212,14 +212,14 @@ def parse_user_specification(pdf_path, detected_exposure=None, detected_concrete
       "cement_type": "OPC|PPC|PSC|SRC|Mineral Admixture",
       "specified_min_cement": int,
       "specified_max_cement": int,
-      "specified_wc": float,
+      "specified_wc": "float, or [low, high] if a range is stated",
       "specified_characteristic_strength": int,
       "specified_sigma": int,
       "mixing_time_minutes": int,
       "transport_time_minutes": int,
       "compaction_method": "mechanical vibrator|manual|hand|ramming",
       "curing_days": int,
-      "specified_slump_mm": int,
+      "specified_slump_mm": "int, or [low, high] if a range is stated",
       "total_volume_m3": int,
       "specified_sampling_sets": int,
       "sampling_cube_size_mm": int,
@@ -232,14 +232,28 @@ def parse_user_specification(pdf_path, detected_exposure=None, detected_concrete
       "water_sulphates_mg_l": float,
       "water_chlorides_mg_l": float,
       "water_suspended_matter_mg_l": float,
+      "aggregate_deleterious_limits": {{ "<aggregate kind>": {{ "<substance>": float }} }},
+      "coarse_aggregate_grading": {{ "<nominal size designation>": {{ "<sieve>": [low, high] }} }},
+      "fine_aggregate_grading": {{ "<grading zone>": {{ "<sieve>": [low, high] }} }},
+      "all_in_aggregate_grading": {{ "<nominal size>": {{ "<sieve>": [low, high] }} }},
+      "sampling_frequency": [ {{ "from_m3": float, "to_m3": "float or null for the open-ended band", "samples": int, "extra_per_m3": "float or null" }} ],
       "formwork_removal_hours": {{ "Walls_Columns": float }},
       "formwork_removal_days": {{ "Slabs": float, "Beam_Soffit": float, "Props_Under_Slabs": float, "Props_Under_Beams_Arches": float }},
       "formwork_span_m": {{ "Props_Under_Slabs": float, "Props_Under_Beams_Arches": float }},
       "cross_references": [ {{ "parameter": "field name from above, or a short snake_case name", "points_to": "IS code like 'IS 383', or 'drawings' / other source", "source_quote": "exact quote from text" }} ],
-      "source_quotes": {{ "<field>": "exact quote from text for every non-null field above" }}
+      "source_quotes": {{ "<field>": "exact quote from text for every non-null field above" }},
+      "remarks": {{ "<field>": "one short sentence, only when ambiguous" }}
     }}
+    AGGREGATE AND SAMPLING TABLES: fill these only from a table (or list) that
+    states the limits; percentages as numbers, a single value v as [v, v], skip
+    cells marked "--". Use exactly these names (sieves as "4.75 mm", "600 um"):
+    {table_keys_hint()}
+    "sampling_frequency" is the quantity-of-concrete -> number-of-samples rule.
+    If the document only says such a requirement is "as per IS 383" (or another
+    code), leave the field null and add a cross_references entry instead.
     {TABLE_QUOTE_RULE}
     {REFERENCES_RULE}
+    {REMARKS_RULE}
     Text: {text_chunk}
     """
     merged_data = run_agent(client, system_instruction, prompt_all) or {}

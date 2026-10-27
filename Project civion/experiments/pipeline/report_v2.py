@@ -30,7 +30,7 @@ def load_run(d, v1=False):
     r["calls"] = r["stats"]["calls"]
     r["status"] = {}
     for row in r["audit"]["ledger"]:
-        r["status"].setdefault(METRIC_FIELDS.get(row["Metric"], row["Metric"]), audit_status(row))
+        r["status"].setdefault(row.get("Field") or METRIC_FIELDS.get(row["Metric"], row["Metric"]), audit_status(row))
     r["counts"] = {}
     for row in r["audit"]["ledger"]:
         k = audit_status(row)
