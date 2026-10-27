@@ -65,6 +65,24 @@ def norm_key(s):
     return re.sub(r"[\s_\-]+", "", s)
 
 
+def apply_basis(value, spec):
+    """Convert a value stated on another chemical basis to the limit's basis
+    (e.g. "500 as SO4" -> 416.7 as SO3). Returns (value, note or None)."""
+    basis = spec.get("basis")
+    if not basis or not isinstance(value, str):
+        return value, None
+    text = value.upper().replace("₃", "3").replace("₄", "4").replace(" ", "")
+    for name, factor in basis["convert"].items():
+        if name.upper() in text:
+            number = to_number(text.replace(name.upper(), ""))
+            if number is None:
+                return value, None
+            converted = round(number * factor, 1)
+            return converted, f"stated {value}; = {num(converted)} as {basis['limit_as']}"
+    cleaned = text.replace(basis["limit_as"].upper(), "")
+    return (to_number(cleaned) if to_number(cleaned) is not None else value), None
+
+
 def grade_number(v):
     return to_number(str(v).upper().replace("M", " "))
 
@@ -378,12 +396,20 @@ def run_civion_audit(user_data, is456_rules):
         # exposure / cement type use the audit context (with its defaults).
         value = ctx[field] if field in ("exposure", "cement_type") else get_val(field)
         if is_missing(value):
-            return add_missing(metric, requirement_text(shape, limit, spec), field)
+            requirement = requirement_text(shape, limit, spec)
+            if spec.get("basis"):
+                requirement = f"{requirement} as {spec['basis']['limit_as']}"
+            return add_missing(metric, requirement, field)
         add_traceability(field, value)
+        value, basis_note = apply_basis(value, spec)
         try:
             ok, shown_value, requirement = CHECKS[shape](value, limit, spec)
         except (ValueError, TypeError, KeyError) as e:
             return add_row(metric, str(value), f"Could not read value ({e})", "Warning", field)
+        if basis_note:
+            shown_value = f"{shown_value} ({basis_note})"
+        if spec.get("basis"):
+            requirement = f"{requirement} as {spec['basis']['limit_as']}"
         add_row(metric, shown_value, requirement, "Pass" if ok else "Fail", field)
 
     # ---- single-use rules ------------------------------------------------

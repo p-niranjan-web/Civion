@@ -62,7 +62,7 @@ IS456_MASTER = {
             "limits_mg_l": {
                 "organic": 200,
                 "inorganic": 3000,
-                "sulphates_as_so4": 400,
+                "sulphates_as_so3": 400,   # Table 1: "Sulphates (as SO3)" - not SO4
                 "chlorides": {"Plain Concrete": 2000, "Reinforced Concrete": 500},
                 "suspended_matter": 2000
             }
@@ -286,6 +286,8 @@ IS383_2016 = {
 #                "{concrete_type}", "{exposure}", "{cement_type}" are filled
 #                in from the audit context (exposure is chosen by the user)
 #   default    - limit used when limit_from finds nothing (unknown type etc.)
+#   basis      - the chemical basis of the limit and factors to convert a value
+#                stated on another basis (e.g. sulphates as SO4 -> as SO3)
 #   from       - "user" (chosen in the UI, not extracted) or "derived" (computed
 #                by the auditor); absent = extracted from the document
 #
@@ -380,7 +382,9 @@ PARAMETERS = {
                              "limit_from": ["IS456", "MATERIAL_PROPERTIES", "Water_Solids_Limits", "limits_mg_l", "inorganic"]},
     "water_sulphates_mg_l": {"metric": "Water - Sulphates", "shape": "max", "unit": "mg/l",
                              "clause": "IS 456:2000 Clause 5.4, Table 1",
-                             "limit_from": ["IS456", "MATERIAL_PROPERTIES", "Water_Solids_Limits", "limits_mg_l", "sulphates_as_so4"]},
+                             "limit_from": ["IS456", "MATERIAL_PROPERTIES", "Water_Solids_Limits", "limits_mg_l", "sulphates_as_so3"],
+                             # A value stated "as SO4" is converted to SO3 before comparing (80.06 / 96.06).
+                             "basis": {"limit_as": "SO3", "convert": {"SO4": 0.8334}}},
     "water_chlorides_mg_l": {"metric": "Water - Chlorides", "shape": "max", "unit": "mg/l",
                              "clause": "IS 456:2000 Clause 5.4, Table 1",
                              "limit_from": ["IS456", "MATERIAL_PROPERTIES", "Water_Solids_Limits", "limits_mg_l", "chlorides", "{concrete_type}"],

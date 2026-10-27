@@ -66,6 +66,11 @@ CASES = [
     ("max range judged by high end", {"specified_wc": [0.5, 0.52]}, "W/C Ratio", "Fail"),
     ("max lookup by concrete type", {"water_chlorides_mg_l": 1000}, "Water - Chlorides", "Fail"),
     ("max missing", {}, "Water - Sulphates", "Warning"),
+    # basis conversion: IS 456 Table 1 limit is 400 mg/l as SO3; 500 as SO4 = 416.7 as SO3
+    ("sulphates SO4 converted fail", {"water_sulphates_mg_l": "500 as SO4"}, "Water - Sulphates", "Fail"),
+    ("sulphates SO4 converted pass", {"water_sulphates_mg_l": "450 mg/l as SO4"}, "Water - Sulphates", "Pass"),
+    ("sulphates SO3 as stated", {"water_sulphates_mg_l": "400 as SO3"}, "Water - Sulphates", "Pass"),
+    ("sulphates plain number", {"water_sulphates_mg_l": 500}, "Water - Sulphates", "Fail"),
     ("max unreadable", {"specified_wc": "as directed"}, "W/C Ratio", "Warning"),
     # range (IS 456 cl 7.1: 25-150 mm overall)
     ("range pass", {"specified_slump_mm": [25, 35]}, "Slump", "Pass"),

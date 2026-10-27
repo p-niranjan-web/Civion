@@ -229,7 +229,7 @@ def parse_user_specification(pdf_path, detected_exposure=None, detected_concrete
       "member_covers": {{ "Beams": int, "Columns": int, "Slabs": int }},
       "water_organic_mg_l": float,
       "water_inorganic_mg_l": float,
-      "water_sulphates_mg_l": float,
+      "water_sulphates_mg_l": "value with the stated basis, e.g. '500 as SO4' or '400 as SO3'",
       "water_chlorides_mg_l": float,
       "water_suspended_matter_mg_l": float,
       "aggregate_deleterious_limits": {{ "<aggregate kind>": {{ "<substance>": float }} }},
