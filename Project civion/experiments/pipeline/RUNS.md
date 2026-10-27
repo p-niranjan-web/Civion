@@ -1,12 +1,19 @@
 # Pipelines and runs (all on the BLR spec unless noted)
 
 ## Pipelines
-- **v1** (`localize.py`, `extract.py`; result in `v1_results/`, 12 calls, 42k tokens)
-  1. One LLM call sees only the heading outline, picks the relevant sections and tags each with a topic
-     (materials / durability_grade / production_curing / cover_sampling).
-  2. The picked text is packed by topic into chunks of at most ~5,000 tokens. Each call sends ONE chunk
-     (not the whole scoped document) with the WHOLE JSON schema (all fields).
-  3. Merge: per field, the answer from a call whose topic owns that field wins; all candidates are kept.
+- **v1** (result in `v1_results/`; BLR: 12 calls, 42k tokens)
+  1. Clean (`clean.py`): Docling markdown -> strip image markers / repeated headers -> `clean.md` (136k chars).
+  2. Split into sections at every heading (`sections.py`): 62 sections, 17 tables. No LLM.
+  3. Pick sections - 1 LLM call (`localize.py`): only the list of headings is sent (~2k tokens); the LLM
+     returns the relevant section ids, each tagged with a topic (materials / durability_grade /
+     production_curing / cover_sampling). Parents added by rule -> `localized.md` (84k chars, 62 %).
+  4. Chunks (`extract.py`, no LLM): per topic, sections in document order, cut so prompt + answer stays
+     under ~5,000 tokens -> 11 chunks.
+  5. Extract - 11 LLM calls: each sends ONE chunk + the FULL JSON schema (all fields) + rules; the LLM
+     fills what it finds in that chunk, null otherwise.
+  6. Merge (no LLM): per field, the value from a chunk whose topic owns the field (first in document
+     order), else the first non-null from any chunk; all candidates kept.
+  7. Audit (`auditor.py`) against `database.py`.
 - **v2** (`route.py`, `extract_v2.py`; runs in `output_v2/<run>/`)
   1. Same section picking, plus safety nets that add sub-sections and sections with cue words.
   2. Sections are split into units (one clause or one table each).
