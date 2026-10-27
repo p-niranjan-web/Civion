@@ -72,6 +72,10 @@ CASES = [
     ("range fail", {"specified_slump_mm": [100, 180]}, "Slump", "Fail"),
     ("range single value", {"specified_slump_mm": "75 mm"}, "Slump", "Pass"),
     ("range missing", {}, "Slump", "Warning"),
+    # min with lookup by cement type (IS 456 cl 13.5.1: OPC 7, PPC/PSC 10 days)
+    ("curing OPC 7 pass", {"curing_days": 7}, "Curing Days", "Pass"),
+    ("curing PPC 7 fail", {"cement_type": "PPC", "curing_days": 7}, "Curing Days", "Fail"),
+    ("curing PSC 10 pass", {"cement_type": "PSC", "curing_days": 10}, "Curing Days", "Pass"),
     # equals
     ("equals pass", {"sampling_cube_size_mm": 150}, "Cube Size", "Pass"),
     ("equals fail", {"sampling_cube_size_mm": 100}, "Cube Size", "Fail"),

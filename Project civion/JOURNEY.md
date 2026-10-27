@@ -143,7 +143,7 @@ Docling was run locally (it could not be tested in a cloud sandbox because its m
 
 ---
 
-## Stage 6 – Reading wide tables (aggregate grading)
+## Issue found later – Reading wide tables (aggregate grading)
 
 **Problem:** the LLM misread BLR's coarse aggregate grading table (11 columns, one per nominal size). It shifted values into the wrong column: only 29 of 38 cells were correct. Extracting one field per call did not help.
 

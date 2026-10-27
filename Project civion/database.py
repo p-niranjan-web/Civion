@@ -36,9 +36,11 @@ IS456_MASTER = {
             "prohibited": ["manual", "hand", "ramming"]
         },
         "Curing": {
-            "clause": "IS 456:2000 Clause 13.5",
-            "Plain Concrete": {"OPC": 7, "Mineral_Admixtures": 10, "Dry_Hot_Weather": 10},
-            "Reinforced Concrete": {"OPC": 7, "Mineral_Admixtures": 10, "Dry_Hot_Weather": 14}
+            # Cl 13.5.1: min 7 days OPC; 10 days with mineral admixtures or blended cements
+            # (PPC, PSC); 10 days in dry and hot weather (14 is only a recommendation).
+            "clause": "IS 456:2000 Clause 13.5.1",
+            "Plain Concrete": {"OPC": 7, "PPC": 10, "PSC": 10, "Mineral_Admixtures": 10, "Dry_Hot_Weather": 10},
+            "Reinforced Concrete": {"OPC": 7, "PPC": 10, "PSC": 10, "Mineral_Admixtures": 10, "Dry_Hot_Weather": 10}
         },
         "Formwork_Striking_Time": {
             "clause": "IS 456:2000 Clause 11.3",
