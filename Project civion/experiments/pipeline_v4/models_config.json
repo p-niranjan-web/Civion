@@ -1,0 +1,38 @@
+{
+  "main": {
+    "id": "gemini-3.8-flash",
+    "display_name": "Gemini 3.8 Flash",
+    "note": "exact Gemini 3.8 Flash",
+    "limits": {
+      "rpm": 5,
+      "tpm": 250000,
+      "rpd": 20
+    }
+  },
+  "lite": {
+    "id": "gemini-3.5-flash-lite",
+    "display_name": "Gemini 3.5 Flash Lite",
+    "note": "Flash Lite 3.5",
+    "limits": {
+      "rpm": 15,
+      "tpm": 250000,
+      "rpd": 500
+    }
+  },
+  "available_flash_models": [
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite",
+    "gemini-3-flash-preview",
+    "gemini-3.1-flash-lite",
+    "gemini-3.1-flash-lite-preview",
+    "gemini-3.5-flash",
+    "gemini-3.5-flash-lite",
+    "gemini-3.6-flash",
+    "gemini-3.7-flash",
+    "gemini-3.8-flash",
+    "gemini-flash-latest",
+    "gemini-flash-lite-latest",
+    "gemini-omni-1.1-flash",
+    "gemini-omni-flash-preview"
+  ]
+}

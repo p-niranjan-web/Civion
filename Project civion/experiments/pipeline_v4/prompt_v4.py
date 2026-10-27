@@ -58,6 +58,8 @@ def field_line(f, table_mode):
 def group_notes():
     """The v2 group notes that still apply (water table, aggregate tables)."""
     notes = list(GROUPS["materials"].notes)
+    notes.append('Each "water_*_mg_l" quote is TWO lines: that table\'s header row, then the row of the value. '
+                 "A quote that is only the data row is rejected.")
     notes.append(
         "AGGREGATE TABLES: fill these only from a table that states the limits (deleterious limits: a single "
         'value v is v; skip cells marked "--"). If the document has its own table, ALWAYS fill the field from it, '
@@ -83,7 +85,13 @@ CONTEXT (given by the user, not in the document): exposure condition = "{exposur
 concrete type = "{concrete_type}". The cement type must be read from the document.
 
 RULES
-- Use only values stated in the document, or read from a table of the document.
+- Use only values stated in the document, or read from a table of the document. NEVER fill a
+  value from your own knowledge of IS codes or good practice: if the document only says
+  "as per IS 456" (or similar) for a field, the value is null and the statement goes in
+  cross_references.
+- A table that merely lists all possible options (e.g. every concrete grade with its
+  strength, or every exposure class) does not specify which one applies: do not pick a row
+  from it unless the document says which row is required.
 - TABLE RESOLUTION: when a value is only given in a requirements table keyed by exposure
   class (rows) and concrete type / parameter (columns), read the "{exposure}" row and the
   "{concrete_type}" column and return that cell.
@@ -97,8 +105,14 @@ RULES
 - SINGLE VALUE -> a plain number or string. RANGE -> [low, high].
 - CHEMICAL BASIS: keep the basis the document states inside the value, e.g. "500 as SO4".
 - SOURCE QUOTES: for every non-null field, copy the supporting text VERBATIM from the
-  document - a whole sentence, or (for a table) as below - not just the number.
+  document - a whole sentence, or (for a table) as below - not just the number. Do not
+  shorten a quote with "...".
 {TABLE_QUOTE_RULE}
+  Example of a table quote (2 lines; the first line is the table's header row, even when
+  the header row has an empty first cell):
+  "| Item | Limit, max |\\n| Item A | 200 mg/l |"
+- REFERENCES apply to every field above, including member_covers (cover "as specified in
+  the drawings" is a reference with points_to "drawings").
 {REFERENCES_RULE}
 {REMARKS_RULE}
 - FIELD INFO: for every field, "field_info" gives "type" (one of {", ".join(TYPES)}) and

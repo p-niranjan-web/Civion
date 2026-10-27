@@ -1,0 +1,50 @@
+{
+  "args": {
+    "input": "C:\\Users\\IkramCC\\Downloads\\CIVION\\Civion\\Project civion\\experiments\\parse_test\\docling_output.md",
+    "role": "lite",
+    "exposure": "Moderate",
+    "concrete_type": "Reinforced Concrete",
+    "table_mode": "python",
+    "from_raw": null,
+    "thinking": null
+  },
+  "call": {
+    "name": "extract[lite3]",
+    "model": "gemini-3.5-flash-lite",
+    "attempts": 1,
+    "retries": 0,
+    "input_tokens": 30045,
+    "output_tokens": 4137,
+    "reasoning_tokens": null,
+    "total_tokens": 34182,
+    "wall_s": 23.42,
+    "status": "ok",
+    "error": null,
+    "finish_reason": "FinishReason.STOP"
+  },
+  "steps": {
+    "prepare": {
+      "input_chars": 137801,
+      "clean_chars": 136124,
+      "sent_chars": 112675,
+      "repeated_lines_removed": 0,
+      "wall_s": 0.012
+    },
+    "post_process": {
+      "table_notes": [],
+      "unknown_keys": [],
+      "wall_s": 0.004
+    },
+    "audit": {
+      "wall_s": 0.002
+    },
+    "checks": {
+      "wall_s": 0.011,
+      "quotes_found": 18,
+      "quotes_not_found": 6,
+      "locations_found": 22,
+      "locations_total": 22
+    }
+  },
+  "total_wall_s": 24.29
+}

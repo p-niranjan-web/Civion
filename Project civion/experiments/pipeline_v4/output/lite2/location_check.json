@@ -1,0 +1,134 @@
+[
+  {
+    "field": "cement_type",
+    "location": "PART 2 - PRODUCTS > 2.5 CEMENT MATERIALS",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "specified_min_cement",
+    "location": "PART 2 - PRODUCTS > 2.4 DURABILITY AND COMPATIBILITY REQUIREMENTS FOR CONCRETE AND MATERIALS",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "specified_wc",
+    "location": "PART 2 - PRODUCTS > 2.4 DURABILITY AND COMPATIBILITY REQUIREMENTS FOR CONCRETE AND MATERIALS",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "member_covers",
+    "location": "PART 3 - EXECUTION > 3.5 REINFORCEMENT",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "mixing_time_minutes",
+    "location": "PART 3 - EXECUTION > 3.6 CONCRETE",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "transport_time_minutes",
+    "location": "PART 1 - GENERAL > 1.7 PROJECT/SITE CONDITIONS",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "compaction_method",
+    "location": "PART 3 - EXECUTION > 3.6 CONCRETE",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "curing_days",
+    "location": "PART 3 - EXECUTION > 3.6 CONCRETE",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "specified_slump_mm",
+    "location": "PART 3 - EXECUTION > 3.6 CONCRETE",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "water_ph",
+    "location": "PART 2 - PRODUCTS > 2.6 WATER",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "water_organic_mg_l",
+    "location": "PART 2 - PRODUCTS > 2.6 WATER",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "water_inorganic_mg_l",
+    "location": "PART 2 - PRODUCTS > 2.6 WATER",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "water_sulphates_mg_l",
+    "location": "PART 2 - PRODUCTS > 2.6 WATER",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "water_chlorides_mg_l",
+    "location": "PART 2 - PRODUCTS > 2.6 WATER",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "water_suspended_matter_mg_l",
+    "location": "PART 2 - PRODUCTS > 2.6 WATER",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "measured_chloride_content",
+    "location": "PART 2 - PRODUCTS > 2.7 ADMIXTURES FOR CONCRETE",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "aggregate_deleterious_limits",
+    "location": "PART 2 - PRODUCTS > 2.8 AGGREGATES FOR CONCRETE",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "coarse_aggregate_grading",
+    "location": "PART 2 - PRODUCTS > 2.8 AGGREGATES FOR CONCRETE",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "fine_aggregate_grading",
+    "location": "PART 2 - PRODUCTS > 2.8 AGGREGATES FOR CONCRETE",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "all_in_aggregate_grading",
+    "location": "PART 2 - PRODUCTS > 2.8 AGGREGATES FOR CONCRETE",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "sampling_cube_size_mm",
+    "location": "PART 2 - PRODUCTS > 2.6 WATER",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "sampling_frequency",
+    "location": "PART 3 - EXECUTION > 3.8 FINISHES FOR FLATWORK",
+    "found": true,
+    "missing_segments": []
+  }
+]

@@ -1,0 +1,140 @@
+[
+  {
+    "field": "cement_type",
+    "location": "2.5 CEMENT MATERIALS",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "specified_grade",
+    "location": "2.3 GRADES OF CONCRETE",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "specified_min_cement",
+    "location": "2.4 DURABILITY AND COMPATIBILITY REQUIREMENTS FOR CONCRETE AND MATERIALS",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "specified_wc",
+    "location": "2.4 DURABILITY AND COMPATIBILITY REQUIREMENTS FOR CONCRETE AND MATERIALS",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "specified_characteristic_strength",
+    "location": "2.3 GRADES OF CONCRETE",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "mixing_time_minutes",
+    "location": "3.6 CONCRETE > D. Mixing Of Concrete",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "transport_time_minutes",
+    "location": "1.7 PROJECT/SITE CONDITIONS > A. Hot or Cold Weather Concreting",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "compaction_method",
+    "location": "3.6 CONCRETE > G. Compaction of Concrete",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "curing_days",
+    "location": "3.6 CONCRETE > P. Curing",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "specified_slump_mm",
+    "location": "3.6 CONCRETE > B. Cement Concrete",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "water_ph",
+    "location": "2.6 WATER",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "water_organic_mg_l",
+    "location": "2.6 WATER",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "water_inorganic_mg_l",
+    "location": "2.6 WATER",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "water_sulphates_mg_l",
+    "location": "2.6 WATER",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "water_chlorides_mg_l",
+    "location": "2.6 WATER",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "water_suspended_matter_mg_l",
+    "location": "2.6 WATER",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "measured_chloride_content",
+    "location": "2.7 ADMIXTURES FOR CONCRETE",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "aggregate_deleterious_limits",
+    "location": "2.8 AGGREGATES FOR CONCRETE",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "coarse_aggregate_grading",
+    "location": "2.8 AGGREGATES FOR CONCRETE",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "fine_aggregate_grading",
+    "location": "2.8 AGGREGATES FOR CONCRETE",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "all_in_aggregate_grading",
+    "location": "2.8 AGGREGATES FOR CONCRETE",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "sampling_cube_size_mm",
+    "location": "2.3 GRADES OF CONCRETE",
+    "found": true,
+    "missing_segments": []
+  },
+  {
+    "field": "sampling_frequency",
+    "location": "3.8 FINISHES FOR FLATWORK",
+    "found": true,
+    "missing_segments": []
+  }
+]
