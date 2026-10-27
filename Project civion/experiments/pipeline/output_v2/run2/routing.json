@@ -1,0 +1,495 @@
+{
+  "routing": {
+    "S002.U1": [
+      "durability",
+      "materials"
+    ],
+    "S003.U1": [
+      "cover_sampling"
+    ],
+    "S003.U2": [
+      "durability",
+      "materials"
+    ],
+    "S003.U3": [
+      "production",
+      "materials",
+      "durability"
+    ],
+    "S003.U4": [
+      "materials",
+      "durability"
+    ],
+    "S003.U5": [
+      "durability",
+      "production",
+      "materials"
+    ],
+    "S003.U6": [],
+    "S003.U7": [
+      "durability",
+      "materials",
+      "production",
+      "cover_sampling"
+    ],
+    "S003.U8": [],
+    "S003.U9": [],
+    "S003.U10": [
+      "production"
+    ],
+    "S005.U1": [
+      "durability",
+      "production"
+    ],
+    "S008.U1": [],
+    "S008.U2": [],
+    "S008.U3": [],
+    "S008.U4": [
+      "materials"
+    ],
+    "S008.U5": [],
+    "S008.U6": [
+      "production"
+    ],
+    "S009.U1": [
+      "production"
+    ],
+    "S009.U2": [
+      "materials"
+    ],
+    "S018.U1": [
+      "grade_strength"
+    ],
+    "S019.U1": [
+      "grade_strength"
+    ],
+    "S019.U2": [
+      "grade_strength"
+    ],
+    "S020.U1": [
+      "durability"
+    ],
+    "S021.U1": [
+      "durability"
+    ],
+    "S021.U2": [
+      "durability"
+    ],
+    "S022.U1": [
+      "durability",
+      "materials"
+    ],
+    "S023.U1": [
+      "materials"
+    ],
+    "S023.U2": [
+      "materials"
+    ],
+    "S023.U3": [
+      "materials",
+      "durability"
+    ],
+    "S024.U1": [
+      "materials"
+    ],
+    "S024.U2": [
+      "durability",
+      "materials"
+    ],
+    "S025.U1": [
+      "materials"
+    ],
+    "S026.U1": [
+      "materials"
+    ],
+    "S026.U2": [
+      "materials",
+      "durability"
+    ],
+    "S026.U3": [
+      "materials",
+      "durability"
+    ],
+    "S027.U1": [
+      "materials"
+    ],
+    "S027.U2": [
+      "materials"
+    ],
+    "S027.U3": [
+      "materials"
+    ],
+    "S027.U4": [
+      "materials"
+    ],
+    "S027.U5": [
+      "materials"
+    ],
+    "S027.U6": [
+      "materials"
+    ],
+    "S027.U7": [
+      "materials"
+    ],
+    "S027.U8": [
+      "materials"
+    ],
+    "S027.U9": [
+      "materials"
+    ],
+    "S027.U10": [
+      "materials"
+    ],
+    "S027.U11": [
+      "materials"
+    ],
+    "S027.U12": [
+      "materials",
+      "durability"
+    ],
+    "S028.U1": [
+      "materials"
+    ],
+    "S029.U1": [
+      "materials"
+    ],
+    "S029.U2": [
+      "materials"
+    ],
+    "S030.U1": [
+      "materials"
+    ],
+    "S031.U1": [],
+    "S032.U1": [],
+    "S032.U2": [],
+    "S032.U3": [
+      "durability"
+    ],
+    "S032.U4": [
+      "materials"
+    ],
+    "S032.U5": [
+      "materials"
+    ],
+    "S033.U1": [
+      "durability"
+    ],
+    "S034.U1": [
+      "production",
+      "durability"
+    ],
+    "S037.U1": [],
+    "S038.U1": [],
+    "S039.U1": [],
+    "S045.U1": [
+      "cover_sampling"
+    ],
+    "S045.U2": [
+      "cover_sampling"
+    ],
+    "S046.U1": [],
+    "S046.U2": [],
+    "S047.U1": [],
+    "S047.U2": [],
+    "S047.U3": [],
+    "S048.U1": [
+      "cover_sampling"
+    ],
+    "S048.U2": [
+      "cover_sampling",
+      "grade_strength"
+    ],
+    "S048.U3": [
+      "materials"
+    ],
+    "S048.U4": [
+      "cover_sampling"
+    ],
+    "S048.U5": [
+      "materials"
+    ],
+    "S049.U1": [
+      "production"
+    ],
+    "S049.U2": [
+      "grade_strength",
+      "production"
+    ],
+    "S049.U3": [
+      "production",
+      "durability"
+    ],
+    "S049.U4": [
+      "production",
+      "durability"
+    ],
+    "S049.U5": [
+      "production",
+      "durability"
+    ],
+    "S049.U6": [
+      "production",
+      "durability"
+    ],
+    "S049.U7": [
+      "grade_strength",
+      "production"
+    ],
+    "S049.U8": [
+      "materials",
+      "production"
+    ],
+    "S049.U9": [
+      "materials"
+    ],
+    "S049.U10": [
+      "production",
+      "grade_strength"
+    ],
+    "S049.U11": [
+      "production"
+    ],
+    "S049.U12": [
+      "production"
+    ],
+    "S049.U13": [
+      "production",
+      "durability"
+    ],
+    "S049.U14": [
+      "materials",
+      "production"
+    ],
+    "S049.U15": [
+      "production",
+      "durability"
+    ],
+    "S049.U16": [
+      "production",
+      "durability"
+    ],
+    "S050.U1": [
+      "durability"
+    ],
+    "S051.U1": [],
+    "S051.U2": [
+      "production"
+    ],
+    "S051.U3": [
+      "production"
+    ],
+    "S051.U4": [
+      "production"
+    ],
+    "S052.U1": [
+      "production"
+    ],
+    "S052.U2": [
+      "production"
+    ],
+    "S053.U1": [
+      "production",
+      "durability"
+    ],
+    "S053.U2": [
+      "production",
+      "grade_strength"
+    ],
+    "S053.U3": [],
+    "S053.U4": [
+      "materials",
+      "durability"
+    ],
+    "S053.U5": [
+      "materials"
+    ],
+    "S053.U6": [
+      "materials",
+      "durability"
+    ],
+    "S054.U1": [
+      "cover_sampling"
+    ],
+    "S054.U2": [
+      "materials",
+      "durability"
+    ],
+    "S054.U3": [
+      "production"
+    ],
+    "S055.U1": [
+      "production"
+    ],
+    "S058.U1": [
+      "cover_sampling"
+    ],
+    "S058.U2": [
+      "cover_sampling"
+    ],
+    "S059.U1": [
+      "grade_strength"
+    ],
+    "S059.U2": [
+      "grade_strength"
+    ],
+    "S059.U3": [
+      "grade_strength"
+    ],
+    "S059.U4": [],
+    "S059.U5": [
+      "production"
+    ],
+    "S060.U1": [],
+    "S060.U2": [
+      "production"
+    ],
+    "S060.U3": [
+      "cover_sampling",
+      "production"
+    ],
+    "S060.U4": [
+      "cover_sampling"
+    ],
+    "S060.U5": [
+      "cover_sampling"
+    ],
+    "S060.U6": [
+      "grade_strength"
+    ],
+    "S060.U7": [
+      "grade_strength"
+    ],
+    "S060.U8": [],
+    "S060.U9": [
+      "production",
+      "durability"
+    ],
+    "S060.U10": [
+      "production"
+    ],
+    "S060.U11": [
+      "durability"
+    ]
+  },
+  "per_group": {
+    "grade_strength": {
+      "units": 13,
+      "chars": 5721,
+      "est_tokens": 1425
+    },
+    "durability": {
+      "units": 33,
+      "chars": 26323,
+      "est_tokens": 6568
+    },
+    "materials": {
+      "units": 45,
+      "chars": 44588,
+      "est_tokens": 11131
+    },
+    "production": {
+      "units": 37,
+      "chars": 20865,
+      "est_tokens": 5203
+    },
+    "cover_sampling": {
+      "units": 13,
+      "chars": 7872,
+      "est_tokens": 1964
+    }
+  },
+  "unrouted_units": [
+    "S003.U6",
+    "S003.U8",
+    "S003.U9",
+    "S008.U1",
+    "S008.U2",
+    "S008.U3",
+    "S008.U5",
+    "S031.U1",
+    "S032.U1",
+    "S032.U2",
+    "S037.U1",
+    "S038.U1",
+    "S039.U1",
+    "S046.U1",
+    "S046.U2",
+    "S047.U1",
+    "S047.U2",
+    "S047.U3",
+    "S051.U1",
+    "S053.U3",
+    "S059.U4",
+    "S060.U1",
+    "S060.U8"
+  ],
+  "retried_units": [],
+  "defaulted_to_all_groups": [],
+  "calls": [
+    {
+      "name": "route[0]",
+      "model": "openai/gpt-oss-120b",
+      "reasoning_effort": "low",
+      "prompt_tokens": 3125,
+      "completion_tokens": 828,
+      "total_tokens": 3953,
+      "retries": 0,
+      "wall_s": 62.61,
+      "error": null,
+      "est_prompt_tokens": 3083,
+      "n_units": 26
+    },
+    {
+      "name": "route[1]",
+      "model": "openai/gpt-oss-120b",
+      "reasoning_effort": "low",
+      "prompt_tokens": 3500,
+      "completion_tokens": 910,
+      "total_tokens": 4410,
+      "retries": 0,
+      "wall_s": 62.95,
+      "error": null,
+      "est_prompt_tokens": 3162,
+      "n_units": 26
+    },
+    {
+      "name": "route[2]",
+      "model": "openai/gpt-oss-120b",
+      "reasoning_effort": "low",
+      "prompt_tokens": 3109,
+      "completion_tokens": 941,
+      "total_tokens": 4050,
+      "retries": 0,
+      "wall_s": 62.94,
+      "error": null,
+      "est_prompt_tokens": 3143,
+      "n_units": 28
+    },
+    {
+      "name": "route[3]",
+      "model": "openai/gpt-oss-120b",
+      "reasoning_effort": "low",
+      "prompt_tokens": 3016,
+      "completion_tokens": 977,
+      "total_tokens": 3993,
+      "retries": 0,
+      "wall_s": 62.77,
+      "error": null,
+      "est_prompt_tokens": 3198,
+      "n_units": 27
+    },
+    {
+      "name": "route[4]",
+      "model": "openai/gpt-oss-120b",
+      "reasoning_effort": "low",
+      "prompt_tokens": 2423,
+      "completion_tokens": 730,
+      "total_tokens": 3153,
+      "retries": 0,
+      "wall_s": 62.72,
+      "error": null,
+      "est_prompt_tokens": 2347,
+      "n_units": 19
+    }
+  ]
+}

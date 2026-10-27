@@ -1,0 +1,387 @@
+{
+  "counts": {
+    "pass": 19,
+    "fail": 4,
+    "warning": 22,
+    "total": 45
+  },
+  "ledger": [
+    {
+      "Metric": "Concrete Type",
+      "Extracted Value": "Reinforced Concrete",
+      "Requirement": "Must be defined",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Environmental Exposure",
+      "Extracted Value": "Moderate",
+      "Requirement": "Must be defined",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Cement Type",
+      "Extracted Value": "OPC",
+      "Requirement": "Must be defined",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Soil Total SO3",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Limit depends on class",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Soil Extract SO3",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Limit depends on class",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Groundwater SO3",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Limit depends on class",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Sulfate Cement Type",
+      "Extracted Value": "OPC",
+      "Requirement": "Class 1 / Any",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Freezing and Thawing",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Defined",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Concrete Grade",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Min M25",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Min Cement Content",
+      "Extracted Value": "290 kg/m³",
+      "Requirement": "Min 300 kg/m³",
+      "Status": "Fail"
+    },
+    {
+      "Metric": "Max Cement Content",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Max 450 kg/m³",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "W/C Ratio",
+      "Extracted Value": "0.55",
+      "Requirement": "Max 0.5",
+      "Status": "Fail"
+    },
+    {
+      "Metric": "Standard Deviation (sigma)",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Based on Grade",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Characteristic Strength",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Expected value",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Fire Resistance Rating",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Required for cover",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Beams Cover",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Min 30mm",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Columns Cover",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Min 40mm",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Slabs Cover",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Min 30mm",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Mixing Time",
+      "Extracted Value": "2 mins",
+      "Requirement": "Min 2 mins",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Transportation Time",
+      "Extracted Value": "30 mins",
+      "Requirement": "Max 30 mins",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Compaction Method",
+      "Extracted Value": "mechanical vibrator",
+      "Requirement": "Mechanical Vibrator",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Curing Days",
+      "Extracted Value": "7 days",
+      "Requirement": "Min 7 days",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Slump",
+      "Extracted Value": "35mm",
+      "Requirement": "25 - 150mm",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Formwork Removal - Walls/Columns",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Min 16 hrs",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Formwork Removal - Slabs (props left under)",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Min 3 days",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Formwork Removal - Beam Soffit (props left under)",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Min 7 days",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Formwork Removal - Props Under Slabs",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Depends on span",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Formwork Removal - Props Under Beams/Arches",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Depends on span",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Cement Type (Cross-Reference)",
+      "Extracted Value": "Deferred to IS 8112",
+      "Requirement": "Compliant per IS 8112",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Water Testing (Cross-Reference)",
+      "Extracted Value": "Deferred to IS 3025",
+      "Requirement": "Compliant per IS 3025",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Coarse Aggregate Grading (Cross-Reference)",
+      "Extracted Value": "Deferred to IS 383",
+      "Requirement": "Compliant per IS 383",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Fine Aggregate Grading (Cross-Reference)",
+      "Extracted Value": "Deferred to IS 383",
+      "Requirement": "Compliant per IS 383",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Mix Design (Cross-Reference)",
+      "Extracted Value": "Deferred to IS 456, SP 23, SP 24",
+      "Requirement": "Compliant per IS 456, SP 23, SP 24",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Cube Testing Procedure (Cross-Reference)",
+      "Extracted Value": "Deferred to IS 516",
+      "Requirement": "Compliant per IS 516",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Water pH",
+      "Extracted Value": "6.0",
+      "Requirement": "Min 6.0",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Water - Organic Solids",
+      "Extracted Value": "200.0 mg/l",
+      "Requirement": "Max 200 mg/l",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Water - Inorganic Solids",
+      "Extracted Value": "3000.0 mg/l",
+      "Requirement": "Max 3000 mg/l",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Water - Sulphates",
+      "Extracted Value": "500.0 mg/l",
+      "Requirement": "Max 400 mg/l",
+      "Status": "Fail"
+    },
+    {
+      "Metric": "Water - Chlorides",
+      "Extracted Value": "1000.0 mg/l",
+      "Requirement": "Max 500 mg/l",
+      "Status": "Fail"
+    },
+    {
+      "Metric": "Water - Suspended Matter",
+      "Extracted Value": "2000.0 mg/l",
+      "Requirement": "Max 2000 mg/l",
+      "Status": "Pass"
+    },
+    {
+      "Metric": "Chloride Content",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Depends on Concrete Type",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Sulphate (SO3) Content",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Max 4.0%",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Total Volume",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Required for sampling",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Cube Size",
+      "Extracted Value": "Not Provided",
+      "Requirement": "150mm",
+      "Status": "Warning"
+    },
+    {
+      "Metric": "Sampling Sets",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Volume and Sets Required",
+      "Status": "Warning"
+    }
+  ],
+  "traceability": [
+    {
+      "Parameter": "concrete_type",
+      "Extracted Value": "Reinforced Concrete",
+      "Source Quote": "Concrete type determined outside the document: Reinforced Concrete"
+    },
+    {
+      "Parameter": "exposure",
+      "Extracted Value": "Moderate",
+      "Source Quote": "Exposure condition determined outside the document: Moderate"
+    },
+    {
+      "Parameter": "specified_min_cement",
+      "Extracted Value": "290",
+      "Source Quote": "Moderate - for example, sheltered from heavy and wind driven rain and against freezing, whilst saturated with water; buried concrete in soil and concrete continuously under water. | Reinforced CONCRETE - MINIMUM CEMENT CONTENT 290"
+    },
+    {
+      "Parameter": "specified_wc",
+      "Extracted Value": "0.55",
+      "Source Quote": "Moderate - for example, sheltered from heavy and wind driven rain and against freezing, whilst saturated with water; buried concrete in soil and concrete continuously under water. | Reinforced CONCRETE - MAXIMUM WATER CEMENT RATIO 0.55"
+    },
+    {
+      "Parameter": "mixing_time_minutes",
+      "Extracted Value": "2",
+      "Source Quote": "The mixer shall be run for a minimum period of 2 minutes after all materials are loaded in full quantity."
+    },
+    {
+      "Parameter": "transport_time_minutes",
+      "Extracted Value": "30",
+      "Source Quote": "Concrete shall be placed in position within 30 minutes from the time it is produced."
+    },
+    {
+      "Parameter": "compaction_method",
+      "Extracted Value": "mechanical vibrator",
+      "Source Quote": "Concrete shall be thoroughly compacted, as depositing shall proceed by means of suitable vibrators."
+    },
+    {
+      "Parameter": "curing_days",
+      "Extracted Value": "7",
+      "Source Quote": "Starting 24 hours after placement of the concrete, the surface shall be cured by flooding with water or covering with damp Hessian cloth for a period of 7 days to keep it moist."
+    },
+    {
+      "Parameter": "specified_slump_mm",
+      "Extracted Value": "35",
+      "Source Quote": "The slump shall be 25 mm to 35 mm depending upon the location and type of Work."
+    },
+    {
+      "Parameter": "cement_type",
+      "Extracted Value": "Deferred to IS 8112",
+      "Source Quote": "43 Grade ordinary Portland cement conforming to IS 8112"
+    },
+    {
+      "Parameter": "water_testing",
+      "Extracted Value": "Deferred to IS 3025",
+      "Source Quote": "Water shall be tested in accordance with IS 3025."
+    },
+    {
+      "Parameter": "coarse_aggregate_grading",
+      "Extracted Value": "Deferred to IS 383",
+      "Source Quote": "Grading of coarse aggregate shall conform to the requirements in IS 383. See Table - 9."
+    },
+    {
+      "Parameter": "fine_aggregate_grading",
+      "Extracted Value": "Deferred to IS 383",
+      "Source Quote": "Grading of fine aggregate shall conform to IS 383 and shall fall within limits of one of the four zones given in table 4 of IS 383. See Table -- 10."
+    },
+    {
+      "Parameter": "mix_design",
+      "Extracted Value": "Deferred to IS 456, SP 23, SP 24",
+      "Source Quote": "The design shall be carried out strictly to IS specifications and IS code practice 456, SP 23 and SP 24."
+    },
+    {
+      "Parameter": "cube_testing_procedure",
+      "Extracted Value": "Deferred to IS 516",
+      "Source Quote": "Cubes shall be cast, stored, cured, transported and tested per IS 516."
+    },
+    {
+      "Parameter": "water_ph",
+      "Extracted Value": "6.0",
+      "Source Quote": "The PH value of water shall not be less than 6 and more than 9."
+    },
+    {
+      "Parameter": "water_organic_mg_l",
+      "Extracted Value": "200.0",
+      "Source Quote": "Organic | 200 mg/l"
+    },
+    {
+      "Parameter": "water_inorganic_mg_l",
+      "Extracted Value": "3000.0",
+      "Source Quote": "Inorganic | 3000 mg/l"
+    },
+    {
+      "Parameter": "water_sulphates_mg_l",
+      "Extracted Value": "500.0",
+      "Source Quote": "Sulphates (as SO4) | 500 mg/l"
+    },
+    {
+      "Parameter": "water_chlorides_mg_l",
+      "Extracted Value": "1000.0",
+      "Source Quote": "Chlorides (as C1)  | 2000 mg/l for plain concrete work and 1000 mg/l for reinforced concrete work"
+    },
+    {
+      "Parameter": "water_suspended_matter_mg_l",
+      "Extracted Value": "2000.0",
+      "Source Quote": "Suspended matter   | 2000 mg/l"
+    }
+  ]
+}

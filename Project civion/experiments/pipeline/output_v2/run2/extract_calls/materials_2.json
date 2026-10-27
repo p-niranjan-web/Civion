@@ -1,0 +1,31 @@
+{
+  "group": "materials",
+  "batch": 2,
+  "text": "### [S027.U10] PART 2 - PRODUCTS > 2.8 AGGREGATES FOR CONCRETE > B. Fine Aggregate\n9. Storing of aggregate shall be as given in clause 2.8.6.\n- C. Aggregate Usage: Nominal aggregate size for different types of concrete usage shall be as follows.\n1. General Use: Size 20.\n2. Footings, Mat Foundations, Grade Beams, and Walls Over 300 mm thick: Size 40\n3. Tight Pours: Size 12.5 or Size 10.\n4. Non-Structural Concrete Fill, Column Encasement, and Fill: Size 12.5.\n5. Fine Aggregate for Concrete Fill: 100% passing the 4.75 mm sieve and maximum 5% passing the 0.15mm sieve.\n6. Sand Fineness Modulus (FM): Minimum 2.50, maximum 3.00.\n- D. All-In Aggregate Grading: See Table 11 for all-in aggregate grading for nominal sizes 40 and 20.\n\nTABLE - 8 LIMITS OF DELETERIOUS MATERIALS (AGGREGATES) [IS 383 - Table 1]\n\n### [S027.U11] PART 2 - PRODUCTS > 2.8 AGGREGATES FOR CONCRETE > [TABLE] TABLE - 8 LIMITS OF DELETERIOUS MATERIALS (AGGREGATES) [IS 383 - Table 1]\n| NO.   | DELETERIOUS SUBSTANCE                                                                                                                                   | METHOD OF TEST        | FINE AGGREGATE PERCENTAGE BY   | FINE AGGREGATE PERCENTAGE BY   | COARSE AGGREGATE PERCENTAGE BY   | COARSE AGGREGATE PERCENTAGE BY   |\n|-------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|--------------------------------|--------------------------------|----------------------------------|----------------------------------|\n| (1)   | (2)                                                                                                                                                     | (3)                   | (4) Weight, Max Uncrushed      | (5) Weight, Max Crushed        | (6) Uncrushed                    | (7) Crushed                      |\n| i)    | Coal and lignite                                                                                                                                        | IS : 2386 (Part - II) | 1.00                           | 1.00                           | 1.00                             | 1.00                             |\n| ii)   | Clay Lumps                                                                                                                                              | - do -                | 1.00                           | 1.00                           | 1.00                             | 1.00                             |\n| iii)  | Material finer than 75 - (MU) IS Sieve                                                                                                                  | IS : 2386 (Part - I)  | 3.00                           | 15.00                          | 3.00                             | 3.00                             |\n| iv)   | Soft fragments                                                                                                                                          | IS : 2386 (Part - II) | --                             | --                             | 3.00                             | --                               |\n| v)    | Shale                                                                                                                                                   | IS : 2386 (Part - II) | 1.00                           | --                             | --                               | --                               |\n| vi)   | Total of percentage of all deleterious materials (except mica) including Sl. No. (i) to (v) for Col. 4,6 and 7 and Sl. No. (i) and (ii) for Col. 5 only | --                    | 5.00                           | 2.00                           | 5.00                             | 5.00                             |\n\n### [S027.U12] PART 2 - PRODUCTS > 2.8 AGGREGATES FOR CONCRETE\nNote :-1The Presence of mica in the fine aggregate has been found to reduce considerably the durability and compressive strength of concrete and further investigations are underway to determine and extent of the deleterious effect of mica. It is advisable, therefore, to investigate the mica content of fine aggregate and make suitable allowance for the possible reduction in the strength of concrete mortar.\n\nNote :-2 The aggregate shall not contain harmful organic impurities (tested in accordance with IS : 2386 [part - ii]) in sufficient quantities to affect adversely the strength or durability of concrete. A fine aggregate which fails in the test for organic impurities may be used, provided that, when tested for the effect of organic impurities on the strength of mortar, the relative strength at 7 and 28 days, reported in accordance with 7 of IS : 2386 [ Part - VI] - 1963 is not less than 95% percent.",
+  "response": {
+    "cement_type": null,
+    "water_ph": null,
+    "water_organic_mg_l": null,
+    "water_inorganic_mg_l": null,
+    "water_sulphates_mg_l": null,
+    "water_chlorides_mg_l": null,
+    "water_suspended_matter_mg_l": null,
+    "cross_references": [],
+    "source_quotes": {}
+  },
+  "call": {
+    "name": "extract[materials#2]",
+    "model": "openai/gpt-oss-120b",
+    "reasoning_effort": "low",
+    "prompt_tokens": 1783,
+    "completion_tokens": 142,
+    "total_tokens": 1925,
+    "retries": 0,
+    "wall_s": 61.59,
+    "error": null,
+    "est_prompt_tokens": 1918,
+    "group": "materials",
+    "batch": 2,
+    "text_chars": 4848
+  }
+}

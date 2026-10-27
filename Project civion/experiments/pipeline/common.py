@@ -106,6 +106,15 @@ def call_groq(name, system_prompt, user_prompt, expected_completion=1500, max_re
                 _recent.append((time.time(), TPM_BUDGET))
                 time.sleep(wait_s)
                 continue
+            # Groq occasionally rejects a JSON-mode generation (HTTP 400
+            # json_validate_failed, empty output). Retry it, without the fixed
+            # seed so the retry is not the same sampling path; the failed
+            # attempt's usage is not reported by the API.
+            if "json_validate_failed" in msg and entry.get("json_retries", 0) < 2:
+                entry["json_retries"] = entry.get("json_retries", 0) + 1
+                kwargs.pop("seed", None)
+                print(f"  [400 json_validate_failed] {name}: retry {entry['json_retries']}/2")
+                continue
             entry["error"] = msg[:500]
             break
     entry["wall_s"] = round(time.perf_counter() - t0, 2)

@@ -1,0 +1,192 @@
+PDF: BLR Airport (Cast-in-Concrete).pdf
+
+=== docling ===
+WARNING [docling]: DeprecationWarning: `force_full_page_ocr` is deprecated; set `mode=OcrMode.FULL_PAGE` instead.
+WARNING [docling]: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+WARNING [docling]: DeprecationWarning: deprecated
+docling: 16.68s, 0 chars
+ERROR:
+Traceback (most recent call last):
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/httpcore/_sync/http_proxy.py", line 297, in handle_request
+    raise ProxyError(msg)
+httpcore.ProxyError: 403 Forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/tmp/claude-0/pt/run_test.py", line 26, in run
+    md = fn()
+  File "/tmp/claude-0/pt/run_test.py", line 42, in docling_run
+    return conv.convert(str(PDF)).document.export_to_markdown()
+           ~~~~~~~~~~~~^^^^^^^^^^
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/pydantic/_internal/_validate_call.py", line 40, in wrapper_function
+    return wrapper(*args, **kwargs)
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/pydantic/_internal/_validate_call.py", line 137, in __call__
+    res = self.__pydantic_validator__.validate_python(pydantic_core.ArgsKwargs(args, kwargs))
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/docling/document_converter.py", line 700, in convert
+    return next(all_res)
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/docling/document_converter.py", line 771, in convert_all
+    for conv_res in conv_res_iter:
+                    ^^^^^^^^^^^^^
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/docling/document_converter.py", line 910, in _convert
+    for item in map(
+                ~~~^
+        process_func,
+        ^^^^^^^^^^^^^
+        input_batch,
+        ^^^^^^^^^^^^
+    ):
+    ^
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/docling/document_converter.py", line 970, in _process_indexed_document
+    conv_res = self._process_document(
+        in_doc, raises_on_error=raises_on_error, progress=progress
+    )
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/docling/document_converter.py", line 988, in _process_document
+    conv_res = self._execute_pipeline(
+        in_doc, raises_on_error=raises_on_error, progress=progress
+    )
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/docling/document_converter.py", line 1021, in _execute_pipeline
+    pipeline = self._get_pipeline(in_doc.format)
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/docling/document_converter.py", line 940, in _get_pipeline
+    self.initialized_pipelines[cache_key] = pipeline_class(
+                                            ~~~~~~~~~~~~~~^
+        pipeline_options=pipeline_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/docling/pipeline/standard_pdf_pipeline.py", line 627, in __init__
+    self._init_models()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/docling/pipeline/standard_pdf_pipeline.py", line 655, in _init_models
+    self.layout_model = layout_factory.create_instance(
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        options=self.pipeline_options.layout_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        enable_remote_services=self.pipeline_options.enable_remote_services,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/docling/models/factories/base_factory.py", line 61, in create_instance
+    return _cls(options=options, **kwargs)
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/docling/models/stages/layout/layout_object_detection_model.py", line 52, in __init__
+    self.engine.initialize()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/docling/models/inference_engines/object_detection/transformers_engine.py", line 127, in initialize
+    model_folder = self._resolve_model_folder(
+        repo_id=self._repo_id,
+        revision=revision,
+    )
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/docling/models/inference_engines/common/hf_vision_base.py", line 71, in _resolve_model_folder
+    return resolve_model_artifacts_path(
+        repo_id=repo_id,
+    ...<2 lines>...
+        download_fn=download_wrapper,
+    )
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/docling/models/inference_engines/vlm/_utils.py", line 208, in resolve_model_artifacts_path
+    return download_fn(repo_id, revision)
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/docling/models/inference_engines/common/hf_vision_base.py", line 63, in download_wrapper
+    return self.download_models(
+           ~~~~~~~~~~~~~~~~~~~~^
+        repo_id=download_repo_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        progress=False,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/docling/models/utils/hf_model_download.py", line 144, in download_models
+    return download_hf_model(
+        repo_id=repo_id,
+    ...<4 lines>...
+        trust_remote_code=trust_remote_code,
+    )
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/docling/models/utils/hf_model_download.py", line 116, in download_hf_model
+    download_path = snapshot_download(
+        repo_id=repo_id,
+    ...<2 lines>...
+        revision=revision,
+    )
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/huggingface_hub/utils/_http.py", line 266, in _inner
+    return fn(*args, **kwargs)
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/huggingface_hub/_snapshot_download.py", line 277, in snapshot_download
+    repo_info = api.repo_info(repo_id=repo_id, repo_type=repo_type, revision=revision)
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/huggingface_hub/hf_api.py", line 3643, in repo_info
+    return method(
+        repo_id,
+    ...<4 lines>...
+        files_metadata=files_metadata,
+    )
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/huggingface_hub/hf_api.py", line 3322, in model_info
+    r = get_session().get(path, headers=headers, timeout=timeout, params=params)
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/httpx/_client.py", line 1053, in get
+    return self.request(
+           ~~~~~~~~~~~~^
+        "GET",
+        ^^^^^^
+    ...<7 lines>...
+        extensions=extensions,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/tmp/claude-0/pt/v/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ProxyError: 403 Forbidden
+
+
+=== pymupdf4llm ===
+rapidocr_api using backend: rapidocr
+
+=== Document parser messages ===
+Using RapidOCR for OCR processing.
+OCR on page.number=5/6.
+OCR on page.number=25/26.
+OCR on page.number=27/28.
+OCR on page.number=33/34.
+OCR on page.number=50/51.
+pymupdf4llm: 25.03s, 127884 chars
+
+=== SUMMARY ===
+docling: 16.68s | 0 chars | ERROR
+pymupdf4llm: 25.03s | 127884 chars | ok

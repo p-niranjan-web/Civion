@@ -1,0 +1,19 @@
+{
+  "keywords_file": "C:\\Users\\IkramCC\\Downloads\\CIVION\\Civion\\Project civion\\experiments\\fallback_search\\keywords.json",
+  "null_params": [
+    "specified_grade",
+    "specified_characteristic_strength",
+    "specified_sigma",
+    "specified_max_cement",
+    "freezing_thawing_exposure",
+    "measured_chloride_content",
+    "measured_so3_percent",
+    "fire_resistance_rating",
+    "sampling_cube_size_mm",
+    "specified_sampling_sets",
+    "total_volume_m3",
+    "member_covers.Beams",
+    "member_covers.Columns",
+    "member_covers.Slabs"
+  ]
+}

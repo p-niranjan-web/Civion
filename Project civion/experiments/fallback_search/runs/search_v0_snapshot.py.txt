@@ -1,0 +1,216 @@
+"""Per-parameter fallback keyword search over a Docling-parsed spec (Markdown).
+
+When the LLM extraction returns MISSING for a parameter, this search runs over
+the rest of the document for that one parameter and returns candidate units
+(sentence / list item / table row) that contain a term AND a value hint
+(or just a term, for descriptive parameters) and no exclude phrase.
+
+Stdlib only. Usage:
+    python search.py --doc ../parse_test/docling_output.md --keywords keywords.json
+    python search.py --doc ... --keywords ... --param specified_wc
+    python search.py --doc ... --keywords ... --out hits.json
+"""
+import argparse
+import json
+import re
+import sys
+
+# ---------------------------------------------------------------------------
+# Normalization
+# ---------------------------------------------------------------------------
+_CHAR_MAP = {
+    "\u00b3": "3", "\u00b2": "2", "\u2083": "3", "\u2084": "4", "\u2082": "2",
+    "\u2013": "-", "\u2014": "-", "\u2212": "-", "\u2010": "-", "\u2011": "-",
+    "\u2018": "'", "\u2019": "'", "\u201c": '"', "\u201d": '"',
+    "\u00a0": " ", "\u00d7": "x",
+}
+
+
+def normalize(text):
+    """Lowercase, map unicode super/subscripts and dashes, treat a hyphen
+    between letters as a space (water-cement == water cement), collapse
+    whitespace."""
+    text = "".join(_CHAR_MAP.get(c, c) for c in text).lower()
+    text = re.sub(r"(?<=[a-z])\s*-\s*(?=[a-z])", " ", text)
+    text = text.replace("&amp;", "&")
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def term_regex(term):
+    t = normalize(term)
+    body = r"\s*".join(re.escape(p) for p in t.split(" ")) if " " in t else re.escape(t)
+    left = r"(?<![a-z0-9])" if re.match(r"[a-z0-9]", t) else ""
+    right = r"(?![a-z0-9])" if re.search(r"[a-z0-9]$", t) else ""
+    return re.compile(left + body + right)
+
+
+# ---------------------------------------------------------------------------
+# Unit splitting
+# ---------------------------------------------------------------------------
+_ABBREV = ("cl.", "no.", "nos.", "e.g.", "i.e.", "viz.", "fig.", "approx.", "min.",
+           "max.", "max", "min", "etc.", "vol.", "ref.", "sec.", "para.", "dia.", "mm.", "st.")
+
+
+def split_sentences(text):
+    """Split a paragraph on . ; ? ! followed by space + capital/opening bracket,
+    without splitting decimals or common abbreviations (Cl. 5.4, No. 2, e.g.)."""
+    out, start = [], 0
+    for m in re.finditer(r"[.;?!]\s+(?=[A-Z(\[\"'])", text):
+        end = m.start() + 1
+        last_word = text[start:end].split()[-1].lower() if text[start:end].split() else ""
+        if last_word in _ABBREV or re.fullmatch(r"[a-z]\.", last_word) or re.fullmatch(r"\(?[0-9ivx]+[.)]", last_word):
+            continue
+        out.append(text[start:end].strip())
+        start = m.end()
+    tail = text[start:].strip()
+    if tail:
+        out.append(tail)
+    return [s for s in out if s]
+
+
+def _cells(line):
+    return [c.strip() for c in line.strip().strip("|").split("|")]
+
+
+def build_units(md_text):
+    """Return a list of units: {id, line, kind, text, context}.
+    `text` is what the unit itself says; `context` is extra text carried for
+    matching only (a table row carries its table's caption and header)."""
+    md_text = md_text.replace("<!-- image -->", "")
+    lines = md_text.splitlines()
+    units = []
+    last_caption = ""
+    i = 0
+    while i < len(lines):
+        raw = lines[i]
+        s = raw.strip()
+        if not s:
+            i += 1
+            continue
+        if s.startswith("|"):
+            # Table block
+            block = []
+            while i < len(lines) and lines[i].strip().startswith("|"):
+                block.append((i + 1, lines[i]))
+                i += 1
+            header = None
+            for ln, row in block:
+                if re.fullmatch(r"\|?[\s:\-|]+\|?", row.strip()):
+                    continue
+                cells = _cells(row)
+                # Docling repeats merged cells; de-duplicate consecutive repeats
+                dedup = [c for k, c in enumerate(cells) if c and (k == 0 or c != cells[k - 1])]
+                row_text = " | ".join(dedup)
+                if header is None:
+                    header = row_text
+                    units.append({"line": ln, "kind": "table_header", "text": row_text,
+                                  "context": last_caption})
+                    continue
+                units.append({"line": ln, "kind": "table_row", "text": row_text,
+                              "context": (last_caption + " || " + header).strip(" |")})
+            continue
+        if s.startswith("#"):
+            heading = s.lstrip("#").strip()
+            units.append({"line": i + 1, "kind": "heading", "text": heading, "context": ""})
+            last_caption = heading
+            i += 1
+            continue
+        m = re.match(r"^([-*+]|\d+[.)]|\([a-z0-9]+\)|[a-z][.)])\s+", s)
+        if m:
+            item = s
+            units.append({"line": i + 1, "kind": "list_item", "text": item, "context": ""})
+            last_caption = item[:200]
+            i += 1
+            continue
+        for sent in split_sentences(s):
+            units.append({"line": i + 1, "kind": "sentence", "text": sent, "context": ""})
+        last_caption = s[:200]
+        i += 1
+    for k, u in enumerate(units):
+        u["id"] = k
+    return units
+
+
+# ---------------------------------------------------------------------------
+# Matching
+# ---------------------------------------------------------------------------
+def compile_keywords(kw):
+    macros = kw.get("hint_macros", {})
+
+    def expand(h):
+        return re.compile(macros[h] if h in macros else h)
+
+    ge = kw.get("global_exclude", {})
+    g = {
+        "code_line": re.compile(ge["code_line_regex"]) if ge.get("code_line_regex") else None,
+        "req_words": [term_regex(w) for w in ge.get("requirement_words", [])],
+        "extra": [re.compile(p) for p in ge.get("extra_regex", [])],
+    }
+    params = {}
+    for name, p in kw["parameters"].items():
+        params[name] = {
+            "terms": [(t, term_regex(t)) for t in p["terms"]],
+            "hints": [(h, expand(h)) for h in p.get("value_hints", [])],
+            "exclude": [(e, term_regex(e)) for e in p.get("exclude", [])],
+            "descriptive": bool(p.get("descriptive")),
+            "term_in_text": bool(p.get("term_in_unit_text", False)),
+        }
+    return g, params
+
+
+def globally_excluded(norm_text, g):
+    if g["code_line"] and g["code_line"].search(norm_text):
+        if not any(r.search(norm_text) for r in g["req_words"]):
+            return "reference_line"
+    for r in g["extra"]:
+        if r.search(norm_text):
+            return "extra:" + r.pattern
+    return None
+
+
+def search(units, g, p):
+    hits = []
+    for u in units:
+        own = normalize(u["text"])
+        full = normalize((u["context"] + " || " + u["text"]) if u["context"] else u["text"])
+        if globally_excluded(own, g):
+            continue
+        term_space = own if p["term_in_text"] else full
+        terms = [t for t, r in p["terms"] if r.search(term_space)]
+        if not terms:
+            continue
+        if any(r.search(own) for _, r in p["exclude"]):
+            continue
+        # A table row may take its unit (mg/l, kg/m3) from the header, but the
+        # row itself must hold a number - a header alone carries no value.
+        hints = [h for h, r in p["hints"] if r.search(full)]
+        if not p["descriptive"] and (not hints or not re.search(r"\d", own)):
+            continue
+        hits.append({"id": u["id"], "line": u["line"], "kind": u["kind"], "text": u["text"],
+                     "context": u["context"], "terms": terms, "hints": hints})
+    return hits
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--doc", required=True)
+    ap.add_argument("--keywords", required=True)
+    ap.add_argument("--param", action="append")
+    ap.add_argument("--out")
+    args = ap.parse_args(argv)
+    with open(args.doc, encoding="utf-8") as f:
+        units = build_units(f.read())
+    with open(args.keywords, encoding="utf-8") as f:
+        g, params = compile_keywords(json.load(f))
+    names = args.param or list(params)
+    result = {n: search(units, g, params[n]) for n in names}
+    if args.out:
+        with open(args.out, "w", encoding="utf-8") as f:
+            json.dump({"n_units": len(units), "hits": result}, f, indent=1, ensure_ascii=False)
+    for n in names:
+        print(f"{n}: {len(result[n])} hits")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,0 +1,74 @@
+{
+  "specified_grade": null,
+  "specified_characteristic_strength": null,
+  "specified_sigma": null,
+  "specified_min_cement": 290,
+  "specified_max_cement": null,
+  "specified_wc": 0.55,
+  "freezing_thawing_exposure": null,
+  "measured_chloride_content": null,
+  "measured_so3_percent": null,
+  "cement_type": "OPC",
+  "water_ph": 6.0,
+  "water_organic_mg_l": 200.0,
+  "water_inorganic_mg_l": 3000.0,
+  "water_sulphates_mg_l": 500.0,
+  "water_chlorides_mg_l": 1000.0,
+  "water_suspended_matter_mg_l": 2000.0,
+  "mixing_time_minutes": 2,
+  "transport_time_minutes": 30,
+  "compaction_method": "mechanical vibrator",
+  "specified_slump_mm": 35,
+  "curing_days": 7,
+  "member_covers": null,
+  "fire_resistance_rating": null,
+  "sampling_cube_size_mm": null,
+  "specified_sampling_sets": null,
+  "total_volume_m3": null,
+  "formwork_removal_hours": null,
+  "formwork_removal_days": null,
+  "formwork_span_m": null,
+  "soil_total_so3_percent": null,
+  "soil_extract_2_1_so3_gl": null,
+  "groundwater_so3_gl": null,
+  "exposure": "Moderate",
+  "concrete_type": "Reinforced Concrete",
+  "cross_references": [],
+  "source_quotes": {
+    "specified_min_cement": "| Moderate - for example, sheltered from heavy and wind driven rain and against freezing, whilst saturated with water; buried concrete in soil and concrete continuously under water. | 250 | 0.6 | 290 | 0.55 |",
+    "specified_wc": "| Moderate - for example, sheltered from heavy and wind driven rain and against freezing, whilst saturated with water; buried concrete in soil and concrete continuously under water. | 250 | 0.6 | 290 | 0.55 |",
+    "cement_type": "A. Cement shall be ordinary Portland cement conforming to IS 269 for all purpose unless specified differently.",
+    "water_ph": "The PH value of water shall not be less than 6 and more than 9.",
+    "water_organic_mg_l": "Organic            | 200 mg/l",
+    "water_inorganic_mg_l": "Inorganic          | 3000 mg/l",
+    "water_sulphates_mg_l": "Sulphates (as SO4) | 500 mg/l",
+    "water_chlorides_mg_l": "Chlorides (as C1)  | 2000 mg/l for plain concrete work and 1000 mg/l for reinforced concrete work",
+    "water_suspended_matter_mg_l": "Suspended matter   | 2000 mg/l",
+    "mixing_time_minutes": "The mixer shall be run for a minimum period of 2 minutes after all materials are loaded in full quantity.",
+    "transport_time_minutes": "Concrete shall be placed in position within 30 minutes from the time it is produced.",
+    "compaction_method": "Concrete shall be thoroughly compacted, as depositing shall proceed by means of suitable vibrators.",
+    "specified_slump_mm": "The slump shall be 25 mm to 35 mm depending upon the location and type of Work.",
+    "curing_days": "Starting 24 hours after placement of the concrete, the surface shall be cured by flooding with water or covering with damp Hessian cloth for a period of 7 days to keep it moist.",
+    "exposure": "Exposure condition determined outside the document: Moderate",
+    "concrete_type": "Concrete type determined outside the document: Reinforced Concrete"
+  },
+  "conflicts": [
+    {
+      "field": "specified_wc",
+      "group": "durability",
+      "chosen": 0.55,
+      "candidates": [
+        {
+          "batch": 0,
+          "value": 0.55,
+          "quote": "| Moderate - for example, sheltered from heavy and wind driven rain and against freezing, whilst saturated with water; buried concrete in soil and concrete continuously under water. | 250 | 0.6 | 290 | 0.55 |"
+        },
+        {
+          "batch": 2,
+          "value": 0.52,
+          "quote": "The water cement ratio shall be between 0.5 to 0.52."
+        }
+      ]
+    }
+  ]
+}

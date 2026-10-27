@@ -66,10 +66,10 @@ OUTLINE:
 EFFORT = "medium"
 
 
-def main():
+def main(out_dir=OUT_DIR):
     t0 = time.perf_counter()
-    sections = read_json(OUT_DIR / "sections.json")
-    outline = (OUT_DIR / "outline.txt").read_text(encoding="utf-8")
+    sections = read_json(out_dir / "sections.json")
+    outline = (out_dir / "outline.txt").read_text(encoding="utf-8")
     groups_txt = "\n".join(f"  - {k}: {v}" for k, v in GROUPS.items())
     result, call = call_groq("localize", SYSTEM, PROMPT.format(groups=groups_txt, outline=outline),
                              expected_completion=2500, reasoning_effort=EFFORT)
@@ -116,7 +116,7 @@ def main():
             continue
         md_parts.append(f"## [{it['id']}] {' > '.join(it['heading_path'])}\n\n{it['text']}\n")
     localized_md = "\n".join(md_parts)
-    (OUT_DIR / "localized.md").write_text(localized_md, encoding="utf-8")
+    (out_dir / "localized.md").write_text(localized_md, encoding="utf-8")
 
     not_sel = []
     for s in sections:
@@ -126,12 +126,12 @@ def main():
         for t in s["tables"]:
             if t["id"] not in picked and s["id"] not in picked:
                 not_sel.append(f"{t['id']} {' > '.join(s['heading_path'])} > [TABLE] {t['caption'] or '(no caption)'}")
-    (OUT_DIR / "not_selected.txt").write_text("\n".join(not_sel) + "\n", encoding="utf-8")
+    (out_dir / "not_selected.txt").write_text("\n".join(not_sel) + "\n", encoding="utf-8")
 
     out = {"call": call, "selected": [{k: v for k, v in it.items() if k != "text"} for it in items],
            "unknown_ids_returned": unknown, "parents_added_by_rule": added_parents,
            "raw_model_output": result}
-    write_json(OUT_DIR / "selected.json", out)
+    write_json(out_dir / "selected.json", out)
     n_sel_sections = sum(1 for it in items if it["kind"] == "section")
     print(f"[localize] picked {len(picked)} ids -> {n_sel_sections} sections + "
           f"{len(items) - n_sel_sections} standalone tables; {len(localized_md)} chars; "

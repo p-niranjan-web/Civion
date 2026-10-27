@@ -200,11 +200,11 @@ def outline_text(sections):
     return "\n".join(out) + "\n"
 
 
-def main(src=OUT_DIR / "clean.md"):
-    clean_md = Path(src).read_text(encoding="utf-8")
+def main(src=None, out_dir=OUT_DIR):
+    clean_md = Path(src or out_dir / "clean.md").read_text(encoding="utf-8")
     sections = build(clean_md)
-    write_json(OUT_DIR / "sections.json", sections)
-    (OUT_DIR / "outline.txt").write_text(outline_text(sections), encoding="utf-8")
+    write_json(out_dir / "sections.json", sections)
+    (out_dir / "outline.txt").write_text(outline_text(sections), encoding="utf-8")
     n_tables = sum(len(s["tables"]) for s in sections)
     print(f"[sections] {len(sections)} sections, {n_tables} tables")
     return {"sections": len(sections), "tables": n_tables}

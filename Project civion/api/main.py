@@ -1,12 +1,11 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException, Form
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse, FileResponse
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 import os
 import tempfile
 import json
 import io
-import uuid
 from fpdf import FPDF
 
 from parser import parse_user_specification
@@ -319,27 +318,17 @@ async def report_optimized(payload: dict):
             pdf.cell(col_widths[3], 8, trunc(status, 20), border=1)
             pdf.ln()
             
-        file_id = str(uuid.uuid4())
-        # Use /tmp for serverless functions compliance
-        temp_dir = tempfile.gettempdir()
-        file_path = os.path.join(temp_dir, f"{file_id}.pdf")
-        
-        pdf.output(file_path)
-        
-        # Return a relative download endpoint so it works correctly under Vercel routes
-        return {"download_url": f"/api/downloads/{file_id}"}
+        pdf_bytes = pdf.output()
+        return StreamingResponse(
+            io.BytesIO(pdf_bytes),
+            media_type="application/pdf",
+            headers={"Content-Disposition": "attachment; filename=Optimized_Specification.pdf"}
+        )
     except Exception as e:
         import traceback
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/api/downloads/{file_id}")
-async def get_download(file_id: str):
-    temp_dir = tempfile.gettempdir()
-    file_path = os.path.join(temp_dir, f"{file_id}.pdf")
-    if os.path.exists(file_path):
-        return FileResponse(file_path, media_type="application/pdf", filename="Optimized_Specification.pdf")
-    raise HTTPException(status_code=404, detail="File not found")
 @app.get("/")
 def read_root():
     return {"message": "Civion AI Backend is Running Successfully!"}

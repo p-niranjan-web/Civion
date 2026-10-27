@@ -1,0 +1,112 @@
+[
+  {
+    "field": "specified_min_cement",
+    "value": 290,
+    "quote": "| Moderate - for example, sheltered from heavy and wind driven rain and against freezing, whilst saturated with water; buried concrete in soil and concrete continuously under water. | 250 | 0.6 | 290 | 0.55 |",
+    "found": true,
+    "missing_fragments": []
+  },
+  {
+    "field": "specified_wc",
+    "value": 0.55,
+    "quote": "| Moderate - for example, sheltered from heavy and wind driven rain and against freezing, whilst saturated with water; buried concrete in soil and concrete continuously under water. | 250 | 0.6 | 290 | 0.55 |",
+    "found": true,
+    "missing_fragments": []
+  },
+  {
+    "field": "cement_type",
+    "value": "OPC",
+    "quote": "A. Cement shall be ordinary Portland cement conforming to IS 269 for all purpose unless specified differently.",
+    "found": true,
+    "missing_fragments": []
+  },
+  {
+    "field": "water_ph",
+    "value": 6.0,
+    "quote": "The PH value of water shall not be less than 6 and more than 9.",
+    "found": true,
+    "missing_fragments": []
+  },
+  {
+    "field": "water_organic_mg_l",
+    "value": 200.0,
+    "quote": "Organic            | 200 mg/l",
+    "found": true,
+    "missing_fragments": []
+  },
+  {
+    "field": "water_inorganic_mg_l",
+    "value": 3000.0,
+    "quote": "Inorganic          | 3000 mg/l",
+    "found": true,
+    "missing_fragments": []
+  },
+  {
+    "field": "water_sulphates_mg_l",
+    "value": 500.0,
+    "quote": "Sulphates (as SO4) | 500 mg/l",
+    "found": true,
+    "missing_fragments": []
+  },
+  {
+    "field": "water_chlorides_mg_l",
+    "value": 1000.0,
+    "quote": "Chlorides (as C1)  | 2000 mg/l for plain concrete work and 1000 mg/l for reinforced concrete work",
+    "found": true,
+    "missing_fragments": []
+  },
+  {
+    "field": "water_suspended_matter_mg_l",
+    "value": 2000.0,
+    "quote": "Suspended matter   | 2000 mg/l",
+    "found": true,
+    "missing_fragments": []
+  },
+  {
+    "field": "mixing_time_minutes",
+    "value": 2,
+    "quote": "The mixer shall be run for a minimum period of 2 minutes after all materials are loaded in full quantity.",
+    "found": true,
+    "missing_fragments": []
+  },
+  {
+    "field": "transport_time_minutes",
+    "value": 30,
+    "quote": "Concrete shall be placed in position within 30 minutes from the time it is produced.",
+    "found": true,
+    "missing_fragments": []
+  },
+  {
+    "field": "compaction_method",
+    "value": "mechanical vibrator",
+    "quote": "Concrete shall be thoroughly compacted, as depositing shall proceed by means of suitable vibrators.",
+    "found": true,
+    "missing_fragments": []
+  },
+  {
+    "field": "specified_slump_mm",
+    "value": 35,
+    "quote": "The slump shall be 25 mm to 35 mm depending upon the location and type of Work.",
+    "found": true,
+    "missing_fragments": []
+  },
+  {
+    "field": "curing_days",
+    "value": 7,
+    "quote": "Starting 24 hours after placement of the concrete, the surface shall be cured by flooding with water or covering with damp Hessian cloth for a period of 7 days to keep it moist.",
+    "found": true,
+    "missing_fragments": []
+  },
+  {
+    "field": "exposure",
+    "quote": "Exposure condition determined outside the document: Moderate",
+    "found": null,
+    "note": "stamped from CLI arg"
+  },
+  {
+    "field": "concrete_type",
+    "quote": "Concrete type determined outside the document: Reinforced Concrete",
+    "found": null,
+    "note": "stamped from CLI arg"
+  }
+]

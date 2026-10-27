@@ -211,9 +211,11 @@ function App() {
           optimized_ledger: data.ledger
         })
       });
-      const reportData = await reportRes.json();
-      setDownloadUrl(reportData.download_url);
-      
+      if (!reportRes.ok) throw new Error('Report generation failed');
+      const blob = await reportRes.blob();
+      const url = window.URL.createObjectURL(blob);
+      setDownloadUrl(url);
+
     } catch (err) {
       console.error(err);
       alert('Failed to optimize specs.');

@@ -1,0 +1,6 @@
+[clean] 137801 -> 136124 chars; 102 image markers; 0 header/footer lines (0 distinct)
+[sections] 62 sections, 17 tables
+  [call] localize: prompt=None completion=None wall=7.81s retries=0 ERROR=Error code: 400 - {'error': {'message': "Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'json_validate_failed', 'failed_generation': ''}}
+[localize] picked 0 ids -> 0 sections + 0 standalone tables; 0 chars; parents added by rule: []; unknown ids: []
+  [call] route[0]: prompt=3504 completion=944 wall=2.59s retries=0
+  [pace] 4448 tokens used in last 60s; sleeping 60.5s

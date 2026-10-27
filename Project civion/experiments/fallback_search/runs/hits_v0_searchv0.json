@@ -1,0 +1,1426 @@
+{
+ "n_units": 796,
+ "hits": {
+  "water_ph": [
+   {
+    "id": 341,
+    "line": 571,
+    "kind": "list_item",
+    "text": "3. The PH value of water shall not be less than 6 and more than 9.",
+    "context": "",
+    "terms": [
+     "ph",
+     "ph value"
+    ],
+    "hints": [
+     "@small_number"
+    ]
+   }
+  ],
+  "specified_grade": [
+   {
+    "id": 158,
+    "line": 281,
+    "kind": "list_item",
+    "text": "- a) Specified grade &lt; M70 (fck &lt; 70 MPa): Field test records, trial batches, or calculations prepared by and containing the seal of a qualified Professional Engineer licensed in India. (Submit Professional Engineer's credentials and license).",
+    "context": "",
+    "terms": [
+     "grade"
+    ],
+    "hints": [
+     "@grade"
+    ]
+   },
+   {
+    "id": 291,
+    "line": 490,
+    "kind": "table_row",
+    "text": "M 10 | 10",
+    "context": "[IS 456 - TABLE 2] || GRADE DESIGNATION | SPECIFIED CHARACTERISTIC COMPRESSIVE STRENGTH [N/mm 2 ] AT 28 DAYS",
+    "terms": [
+     "grade",
+     "characteristic compressive strength"
+    ],
+    "hints": [
+     "@grade"
+    ]
+   },
+   {
+    "id": 292,
+    "line": 491,
+    "kind": "table_row",
+    "text": "M 15 | 15",
+    "context": "[IS 456 - TABLE 2] || GRADE DESIGNATION | SPECIFIED CHARACTERISTIC COMPRESSIVE STRENGTH [N/mm 2 ] AT 28 DAYS",
+    "terms": [
+     "grade",
+     "characteristic compressive strength"
+    ],
+    "hints": [
+     "@grade"
+    ]
+   },
+   {
+    "id": 293,
+    "line": 492,
+    "kind": "table_row",
+    "text": "M 20 | 20",
+    "context": "[IS 456 - TABLE 2] || GRADE DESIGNATION | SPECIFIED CHARACTERISTIC COMPRESSIVE STRENGTH [N/mm 2 ] AT 28 DAYS",
+    "terms": [
+     "grade",
+     "characteristic compressive strength"
+    ],
+    "hints": [
+     "@grade"
+    ]
+   },
+   {
+    "id": 294,
+    "line": 493,
+    "kind": "table_row",
+    "text": "M 25 | 25",
+    "context": "[IS 456 - TABLE 2] || GRADE DESIGNATION | SPECIFIED CHARACTERISTIC COMPRESSIVE STRENGTH [N/mm 2 ] AT 28 DAYS",
+    "terms": [
+     "grade",
+     "characteristic compressive strength"
+    ],
+    "hints": [
+     "@grade"
+    ]
+   },
+   {
+    "id": 295,
+    "line": 494,
+    "kind": "table_row",
+    "text": "M 30 | 30",
+    "context": "[IS 456 - TABLE 2] || GRADE DESIGNATION | SPECIFIED CHARACTERISTIC COMPRESSIVE STRENGTH [N/mm 2 ] AT 28 DAYS",
+    "terms": [
+     "grade",
+     "characteristic compressive strength"
+    ],
+    "hints": [
+     "@grade"
+    ]
+   },
+   {
+    "id": 296,
+    "line": 495,
+    "kind": "table_row",
+    "text": "M 35 | 35",
+    "context": "[IS 456 - TABLE 2] || GRADE DESIGNATION | SPECIFIED CHARACTERISTIC COMPRESSIVE STRENGTH [N/mm 2 ] AT 28 DAYS",
+    "terms": [
+     "grade",
+     "characteristic compressive strength"
+    ],
+    "hints": [
+     "@grade"
+    ]
+   },
+   {
+    "id": 297,
+    "line": 496,
+    "kind": "table_row",
+    "text": "M 40 | 40",
+    "context": "[IS 456 - TABLE 2] || GRADE DESIGNATION | SPECIFIED CHARACTERISTIC COMPRESSIVE STRENGTH [N/mm 2 ] AT 28 DAYS",
+    "terms": [
+     "grade",
+     "characteristic compressive strength"
+    ],
+    "hints": [
+     "@grade"
+    ]
+   },
+   {
+    "id": 298,
+    "line": 497,
+    "kind": "table_row",
+    "text": "M 60 | 60",
+    "context": "[IS 456 - TABLE 2] || GRADE DESIGNATION | SPECIFIED CHARACTERISTIC COMPRESSIVE STRENGTH [N/mm 2 ] AT 28 DAYS",
+    "terms": [
+     "grade",
+     "characteristic compressive strength"
+    ],
+    "hints": [
+     "@grade"
+    ]
+   },
+   {
+    "id": 301,
+    "line": 507,
+    "kind": "list_item",
+    "text": "- NOTE - 3 Grades of concrete lower than M 15 shall not be used in reinforced concrete.",
+    "context": "",
+    "terms": [
+     "grades"
+    ],
+    "hints": [
+     "@grade"
+    ]
+   }
+  ],
+  "cement_type": [
+   {
+    "id": 104,
+    "line": 201,
+    "kind": "sentence",
+    "text": "Specification for sulfate-resisting Portland cement",
+    "context": "",
+    "terms": [
+     "sulfate resisting"
+    ],
+    "hints": []
+   },
+   {
+    "id": 134,
+    "line": 245,
+    "kind": "list_item",
+    "text": "- b. Recycled Content: Concrete products shall strive to achieve a fly ash content of above 30%, but shall not exceed the requirements of IS 1489 (Part 1).",
+    "context": "",
+    "terms": [
+     "fly ash"
+    ],
+    "hints": []
+   },
+   {
+    "id": 320,
+    "line": 538,
+    "kind": "table_header",
+    "text": "CLASS | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - TOTAL SO3 (PERCENT) | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - SO3 IN 2:1 WATER EXTRACT g/l | SULPHATES - IN GROUND WATER - (PARTS PER 100 000) | TYPE OF CEMENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MINIMUM CEMENT CONTENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MAXIMUM FREE WATER / CEMENT RATIO",
+    "context": "[SP - 23 - Table 24 &amp; IS 456 - Table 20]",
+    "terms": [
+     "type of cement"
+    ],
+    "hints": []
+   },
+   {
+    "id": 321,
+    "line": 540,
+    "kind": "table_row",
+    "text": "(1) | (2) | (3) | (4) | (5) | (6) | (7)",
+    "context": "[SP - 23 - Table 24 &amp; IS 456 - Table 20] || CLASS | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - TOTAL SO3 (PERCENT) | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - SO3 IN 2:1 WATER EXTRACT g/l | SULPHATES - IN GROUND WATER - (PARTS PER 100 000) | TYPE OF CEMENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MINIMUM CEMENT CONTENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MAXIMUM FREE WATER / CEMENT RATIO",
+    "terms": [
+     "type of cement"
+    ],
+    "hints": []
+   },
+   {
+    "id": 322,
+    "line": 541,
+    "kind": "table_row",
+    "text": "1) | Less than 0.2 | -- | Less than 30 | Ordinary Portland cement or Portland slag cement or Portland Pozzolana cement | 280 kg/m 3 | 0.55",
+    "context": "[SP - 23 - Table 24 &amp; IS 456 - Table 20] || CLASS | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - TOTAL SO3 (PERCENT) | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - SO3 IN 2:1 WATER EXTRACT g/l | SULPHATES - IN GROUND WATER - (PARTS PER 100 000) | TYPE OF CEMENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MINIMUM CEMENT CONTENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MAXIMUM FREE WATER / CEMENT RATIO",
+    "terms": [
+     "ordinary portland cement",
+     "portland pozzolana cement",
+     "portland slag cement",
+     "type of cement"
+    ],
+    "hints": []
+   },
+   {
+    "id": 323,
+    "line": 542,
+    "kind": "table_row",
+    "text": "2) | 0.2 to 0.5 | -- | 30 to 120 | Ordinary Portland cement or Portland slag cement or Portland Pozzolana cement Super sulphated cement | 330 kg/m 3 310 kg/m 3 | 0.50 0.50",
+    "context": "[SP - 23 - Table 24 &amp; IS 456 - Table 20] || CLASS | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - TOTAL SO3 (PERCENT) | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - SO3 IN 2:1 WATER EXTRACT g/l | SULPHATES - IN GROUND WATER - (PARTS PER 100 000) | TYPE OF CEMENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MINIMUM CEMENT CONTENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MAXIMUM FREE WATER / CEMENT RATIO",
+    "terms": [
+     "ordinary portland cement",
+     "portland pozzolana cement",
+     "portland slag cement",
+     "type of cement"
+    ],
+    "hints": []
+   },
+   {
+    "id": 324,
+    "line": 543,
+    "kind": "table_row",
+    "text": "3) | 0.5 to 1.0 | 1.9 to 3.1 | 120 to 250 | Super sulphated cement | 330 kg/m 3 | 0.50",
+    "context": "[SP - 23 - Table 24 &amp; IS 456 - Table 20] || CLASS | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - TOTAL SO3 (PERCENT) | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - SO3 IN 2:1 WATER EXTRACT g/l | SULPHATES - IN GROUND WATER - (PARTS PER 100 000) | TYPE OF CEMENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MINIMUM CEMENT CONTENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MAXIMUM FREE WATER / CEMENT RATIO",
+    "terms": [
+     "type of cement"
+    ],
+    "hints": []
+   },
+   {
+    "id": 326,
+    "line": 547,
+    "kind": "list_item",
+    "text": "- A. Cement shall be ordinary Portland cement conforming to IS 269 for all purpose unless specified differently. It shall be received in bags of 50 kg and each batch shall be accompanied with a test certificate of the factory. Also it shall be tested before use to ascertain its strength, setting time, etc. In no case shall cement that has been stored over 4 weeks be used unless tested as per the direction of the ER prior to use in the Work.",
+    "context": "",
+    "terms": [
+     "ordinary portland cement"
+    ],
+    "hints": []
+   },
+   {
+    "id": 329,
+    "line": 550,
+    "kind": "list_item",
+    "text": "1. 43 Grade ordinary Portland cement conforming to IS 8112",
+    "context": "",
+    "terms": [
+     "ordinary portland cement",
+     "43 grade"
+    ],
+    "hints": []
+   },
+   {
+    "id": 330,
+    "line": 551,
+    "kind": "list_item",
+    "text": "2. 53 Grade ordinary Portland cement conforming to IS 12269",
+    "context": "",
+    "terms": [
+     "ordinary portland cement",
+     "53 grade"
+    ],
+    "hints": []
+   },
+   {
+    "id": 331,
+    "line": 552,
+    "kind": "list_item",
+    "text": "3. Portland slag cement conforming to IS 455",
+    "context": "",
+    "terms": [
+     "portland slag cement"
+    ],
+    "hints": []
+   },
+   {
+    "id": 332,
+    "line": 560,
+    "kind": "list_item",
+    "text": "4. Portland pozzolana cement (fly ash based ) conforming to IS 1489 (Part-I)",
+    "context": "",
+    "terms": [
+     "portland pozzolana cement",
+     "fly ash"
+    ],
+    "hints": []
+   },
+   {
+    "id": 333,
+    "line": 561,
+    "kind": "list_item",
+    "text": "5. Portland pozzolana cement (calcined clay based ) conforming to IS 1489 (Pt -2)",
+    "context": "",
+    "terms": [
+     "portland pozzolana cement"
+    ],
+    "hints": []
+   },
+   {
+    "id": 334,
+    "line": 562,
+    "kind": "list_item",
+    "text": "6. Sulphate resisting Portland cement conforming to IS 12330",
+    "context": "",
+    "terms": [
+     "sulphate resisting"
+    ],
+    "hints": []
+   },
+   {
+    "id": 362,
+    "line": 600,
+    "kind": "list_item",
+    "text": "- D. Fly Ash: Shall conform to IS 3812 (Parts I and II) or ASTM C618, Class C or F except limit lignite ignition to maximum of 6% with maximum of (220kg/m 3 ). No additives or contaminants derived from the fly ash precipitation process that are detrimental to concrete (such as soda ash) are permitted. The fly ash producer shall have a minimum of 5 years' experience in the production of acceptable fly ash and shall maintain an effective quality control program to guard against contamination of the fly ash.",
+    "context": "",
+    "terms": [
+     "fly ash"
+    ],
+    "hints": []
+   },
+   {
+    "id": 364,
+    "line": 602,
+    "kind": "list_item",
+    "text": "- F. Compatibility of multiple admixtures, including fly ash, used in the same mix shall be certified",
+    "context": "",
+    "terms": [
+     "fly ash"
+    ],
+    "hints": []
+   },
+   {
+    "id": 533,
+    "line": 877,
+    "kind": "list_item",
+    "text": "2. For cements other than Ordinary Portland Cement, the stripping time recommended shall be suitably modified. The number, size and position of props left under shall be such as to be able to safely carry the dead load of the slab, beam or arch, together with any live load likely to occur during curing or further construction.",
+    "context": "",
+    "terms": [
+     "ordinary portland cement"
+    ],
+    "hints": []
+   }
+  ],
+  "specified_min_cement": [],
+  "specified_max_cement": [],
+  "specified_wc": [
+   {
+    "id": 311,
+    "line": 523,
+    "kind": "table_row",
+    "text": "Mild - for example, completely protected against weather, or aggressive conditions, except for a brief period of exposure to normal weather conditions during construction. | 220 | 0.7 | 250 | 0.65",
+    "context": "[SP - 23 - Table 23 &amp; IS 456 - Table 19] || EXPOSURE | PLAIN CONCRETE - MINIMUM CEMENT CONTENT | PLAIN CONCRETE - MAXIMUM WATER CEMENT RATIO | REINFORCED CONCRETE - MINIMUM CEMENT CONTENT | REINFORCED CONCRETE - MAXIMUM WATER CEMENT RATIO",
+    "terms": [
+     "water cement ratio"
+    ],
+    "hints": [
+     "@ratio"
+    ]
+   },
+   {
+    "id": 312,
+    "line": 524,
+    "kind": "table_row",
+    "text": "Moderate - for example, sheltered from heavy and wind driven rain and against freezing, whilst saturated with water; buried concrete in soil and concrete continuously under water. | 250 | 0.6 | 290 | 0.55",
+    "context": "[SP - 23 - Table 23 &amp; IS 456 - Table 19] || EXPOSURE | PLAIN CONCRETE - MINIMUM CEMENT CONTENT | PLAIN CONCRETE - MAXIMUM WATER CEMENT RATIO | REINFORCED CONCRETE - MINIMUM CEMENT CONTENT | REINFORCED CONCRETE - MAXIMUM WATER CEMENT RATIO",
+    "terms": [
+     "water cement ratio"
+    ],
+    "hints": [
+     "@ratio"
+    ]
+   },
+   {
+    "id": 313,
+    "line": 525,
+    "kind": "table_row",
+    "text": "Severe - For example, exposed to sea water, alternate wetting and drying and to freezing whilst wet, subject to heavy condensation or corrosive fumes. | 310 | 0.5 | 360 | 0.45",
+    "context": "[SP - 23 - Table 23 &amp; IS 456 - Table 19] || EXPOSURE | PLAIN CONCRETE - MINIMUM CEMENT CONTENT | PLAIN CONCRETE - MAXIMUM WATER CEMENT RATIO | REINFORCED CONCRETE - MINIMUM CEMENT CONTENT | REINFORCED CONCRETE - MAXIMUM WATER CEMENT RATIO",
+    "terms": [
+     "water cement ratio"
+    ],
+    "hints": [
+     "@ratio"
+    ]
+   },
+   {
+    "id": 322,
+    "line": 541,
+    "kind": "table_row",
+    "text": "1) | Less than 0.2 | -- | Less than 30 | Ordinary Portland cement or Portland slag cement or Portland Pozzolana cement | 280 kg/m 3 | 0.55",
+    "context": "[SP - 23 - Table 24 &amp; IS 456 - Table 20] || CLASS | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - TOTAL SO3 (PERCENT) | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - SO3 IN 2:1 WATER EXTRACT g/l | SULPHATES - IN GROUND WATER - (PARTS PER 100 000) | TYPE OF CEMENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MINIMUM CEMENT CONTENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MAXIMUM FREE WATER / CEMENT RATIO",
+    "terms": [
+     "free water"
+    ],
+    "hints": [
+     "@ratio"
+    ]
+   },
+   {
+    "id": 323,
+    "line": 542,
+    "kind": "table_row",
+    "text": "2) | 0.2 to 0.5 | -- | 30 to 120 | Ordinary Portland cement or Portland slag cement or Portland Pozzolana cement Super sulphated cement | 330 kg/m 3 310 kg/m 3 | 0.50 0.50",
+    "context": "[SP - 23 - Table 24 &amp; IS 456 - Table 20] || CLASS | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - TOTAL SO3 (PERCENT) | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - SO3 IN 2:1 WATER EXTRACT g/l | SULPHATES - IN GROUND WATER - (PARTS PER 100 000) | TYPE OF CEMENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MINIMUM CEMENT CONTENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MAXIMUM FREE WATER / CEMENT RATIO",
+    "terms": [
+     "free water"
+    ],
+    "hints": [
+     "@ratio"
+    ]
+   },
+   {
+    "id": 324,
+    "line": 543,
+    "kind": "table_row",
+    "text": "3) | 0.5 to 1.0 | 1.9 to 3.1 | 120 to 250 | Super sulphated cement | 330 kg/m 3 | 0.50",
+    "context": "[SP - 23 - Table 24 &amp; IS 456 - Table 20] || CLASS | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - TOTAL SO3 (PERCENT) | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - SO3 IN 2:1 WATER EXTRACT g/l | SULPHATES - IN GROUND WATER - (PARTS PER 100 000) | TYPE OF CEMENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MINIMUM CEMENT CONTENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MAXIMUM FREE WATER / CEMENT RATIO",
+    "terms": [
+     "free water"
+    ],
+    "hints": [
+     "@ratio"
+    ]
+   },
+   {
+    "id": 607,
+    "line": 995,
+    "kind": "list_item",
+    "text": "- d. For expected strength of cubes tested on the 28 th day the design mix at preliminary test and work site shall be as per IS 456, SP 23 and SP 24. The water cement ratio shall be between 0.5 to 0.52. Additional water may be permitted only at the discretion of the ER. The slump shall be 25 mm to 35 mm depending upon the location and type of Work. Higher slump with use of plasticizers shall be permitted.",
+    "context": "",
+    "terms": [
+     "water cement ratio"
+    ],
+    "hints": [
+     "@ratio"
+    ]
+   }
+  ],
+  "specified_characteristic_strength": [
+   {
+    "id": 158,
+    "line": 281,
+    "kind": "list_item",
+    "text": "- a) Specified grade &lt; M70 (fck &lt; 70 MPa): Field test records, trial batches, or calculations prepared by and containing the seal of a qualified Professional Engineer licensed in India. (Submit Professional Engineer's credentials and license).",
+    "context": "",
+    "terms": [
+     "fck",
+     "f ck"
+    ],
+    "hints": [
+     "@n_mm2"
+    ]
+   },
+   {
+    "id": 289,
+    "line": 487,
+    "kind": "table_header",
+    "text": "GRADE DESIGNATION | SPECIFIED CHARACTERISTIC COMPRESSIVE STRENGTH [N/mm 2 ] AT 28 DAYS",
+    "context": "[IS 456 - TABLE 2]",
+    "terms": [
+     "characteristic compressive strength",
+     "compressive strength"
+    ],
+    "hints": [
+     "@n_mm2"
+    ]
+   },
+   {
+    "id": 290,
+    "line": 489,
+    "kind": "table_row",
+    "text": "1 | 2 [N/mm 2 ]",
+    "context": "[IS 456 - TABLE 2] || GRADE DESIGNATION | SPECIFIED CHARACTERISTIC COMPRESSIVE STRENGTH [N/mm 2 ] AT 28 DAYS",
+    "terms": [
+     "characteristic compressive strength",
+     "compressive strength"
+    ],
+    "hints": [
+     "@n_mm2"
+    ]
+   },
+   {
+    "id": 291,
+    "line": 490,
+    "kind": "table_row",
+    "text": "M 10 | 10",
+    "context": "[IS 456 - TABLE 2] || GRADE DESIGNATION | SPECIFIED CHARACTERISTIC COMPRESSIVE STRENGTH [N/mm 2 ] AT 28 DAYS",
+    "terms": [
+     "characteristic compressive strength",
+     "compressive strength"
+    ],
+    "hints": [
+     "@n_mm2"
+    ]
+   },
+   {
+    "id": 292,
+    "line": 491,
+    "kind": "table_row",
+    "text": "M 15 | 15",
+    "context": "[IS 456 - TABLE 2] || GRADE DESIGNATION | SPECIFIED CHARACTERISTIC COMPRESSIVE STRENGTH [N/mm 2 ] AT 28 DAYS",
+    "terms": [
+     "characteristic compressive strength",
+     "compressive strength"
+    ],
+    "hints": [
+     "@n_mm2"
+    ]
+   },
+   {
+    "id": 293,
+    "line": 492,
+    "kind": "table_row",
+    "text": "M 20 | 20",
+    "context": "[IS 456 - TABLE 2] || GRADE DESIGNATION | SPECIFIED CHARACTERISTIC COMPRESSIVE STRENGTH [N/mm 2 ] AT 28 DAYS",
+    "terms": [
+     "characteristic compressive strength",
+     "compressive strength"
+    ],
+    "hints": [
+     "@n_mm2"
+    ]
+   },
+   {
+    "id": 294,
+    "line": 493,
+    "kind": "table_row",
+    "text": "M 25 | 25",
+    "context": "[IS 456 - TABLE 2] || GRADE DESIGNATION | SPECIFIED CHARACTERISTIC COMPRESSIVE STRENGTH [N/mm 2 ] AT 28 DAYS",
+    "terms": [
+     "characteristic compressive strength",
+     "compressive strength"
+    ],
+    "hints": [
+     "@n_mm2"
+    ]
+   },
+   {
+    "id": 295,
+    "line": 494,
+    "kind": "table_row",
+    "text": "M 30 | 30",
+    "context": "[IS 456 - TABLE 2] || GRADE DESIGNATION | SPECIFIED CHARACTERISTIC COMPRESSIVE STRENGTH [N/mm 2 ] AT 28 DAYS",
+    "terms": [
+     "characteristic compressive strength",
+     "compressive strength"
+    ],
+    "hints": [
+     "@n_mm2"
+    ]
+   },
+   {
+    "id": 296,
+    "line": 495,
+    "kind": "table_row",
+    "text": "M 35 | 35",
+    "context": "[IS 456 - TABLE 2] || GRADE DESIGNATION | SPECIFIED CHARACTERISTIC COMPRESSIVE STRENGTH [N/mm 2 ] AT 28 DAYS",
+    "terms": [
+     "characteristic compressive strength",
+     "compressive strength"
+    ],
+    "hints": [
+     "@n_mm2"
+    ]
+   },
+   {
+    "id": 297,
+    "line": 496,
+    "kind": "table_row",
+    "text": "M 40 | 40",
+    "context": "[IS 456 - TABLE 2] || GRADE DESIGNATION | SPECIFIED CHARACTERISTIC COMPRESSIVE STRENGTH [N/mm 2 ] AT 28 DAYS",
+    "terms": [
+     "characteristic compressive strength",
+     "compressive strength"
+    ],
+    "hints": [
+     "@n_mm2"
+    ]
+   },
+   {
+    "id": 298,
+    "line": 497,
+    "kind": "table_row",
+    "text": "M 60 | 60",
+    "context": "[IS 456 - TABLE 2] || GRADE DESIGNATION | SPECIFIED CHARACTERISTIC COMPRESSIVE STRENGTH [N/mm 2 ] AT 28 DAYS",
+    "terms": [
+     "characteristic compressive strength",
+     "compressive strength"
+    ],
+    "hints": [
+     "@n_mm2"
+    ]
+   },
+   {
+    "id": 299,
+    "line": 505,
+    "kind": "list_item",
+    "text": "- NOTE - 1 In the designation of a concrete of mix, letter M refers to the mix and the number to the specified characteristic compressive strength of 15 cm cube at 28 days, expressed in N/mm 2 .",
+    "context": "",
+    "terms": [
+     "characteristic compressive strength",
+     "compressive strength"
+    ],
+    "hints": [
+     "@n_mm2"
+    ]
+   }
+  ],
+  "specified_sigma": [],
+  "mixing_time_minutes": [
+   {
+    "id": 633,
+    "line": 1024,
+    "kind": "list_item",
+    "text": "4. The mixer shall be run for a minimum period of 2 minutes after all materials are loaded in full quantity. The concrete produced shall be uniform in colour and consistency.",
+    "context": "",
+    "terms": [
+     "mixer"
+    ],
+    "hints": [
+     "@minutes"
+    ]
+   }
+  ],
+  "transport_time_minutes": [
+   {
+    "id": 212,
+    "line": 361,
+    "kind": "list_item",
+    "text": "3. When the temperature is above (32 deg. C.), reduce the mixing/delivery time from 11/2 hrs. to 1-1/4 hrs. Cool forms to a maximum of (27 deg. C.) Cool concrete to maximum of (21 deg. C.) leaving the mixer.",
+    "context": "",
+    "terms": [
+     "delivery"
+    ],
+    "hints": [
+     "@hours"
+    ]
+   }
+  ],
+  "compaction_method": [
+   {
+    "id": 122,
+    "line": 226,
+    "kind": "list_item",
+    "text": "- h. ACI 309R \"Guide for Consolidation of Concrete\".",
+    "context": "",
+    "terms": [
+     "consolidation"
+    ],
+    "hints": []
+   },
+   {
+    "id": 129,
+    "line": 238,
+    "kind": "list_item",
+    "text": "1. Formwork Design: Design formwork, shoring and bracing to sustain construction and wind loads and maintain concrete lines and levels within concrete tolerances specified herein. Formwork types are labeled according to concrete surface finishes. Provide formwork types and construction to obtain the class of surface indicated and as required by referenced standards. Design forms to permit easy removal. Make the forms sufficiently rigid and strong enough to withstand, without leakage, the high hydraulic pressures which result from rapid filling and heavy high-frequency vibration. Deflection of each formwork component shall be limited to 1/360 of the component span due to hydraulic pressure of concrete.",
+    "context": "",
+    "terms": [
+     "vibration"
+    ],
+    "hints": []
+   },
+   {
+    "id": 320,
+    "line": 538,
+    "kind": "table_header",
+    "text": "CLASS | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - TOTAL SO3 (PERCENT) | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - SO3 IN 2:1 WATER EXTRACT g/l | SULPHATES - IN GROUND WATER - (PARTS PER 100 000) | TYPE OF CEMENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MINIMUM CEMENT CONTENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MAXIMUM FREE WATER / CEMENT RATIO",
+    "context": "[SP - 23 - Table 24 &amp; IS 456 - Table 20]",
+    "terms": [
+     "compacted"
+    ],
+    "hints": []
+   },
+   {
+    "id": 321,
+    "line": 540,
+    "kind": "table_row",
+    "text": "(1) | (2) | (3) | (4) | (5) | (6) | (7)",
+    "context": "[SP - 23 - Table 24 &amp; IS 456 - Table 20] || CLASS | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - TOTAL SO3 (PERCENT) | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - SO3 IN 2:1 WATER EXTRACT g/l | SULPHATES - IN GROUND WATER - (PARTS PER 100 000) | TYPE OF CEMENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MINIMUM CEMENT CONTENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MAXIMUM FREE WATER / CEMENT RATIO",
+    "terms": [
+     "compacted"
+    ],
+    "hints": []
+   },
+   {
+    "id": 322,
+    "line": 541,
+    "kind": "table_row",
+    "text": "1) | Less than 0.2 | -- | Less than 30 | Ordinary Portland cement or Portland slag cement or Portland Pozzolana cement | 280 kg/m 3 | 0.55",
+    "context": "[SP - 23 - Table 24 &amp; IS 456 - Table 20] || CLASS | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - TOTAL SO3 (PERCENT) | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - SO3 IN 2:1 WATER EXTRACT g/l | SULPHATES - IN GROUND WATER - (PARTS PER 100 000) | TYPE OF CEMENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MINIMUM CEMENT CONTENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MAXIMUM FREE WATER / CEMENT RATIO",
+    "terms": [
+     "compacted"
+    ],
+    "hints": []
+   },
+   {
+    "id": 323,
+    "line": 542,
+    "kind": "table_row",
+    "text": "2) | 0.2 to 0.5 | -- | 30 to 120 | Ordinary Portland cement or Portland slag cement or Portland Pozzolana cement Super sulphated cement | 330 kg/m 3 310 kg/m 3 | 0.50 0.50",
+    "context": "[SP - 23 - Table 24 &amp; IS 456 - Table 20] || CLASS | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - TOTAL SO3 (PERCENT) | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - SO3 IN 2:1 WATER EXTRACT g/l | SULPHATES - IN GROUND WATER - (PARTS PER 100 000) | TYPE OF CEMENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MINIMUM CEMENT CONTENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MAXIMUM FREE WATER / CEMENT RATIO",
+    "terms": [
+     "compacted"
+    ],
+    "hints": []
+   },
+   {
+    "id": 324,
+    "line": 543,
+    "kind": "table_row",
+    "text": "3) | 0.5 to 1.0 | 1.9 to 3.1 | 120 to 250 | Super sulphated cement | 330 kg/m 3 | 0.50",
+    "context": "[SP - 23 - Table 24 &amp; IS 456 - Table 20] || CLASS | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - TOTAL SO3 (PERCENT) | CONCENTRATION OF EXPRESSED AS SO3 - IN SOIL - SO3 IN 2:1 WATER EXTRACT g/l | SULPHATES - IN GROUND WATER - (PARTS PER 100 000) | TYPE OF CEMENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MINIMUM CEMENT CONTENT | REQUIREMENTS FOR DENSE FULLY COMPACTED CONCRETE MADE WITH AGGREGATE COMPLYING WITH IS : 383* - MAXIMUM FREE WATER / CEMENT RATIO",
+    "terms": [
+     "compacted"
+    ],
+    "hints": []
+   },
+   {
+    "id": 488,
+    "line": 810,
+    "kind": "list_item",
+    "text": "4. Set edge forms, bulkheads, and intermediate screed strips for slabs to achieve required elevations and slopes in finished concrete surfaces. Provide and secure units to support screed strips; use strike-off templates or compacting-type screeds.",
+    "context": "",
+    "terms": [
+     "compacting"
+    ],
+    "hints": []
+   },
+   {
+    "id": 493,
+    "line": 817,
+    "kind": "list_item",
+    "text": "2. Formwork shall be designed to withstand the worst combination of self-weight, reinforcement weight, wet concrete weight, concrete pressure, construction, seismic and wind loads together with dynamic effects caused by placing, vibrating and compacting the concrete. Forms shall be designed and constructed to maintain rigidity throughout the placing, ramming, vibration and setting of the concrete to the required shape, position and level and specified class of finish within the allowable tolerances.",
+    "context": "",
+    "terms": [
+     "compacting",
+     "vibration",
+     "ramming"
+    ],
+    "hints": []
+   },
+   {
+    "id": 497,
+    "line": 821,
+    "kind": "list_item",
+    "text": "6. Provide forms such that no discernible imperfections are in evidence in finished concrete surfaces due to deformation, bulging, jointing, or leakage of forms. Design forms to withstand the action of mechanical vibrators.",
+    "context": "",
+    "terms": [
+     "vibrators"
+    ],
+    "hints": []
+   },
+   {
+    "id": 551,
+    "line": 905,
+    "kind": "list_item",
+    "text": "- J. Formwork for Vibrated Concrete",
+    "context": "",
+    "terms": [
+     "vibrated"
+    ],
+    "hints": []
+   },
+   {
+    "id": 552,
+    "line": 906,
+    "kind": "list_item",
+    "text": "1. If external vibrators are to be used for compacting the concrete, appropriate type of vibrator, design of the formwork and the method of fixing the vibrators shall be used.",
+    "context": "",
+    "terms": [
+     "compacting",
+     "vibrator",
+     "vibrators"
+    ],
+    "hints": []
+   },
+   {
+    "id": 576,
+    "line": 949,
+    "kind": "list_item",
+    "text": "2. Greater horizontal distance should be provided. But when needle vibrators are used, distance between bars of a group may be reduced to two-third of the nominal maximum size of the coarse aggregate, provided sufficient space is left between groups of bars to enable the vibrator to be immersed.",
+    "context": "",
+    "terms": [
+     "vibrator",
+     "vibrators"
+    ],
+    "hints": []
+   },
+   {
+    "id": 604,
+    "line": 987,
+    "kind": "list_item",
+    "text": "- b. It shall be the responsibility of the Contractor to carry out design mixes and approval of the same shall be obtained from the ER at least 35 days in advance from the actual pouring of concrete at site in the permanent Work. The basic aim of mix design shall be to find the most economic proportion of cement, aggregates and water which will give the desired strength of concrete, proper workability and durability. Also it is important that the mix should be easily worked with the help of equipment available at site. The operations involved at site are, measurement of materials, their mixing, placing, compacting, finishing required and curing. The design shall be carried out strictly to IS specifications and IS code practice 456, SP 23 and SP 24.",
+    "context": "",
+    "terms": [
+     "compacting"
+    ],
+    "hints": []
+   },
+   {
+    "id": 614,
+    "line": 1002,
+    "kind": "list_item",
+    "text": "- e. Compacting factor",
+    "context": "",
+    "terms": [
+     "compacting"
+    ],
+    "hints": []
+   },
+   {
+    "id": 631,
+    "line": 1022,
+    "kind": "list_item",
+    "text": "2. The Contractor shall provide concrete batch mixers, vibrators, weight batches conforming to relevant IS specification. The capacity and number of mixers and vibrators required at site from time to time shall be to the approval of the ER. No equipment from site shall be removed without the prior written approval of the ER. The Contractor shall also maintain a platform weighing scale of capacity 300 kg with fraction upto 100 gms at the site.",
+    "context": "",
+    "terms": [
+     "vibrators"
+    ],
+    "hints": []
+   },
+   {
+    "id": 657,
+    "line": 1066,
+    "kind": "heading",
+    "text": "G. Compaction of Concrete",
+    "context": "",
+    "terms": [
+     "compaction"
+    ],
+    "hints": []
+   },
+   {
+    "id": 658,
+    "line": 1068,
+    "kind": "list_item",
+    "text": "1. Concrete shall be thoroughly compacted, as depositing shall proceed by means of suitable vibrators. The vibrators shall maintain the entire concrete under treatment in an adequate state of agitation that shall continue during the whole period of placing of concrete. Care shall be taken not to over- vibrate the concrete. While withdrawing needles no holes shall be visible in concrete. Compacting shall be completed before the initial setting time. Concrete already set shall not be disturbed by successive vibrations.",
+    "context": "",
+    "terms": [
+     "compacted",
+     "compacting",
+     "vibrators"
+    ],
+    "hints": []
+   },
+   {
+    "id": 659,
+    "line": 1069,
+    "kind": "list_item",
+    "text": "2. Insert and withdraw vibrators vertically drawing out entrapped air and excess water. Do not use vibrators to transport concrete within forms. Do not insert vibrators into lower layers of concrete that have begun to set. At each insertion limit duration of vibration to time necessary to consolidate concrete and complete embedment of reinforcement and other embedded items without causing segregation of mix. Pay particular attention to providing adequate vibration in the vicinity of sleeves and embeds in heavily reinforced elements and other elements as required. Provide form vibrators to ensure maximum density of concrete.",
+    "context": "",
+    "terms": [
+     "vibrators",
+     "vibration"
+    ],
+    "hints": []
+   },
+   {
+    "id": 660,
+    "line": 1070,
+    "kind": "list_item",
+    "text": "3. It shall be ensured that the needle vibrators are not applied to reinforcement, which may destroy the bond between concrete and reinforcement. When electric vibrators are in use, a standby petrol vibrator shall always be available at the concreting point.",
+    "context": "",
+    "terms": [
+     "vibrator",
+     "vibrators"
+    ],
+    "hints": []
+   },
+   {
+    "id": 705,
+    "line": 1145,
+    "kind": "list_item",
+    "text": "- D. Troweled Finish: Level surface and remove excess laitance by tamping, screeding, and preliminary wood floating. When the slab has hardened sufficiently so that water and fine material will not be worked to the top, compact the surface with disc type motor-driven floats. Cut down high spots and fill low spots. Trowel smooth with two steel troweling operations. Do the second troweling after the concrete has become so hard that no mortar will adhere to the edge of the trowel, and exert heavy pressure to thoroughly compact the surface. Leave floors with a smooth, hard finish free of blemishes and true to the maximum flatness tolerance specified. Grind surface defects that would telegraph through applied floor covering system smooth. Trowel finish surfaces scheduled to receive the following:",
+    "context": "",
+    "terms": [
+     "tamping"
+    ],
+    "hints": []
+   },
+   {
+    "id": 711,
+    "line": 1151,
+    "kind": "list_item",
+    "text": "- E. Float Finish: Level surface and remove excess laitance by tamping, screeding, and preliminary wood floating. When the slab has hardened sufficiently so that water and fine material will not be worked to the top, compact the surface with disc type motor-driven floats. Cut down high spots, fill low spots and leave floors with a smooth finish and true to the maximum flatness tolerance specified. Float finish surfaces scheduled to receive the following:",
+    "context": "",
+    "terms": [
+     "tamping"
+    ],
+    "hints": []
+   }
+  ],
+  "curing_days": [
+   {
+    "id": 197,
+    "line": 339,
+    "kind": "list_item",
+    "text": "- H. Pre-Construction Conference: At least 35 days prior to submitting the proposed mix designs, conduct a conference to review the proposed materials, mix designs, construction procedures and finishing systems for the concrete work. Topics to include but are not limited to pour sequence, trade placement sequence, shoring/reshoring sequence, slab surveys, and highlight of all requirements the Contractor or subcontractor has taken exception to. The meeting shall be attended by the ER and representatives of the Testing Agencies and the subcontractors involved with supplying, conveying, placing, finishing, and curing the concrete. Furnish the conference agenda to attendees 20 days prior to the scheduled conference date. Meeting shall include the following:",
+    "context": "",
+    "terms": [
+     "curing"
+    ],
+    "hints": [
+     "@days"
+    ]
+   },
+   {
+    "id": 460,
+    "line": 750,
+    "kind": "list_item",
+    "text": "- D. Grout: Free of gas-producing or gas-releasing agents, oxidizing catalysts, inorganic accelerators and chlorides. If requested by the ER, grout a sample (1.2m) x(1.2m) x (50mm) plate in the field and demonstrate a minimum of 95% bearing after curing 14 days. Cure grout in accordance with manufacturer's instructions.",
+    "context": "",
+    "terms": [
+     "curing",
+     "cure"
+    ],
+    "hints": [
+     "@days"
+    ]
+   },
+   {
+    "id": 604,
+    "line": 987,
+    "kind": "list_item",
+    "text": "- b. It shall be the responsibility of the Contractor to carry out design mixes and approval of the same shall be obtained from the ER at least 35 days in advance from the actual pouring of concrete at site in the permanent Work. The basic aim of mix design shall be to find the most economic proportion of cement, aggregates and water which will give the desired strength of concrete, proper workability and durability. Also it is important that the mix should be easily worked with the help of equipment available at site. The operations involved at site are, measurement of materials, their mixing, placing, compacting, finishing required and curing. The design shall be carried out strictly to IS specifications and IS code practice 456, SP 23 and SP 24.",
+    "context": "",
+    "terms": [
+     "curing"
+    ],
+    "hints": [
+     "@days"
+    ]
+   },
+   {
+    "id": 687,
+    "line": 1114,
+    "kind": "list_item",
+    "text": "1. After concrete has begun to harden i.e. about 1 to 2 hours after placement, it shall be protected from quick drying with moist or damped Hessian cloth or any other material approved by the ER. Starting 24 hours after placement of the concrete, the surface shall be cured by flooding with water or covering with damp Hessian cloth for a period of 7 days to keep it moist.",
+    "context": "",
+    "terms": [
+     "cured",
+     "moist"
+    ],
+    "hints": [
+     "@days"
+    ]
+   },
+   {
+    "id": 688,
+    "line": 1115,
+    "kind": "list_item",
+    "text": "2. For the next 7 days the surface shall be kept wet all the time by sprinkling water continuously.",
+    "context": "",
+    "terms": [
+     "kept wet"
+    ],
+    "hints": [
+     "@days"
+    ]
+   },
+   {
+    "id": 689,
+    "line": 1116,
+    "kind": "list_item",
+    "text": "3. For Mass Concrete: Curing period shall be 14 days.",
+    "context": "",
+    "terms": [
+     "curing"
+    ],
+    "hints": [
+     "@days"
+    ]
+   }
+  ],
+  "specified_slump_mm": [
+   {
+    "id": 607,
+    "line": 995,
+    "kind": "list_item",
+    "text": "- d. For expected strength of cubes tested on the 28 th day the design mix at preliminary test and work site shall be as per IS 456, SP 23 and SP 24. The water cement ratio shall be between 0.5 to 0.52. Additional water may be permitted only at the discretion of the ER. The slump shall be 25 mm to 35 mm depending upon the location and type of Work. Higher slump with use of plasticizers shall be permitted.",
+    "context": "",
+    "terms": [
+     "slump"
+    ],
+    "hints": [
+     "@mm"
+    ]
+   }
+  ],
+  "total_volume_m3": [
+   {
+    "id": 737,
+    "line": 1188,
+    "kind": "table_row",
+    "text": "Up to 5 cu.m. in a day | 15 cu.m. to 15 cu.m. | 2",
+    "context": "3.9 FIELD QUALITY CONTROL || Concrete quantity | Number of Samples.",
+    "terms": [
+     "concrete quantity"
+    ],
+    "hints": [
+     "@volume"
+    ]
+   },
+   {
+    "id": 738,
+    "line": 1189,
+    "kind": "table_row",
+    "text": "15 cu.m. to 30 cu.m. | 3",
+    "context": "3.9 FIELD QUALITY CONTROL || Concrete quantity | Number of Samples.",
+    "terms": [
+     "concrete quantity"
+    ],
+    "hints": [
+     "@volume"
+    ]
+   },
+   {
+    "id": 739,
+    "line": 1190,
+    "kind": "table_row",
+    "text": "30 cu.m. to 50 cu.m. | 4",
+    "context": "3.9 FIELD QUALITY CONTROL || Concrete quantity | Number of Samples.",
+    "terms": [
+     "concrete quantity"
+    ],
+    "hints": [
+     "@volume"
+    ]
+   },
+   {
+    "id": 740,
+    "line": 1191,
+    "kind": "table_row",
+    "text": "More than 50 cu.m. | 4 + one additional per each 50 cu.m. or part thereof.",
+    "context": "3.9 FIELD QUALITY CONTROL || Concrete quantity | Number of Samples.",
+    "terms": [
+     "concrete quantity"
+    ],
+    "hints": [
+     "@volume"
+    ]
+   },
+   {
+    "id": 764,
+    "line": 1228,
+    "kind": "table_row",
+    "text": "Up to 5 cu.m. in a day | 1",
+    "context": "- a. The minimum frequency of cube casting for testing shall be as follows. Each sample shall consist of 6 cubes. || Concrete quantity | Number of Samples.",
+    "terms": [
+     "concrete quantity"
+    ],
+    "hints": [
+     "@volume"
+    ]
+   },
+   {
+    "id": 765,
+    "line": 1229,
+    "kind": "table_row",
+    "text": "5 cu.m. to 15 cu.m. | 2",
+    "context": "- a. The minimum frequency of cube casting for testing shall be as follows. Each sample shall consist of 6 cubes. || Concrete quantity | Number of Samples.",
+    "terms": [
+     "concrete quantity"
+    ],
+    "hints": [
+     "@volume"
+    ]
+   },
+   {
+    "id": 766,
+    "line": 1230,
+    "kind": "table_row",
+    "text": "15 cu.m. to 30 cu.m. | 3",
+    "context": "- a. The minimum frequency of cube casting for testing shall be as follows. Each sample shall consist of 6 cubes. || Concrete quantity | Number of Samples.",
+    "terms": [
+     "concrete quantity"
+    ],
+    "hints": [
+     "@volume"
+    ]
+   },
+   {
+    "id": 767,
+    "line": 1231,
+    "kind": "table_row",
+    "text": "30 cu.m. to 50 cu.m. | 4",
+    "context": "- a. The minimum frequency of cube casting for testing shall be as follows. Each sample shall consist of 6 cubes. || Concrete quantity | Number of Samples.",
+    "terms": [
+     "concrete quantity"
+    ],
+    "hints": [
+     "@volume"
+    ]
+   },
+   {
+    "id": 768,
+    "line": 1232,
+    "kind": "table_row",
+    "text": "More than 50 cu.m. thereof. | 4 + one additional per each 50 cu.m. or part",
+    "context": "- a. The minimum frequency of cube casting for testing shall be as follows. Each sample shall consist of 6 cubes. || Concrete quantity | Number of Samples.",
+    "terms": [
+     "concrete quantity"
+    ],
+    "hints": [
+     "@volume"
+    ]
+   }
+  ],
+  "specified_sampling_sets": [
+   {
+    "id": 734,
+    "line": 1178,
+    "kind": "list_item",
+    "text": "5. The minimum frequency of cube casting for testing shall be as follows. Each sample shall consist of 6 cubes.",
+    "context": "",
+    "terms": [
+     "sample"
+    ],
+    "hints": [
+     "\\b\\d+\\s*(samples?|sets?|cubes?|specimens?)\\b"
+    ]
+   },
+   {
+    "id": 737,
+    "line": 1188,
+    "kind": "table_row",
+    "text": "Up to 5 cu.m. in a day | 15 cu.m. to 15 cu.m. | 2",
+    "context": "3.9 FIELD QUALITY CONTROL || Concrete quantity | Number of Samples.",
+    "terms": [
+     "samples",
+     "number of samples"
+    ],
+    "hints": [
+     "@volume"
+    ]
+   },
+   {
+    "id": 738,
+    "line": 1189,
+    "kind": "table_row",
+    "text": "15 cu.m. to 30 cu.m. | 3",
+    "context": "3.9 FIELD QUALITY CONTROL || Concrete quantity | Number of Samples.",
+    "terms": [
+     "samples",
+     "number of samples"
+    ],
+    "hints": [
+     "@volume"
+    ]
+   },
+   {
+    "id": 739,
+    "line": 1190,
+    "kind": "table_row",
+    "text": "30 cu.m. to 50 cu.m. | 4",
+    "context": "3.9 FIELD QUALITY CONTROL || Concrete quantity | Number of Samples.",
+    "terms": [
+     "samples",
+     "number of samples"
+    ],
+    "hints": [
+     "@volume"
+    ]
+   },
+   {
+    "id": 740,
+    "line": 1191,
+    "kind": "table_row",
+    "text": "More than 50 cu.m. | 4 + one additional per each 50 cu.m. or part thereof.",
+    "context": "3.9 FIELD QUALITY CONTROL || Concrete quantity | Number of Samples.",
+    "terms": [
+     "samples",
+     "number of samples"
+    ],
+    "hints": [
+     "@volume"
+    ]
+   },
+   {
+    "id": 762,
+    "line": 1224,
+    "kind": "list_item",
+    "text": "- a. The minimum frequency of cube casting for testing shall be as follows. Each sample shall consist of 6 cubes.",
+    "context": "",
+    "terms": [
+     "sample"
+    ],
+    "hints": [
+     "\\b\\d+\\s*(samples?|sets?|cubes?|specimens?)\\b"
+    ]
+   },
+   {
+    "id": 764,
+    "line": 1228,
+    "kind": "table_row",
+    "text": "Up to 5 cu.m. in a day | 1",
+    "context": "- a. The minimum frequency of cube casting for testing shall be as follows. Each sample shall consist of 6 cubes. || Concrete quantity | Number of Samples.",
+    "terms": [
+     "samples",
+     "sample",
+     "number of samples"
+    ],
+    "hints": [
+     "@volume",
+     "\\b\\d+\\s*(samples?|sets?|cubes?|specimens?)\\b"
+    ]
+   },
+   {
+    "id": 765,
+    "line": 1229,
+    "kind": "table_row",
+    "text": "5 cu.m. to 15 cu.m. | 2",
+    "context": "- a. The minimum frequency of cube casting for testing shall be as follows. Each sample shall consist of 6 cubes. || Concrete quantity | Number of Samples.",
+    "terms": [
+     "samples",
+     "sample",
+     "number of samples"
+    ],
+    "hints": [
+     "@volume",
+     "\\b\\d+\\s*(samples?|sets?|cubes?|specimens?)\\b"
+    ]
+   },
+   {
+    "id": 766,
+    "line": 1230,
+    "kind": "table_row",
+    "text": "15 cu.m. to 30 cu.m. | 3",
+    "context": "- a. The minimum frequency of cube casting for testing shall be as follows. Each sample shall consist of 6 cubes. || Concrete quantity | Number of Samples.",
+    "terms": [
+     "samples",
+     "sample",
+     "number of samples"
+    ],
+    "hints": [
+     "@volume",
+     "\\b\\d+\\s*(samples?|sets?|cubes?|specimens?)\\b"
+    ]
+   },
+   {
+    "id": 767,
+    "line": 1231,
+    "kind": "table_row",
+    "text": "30 cu.m. to 50 cu.m. | 4",
+    "context": "- a. The minimum frequency of cube casting for testing shall be as follows. Each sample shall consist of 6 cubes. || Concrete quantity | Number of Samples.",
+    "terms": [
+     "samples",
+     "sample",
+     "number of samples"
+    ],
+    "hints": [
+     "@volume",
+     "\\b\\d+\\s*(samples?|sets?|cubes?|specimens?)\\b"
+    ]
+   },
+   {
+    "id": 768,
+    "line": 1232,
+    "kind": "table_row",
+    "text": "More than 50 cu.m. thereof. | 4 + one additional per each 50 cu.m. or part",
+    "context": "- a. The minimum frequency of cube casting for testing shall be as follows. Each sample shall consist of 6 cubes. || Concrete quantity | Number of Samples.",
+    "terms": [
+     "samples",
+     "sample",
+     "number of samples"
+    ],
+    "hints": [
+     "@volume",
+     "\\b\\d+\\s*(samples?|sets?|cubes?|specimens?)\\b"
+    ]
+   }
+  ],
+  "sampling_cube_size_mm": [
+   {
+    "id": 607,
+    "line": 995,
+    "kind": "list_item",
+    "text": "- d. For expected strength of cubes tested on the 28 th day the design mix at preliminary test and work site shall be as per IS 456, SP 23 and SP 24. The water cement ratio shall be between 0.5 to 0.52. Additional water may be permitted only at the discretion of the ER. The slump shall be 25 mm to 35 mm depending upon the location and type of Work. Higher slump with use of plasticizers shall be permitted.",
+    "context": "",
+    "terms": [
+     "cubes"
+    ],
+    "hints": [
+     "@mm"
+    ]
+   }
+  ],
+  "measured_chloride_content": [
+   {
+    "id": 460,
+    "line": 750,
+    "kind": "list_item",
+    "text": "- D. Grout: Free of gas-producing or gas-releasing agents, oxidizing catalysts, inorganic accelerators and chlorides. If requested by the ER, grout a sample (1.2m) x(1.2m) x (50mm) plate in the field and demonstrate a minimum of 95% bearing after curing 14 days. Cure grout in accordance with manufacturer's instructions.",
+    "context": "",
+    "terms": [
+     "chlorides"
+    ],
+    "hints": [
+     "@percent"
+    ]
+   }
+  ],
+  "measured_so3_percent": [],
+  "fire_resistance_rating": [],
+  "member_covers": [
+   {
+    "id": 560,
+    "line": 923,
+    "kind": "list_item",
+    "text": "- B. Position, support, and secure reinforcement against displacement by formwork, construction, or concrete placement operations. Locate and support reinforcing with metal chairs, runners, bolsters, spacers, and hangers, as required. Place reinforcement to obtain the required minimum coverages for concrete protection. Arrange, space, and securely tie bar supports together with (1.6mm) wire to hold reinforcement accurately in position during concrete placement operations. Set wire ties so that twisted ends are directed away from exposed concrete surfaces.",
+    "context": "",
+    "terms": [
+     "spacers"
+    ],
+    "hints": [
+     "@mm"
+    ]
+   },
+   {
+    "id": 584,
+    "line": 959,
+    "kind": "list_item",
+    "text": "2. But in no case shall the cover be reduced by more than 5 mm of that specified. There shall be no compromise on cover for foundation work.",
+    "context": "",
+    "terms": [
+     "cover"
+    ],
+    "hints": [
+     "@mm"
+    ]
+   }
+  ],
+  "water_organic_mg_l": [
+   {
+    "id": 347,
+    "line": 581,
+    "kind": "table_row",
+    "text": "Organic | 200 mg/l",
+    "context": "PERMISSIBLE LIMITS FOR SOLIDS (IN WATER) || Permissible Limit, Maximum",
+    "terms": [
+     "organic"
+    ],
+    "hints": [
+     "@mg_l"
+    ]
+   }
+  ],
+  "water_inorganic_mg_l": [
+   {
+    "id": 348,
+    "line": 582,
+    "kind": "table_row",
+    "text": "Inorganic | 3000 mg/l",
+    "context": "PERMISSIBLE LIMITS FOR SOLIDS (IN WATER) || Permissible Limit, Maximum",
+    "terms": [
+     "inorganic"
+    ],
+    "hints": [
+     "@mg_l"
+    ]
+   }
+  ],
+  "water_sulphates_mg_l": [
+   {
+    "id": 349,
+    "line": 583,
+    "kind": "table_row",
+    "text": "Sulphates (as SO4) | 500 mg/l",
+    "context": "PERMISSIBLE LIMITS FOR SOLIDS (IN WATER) || Permissible Limit, Maximum",
+    "terms": [
+     "sulphates",
+     "so4",
+     "so 4"
+    ],
+    "hints": [
+     "@mg_l"
+    ]
+   }
+  ],
+  "water_chlorides_mg_l": [
+   {
+    "id": 350,
+    "line": 584,
+    "kind": "table_row",
+    "text": "Chlorides (as C1) | 2000 mg/l for plain concrete work and 1000 mg/l for reinforced concrete work",
+    "context": "PERMISSIBLE LIMITS FOR SOLIDS (IN WATER) || Permissible Limit, Maximum",
+    "terms": [
+     "chlorides"
+    ],
+    "hints": [
+     "@mg_l"
+    ]
+   }
+  ],
+  "water_suspended_matter_mg_l": [
+   {
+    "id": 351,
+    "line": 585,
+    "kind": "table_row",
+    "text": "Suspended matter | 2000 mg/l",
+    "context": "PERMISSIBLE LIMITS FOR SOLIDS (IN WATER) || Permissible Limit, Maximum",
+    "terms": [
+     "suspended matter",
+     "suspended"
+    ],
+    "hints": [
+     "@mg_l"
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,610 @@
+{
+ "v0": {
+  "water_ph": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "specified_grade": {
+   "hits": 10,
+   "relevant": 1,
+   "irrelevant": 9,
+   "found": true
+  },
+  "cement_type": {
+   "hits": 17,
+   "relevant": 12,
+   "irrelevant": 5,
+   "found": true
+  },
+  "specified_min_cement": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "specified_max_cement": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "specified_wc": {
+   "hits": 7,
+   "relevant": 7,
+   "irrelevant": 0,
+   "found": true
+  },
+  "specified_characteristic_strength": {
+   "hits": 12,
+   "relevant": 8,
+   "irrelevant": 4,
+   "found": true
+  },
+  "specified_sigma": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "mixing_time_minutes": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "transport_time_minutes": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "compaction_method": {
+   "hits": 22,
+   "relevant": 5,
+   "irrelevant": 17,
+   "found": true
+  },
+  "curing_days": {
+   "hits": 6,
+   "relevant": 3,
+   "irrelevant": 3,
+   "found": true
+  },
+  "specified_slump_mm": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "total_volume_m3": {
+   "hits": 9,
+   "relevant": 0,
+   "irrelevant": 9,
+   "found": false
+  },
+  "specified_sampling_sets": {
+   "hits": 11,
+   "relevant": 11,
+   "irrelevant": 0,
+   "found": true
+  },
+  "sampling_cube_size_mm": {
+   "hits": 1,
+   "relevant": 0,
+   "irrelevant": 1,
+   "found": false
+  },
+  "measured_chloride_content": {
+   "hits": 1,
+   "relevant": 0,
+   "irrelevant": 1,
+   "found": false
+  },
+  "measured_so3_percent": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "fire_resistance_rating": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "member_covers": {
+   "hits": 2,
+   "relevant": 1,
+   "irrelevant": 1,
+   "found": true
+  },
+  "water_organic_mg_l": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "water_inorganic_mg_l": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "water_sulphates_mg_l": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "water_chlorides_mg_l": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "water_suspended_matter_mg_l": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  }
+ },
+ "v0_kw_final_code": {
+  "water_ph": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "specified_grade": {
+   "hits": 10,
+   "relevant": 1,
+   "irrelevant": 9,
+   "found": true
+  },
+  "cement_type": {
+   "hits": 16,
+   "relevant": 12,
+   "irrelevant": 4,
+   "found": true
+  },
+  "specified_min_cement": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "specified_max_cement": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "specified_wc": {
+   "hits": 7,
+   "relevant": 7,
+   "irrelevant": 0,
+   "found": true
+  },
+  "specified_characteristic_strength": {
+   "hits": 11,
+   "relevant": 8,
+   "irrelevant": 3,
+   "found": true
+  },
+  "specified_sigma": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "mixing_time_minutes": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "transport_time_minutes": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "compaction_method": {
+   "hits": 20,
+   "relevant": 5,
+   "irrelevant": 15,
+   "found": true
+  },
+  "curing_days": {
+   "hits": 6,
+   "relevant": 3,
+   "irrelevant": 3,
+   "found": true
+  },
+  "specified_slump_mm": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "total_volume_m3": {
+   "hits": 9,
+   "relevant": 0,
+   "irrelevant": 9,
+   "found": false
+  },
+  "specified_sampling_sets": {
+   "hits": 11,
+   "relevant": 11,
+   "irrelevant": 0,
+   "found": true
+  },
+  "sampling_cube_size_mm": {
+   "hits": 1,
+   "relevant": 0,
+   "irrelevant": 1,
+   "found": false
+  },
+  "measured_chloride_content": {
+   "hits": 1,
+   "relevant": 0,
+   "irrelevant": 1,
+   "found": false
+  },
+  "measured_so3_percent": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "fire_resistance_rating": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "member_covers": {
+   "hits": 2,
+   "relevant": 1,
+   "irrelevant": 1,
+   "found": true
+  },
+  "water_organic_mg_l": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "water_inorganic_mg_l": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "water_sulphates_mg_l": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "water_chlorides_mg_l": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "water_suspended_matter_mg_l": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  }
+ },
+ "r1": {
+  "water_ph": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "specified_grade": {
+   "hits": 14,
+   "relevant": 3,
+   "irrelevant": 11,
+   "found": true
+  },
+  "cement_type": {
+   "hits": 16,
+   "relevant": 13,
+   "irrelevant": 3,
+   "found": true
+  },
+  "specified_min_cement": {
+   "hits": 9,
+   "relevant": 7,
+   "irrelevant": 2,
+   "found": true
+  },
+  "specified_max_cement": {
+   "hits": 9,
+   "relevant": 0,
+   "irrelevant": 9,
+   "found": false
+  },
+  "specified_wc": {
+   "hits": 8,
+   "relevant": 7,
+   "irrelevant": 1,
+   "found": true
+  },
+  "specified_characteristic_strength": {
+   "hits": 13,
+   "relevant": 10,
+   "irrelevant": 3,
+   "found": true
+  },
+  "specified_sigma": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "mixing_time_minutes": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "transport_time_minutes": {
+   "hits": 10,
+   "relevant": 2,
+   "irrelevant": 8,
+   "found": true
+  },
+  "compaction_method": {
+   "hits": 17,
+   "relevant": 5,
+   "irrelevant": 12,
+   "found": true
+  },
+  "curing_days": {
+   "hits": 3,
+   "relevant": 3,
+   "irrelevant": 0,
+   "found": true
+  },
+  "specified_slump_mm": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "total_volume_m3": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "specified_sampling_sets": {
+   "hits": 14,
+   "relevant": 13,
+   "irrelevant": 1,
+   "found": true
+  },
+  "sampling_cube_size_mm": {
+   "hits": 5,
+   "relevant": 2,
+   "irrelevant": 3,
+   "found": true
+  },
+  "measured_chloride_content": {
+   "hits": 2,
+   "relevant": 1,
+   "irrelevant": 1,
+   "found": true
+  },
+  "measured_so3_percent": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "fire_resistance_rating": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "member_covers": {
+   "hits": 3,
+   "relevant": 2,
+   "irrelevant": 1,
+   "found": true
+  },
+  "water_organic_mg_l": {
+   "hits": 3,
+   "relevant": 1,
+   "irrelevant": 2,
+   "found": true
+  },
+  "water_inorganic_mg_l": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "water_sulphates_mg_l": {
+   "hits": 2,
+   "relevant": 1,
+   "irrelevant": 1,
+   "found": true
+  },
+  "water_chlorides_mg_l": {
+   "hits": 2,
+   "relevant": 1,
+   "irrelevant": 1,
+   "found": true
+  },
+  "water_suspended_matter_mg_l": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  }
+ },
+ "final": {
+  "water_ph": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "specified_grade": {
+   "hits": 14,
+   "relevant": 3,
+   "irrelevant": 11,
+   "found": true
+  },
+  "cement_type": {
+   "hits": 16,
+   "relevant": 13,
+   "irrelevant": 3,
+   "found": true
+  },
+  "specified_min_cement": {
+   "hits": 8,
+   "relevant": 7,
+   "irrelevant": 1,
+   "found": true
+  },
+  "specified_max_cement": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "specified_wc": {
+   "hits": 7,
+   "relevant": 7,
+   "irrelevant": 0,
+   "found": true
+  },
+  "specified_characteristic_strength": {
+   "hits": 13,
+   "relevant": 10,
+   "irrelevant": 3,
+   "found": true
+  },
+  "specified_sigma": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "mixing_time_minutes": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "transport_time_minutes": {
+   "hits": 2,
+   "relevant": 2,
+   "irrelevant": 0,
+   "found": true
+  },
+  "compaction_method": {
+   "hits": 14,
+   "relevant": 5,
+   "irrelevant": 9,
+   "found": true
+  },
+  "curing_days": {
+   "hits": 3,
+   "relevant": 3,
+   "irrelevant": 0,
+   "found": true
+  },
+  "specified_slump_mm": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "total_volume_m3": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "specified_sampling_sets": {
+   "hits": 14,
+   "relevant": 13,
+   "irrelevant": 1,
+   "found": true
+  },
+  "sampling_cube_size_mm": {
+   "hits": 5,
+   "relevant": 2,
+   "irrelevant": 3,
+   "found": true
+  },
+  "measured_chloride_content": {
+   "hits": 2,
+   "relevant": 1,
+   "irrelevant": 1,
+   "found": true
+  },
+  "measured_so3_percent": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "fire_resistance_rating": {
+   "hits": 0,
+   "relevant": 0,
+   "irrelevant": 0,
+   "found": false
+  },
+  "member_covers": {
+   "hits": 3,
+   "relevant": 2,
+   "irrelevant": 1,
+   "found": true
+  },
+  "water_organic_mg_l": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "water_inorganic_mg_l": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "water_sulphates_mg_l": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "water_chlorides_mg_l": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  },
+  "water_suspended_matter_mg_l": {
+   "hits": 1,
+   "relevant": 1,
+   "irrelevant": 0,
+   "found": true
+  }
+ }
+}

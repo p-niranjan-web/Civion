@@ -1,0 +1,590 @@
+{
+  "_note": "v0 draft written from parser.py schema + database.py + general IS 456 / IS 383 / IS 516 / ACI / BS wording, BEFORE opening the BLR document; round-1 and round-2 edits per changes.md (final). Terms are plain phrases (case-insensitive, word-bounded, hyphens treated as spaces). value_hints are regexes over normalized lowercase text; '@name' refers to hint_macros. exclude entries are plain phrases.",
+  "hint_macros": {
+    "@kg_m3": "kg\\s*/\\s*(m\\s*3|m\\^3|cum|cu\\.?\\s*m|cubic\\s*m)|kg\\s*per\\s*(m\\s*3|cum|cu\\.?\\s*m|cubic)",
+    "@n_mm2": "n\\s*/\\s*mm\\s*2|\\bmpa\\b|n\\s*per\\s*(sq\\.?\\s*)?mm|kg\\s*/\\s*cm\\s*2",
+    "@mm": "\\b\\d+(\\.\\d+)?\\s*mm\\b",
+    "@mg_l": "mg\\s*/\\s*(l|lit|litre|liter|ltr)\\b|mg\\s*per\\s*lit|\\bppm\\b|parts\\s*per\\s*million",
+    "@minutes": "\\b\\d+(\\.\\d+)?\\s*(minutes?|mins?)\\b",
+    "@seconds": "\\b\\d+\\s*(seconds?|secs?)\\b",
+    "@hours": "\\b\\d+(\\.\\d+)?\\s*(hours?|hrs?|h)\\b",
+    "@days": "\\b\\d+\\s*days?\\b",
+    "@volume": "(?<![/\\d])\\b\\d[\\d,]*(\\.\\d+)?\\s*(m\\s*3\\b|cum\\b|cu\\.?\\s*m\\b|cubic\\s*met)",
+    "@percent": "\\d\\s*(%|per\\s*cent|percent)",
+    "@ratio": "(?<![\\d.])0?\\.\\d{1,3}\\b",
+    "@grade": "\\bm\\s*-?\\s*\\d{2}\\b",
+    "@small_number": "\\b(?:[3-9]|1[0-4])(?:\\.\\d+)?\\b"
+  },
+  "global_exclude": {
+    "_why": "Reference-list lines: a unit that starts with a code number (IS 456, BS 8110, ASTM C94...) and has no requirement wording is only a citation/title.",
+    "code_line_regex": "^\\W*((\\d+|[a-z])[.)]\\s*)?(is|bs|bs en|en|astm|aci|irc|sp|crsi|aashto)\\s*[:\\-]?\\s*\\d",
+    "requirement_words": [
+      "shall",
+      "should",
+      "must",
+      "not less than",
+      "not more than",
+      "not exceed",
+      "minimum",
+      "maximum",
+      "min.",
+      "max.",
+      "at least",
+      "limit"
+    ],
+    "title_line_regex": "^\\W*(specification for|specifications for|code of practice|method of test|methods of test|methods of testing|guide for|standard practice for|recommended practice)"
+  },
+  "parameters": {
+    "water_ph": {
+      "terms": [
+        "ph",
+        "ph value",
+        "ph of water",
+        "hydrogen ion concentration",
+        "acidity",
+        "alkalinity"
+      ],
+      "value_hints": [
+        "@small_number"
+      ],
+      "exclude": [],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "specified_grade": {
+      "terms": [
+        "grade of concrete",
+        "concrete grade",
+        "grade",
+        "grades",
+        "class of concrete",
+        "concrete class",
+        "mix",
+        "design mix",
+        "characteristic compressive strength"
+      ],
+      "value_hints": [
+        "@grade"
+      ],
+      "exclude": [
+        "bolt",
+        "bolts",
+        "threaded",
+        "fe",
+        "33 grade",
+        "43 grade",
+        "53 grade"
+      ],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "cement_type": {
+      "terms": [
+        "ordinary portland cement",
+        "opc",
+        "portland pozzolana cement",
+        "ppc",
+        "portland slag cement",
+        "psc",
+        "sulphate resisting",
+        "sulfate resisting",
+        "src",
+        "ggbs",
+        "ground granulated blast furnace slag",
+        "fly ash",
+        "pulverised fuel ash",
+        "pfa",
+        "type of cement",
+        "blended cement",
+        "43 grade",
+        "53 grade",
+        "mineral admixture",
+        "silica fume",
+        "microsilica",
+        "sulphate resistance",
+        "sulfate resistance",
+        "sulphate resistant",
+        "sulfate resistant",
+        "low heat",
+        "moderate heat",
+        "super sulphated",
+        "supersulphated",
+        "rapid hardening",
+        "white cement"
+      ],
+      "value_hints": [],
+      "exclude": [],
+      "descriptive": true
+    },
+    "specified_min_cement": {
+      "terms": [
+        "minimum cement content",
+        "min cement content",
+        "cement content",
+        "cementitious content",
+        "cementitious material content",
+        "cementitious materials content",
+        "binder content",
+        "minimum cementitious",
+        "quantity of cement",
+        "cement per cubic"
+      ],
+      "value_hints": [
+        "@kg_m3"
+      ],
+      "exclude": [],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "specified_max_cement": {
+      "terms": [
+        "maximum cement content",
+        "max cement content",
+        "maximum cementitious content",
+        "maximum cementitious material content",
+        "maximum binder content",
+        "re:cement(itious)?( material)? content[^.|]{0,60}(shall not exceed|not to exceed|not exceeding|not more than|should not exceed)",
+        "re:(maximum|max\\.?|upper limit)( of)?[^.|]{0,20}cement(itious)?( material)? content"
+      ],
+      "value_hints": [
+        "@kg_m3"
+      ],
+      "exclude": [],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "specified_wc": {
+      "terms": [
+        "water cement ratio",
+        "water/cement ratio",
+        "w/c",
+        "w/c ratio",
+        "water cementitious ratio",
+        "water/cementitious",
+        "water binder ratio",
+        "water/binder",
+        "w/b",
+        "free water",
+        "w/cm"
+      ],
+      "value_hints": [
+        "@ratio"
+      ],
+      "exclude": [],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "specified_characteristic_strength": {
+      "terms": [
+        "characteristic strength",
+        "characteristic compressive strength",
+        "fck",
+        "f ck",
+        "compressive strength",
+        "cube strength",
+        "28 day strength",
+        "28 days strength",
+        "crushing strength",
+        "specified strength"
+      ],
+      "value_hints": [
+        "@n_mm2"
+      ],
+      "exclude": [],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "specified_sigma": {
+      "terms": [
+        "standard deviation",
+        "assumed standard deviation",
+        "established standard deviation",
+        "sigma",
+        "σ",
+        "target mean strength",
+        "target strength",
+        "current margin",
+        "margin"
+      ],
+      "value_hints": [
+        "@n_mm2",
+        "@small_number"
+      ],
+      "exclude": [],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "mixing_time_minutes": {
+      "terms": [
+        "mixing time",
+        "mixed for",
+        "mixing shall be continued",
+        "mixing period",
+        "time of mixing",
+        "mixing",
+        "mixer",
+        "mixed"
+      ],
+      "value_hints": [
+        "@minutes",
+        "@seconds",
+        "\\b\\d+\\s*revolutions?\\b"
+      ],
+      "exclude": [],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "transport_time_minutes": {
+      "terms": [
+        "transport",
+        "transportation",
+        "transported",
+        "transporting",
+        "conveying",
+        "placed within",
+        "time between mixing and placing",
+        "delivery",
+        "discharged",
+        "discharge",
+        "ready mixed",
+        "ready mix",
+        "from the time",
+        "after mixing",
+        "of mixing",
+        "time of production",
+        "after batching",
+        "placed in position within",
+        "deposited within"
+      ],
+      "value_hints": [
+        "@minutes",
+        "@hours"
+      ],
+      "exclude": [],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "compaction_method": {
+      "terms": [
+        "compaction",
+        "compacted",
+        "compacting",
+        "vibrator",
+        "vibrators",
+        "vibrated",
+        "vibration",
+        "needle vibrator",
+        "immersion vibrator",
+        "poker",
+        "surface vibrator",
+        "form vibrator",
+        "rodding",
+        "tamping",
+        "ramming",
+        "consolidation",
+        "consolidated"
+      ],
+      "value_hints": [],
+      "exclude": [
+        "fully compacted",
+        "compacting factor",
+        "compacting type screeds",
+        "laitance"
+      ],
+      "descriptive": true
+    },
+    "curing_days": {
+      "terms": [
+        "curing",
+        "cured",
+        "cure",
+        "moist",
+        "kept wet",
+        "ponding",
+        "wet hessian",
+        "membrane curing",
+        "curing compound",
+        "water curing"
+      ],
+      "value_hints": [
+        "@days"
+      ],
+      "exclude": [
+        "striking",
+        "props",
+        "days prior",
+        "days in advance",
+        "grout"
+      ],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "specified_slump_mm": {
+      "terms": [
+        "slump",
+        "workability",
+        "compacting factor",
+        "flow table",
+        "vee bee",
+        "flow"
+      ],
+      "value_hints": [
+        "@mm"
+      ],
+      "exclude": [],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "total_volume_m3": {
+      "terms": [
+        "quantity of concrete",
+        "volume of concrete",
+        "total quantity",
+        "total volume",
+        "concrete quantity",
+        "pour",
+        "pours",
+        "estimated quantity"
+      ],
+      "value_hints": [
+        "@volume"
+      ],
+      "exclude": [],
+      "descriptive": false,
+      "exclude_context": [
+        "number of samples",
+        "sampling",
+        "frequency",
+        "samples"
+      ]
+    },
+    "specified_sampling_sets": {
+      "terms": [
+        "sampling",
+        "samples",
+        "sample",
+        "frequency of sampling",
+        "number of samples",
+        "sets of cubes",
+        "set of cubes",
+        "test specimens",
+        "specimens",
+        "random sampling",
+        "frequency of testing"
+      ],
+      "value_hints": [
+        "@volume",
+        "\\b\\d+\\s*(samples?|sets?|cubes?|specimens?)\\b",
+        "\\b(one|two|three|four|five|six)\\s+(additional\\s+)?(samples?|sets?|cubes?|specimens?)\\b"
+      ],
+      "exclude": [],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "sampling_cube_size_mm": {
+      "terms": [
+        "cube",
+        "cubes",
+        "test cube",
+        "test cubes",
+        "specimen",
+        "specimens",
+        "cube mould",
+        "cube moulds",
+        "cylinder",
+        "cylinders",
+        "molds",
+        "mold",
+        "moulds"
+      ],
+      "value_hints": [
+        "\\b\\d+(\\.\\d+)?\\s*(mm|cm)\\s*(\\w+\\s+){0,2}(cubes?|cylinders?|moulds?|molds?|specimens?)\\b",
+        "\\b(cubes?|cylinders?|moulds?|molds?|specimens?)\\s+(of\\s+)?(size\\s+)?\\d+(\\.\\d+)?\\s*(mm|cm)\\b",
+        "\\b\\d+\\s*x\\s*\\d+"
+      ],
+      "exclude": [],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "measured_chloride_content": {
+      "terms": [
+        "chloride content",
+        "chloride ion",
+        "chloride ions",
+        "total chloride",
+        "acid soluble chloride",
+        "water soluble chloride",
+        "chlorides",
+        "chloride",
+        "cl"
+      ],
+      "value_hints": [
+        "@kg_m3",
+        "@percent"
+      ],
+      "exclude": [
+        "mg/l",
+        "mg/litre",
+        "ppm"
+      ],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "measured_so3_percent": {
+      "terms": [
+        "so3",
+        "so 3",
+        "sulphate content",
+        "sulfate content",
+        "sulphuric anhydride",
+        "total sulphate",
+        "total sulfate",
+        "water soluble sulphate",
+        "sulphates",
+        "sulfates"
+      ],
+      "value_hints": [
+        "@percent"
+      ],
+      "exclude": [
+        "mg/l",
+        "g/l",
+        "soil",
+        "ground water",
+        "groundwater"
+      ],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "fire_resistance_rating": {
+      "terms": [
+        "fire resistance",
+        "fire rating",
+        "fire rated",
+        "fire resistant",
+        "frr",
+        "fire"
+      ],
+      "value_hints": [
+        "@hours",
+        "@minutes"
+      ],
+      "exclude": [],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "member_covers": {
+      "terms": [
+        "cover",
+        "covers",
+        "clear cover",
+        "nominal cover",
+        "concrete cover",
+        "cover to reinforcement",
+        "minimum cover",
+        "cover blocks",
+        "spacers"
+      ],
+      "value_hints": [
+        "@mm"
+      ],
+      "exclude": [],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "water_organic_mg_l": {
+      "terms": [
+        "organic",
+        "organic solids",
+        "organic matter"
+      ],
+      "value_hints": [
+        "@mg_l"
+      ],
+      "exclude": [
+        "aggregate",
+        "aggregates"
+      ],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "water_inorganic_mg_l": {
+      "terms": [
+        "inorganic",
+        "inorganic solids",
+        "inorganic matter",
+        "total dissolved solids",
+        "tds"
+      ],
+      "value_hints": [
+        "@mg_l"
+      ],
+      "exclude": [
+        "aggregate",
+        "aggregates"
+      ],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "water_sulphates_mg_l": {
+      "terms": [
+        "sulphates",
+        "sulfates",
+        "sulphate",
+        "sulfate",
+        "so4",
+        "so 4"
+      ],
+      "value_hints": [
+        "@mg_l"
+      ],
+      "exclude": [
+        "soil",
+        "aggregate",
+        "aggregates",
+        "sulphate resisting",
+        "sulfate resisting"
+      ],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "water_chlorides_mg_l": {
+      "terms": [
+        "chlorides",
+        "chloride",
+        "cl"
+      ],
+      "value_hints": [
+        "@mg_l"
+      ],
+      "exclude": [
+        "aggregate",
+        "aggregates",
+        "admixture",
+        "admixtures",
+        "calcium chloride"
+      ],
+      "descriptive": false,
+      "cross_ref": true
+    },
+    "water_suspended_matter_mg_l": {
+      "terms": [
+        "suspended matter",
+        "suspended solids",
+        "suspended",
+        "turbidity",
+        "tss"
+      ],
+      "value_hints": [
+        "@mg_l"
+      ],
+      "exclude": [
+        "aggregate",
+        "aggregates"
+      ],
+      "descriptive": false,
+      "cross_ref": true
+    }
+  },
+  "cross_ref_regex": "\\b(as|be)\\s+(specified|shown|indicated|detailed|given|stipulated|designated|listed)\\s+(in|on|by)\\s+(the\\s+)?(drawings?|tables?|is\\b|clause)|\\bstipulated in\\b|\\b(conform(s|ing)?|comply|complying|in accordance)\\s+(to|with)\\s+(the\\s+requirements\\s+(of|in)\\s+)?is\\s*:?\\s*\\d|\\btables?\\s*-*\\s*\\d+\\s*(herein|of is|below|above)|\\bas per (the )?(drawings?|is\\s*\\d|tables?)"
+}
