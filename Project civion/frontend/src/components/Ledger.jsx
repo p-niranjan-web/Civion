@@ -111,6 +111,11 @@ const Ledger = ({ auditData }) => {
                               "{item['Source Quote']}"
                             </div>
                           )}
+                          {item.Remark && (
+                            <div className="text-secondary" style={{ fontSize: '12px', fontFamily: 'inherit' }}>
+                              Remark: {item.Remark}
+                            </div>
+                          )}
                         </td>
                         <td className="text-secondary">
                           {item.Requirement}
