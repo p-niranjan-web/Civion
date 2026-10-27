@@ -10,12 +10,10 @@ the repo root. Nothing was moved; this file only says where things are and which
 | `Project civion/PROJECT_OVERVIEW.md` | How the pieces fit together (written before the shapes work) |
 | `Project civion/JOURNEY.md` | Owner's crisp history of stages, decisions and issues |
 | `Project civion/experiments/shapes/CHANGES_SHAPES.md` | Latest big change: parameter shapes, IS 383, references, remarks; tests and BLR before/after |
-| `Project civion/STATUS.md` | Latest status and answered/open questions (newer than CHANGES_SHAPES' open questions) |
 
 ## Problems and limitations
 | File | What it is |
 |---|---|
-| `Project civion/DIFFICULTIES_LOG.md` | Running log of problems hit while building (parsing, extraction, Groq limits) |
 | `Project civion/KNOWN_ISSUES.md` | Findings on the compliance engine (not all fixed; do not implement without owner's OK) |
 | `Project civion/experiments/shapes/LAYOUT_LIMITATIONS.md` | Spec layouts the fixed schema cannot handle |
 | `Project civion/experiments/shapes/doc_coverage.md` | Which parameters work in which spec (BLR measured; NMP, Colombo read) |
