@@ -41,7 +41,7 @@ SO3 fields are in `PARAMETERS` and are now asked for (v2 forced them null).
 | lite_cells | 3.5 Flash Lite | final | model copies cells | 30,028 / 5,707 / 0 | 11.3 s | 17 / 8 |
 | **main1** | 3.8 Flash | final | python | 30,045 / 4,323 / 7,920 | 226 s | **25 / 0** |
 | **main2** | 3.8 Flash | final | python | 30,045 / 4,419 / 8,875 | 361 s | **24 / 0** |
-| main_cells | 3.8 Flash | final | model copies cells | see section 5 | | |
+| main_cells | 3.8 Flash | final | model copies cells | 30,028 / 6,772 / 8,134 | 314 s | 24 / 0 |
 
 Prompt iteration was done on Flash Lite only. Lite fixes that carried over: lite1 took the grade (M25) from the
 document's list of all grades and missed the "cover as specified in the Drawings" reference; lite2 fixed both.
@@ -95,8 +95,12 @@ columns, Python reads cells" (run4_reader: 42/42).
 v4, whole document in one call:
 - python mode (default; main1, main2, lite1-3): 42/42 coarse, 28/28 fine, 11/11 all-in in every run.
   `tables_v4.py` finds the table by its column headers (no unit ids in v4).
-- model mode (Gemini copies the cells): lite_cells 42/42, 28/28, 11/11. main_cells: see the addendum at the end.
-Python mode stays the default: same result, and the quote is built from the document's own lines.
+- model mode (Gemini copies the cells): lite_cells 42/42, 28/28, 11/11; main_cells 42/42, 28/28, 11/11
+  (all 24 quotes found, audit counts identical to main1/main2).
+
+With the whole document, Gemini did not shift columns in either mode (one run each; v2's shift came from
+excerpts + a smaller model). Python mode stays the default: same result, the quote is built from the
+document's own lines, and it costs fewer output tokens (main_cells 6,772 vs 4,323-4,419).
 
 ## 6. Tokens and wall time (MEASURED: API usage fields; format of report_v2.md section 7)
 | Metric | v2 run4 | v4 main1 | v4 main2 |
