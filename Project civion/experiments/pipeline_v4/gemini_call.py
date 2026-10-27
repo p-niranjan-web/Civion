@@ -107,10 +107,12 @@ def quota_day_start():
 
 
 def used_today(model):
-    """Requests to `model` since the last quota reset. 429 answers are not counted
-    (rejected before the model ran); every other attempt is."""
+    """Requests to `model` since the last quota reset. 429 and 5xx answers are not
+    counted (rejected before the model ran, e.g. 503 "high demand"); every other
+    attempt is. If this undercounts, the server's per-day 429 stops the run."""
     start = quota_day_start()
-    return sum(1 for e in read_log() if e.get("model") == model and e.get("status") != "429"
+    return sum(1 for e in read_log() if e.get("model") == model
+               and not (e.get("status") == "429" or str(e.get("status", "")).startswith("5"))
                and datetime.fromisoformat(e["ts"]) >= start)
 
 
@@ -192,7 +194,13 @@ def call_gemini(name, model, system_prompt, user_prompt, max_retries=5, max_outp
             append_log(entry)
             summary.update(status=status, error=msg[:500])
             per_day = status == "429" and re.search(r"PerDay|per day|RequestsPerDay", msg, re.I)
-            retryable = status == "429" or (str(code).startswith("5") if code else False)
+            # No HTTP code = the connection failed (e.g. "Server disconnected without
+            # sending a response" after a long thinking call): retried like a 5xx.
+            network = code is None and re.search(r"disconnect|timed? ?out|connect|reset|protocol", msg, re.I)
+            if network:
+                status = entry["status"] = "network"
+                summary["status"] = status
+            retryable = status in ("429", "network") or (str(code).startswith("5") if code else False)
             if per_day or not retryable or attempt == max_retries:
                 if per_day:
                     print(f"  [429] {name}: per-day quota exhausted for {model}; not retrying")

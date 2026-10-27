@@ -16,7 +16,8 @@ from gemini_call import HERE
 from run_pipeline import audit_status  # experiments/pipeline
 from auditor import run_civion_audit
 from database import IS456_MASTER, PARAMETERS
-import verify
+import verify  # noqa: F401
+from run_v4 import check_quotes
 
 V2 = HERE.parent / "pipeline" / "output_v2"
 V4 = HERE / "output"
@@ -35,7 +36,7 @@ def load(spec):
     ext = json.loads((d / "extraction.json").read_text(encoding="utf-8"))
     text = (d / ("clean.md" if kind == "v2" else "doc.md")).read_text(encoding="utf-8")
     audit = run_civion_audit({k: v for k, v in ext.items() if k not in ("conflicts", "field_info")}, IS456_MASTER)
-    quotes = {q["field"]: q for q in verify.check_quotes(ext, text)}
+    quotes = {q["field"]: q for q in check_quotes(ext, text)}
     rows = {}
     for r in audit["ledger"]:
         rows.setdefault(r.get("Field") or r["Metric"], r)

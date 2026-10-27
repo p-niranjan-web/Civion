@@ -101,6 +101,22 @@ def to_contract(parsed, doc, exposure, concrete_type, table_mode):
     return ext, {"table_notes": notes, "unknown_keys": unknown}
 
 
+def check_quotes(ext, doc):
+    """verify.check_quotes, plus one v4 rule: verify.py treats any multi-line quote
+    as a table quote; a multi-line quote with no "|" is two or more sentences of
+    text, so each line is checked as a text quote (all must be found)."""
+    import verify
+    rows = verify.check_quotes(ext, doc)
+    doc_n = verify.norm(doc)
+    for r in rows:
+        q = str(r.get("quote") or "")
+        if r.get("kind") == "table" and "|" not in q:
+            results = [verify.quote_found(l, doc_n) for l in q.splitlines() if l.strip()]
+            r.update(kind="text_multiline", found=all(ok for ok, _ in results),
+                     missing_fragments=[m for _, ms in results for m in ms])
+    return rows
+
+
 def check_locations(ext, doc):
     """Each " > " segment of a field's location must appear in the document (normalized)."""
     import verify
@@ -116,7 +132,7 @@ def check_locations(ext, doc):
     return rows
 
 
-def run(run_name, role, exposure, concrete_type, table_mode, src, from_raw=None, thinking=None):
+def run(run_name, role, exposure, concrete_type, table_mode, src, from_raw=None, thinking=None, max_retries=5):
     from auditor import run_civion_audit
     from database import IS456_MASTER
     import verify
@@ -131,7 +147,8 @@ def run(run_name, role, exposure, concrete_type, table_mode, src, from_raw=None,
     (out_dir / "doc.md").write_text(doc, encoding="utf-8")
     system = prompt_v4.build_system(exposure, concrete_type, table_mode)
     user = prompt_v4.build_user(doc)
-    (out_dir / "prompt_system.txt").write_text(system, encoding="utf-8")
+    if not (from_raw and (out_dir / "prompt_system.txt").exists()):   # keep the prompt the answer came from
+        (out_dir / "prompt_system.txt").write_text(system, encoding="utf-8")
 
     if from_raw:
         src_dir = OUT / from_raw
@@ -144,7 +161,7 @@ def run(run_name, role, exposure, concrete_type, table_mode, src, from_raw=None,
               f"{left} of {limits_for(model)['rpd']} left before this call")
         if left <= 0:
             raise SystemExit("No daily budget left for this model.")
-        parsed, call = call_gemini(f"extract[{run_name}]", model, system, user, thinking=thinking)
+        parsed, call = call_gemini(f"extract[{run_name}]", model, system, user, thinking=thinking, max_retries=max_retries)
         if parsed is None:
             write_json(out_dir / "run_stats.json", {"call": call, "steps": st})
             raise SystemExit(f"Call failed: {call['status']} {call.get('error')}")
@@ -161,7 +178,7 @@ def run(run_name, role, exposure, concrete_type, table_mode, src, from_raw=None,
     write_json(out_dir / "audit.json", audit)
 
     t = time.perf_counter()
-    qc = verify.check_quotes(ext, doc)
+    qc = check_quotes(ext, doc)
     write_json(out_dir / "quote_check.json", qc)
     lc = check_locations(ext, doc)
     write_json(out_dir / "location_check.json", lc)
@@ -190,5 +207,6 @@ if __name__ == "__main__":
                     help="grading tables: model maps columns + Python reads cells, or model copies cells")
     ap.add_argument("--input", default=str(DEFAULT_IN))
     ap.add_argument("--from-raw", default=None, help="reuse output/<name>/response.json instead of calling")
+    ap.add_argument("--max-retries", type=int, default=5, help="retries on 429 / 5xx (backoff capped at 300 s)")
     a = ap.parse_args()
-    run(a.run_name, a.role, a.exposure, a.concrete_type, a.tables, a.input, a.from_raw)
+    run(a.run_name, a.role, a.exposure, a.concrete_type, a.tables, a.input, a.from_raw, max_retries=a.max_retries)

@@ -5,7 +5,7 @@
     "exposure": "Moderate",
     "concrete_type": "Reinforced Concrete",
     "table_mode": "python",
-    "from_raw": null,
+    "from_raw": "lite2",
     "thinking": null
   },
   "call": {
@@ -20,7 +20,8 @@
     "wall_s": 10.74,
     "status": "ok",
     "error": null,
-    "finish_reason": "FinishReason.STOP"
+    "finish_reason": "FinishReason.STOP",
+    "reused_from": "lite2"
   },
   "steps": {
     "prepare": {
@@ -28,23 +29,23 @@
       "clean_chars": 136124,
       "sent_chars": 112675,
       "repeated_lines_removed": 0,
-      "wall_s": 0.012
+      "wall_s": 0.011
     },
     "post_process": {
       "table_notes": [],
       "unknown_keys": [],
-      "wall_s": 0.004
-    },
-    "audit": {
       "wall_s": 0.003
     },
+    "audit": {
+      "wall_s": 0.002
+    },
     "checks": {
-      "wall_s": 0.018,
+      "wall_s": 0.013,
       "quotes_found": 21,
       "quotes_not_found": 5,
       "locations_found": 22,
       "locations_total": 22
     }
   },
-  "total_wall_s": 11.69
+  "total_wall_s": 0.04
 }

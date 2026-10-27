@@ -1,0 +1,3 @@
+[run_v4] main2: model gemini-3.8-flash (main); daily budget 1 used, 19 of 20 left before this call
+  [call] extract[main2] gemini-3.8-flash: in=None out=None reasoning=None wall=205.37s status=error
+Call failed: error Server disconnected without sending a response.

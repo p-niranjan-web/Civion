@@ -1,0 +1,476 @@
+{
+  "counts": {
+    "pass": 22,
+    "fail": 5,
+    "warning": 17,
+    "reference": 3,
+    "total": 44
+  },
+  "summary": "50% passed, of which 3 are references",
+  "ledger": [
+    {
+      "Metric": "Concrete Type",
+      "Extracted Value": "Reinforced Concrete",
+      "Requirement": "Must be defined",
+      "Status": "Pass",
+      "Field": "concrete_type"
+    },
+    {
+      "Metric": "Environmental Exposure",
+      "Extracted Value": "Moderate",
+      "Requirement": "Must be defined",
+      "Status": "Pass",
+      "Field": "exposure"
+    },
+    {
+      "Metric": "Cement Type",
+      "Extracted Value": "OPC",
+      "Requirement": "Must be defined",
+      "Status": "Pass",
+      "Field": "cement_type"
+    },
+    {
+      "Metric": "Soil Total SO3",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Limit depends on class",
+      "Status": "Warning",
+      "Field": "soil_total_so3_percent"
+    },
+    {
+      "Metric": "Soil Extract SO3",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Limit depends on class",
+      "Status": "Warning",
+      "Field": "soil_extract_2_1_so3_gl"
+    },
+    {
+      "Metric": "Groundwater SO3",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Limit depends on class",
+      "Status": "Warning",
+      "Field": "groundwater_so3_gl"
+    },
+    {
+      "Metric": "Sulfate Cement Type",
+      "Extracted Value": "OPC",
+      "Requirement": "Class 1 / Any",
+      "Status": "Pass",
+      "Field": "cement_type"
+    },
+    {
+      "Metric": "Freezing and Thawing",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Defined",
+      "Status": "Warning",
+      "Field": "freezing_thawing_exposure"
+    },
+    {
+      "Metric": "Concrete Grade",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Min M25",
+      "Status": "Warning",
+      "Field": "specified_grade"
+    },
+    {
+      "Metric": "Min Cement Content",
+      "Extracted Value": "290 kg/m³",
+      "Requirement": "Min 300 kg/m³",
+      "Status": "Fail",
+      "Field": "specified_min_cement"
+    },
+    {
+      "Metric": "Max Cement Content",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Max 450 kg/m³",
+      "Status": "Warning",
+      "Field": "specified_max_cement"
+    },
+    {
+      "Metric": "W/C Ratio",
+      "Extracted Value": "0.5 - 0.52",
+      "Requirement": "Max 0.5",
+      "Status": "Fail",
+      "Field": "specified_wc",
+      "Remark": "Mix design clause 3.6 B.1.d specifies water-cement ratio between 0.5 to 0.52, while durability Table 5 gives a maximum of 0.55 for moderate reinforced concrete."
+    },
+    {
+      "Metric": "Standard Deviation (sigma)",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Based on Grade",
+      "Status": "Warning",
+      "Field": "specified_sigma"
+    },
+    {
+      "Metric": "Characteristic Strength",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Expected value",
+      "Status": "Warning",
+      "Field": "specified_characteristic_strength"
+    },
+    {
+      "Metric": "Fire Resistance Rating",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Required for cover",
+      "Status": "Warning",
+      "Field": "fire_resistance_rating"
+    },
+    {
+      "Metric": "Beams Cover",
+      "Extracted Value": "Refers to drawings",
+      "Requirement": "Min 30mm",
+      "Status": "Reference",
+      "Field": "member_covers.Beams",
+      "Points To": "drawings",
+      "Source Quote": "Reinforcement shall have concrete cover and the thickness of such cover shall be as specified in the Drawings or as directed by the ER."
+    },
+    {
+      "Metric": "Columns Cover",
+      "Extracted Value": "Refers to drawings",
+      "Requirement": "Min 40mm",
+      "Status": "Reference",
+      "Field": "member_covers.Columns",
+      "Points To": "drawings",
+      "Source Quote": "Reinforcement shall have concrete cover and the thickness of such cover shall be as specified in the Drawings or as directed by the ER."
+    },
+    {
+      "Metric": "Slabs Cover",
+      "Extracted Value": "Refers to drawings",
+      "Requirement": "Min 30mm",
+      "Status": "Reference",
+      "Field": "member_covers.Slabs",
+      "Points To": "drawings",
+      "Source Quote": "Reinforcement shall have concrete cover and the thickness of such cover shall be as specified in the Drawings or as directed by the ER."
+    },
+    {
+      "Metric": "Mixing Time",
+      "Extracted Value": "2 mins",
+      "Requirement": "Min 2 mins",
+      "Status": "Pass",
+      "Field": "mixing_time_minutes"
+    },
+    {
+      "Metric": "Transportation Time",
+      "Extracted Value": "30 mins",
+      "Requirement": "Stated (IS 456 cl 13.1 sets no time limit)",
+      "Status": "Pass",
+      "Field": "transport_time_minutes",
+      "Remark": "Clause 3.6 F.6 requires placing within 30 minutes of production, whereas Clause 1.7 A.3 notes a general mixing/delivery time of 1 1/2 hours reduced to 1-1/4 hours in hot weather."
+    },
+    {
+      "Metric": "Compaction Method",
+      "Extracted Value": "mechanical vibrator",
+      "Requirement": "Not manual / hand / ramming (mechanical)",
+      "Status": "Pass",
+      "Field": "compaction_method"
+    },
+    {
+      "Metric": "Curing Days",
+      "Extracted Value": "14 days",
+      "Requirement": "Min 7 days",
+      "Status": "Pass",
+      "Field": "curing_days"
+    },
+    {
+      "Metric": "Slump",
+      "Extracted Value": "25 - 35 mm",
+      "Requirement": "25 - 150 mm",
+      "Status": "Pass",
+      "Field": "specified_slump_mm"
+    },
+    {
+      "Metric": "Water pH",
+      "Extracted Value": "6 - 9",
+      "Requirement": "Min 6",
+      "Status": "Pass",
+      "Field": "water_ph"
+    },
+    {
+      "Metric": "Water - Organic Solids",
+      "Extracted Value": "200 mg/l",
+      "Requirement": "Max 200 mg/l",
+      "Status": "Pass",
+      "Field": "water_organic_mg_l"
+    },
+    {
+      "Metric": "Water - Inorganic Solids",
+      "Extracted Value": "3000 mg/l",
+      "Requirement": "Max 3000 mg/l",
+      "Status": "Pass",
+      "Field": "water_inorganic_mg_l"
+    },
+    {
+      "Metric": "Water - Sulphates",
+      "Extracted Value": "416.7 mg/l (stated 500 as SO4; = 416.7 as SO3)",
+      "Requirement": "Max 400 mg/l as SO3",
+      "Status": "Fail",
+      "Field": "water_sulphates_mg_l"
+    },
+    {
+      "Metric": "Water - Chlorides",
+      "Extracted Value": "1000 mg/l",
+      "Requirement": "Max 500 mg/l",
+      "Status": "Fail",
+      "Field": "water_chlorides_mg_l"
+    },
+    {
+      "Metric": "Water - Suspended Matter",
+      "Extracted Value": "2000 mg/l",
+      "Requirement": "Max 2000 mg/l",
+      "Status": "Pass",
+      "Field": "water_suspended_matter_mg_l"
+    },
+    {
+      "Metric": "Chloride Content",
+      "Extracted Value": "0.6 kg/m³",
+      "Requirement": "Max 0.6 kg/m³",
+      "Status": "Pass",
+      "Field": "measured_chloride_content"
+    },
+    {
+      "Metric": "Sulphate (SO3) Content",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Max 4 %",
+      "Status": "Warning",
+      "Field": "measured_so3_percent"
+    },
+    {
+      "Metric": "Aggregate - Deleterious Materials",
+      "Extracted Value": "18 values in 4 group(s)",
+      "Requirement": "Within IS 383:2016 Table 2; outside: coarse uncrushed finer than 75 um: 3 > 1; coarse crushed finer than 75 um: 3 > 1; coarse crushed total: 5 > 2",
+      "Status": "Fail",
+      "Field": "aggregate_deleterious_limits"
+    },
+    {
+      "Metric": "Coarse Aggregate Grading",
+      "Extracted Value": "42 values in 10 group(s)",
+      "Requirement": "Within IS 383:2016 Table 7",
+      "Status": "Pass",
+      "Field": "coarse_aggregate_grading"
+    },
+    {
+      "Metric": "Fine Aggregate Grading",
+      "Extracted Value": "28 values in 4 group(s)",
+      "Requirement": "Within IS 383:2016 Table 9",
+      "Status": "Pass",
+      "Field": "fine_aggregate_grading"
+    },
+    {
+      "Metric": "All-in Aggregate Grading",
+      "Extracted Value": "11 values in 2 group(s)",
+      "Requirement": "Within IS 383:2016 Table 10",
+      "Status": "Pass",
+      "Field": "all_in_aggregate_grading"
+    },
+    {
+      "Metric": "Total Volume",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Required for sampling",
+      "Status": "Warning",
+      "Field": "total_volume_m3"
+    },
+    {
+      "Metric": "Cube Size",
+      "Extracted Value": "150 mm",
+      "Requirement": "150 mm",
+      "Status": "Pass",
+      "Field": "sampling_cube_size_mm"
+    },
+    {
+      "Metric": "Sampling Sets",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Volume and Sets Required",
+      "Status": "Warning",
+      "Field": "specified_sampling_sets"
+    },
+    {
+      "Metric": "Sampling Frequency",
+      "Extracted Value": "5 bands",
+      "Requirement": "IS 456 cl 15.2.2 (1-5:1, 6-15:2, 16-30:3, 31-50:4, +1 per 50 m3)",
+      "Status": "Pass",
+      "Field": "sampling_frequency",
+      "Remark": "The complete sampling frequency table in Section 3.10 E.2.a is used because the earlier table under Section 3.8 I.4 / 3.9 contains typographical errors in the first row."
+    },
+    {
+      "Metric": "Formwork Removal - Walls/Columns",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Min 16 hrs",
+      "Status": "Warning",
+      "Field": null
+    },
+    {
+      "Metric": "Formwork Removal - Slabs (props left under)",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Min 3 days",
+      "Status": "Warning",
+      "Field": null
+    },
+    {
+      "Metric": "Formwork Removal - Beam Soffit (props left under)",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Min 7 days",
+      "Status": "Warning",
+      "Field": null
+    },
+    {
+      "Metric": "Formwork Removal - Props Under Slabs",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Depends on span",
+      "Status": "Warning",
+      "Field": null
+    },
+    {
+      "Metric": "Formwork Removal - Props Under Beams/Arches",
+      "Extracted Value": "Not Provided",
+      "Requirement": "Depends on span",
+      "Status": "Warning",
+      "Field": null
+    }
+  ],
+  "traceability": [
+    {
+      "Parameter": "concrete_type",
+      "Extracted Value": "Reinforced Concrete",
+      "Source Quote": "Concrete type determined outside the document: Reinforced Concrete"
+    },
+    {
+      "Parameter": "exposure",
+      "Extracted Value": "Moderate",
+      "Source Quote": "Exposure condition determined outside the document: Moderate"
+    },
+    {
+      "Parameter": "cement_type",
+      "Extracted Value": "OPC",
+      "Source Quote": "Cement shall be ordinary Portland cement conforming to IS 269 for all purpose unless specified differently."
+    },
+    {
+      "Parameter": "specified_min_cement",
+      "Extracted Value": "290",
+      "Source Quote": "| EXPOSURE | PLAIN CONCRETE - MINIMUM CEMENT CONTENT | PLAIN CONCRETE - MAXIMUM WATER CEMENT RATIO | REINFORCED CONCRETE - MINIMUM CEMENT CONTENT | REINFORCED CONCRETE - MAXIMUM WATER CEMENT RATIO |\n| Moderate - for example, sheltered from heavy and wind driven rain and against freezing, whilst saturated with water; buried concrete in soil and concrete continuously under water. | 250 | 0.6 | 290 | 0.55 |"
+    },
+    {
+      "Parameter": "specified_wc",
+      "Extracted Value": "[0.5, 0.52]",
+      "Source Quote": "The water cement ratio shall be between 0.5 to 0.52."
+    },
+    {
+      "Parameter": "member_covers",
+      "Extracted Value": "Refers to drawings",
+      "Source Quote": "Reinforcement shall have concrete cover and the thickness of such cover shall be as specified in the Drawings or as directed by the ER."
+    },
+    {
+      "Parameter": "member_covers",
+      "Extracted Value": "Refers to drawings",
+      "Source Quote": "Reinforcement shall have concrete cover and the thickness of such cover shall be as specified in the Drawings or as directed by the ER."
+    },
+    {
+      "Parameter": "member_covers",
+      "Extracted Value": "Refers to drawings",
+      "Source Quote": "Reinforcement shall have concrete cover and the thickness of such cover shall be as specified in the Drawings or as directed by the ER."
+    },
+    {
+      "Parameter": "mixing_time_minutes",
+      "Extracted Value": "2",
+      "Source Quote": "The mixer shall be run for a minimum period of 2 minutes after all materials are loaded in full quantity."
+    },
+    {
+      "Parameter": "transport_time_minutes",
+      "Extracted Value": "30",
+      "Source Quote": "Concrete shall be placed in position within 30 minutes from the time it is produced."
+    },
+    {
+      "Parameter": "compaction_method",
+      "Extracted Value": "mechanical vibrator",
+      "Source Quote": "Concrete shall be thoroughly compacted, as depositing shall proceed by means of suitable vibrators."
+    },
+    {
+      "Parameter": "curing_days",
+      "Extracted Value": "14",
+      "Source Quote": "Starting 24 hours after placement of the concrete, the surface shall be cured by flooding with water or covering with damp Hessian cloth for a period of 7 days to keep it moist.\nFor the next 7 days the surface shall be kept wet all the time by sprinkling water continuously."
+    },
+    {
+      "Parameter": "specified_slump_mm",
+      "Extracted Value": "[25, 35]",
+      "Source Quote": "The slump shall be 25 mm to 35 mm depending upon the location and type of Work."
+    },
+    {
+      "Parameter": "water_ph",
+      "Extracted Value": "[6.0, 9.0]",
+      "Source Quote": "The PH value of water shall not be less than 6 and more than 9."
+    },
+    {
+      "Parameter": "water_organic_mg_l",
+      "Extracted Value": "200.0",
+      "Source Quote": "| | Permissible Limit, Maximum |\n| Organic | 200 mg/l |"
+    },
+    {
+      "Parameter": "water_inorganic_mg_l",
+      "Extracted Value": "3000.0",
+      "Source Quote": "| | Permissible Limit, Maximum |\n| Inorganic | 3000 mg/l |"
+    },
+    {
+      "Parameter": "water_sulphates_mg_l",
+      "Extracted Value": "500 as SO4",
+      "Source Quote": "| | Permissible Limit, Maximum |\n| Sulphates (as SO4) | 500 mg/l |"
+    },
+    {
+      "Parameter": "water_chlorides_mg_l",
+      "Extracted Value": "1000.0",
+      "Source Quote": "| | Permissible Limit, Maximum |\n| Chlorides (as C1) | 2000 mg/l for plain concrete work and 1000 mg/l for reinforced concrete work |"
+    },
+    {
+      "Parameter": "water_suspended_matter_mg_l",
+      "Extracted Value": "2000.0",
+      "Source Quote": "| | Permissible Limit, Maximum |\n| Suspended matter | 2000 mg/l |"
+    },
+    {
+      "Parameter": "measured_chloride_content",
+      "Extracted Value": "0.6",
+      "Source Quote": "Admixtures, when combined with other ingredients used to produce the concrete, shall result in concrete having not more than the limits for soluble chloride ion content in the specified standards or 0.6 kg/m 3 of concrete."
+    },
+    {
+      "Parameter": "aggregate_deleterious_limits",
+      "Extracted Value": "{'fine uncrushed': {'coal and lignite': 1.0, 'clay lumps': 1.0, 'finer than 75 um': 3.0, 'shale': 1.0, 'total': 5.0}, 'fine crushed': {'coal and lignite': 1.0, 'clay lumps': 1.0, 'finer than 75 um': 15.0, 'total': 2.0}, 'coarse uncrushed': {'coal and lignite': 1.0, 'clay lumps': 1.0, 'finer than 75 um': 3.0, 'soft fragments': 3.0, 'total': 5.0}, 'coarse crushed': {'coal and lignite': 1.0, 'clay lumps': 1.0, 'finer than 75 um': 3.0, 'total': 5.0}}",
+      "Source Quote": "| NO. | DELETERIOUS SUBSTANCE | METHOD OF TEST | FINE AGGREGATE PERCENTAGE BY | FINE AGGREGATE PERCENTAGE BY | COARSE AGGREGATE PERCENTAGE BY | COARSE AGGREGATE PERCENTAGE BY |\n| i) | Coal and lignite | IS : 2386 (Part - II) | 1.00 | 1.00 | 1.00 | 1.00 |\n| ii) | Clay Lumps | - do - | 1.00 | 1.00 | 1.00 | 1.00 |\n| iii) | Material finer than 75 - (MU) IS Sieve | IS : 2386 (Part - I) | 3.00 | 15.00 | 3.00 | 3.00 |\n| iv) | Soft fragments | IS : 2386 (Part - II) | -- | -- | 3.00 | -- |\n| v) | Shale | IS : 2386 (Part - II) | 1.00 | -- | -- | -- |\n| vi) | Total of percentage of all deleterious materials (except mica) including Sl. No. (i) to (v) for Col. 4,6 and 7 and Sl. No. (i) and (ii) for Col. 5 only | -- | 5.00 | 2.00 | 5.00 | 5.00 |"
+    },
+    {
+      "Parameter": "coarse_aggregate_grading",
+      "Extracted Value": "{'single-sized 63 mm': {'80 mm': [100, 100], '63 mm': [85, 100], '40 mm': [0, 30], '20 mm': [0, 5], '10 mm': [0, 5]}, 'graded 40 mm': {'80 mm': [100, 100], '40 mm': [95, 100], '20 mm': [30, 70], '10 mm': [10, 35], '4.75 mm': [0, 5]}, 'single-sized 40 mm': {'63 mm': [100, 100], '40 mm': [85, 100], '20 mm': [0, 20], '10 mm': [0, 5]}, 'single-sized 20 mm': {'40 mm': [100, 100], '20 mm': [85, 100], '10 mm': [0, 20], '4.75 mm': [0, 5]}, 'graded 20 mm': {'40 mm': [100, 100], '20 mm': [95, 100], '10 mm': [25, 55], '4.75 mm': [0, 10]}, 'single-sized 16 mm': {'20 mm': [100, 100], '16 mm': [85, 100], '10 mm': [0, 30], '4.75 mm': [0, 5]}, 'graded 16 mm': {'20 mm': [100, 100], '16 mm': [90, 100], '10 mm': [30, 70], '4.75 mm': [0, 10]}, 'graded 12.5 mm': {'20 mm': [100, 100], '12.5 mm': [90, 100], '10 mm': [40, 85], '4.75 mm': [0, 10]}, 'single-sized 12.5 mm': {'16 mm': [100, 100], '12.5 mm': [85, 100], '10 mm': [0, 45], '4.75 mm': [0, 10]}, 'single-sized 10 mm': {'12.5 mm': [100, 100], '10 mm': [85, 100], '4.75 mm': [0, 20], '2.36 mm': [0, 5]}}",
+      "Source Quote": "| IS Sieve Designation | Percentage passing for single - sized Aggregate of Nominal Size - 63 mm | Percentage passing for single - sized Aggregate of Nominal Size - 40 mm | Percentage passing for single - sized Aggregate of Nominal Size - 20 mm | Percentage passing for single - sized Aggregate of Nominal Size - 16 mm | Percentage passing for single - sized Aggregate of Nominal Size - 12.5 mm | Percentage passing for single - sized Aggregate of Nominal Size - 10 mm | Percentage passing for Graded Aggregate of Nominal Size - 40 mm | Percentage passing for Graded Aggregate of Nominal Size - 20 mm | Percentage passing for Graded Aggregate of Nominal Size - 16 mm | Percentage passing for Graded Aggregate of Nominal Size - 12.5 mm |\n| 80 mm | 100 | -- | -- | -- | -- | -- | 100 | -- | -- | -- |\n| 63 mm | 85 to 100 | 100 | -- | -- | -- | -- | -- | -- | -- | -- |\n| 40 mm | 0 to 30 | 85 to 100 | 100 | -- | -- | -- | 95 to 100 | 100 | -- | -- |\n| 20 mm | 0 to 5 | 0 to 20 | 85 to 100 | 100 | -- | -- | 30 to 70 | 95 to 100 | 100 | 100 |\n| 16 mm | -- | -- | -- | 85 to 100 | 100 | -- | -- | -- | 90 to 100 | -- |\n| 12.5 mm | -- | -- | -- | -- | 85 to 100 | 100 | -- | -- | -- | 90 to 100 |\n| 10 mm | 0 to 5 | 0 to 5 | 0 to 20 | 0 to 30 | 0 to 45 | 85 to 100 | 10 to 35 | 25 to 55 | 30 to 70 | 40 to 85 |\n| 4.75 mm | -- | -- | 0 to 5 | 0 to 5 | 0 to 10 | 0 to 20 | 0 to 5 | 0 to 10 | 0 to 10 | 0 to 10 |\n| 2.36 mm | -- | -- | -- | -- | -- | 0 to 5 | -- | -- | -- | -- |"
+    },
+    {
+      "Parameter": "fine_aggregate_grading",
+      "Extracted Value": "{'zone I': {'10 mm': [100, 100], '4.75 mm': [90, 100], '2.36 mm': [60, 95], '1.18 mm': [30, 70], '600 um': [15, 34], '300 um': [5, 20], '150 um': [0, 10]}, 'zone II': {'10 mm': [100, 100], '4.75 mm': [90, 100], '2.36 mm': [75, 100], '1.18 mm': [55, 90], '600 um': [35, 59], '300 um': [8, 30], '150 um': [0, 10]}, 'zone III': {'10 mm': [100, 100], '4.75 mm': [90, 100], '2.36 mm': [85, 100], '1.18 mm': [75, 100], '600 um': [60, 79], '300 um': [12, 40], '150 um': [0, 10]}, 'zone IV': {'10 mm': [100, 100], '4.75 mm': [95, 100], '2.36 mm': [95, 100], '1.18 mm': [90, 100], '600 um': [80, 100], '300 um': [15, 50], '150 um': [0, 15]}}",
+      "Source Quote": "| IS Sieve Designation | Percentage Passing for - Grading Zone I | Percentage Passing for - Grading Zone II | Percentage Passing for - Grading Zone III | Percentage Passing for - Grading Zone IV |\n| 10 mm | 100 | 100 | 100 | 100 |\n| 4.75 mm | 90 to 100 | 90 to 100 | 90 to 100 | 95 to 100 |\n| 2.36 mm | 60 to 95 | 75 to 100 | 85 to 100 | 95 to 100 |\n| 1.18 mm | 30 to 70 | 55 to 90 | 75 to 100 | 90 to 100 |\n| 600 micron | 15 to 34 | 35 to 59 | 60 to 79 | 80 to 100 |\n| 300 micron | 5 to 20 | 8 to 30 | 12 to 40 | 15 to 50 |\n| 150 micron | 0 to 10 | 0 to 10 | 0 to 10 | 0 to 15 |"
+    },
+    {
+      "Parameter": "all_in_aggregate_grading",
+      "Extracted Value": "{'40 mm': {'80 mm': [100, 100], '40 mm': [95, 100], '20 mm': [45, 75], '4.75 mm': [25, 45], '600 um': [8, 30], '150 um': [0, 6]}, '20 mm': {'40 mm': [100, 100], '20 mm': [95, 100], '4.75 mm': [30, 50], '600 um': [10, 35], '150 um': [0, 6]}}",
+      "Source Quote": "| IS Sieve Designation | Percentage for ALL IN Aggregate of - 40 mm Nominal Size | Percentage for ALL IN Aggregate of - 20 mm Nominal Size |\n| 80 mm | 100 | -- |\n| 40 mm | 95 to 100 | 100 |\n| 20 mm | 45 to 75 | 95 to 100 |\n| 4.75 mm | 25 to 45 | 30 to 50 |\n| 600 micron | 8 to 30 | 10 to 35 |\n| 150 micron | 0 to 6 | 0 to 6 |"
+    },
+    {
+      "Parameter": "sampling_cube_size_mm",
+      "Extracted Value": "150",
+      "Source Quote": "Average 28 days compressive strength of at least three 15 cm concrete cubes prepared with water proposed to be used shall not be less than 90% of the average strength of three similar concrete cubes prepared with distilled water."
+    },
+    {
+      "Parameter": "sampling_frequency",
+      "Extracted Value": "[{'from_m3': 0.0, 'to_m3': 5.0, 'samples': 1, 'extra_per_m3': None}, {'from_m3': 5.0, 'to_m3': 15.0, 'samples': 2, 'extra_per_m3': None}, {'from_m3': 15.0, 'to_m3': 30.0, 'samples': 3, 'extra_per_m3': None}, {'from_m3': 30.0, 'to_m3': 50.0, 'samples': 4, 'extra_per_m3': None}, {'from_m3': 50.0, 'to_m3': None, 'samples': 4, 'extra_per_m3': 50.0}]",
+      "Source Quote": "| Concrete quantity | Number of Samples. |\n| Up to 5 cu.m. in a day | 1 |"
+    },
+    {
+      "Parameter": "cement_type",
+      "Extracted Value": "Refers to IS 269",
+      "Source Quote": "Cement shall be ordinary Portland cement conforming to IS 269 for all purpose unless specified differently."
+    },
+    {
+      "Parameter": "coarse_aggregate_grading",
+      "Extracted Value": "Refers to IS 383",
+      "Source Quote": "Grading of coarse aggregate shall conform to the requirements in IS 383."
+    },
+    {
+      "Parameter": "fine_aggregate_grading",
+      "Extracted Value": "Refers to IS 383",
+      "Source Quote": "Grading of fine aggregate shall conform to IS 383 and shall fall within limits of one of the four zones given in table 4 of IS 383."
+    }
+  ]
+}
