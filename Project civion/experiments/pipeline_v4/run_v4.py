@@ -153,7 +153,9 @@ def run(run_name, role, exposure, concrete_type, table_mode, src, from_raw=None,
     if from_raw:
         src_dir = OUT / from_raw
         parsed = json.loads((src_dir / "response.json").read_text(encoding="utf-8"))
-        call = {**json.loads((src_dir / "run_stats.json").read_text(encoding="utf-8"))["call"], "reused_from": from_raw}
+        prev = json.loads((src_dir / "run_stats.json").read_text(encoding="utf-8"))
+        call = {**prev["call"], "reused_from": from_raw}
+        prev_total = prev.get("total_wall_s")
     else:
         model = model_id(role)
         left = remaining_today(model)
@@ -188,7 +190,10 @@ def run(run_name, role, exposure, concrete_type, table_mode, src, from_raw=None,
     write_json(out_dir / "run_stats.json", {
         "args": {"input": str(src), "role": role, "exposure": exposure, "concrete_type": concrete_type,
                  "table_mode": table_mode, "from_raw": from_raw, "thinking": thinking},
-        "call": call, "steps": st, "total_wall_s": round(time.perf_counter() - t_all, 2)})
+        "call": call, "steps": st,
+        # --from-raw: keep the wall time of the run that made the call; this pass is reprocess_wall_s
+        "total_wall_s": prev_total if from_raw else round(time.perf_counter() - t_all, 2),
+        **({"reprocess_wall_s": round(time.perf_counter() - t_all, 2)} if from_raw else {})})
     filled = sum(1 for f in FIELDS if ext[f] is not None)
     print(f"[run_v4] {run_name}: {filled}/{len(FIELDS)} fields filled, {len(ext['cross_references'])} references; "
           f"quotes {st['checks']['quotes_found']} found / {st['checks']['quotes_not_found']} not; "

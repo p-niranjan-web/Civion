@@ -20,6 +20,13 @@
   3. Routing calls tag each unit with the parameter groups it can feed (a unit may feed several).
   4. One extraction call per group: only THAT group's fields + only the units routed to it (batched if
      large). Groups are fixed and listed in `groups.py`.
+- **v4** (folder `../pipeline_v4/`, Gemini; report `../pipeline_v4/REPORT_V4.md`; runs in `../pipeline_v4/output/<run>/`)
+  1. Same cleaning as v1/v2 (`clean.py`), Docling table padding squeezed (113k chars). No section picking,
+     no routing, no batching.
+  2. ONE call: the whole document + only the fields of `database.PARAMETERS` (rules from `groups.py`).
+  3. Grading tables: the model names the columns, Python finds the table and reads the cells.
+  4. Quote check (`verify.py`) and audit (`auditor.py`) unchanged.
+  BLR: 1 call, ~42k tokens (30k in); 21 fields with a verbatim quote vs 16 in v2 run4, none lost.
 
 ## v2 runs (`output_v2/`)
 | Run | What it is |
@@ -38,3 +45,13 @@
 | run4_reader | test of the Python table reader on run4 (coarse 42/42, fine 28/28, all-in 11/11) |
 
 Token use per run and step: `report_v2.md` section 7. Logs: `output_v2_<run>.log`.
+
+## v4 runs (`../pipeline_v4/output/`)
+| Run | What it is |
+|---|---|
+| lite1, lite2, lite3 | prompt iteration on gemini-3.5-flash-lite (lite3 = final prompt) |
+| lite_cells | final prompt, model copies the grading cells itself (Lite) |
+| main1, main2 | final prompt on gemini-3.8-flash, twice, for consistency (35/38 same values, 38/38 same audit status) |
+| main_cells | final prompt, model copies the grading cells itself (gemini-3.8-flash) |
+
+Every API attempt: `../pipeline_v4/call_log.jsonl`. Comparison with v2 run4: `../pipeline_v4/compare_main.md`.

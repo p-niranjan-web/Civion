@@ -1,0 +1,6 @@
+[run_v4] main2: model gemini-3.8-flash (main); daily budget 2 used, 18 of 20 left before this call
+  [503] extract[main2]: retry 1/8 in 10.0s
+  [503] extract[main2]: retry 2/8 in 20.0s
+  [503] extract[main2]: retry 3/8 in 40.0s
+  [call] extract[main2] gemini-3.8-flash: in=30045 out=4419 reasoning=8875 wall=441.32s status=ok
+[run_v4] main2: 21/34 fields filled, 3 references; quotes 24 found / 0 not; audit {'pass': 22, 'fail': 5, 'warning': 17, 'reference': 3, 'total': 44}

@@ -1,0 +1,312 @@
+{
+  "cement_type": "OPC",
+  "soil_total_so3_percent": null,
+  "soil_extract_2_1_so3_gl": null,
+  "groundwater_so3_gl": null,
+  "freezing_thawing_exposure": null,
+  "specified_grade": null,
+  "specified_min_cement": 290,
+  "specified_max_cement": null,
+  "specified_wc": [
+    0.5,
+    0.52
+  ],
+  "specified_sigma": null,
+  "specified_characteristic_strength": null,
+  "fire_resistance_rating": null,
+  "member_covers": {
+    "Beams": null,
+    "Columns": null,
+    "Slabs": null
+  },
+  "mixing_time_minutes": 2,
+  "transport_time_minutes": 90,
+  "compaction_method": "mechanical vibrator",
+  "curing_days": 14,
+  "specified_slump_mm": [
+    25,
+    35
+  ],
+  "water_ph": [
+    6,
+    9
+  ],
+  "water_organic_mg_l": 200.0,
+  "water_inorganic_mg_l": 3000.0,
+  "water_sulphates_mg_l": "500 as SO4",
+  "water_chlorides_mg_l": 1000.0,
+  "water_suspended_matter_mg_l": 2000.0,
+  "measured_chloride_content": 0.6,
+  "measured_so3_percent": null,
+  "aggregate_deleterious_limits": {
+    "fine uncrushed": {
+      "coal and lignite": 1.0,
+      "clay lumps": 1.0,
+      "finer than 75 um": 3.0,
+      "shale": 1.0,
+      "total": 5.0
+    },
+    "fine crushed": {
+      "coal and lignite": 1.0,
+      "clay lumps": 1.0,
+      "finer than 75 um": 15.0,
+      "total": 2.0
+    },
+    "coarse uncrushed": {
+      "coal and lignite": 1.0,
+      "clay lumps": 1.0,
+      "finer than 75 um": 3.0,
+      "soft fragments": 3.0,
+      "total": 5.0
+    },
+    "coarse crushed": {
+      "coal and lignite": 1.0,
+      "clay lumps": 1.0,
+      "finer than 75 um": 3.0,
+      "total": 5.0
+    }
+  },
+  "coarse_aggregate_grading": {
+    "columns": {
+      "Percentage passing for single - sized Aggregate of Nominal Size - 63 mm": "single-sized 63 mm",
+      "Percentage passing for single - sized Aggregate of Nominal Size - 40 mm": "single-sized 40 mm",
+      "Percentage passing for single - sized Aggregate of Nominal Size - 20 mm": "single-sized 20 mm",
+      "Percentage passing for single - sized Aggregate of Nominal Size - 16 mm": "single-sized 16 mm",
+      "Percentage passing for single - sized Aggregate of Nominal Size - 12.5 mm": "single-sized 12.5 mm",
+      "Percentage passing for single - sized Aggregate of Nominal Size - 10 mm": "single-sized 10 mm",
+      "Percentage passing for Graded Aggregate of Nominal Size - 40 mm": "graded 40 mm",
+      "Percentage passing for Graded Aggregate of Nominal Size - 20 mm": "graded 20 mm",
+      "Percentage passing for Graded Aggregate of Nominal Size - 16 mm": "graded 16 mm",
+      "Percentage passing for Graded Aggregate of Nominal Size - 12.5 mm": "graded 12.5 mm"
+    }
+  },
+  "fine_aggregate_grading": {
+    "columns": {
+      "Percentage Passing for - Grading Zone I": "zone I",
+      "Percentage Passing for - Grading Zone II": "zone II",
+      "Percentage Passing for - Grading Zone III": "zone III",
+      "Percentage Passing for - Grading Zone IV": "zone IV"
+    }
+  },
+  "all_in_aggregate_grading": {
+    "columns": {
+      "Percentage for ALL IN Aggregate of - 40 mm Nominal Size": "40 mm",
+      "Percentage for ALL IN Aggregate of - 20 mm Nominal Size": "20 mm"
+    }
+  },
+  "total_volume_m3": null,
+  "sampling_cube_size_mm": 150,
+  "specified_sampling_sets": null,
+  "sampling_frequency": [
+    {
+      "from_m3": 1.0,
+      "to_m3": 5.0,
+      "samples": 1,
+      "extra_per_m3": null
+    },
+    {
+      "from_m3": 5.0,
+      "to_m3": 15.0,
+      "samples": 2,
+      "extra_per_m3": null
+    },
+    {
+      "from_m3": 15.0,
+      "to_m3": 30.0,
+      "samples": 3,
+      "extra_per_m3": null
+    },
+    {
+      "from_m3": 30.0,
+      "to_m3": 50.0,
+      "samples": 4,
+      "extra_per_m3": null
+    },
+    {
+      "from_m3": 50.0,
+      "to_m3": null,
+      "samples": 4,
+      "extra_per_m3": 50.0
+    }
+  ],
+  "cross_references": [
+    {
+      "parameter": "member_covers",
+      "points_to": "drawings",
+      "source_quote": "Reinforcement shall have concrete cover and the thickness of such cover shall be as specified in the Drawings or as directed by the ER."
+    },
+    {
+      "parameter": "coarse_aggregate_grading",
+      "points_to": "IS 383",
+      "source_quote": "Grading of coarse aggregate shall conform to the requirements in IS 383."
+    },
+    {
+      "parameter": "fine_aggregate_grading",
+      "points_to": "IS 383",
+      "source_quote": "Grading of fine aggregate shall conform to IS 383 and shall fall within limits of one of the four zones given in table 4 of IS 383."
+    }
+  ],
+  "source_quotes": {
+    "cement_type": "Cement shall be ordinary Portland cement conforming to IS 269 for all purpose unless specified differently.",
+    "specified_min_cement": "| EXPOSURE | PLAIN CONCRETE - MINIMUM CEMENT CONTENT | PLAIN CONCRETE - MAXIMUM WATER CEMENT RATIO | REINFORCED CONCRETE - MINIMUM CEMENT CONTENT | REINFORCED CONCRETE - MAXIMUM WATER CEMENT RATIO |\n| Moderate - for example, sheltered from heavy and wind driven rain and against freezing, whilst saturated with water; buried concrete in soil and concrete continuously under water. | 250 | 0.6 | 290 | 0.55 |",
+    "specified_wc": "The water cement ratio shall be between 0.5 to 0.52.",
+    "mixing_time_minutes": "The mixer shall be run for a minimum period of 2 minutes after all materials are loaded in full quantity.",
+    "transport_time_minutes": "When the temperature is above (32 deg. C.), reduce the mixing/delivery time from 11/2 hrs. to 1-1/4 hrs.",
+    "compaction_method": "Concrete shall be thoroughly compacted, as depositing shall proceed by means of suitable vibrators.",
+    "curing_days": "Starting 24 hours after placement of the concrete, the surface shall be cured by flooding with water or covering with damp Hessian cloth for a period of 7 days to keep it moist.\n2. For the next 7 days the surface shall be kept wet all the time by sprinkling water continuously.",
+    "specified_slump_mm": "The slump shall be 25 mm to 35 mm depending upon the location and type of Work.",
+    "water_ph": "The PH value of water shall not be less than 6 and more than 9.",
+    "water_organic_mg_l": "| | Permissible Limit, Maximum |\n| Organic | 200 mg/l |",
+    "water_inorganic_mg_l": "| | Permissible Limit, Maximum |\n| Inorganic | 3000 mg/l |",
+    "water_sulphates_mg_l": "| | Permissible Limit, Maximum |\n| Sulphates (as SO4) | 500 mg/l |",
+    "water_chlorides_mg_l": "| | Permissible Limit, Maximum |\n| Chlorides (as C1) | 2000 mg/l for plain concrete work and 1000 mg/l for reinforced concrete work |",
+    "water_suspended_matter_mg_l": "| | Permissible Limit, Maximum |\n| Suspended matter | 2000 mg/l |",
+    "measured_chloride_content": "Admixtures, when combined with other ingredients used to produce the concrete, shall result in concrete having not more than the limits for soluble chloride ion content in the specified standards or 0.6 kg/m 3 of concrete.",
+    "aggregate_deleterious_limits": "| NO. | DELETERIOUS SUBSTANCE | METHOD OF TEST | FINE AGGREGATE PERCENTAGE BY | FINE AGGREGATE PERCENTAGE BY | COARSE AGGREGATE PERCENTAGE BY | COARSE AGGREGATE PERCENTAGE BY |\n| i) | Coal and lignite | IS : 2386 (Part - II) | 1.00 | 1.00 | 1.00 | 1.00 |\n| ii) | Clay Lumps | - do - | 1.00 | 1.00 | 1.00 | 1.00 |\n| iii) | Material finer than 75 - (MU) IS Sieve | IS : 2386 (Part - I) | 3.00 | 15.00 | 3.00 | 3.00 |\n| iv) | Soft fragments | IS : 2386 (Part - II) | -- | -- | 3.00 | -- |\n| v) | Shale | IS : 2386 (Part - II) | 1.00 | -- | -- | -- |\n| vi) | Total of percentage of all deleterious materials (except mica) including Sl. No. (i) to (v) for Col. 4,6 and 7 and Sl. No. (i) and (ii) for Col. 5 only | -- | 5.00 | 2.00 | 5.00 | 5.00 |",
+    "sampling_cube_size_mm": "In the designation of a concrete of mix, letter M refers to the mix and the number to the specified characteristic compressive strength of 15 cm cube at 28 days, expressed in N/mm 2 .",
+    "sampling_frequency": "| Concrete quantity | Number of Samples. |\n| Up to 5 cu.m. in a day | 1 |"
+  },
+  "remarks": {
+    "specified_wc": "Mix design clause 3.6.B.1.d specifies a w/c ratio between 0.5 to 0.52, whereas Table 5 specifies a maximum of 0.55 for moderate exposure reinforced concrete.",
+    "transport_time_minutes": "Clause 1.7.A.3 specifies a general mixing/delivery time of 1-1/2 hours (90 minutes) subject to hot-weather reduction, while Clause 3.6.F.6 requires concrete to be placed within 30 minutes from production.",
+    "sampling_frequency": "The sampling frequency table appears twice; the complete copy in Section 3.10.E.2.a was used as the table under Section 3.9 contains clerical errors."
+  },
+  "field_info": {
+    "cement_type": {
+      "type": "value",
+      "location": "PART 2 - PRODUCTS > 2.5 CEMENT MATERIALS"
+    },
+    "soil_total_so3_percent": {
+      "type": "not_found",
+      "location": ""
+    },
+    "soil_extract_2_1_so3_gl": {
+      "type": "not_found",
+      "location": ""
+    },
+    "groundwater_so3_gl": {
+      "type": "not_found",
+      "location": ""
+    },
+    "freezing_thawing_exposure": {
+      "type": "not_found",
+      "location": ""
+    },
+    "specified_grade": {
+      "type": "not_found",
+      "location": ""
+    },
+    "specified_min_cement": {
+      "type": "table",
+      "location": "PART 2 - PRODUCTS > 2.4 DURABILITY AND COMPATIBILITY REQUIREMENTS FOR CONCRETE AND MATERIALS > TABLE - 5"
+    },
+    "specified_max_cement": {
+      "type": "not_found",
+      "location": ""
+    },
+    "specified_wc": {
+      "type": "range",
+      "location": "PART 3 - EXECUTION > 3.6 CONCRETE > B. Cement Concrete."
+    },
+    "specified_sigma": {
+      "type": "not_found",
+      "location": ""
+    },
+    "specified_characteristic_strength": {
+      "type": "not_found",
+      "location": ""
+    },
+    "fire_resistance_rating": {
+      "type": "not_found",
+      "location": ""
+    },
+    "member_covers": {
+      "type": "reference",
+      "location": "PART 3 - EXECUTION > 3.5 REINFORCEMENT > F. Cover to Reinforcement"
+    },
+    "mixing_time_minutes": {
+      "type": "value",
+      "location": "PART 3 - EXECUTION > 3.6 CONCRETE > D. Mixing Of Concrete"
+    },
+    "transport_time_minutes": {
+      "type": "conditional",
+      "location": "PART 1 - GENERAL > 1.7 PROJECT/SITE CONDITIONS > A. Hot or Cold Weather Concreting"
+    },
+    "compaction_method": {
+      "type": "value",
+      "location": "PART 3 - EXECUTION > 3.6 CONCRETE > G. Compaction of Concrete"
+    },
+    "curing_days": {
+      "type": "value",
+      "location": "PART 3 - EXECUTION > 3.6 CONCRETE > P. Curing"
+    },
+    "specified_slump_mm": {
+      "type": "range",
+      "location": "PART 3 - EXECUTION > 3.6 CONCRETE > B. Cement Concrete."
+    },
+    "water_ph": {
+      "type": "range",
+      "location": "PART 2 - PRODUCTS > 2.6 WATER"
+    },
+    "water_organic_mg_l": {
+      "type": "table",
+      "location": "PART 2 - PRODUCTS > 2.6 WATER > TABLE - 7"
+    },
+    "water_inorganic_mg_l": {
+      "type": "table",
+      "location": "PART 2 - PRODUCTS > 2.6 WATER > TABLE - 7"
+    },
+    "water_sulphates_mg_l": {
+      "type": "table",
+      "location": "PART 2 - PRODUCTS > 2.6 WATER > TABLE - 7"
+    },
+    "water_chlorides_mg_l": {
+      "type": "table",
+      "location": "PART 2 - PRODUCTS > 2.6 WATER > TABLE - 7"
+    },
+    "water_suspended_matter_mg_l": {
+      "type": "table",
+      "location": "PART 2 - PRODUCTS > 2.6 WATER > TABLE - 7"
+    },
+    "measured_chloride_content": {
+      "type": "value",
+      "location": "PART 2 - PRODUCTS > 2.7 ADMIXTURES FOR CONCRETE > A. General"
+    },
+    "measured_so3_percent": {
+      "type": "not_found",
+      "location": ""
+    },
+    "aggregate_deleterious_limits": {
+      "type": "table",
+      "location": "PART 2 - PRODUCTS > 2.8 AGGREGATES FOR CONCRETE > TABLE - 8 LIMITS OF DELETERIOUS MATERIALS (AGGREGATES)"
+    },
+    "coarse_aggregate_grading": {
+      "type": "table",
+      "location": "PART 2 - PRODUCTS > 2.8 AGGREGATES FOR CONCRETE > TABLE - 9 GRADING OF COARSE AGGREGATES"
+    },
+    "fine_aggregate_grading": {
+      "type": "table",
+      "location": "PART 2 - PRODUCTS > 2.8 AGGREGATES FOR CONCRETE > TABLE - 10 GRADING OF FINE AGGREGATES"
+    },
+    "all_in_aggregate_grading": {
+      "type": "table",
+      "location": "PART 2 - PRODUCTS > 2.8 AGGREGATES FOR CONCRETE > TABLE - 11 ALL-IN-AGGREGATE GRADING"
+    },
+    "total_volume_m3": {
+      "type": "not_found",
+      "location": ""
+    },
+    "sampling_cube_size_mm": {
+      "type": "value",
+      "location": "PART 2 - PRODUCTS > 2.3 GRADES OF CONCRETE > TABLE -- 4"
+    },
+    "specified_sampling_sets": {
+      "type": "not_found",
+      "location": ""
+    },
+    "sampling_frequency": {
+      "type": "table",
+      "location": "PART 3 - EXECUTION > 3.10 INDEPENDENT TESTING > E. Compression Tests > 2. Quantity of test cubes and testing"
+    }
+  }
+}

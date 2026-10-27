@@ -47,5 +47,6 @@
       "locations_total": 22
     }
   },
-  "total_wall_s": 0.03
+  "total_wall_s": 23.42,
+  "total_wall_s_note": "whole-run time lost in the --from-raw reprocess; this is the call's wall time"
 }

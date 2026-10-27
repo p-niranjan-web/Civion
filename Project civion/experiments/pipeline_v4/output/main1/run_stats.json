@@ -47,5 +47,6 @@
       "locations_total": 22
     }
   },
-  "total_wall_s": 0.03
+  "total_wall_s": 312.36,
+  "total_wall_s_note": "restored from the console output before the --from-raw reprocess"
 }
