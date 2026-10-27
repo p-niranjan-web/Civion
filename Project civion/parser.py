@@ -5,20 +5,7 @@ import pdfplumber
 import hashlib
 import os
 from config import get_groq_client, GROQ_MODEL
-
-# Shared with experiments/pipeline/extract_v2.py so both prompts stay identical.
-REFERENCES_RULE = """REFERENCES: A spec may state a requirement not as a value but by
-    pointing elsewhere: to another IS code (e.g. "Grading of coarse aggregate
-    shall conform to the requirements of IS 383.") or to a non-code source
-    (e.g. "Nominal cover shall be as specified in the Drawings."). This is NOT
-    missing data - do NOT treat it as a failure. Add one entry to
-    "cross_references" per such statement: "parameter" = the exact field name
-    from the JSON structure when the reference is about one of those fields
-    (e.g. "member_covers"), otherwise a short snake_case name (e.g.
-    "coarse_aggregate_grading"); "points_to" = the code exactly as written
-    (e.g. "IS 383") or "drawings" or the other source named; "source_quote" =
-    the exact sentence. If the same text also states a value, extract the
-    value as usual too. If there are no such references, return an empty list."""
+from prompt_rules import REFERENCES_RULE, TABLE_QUOTE_RULE
 
 
 def extract_text_from_pdf(pdf_path):
@@ -178,8 +165,8 @@ def parse_user_specification(pdf_path, detected_exposure=None, detected_concrete
             f"for the \"{detected_exposure}\" exposure class"
             + (f" and the \"{detected_concrete_type}\" column" if detected_concrete_type else " and the applicable concrete-type column")
             + f", then return that cell's number as the field value. Do NOT leave the field null "
-            f"when the number can be read from a table row - resolve it. Put the exact table "
-            f"row/cell text in source_quotes.\n"
+            f"when the number can be read from a table row - resolve it. Quote it as described "
+            f"under TABLE QUOTES.\n"
         )
     
     # ---------------------------------------------------------
@@ -251,6 +238,7 @@ def parse_user_specification(pdf_path, detected_exposure=None, detected_concrete
       "cross_references": [ {{ "parameter": "field name from above, or a short snake_case name", "points_to": "IS code like 'IS 383', or 'drawings' / other source", "source_quote": "exact quote from text" }} ],
       "source_quotes": {{ "<field>": "exact quote from text for every non-null field above" }}
     }}
+    {TABLE_QUOTE_RULE}
     {REFERENCES_RULE}
     Text: {text_chunk}
     """

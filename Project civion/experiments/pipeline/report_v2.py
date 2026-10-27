@@ -180,7 +180,13 @@ def main():
                  + ("" if not qc or qc["found"] else "  **(quote NOT found in clean.md)**"))
     bad = [q for q in rf["quote_check"] if q["found"] is False]
     L.append(f"\nQuote check ({fname}): {sum(1 for q in rf['quote_check'] if q['found'])} found, {len(bad)} not found"
-             + ("".join(f"\n- NOT FOUND `{q['field']}`: \"{fmt(q['quote'], 150)}\"" for q in bad)) + "\n")
+             + ("".join(f"\n- NOT FOUND `{q['field']}`: \"{fmt(q['quote'], 150)}\" - "
+                        f"{fmt('; '.join(map(str, q.get('missing_fragments') or [])), 150)}" for q in bad)) + "\n")
+    tq = [q for q in rf["quote_check"] if q.get("kind") == "table"]
+    if tq:
+        L.append(f"Table quotes (must be header row + data row of the same table): {sum(1 for q in tq if q['found'])} "
+                 f"of {len(tq)} pass; extracted number not in the quoted row: "
+                 f"{[q['field'] for q in tq if q.get('value_in_row') is False] or 'none'}.\n")
 
     # ---------------------------------------------------------------- 5
     L.append(f"## 5. MISSING parameters ({fname}) - is the value in clean.md?\n")

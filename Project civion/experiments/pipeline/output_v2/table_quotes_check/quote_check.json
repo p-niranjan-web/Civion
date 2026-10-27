@@ -1,0 +1,88 @@
+[
+  {
+    "field": "specified_min_cement",
+    "value": 290,
+    "quote": "REINFORCED CONCRETE - MINIMUM CEMENT CONTENT\n| Moderate - for example, sheltered from heavy and wind driven rain and against freezing, whilst saturated with water; buried concrete in soil and concrete continuously under water. | 250 | 0.6 | 290 | 0.55 |",
+    "kind": "table",
+    "found": true,
+    "missing_fragments": [],
+    "table_line": 447,
+    "value_in_row": true
+  },
+  {
+    "field": "specified_wc",
+    "value": 0.55,
+    "quote": "REINFORCED CONCRETE - MAXIMUM WATER CEMENT RATIO\n| Moderate - for example, sheltered from heavy and wind driven rain and against freezing, whilst saturated with water; buried concrete in soil and concrete continuously under water. | 250 | 0.6 | 290 | 0.55 |",
+    "kind": "table",
+    "found": true,
+    "missing_fragments": [],
+    "table_line": 447,
+    "value_in_row": true
+  },
+  {
+    "field": "cement_type",
+    "value": "OPC",
+    "quote": "A. Cement shall be ordinary Portland cement conforming to IS 269 for all purpose unless specified differently.",
+    "kind": "text",
+    "found": true,
+    "missing_fragments": []
+  },
+  {
+    "field": "water_ph",
+    "value": 6.0,
+    "quote": "The PH value of water shall not be less than 6 and more than 9.",
+    "kind": "text",
+    "found": true,
+    "missing_fragments": []
+  },
+  {
+    "field": "water_organic_mg_l",
+    "value": 200.0,
+    "quote": "|                    | Permissible Limit, Maximum                                                   |\n| Organic            | 200 mg/l                                                                     |",
+    "kind": "table",
+    "found": true,
+    "missing_fragments": [],
+    "table_line": 499,
+    "value_in_row": true
+  },
+  {
+    "field": "water_inorganic_mg_l",
+    "value": 3000.0,
+    "quote": "|                    | Permissible Limit, Maximum                                                   |\n| Inorganic          | 3000 mg/l                                                                    |",
+    "kind": "table",
+    "found": true,
+    "missing_fragments": [],
+    "table_line": 499,
+    "value_in_row": true
+  },
+  {
+    "field": "water_sulphates_mg_l",
+    "value": 500.0,
+    "quote": "|                    | Permissible Limit, Maximum                                                   |\n| Sulphates (as SO4) | 500 mg/l                                                                     |",
+    "kind": "table",
+    "found": true,
+    "missing_fragments": [],
+    "table_line": 499,
+    "value_in_row": true
+  },
+  {
+    "field": "water_chlorides_mg_l",
+    "value": 1000.0,
+    "quote": "|                    | Permissible Limit, Maximum                                                   |\n| Chlorides (as C1)  | 2000 mg/l for plain concrete work and 1000 mg/l for reinforced concrete work |",
+    "kind": "table",
+    "found": true,
+    "missing_fragments": [],
+    "table_line": 499,
+    "value_in_row": true
+  },
+  {
+    "field": "water_suspended_matter_mg_l",
+    "value": 2000.0,
+    "quote": "|                    | Permissible Limit, Maximum                                                   |\n| Suspended matter   | 2000 mg/l                                                                    |",
+    "kind": "table",
+    "found": true,
+    "missing_fragments": [],
+    "table_line": 499,
+    "value_in_row": true
+  }
+]

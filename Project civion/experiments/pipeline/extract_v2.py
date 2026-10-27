@@ -11,14 +11,14 @@ so merging across groups is a union; cross_references are deduplicated.
 
 The shared rules (no invented values, null if missing, exposure-table
 resolution, concrete-type column) are copied from parser.py's prompt;
-the references rule is imported from parser.py; the per-field rules come from groups.py.
+the references and table-quote rules come from prompt_rules.py; the per-field rules come from groups.py.
 """
 import json
 import time
 
 from common import OUT_DIR, PROJECT_ROOT, call_groq, est_tokens, read_json, write_json
 from groups import ALL_PARAMS, GROUPS
-from parser import REFERENCES_RULE
+from prompt_rules import REFERENCES_RULE, TABLE_QUOTE_RULE
 
 FORMWORK_FIELDS = ["formwork_removal_hours", "formwork_removal_days", "formwork_span_m"]
 SITE_FIELDS = ["soil_total_so3_percent", "soil_extract_2_1_so3_gl", "groundwater_so3_gl"]
@@ -43,7 +43,8 @@ def build_prompt(group_id, units_text, exposure, concrete_type):
     "{exposure}" row and the "{concrete_type}" column and return that cell.
     SOURCE QUOTES: for every non-null field, copy the supporting text VERBATIM
     from the excerpts - a whole sentence, or the whole table row including its
-    row label - not just the number.{notes}
+    row label - not just the number.
+    {TABLE_QUOTE_RULE}{notes}
     {REFERENCES_RULE}
     Return exactly:
     {{

@@ -1,0 +1,26 @@
+{
+  "specified_min_cement": 290,
+  "specified_max_cement": null,
+  "specified_wc": 0.55,
+  "freezing_thawing_exposure": null,
+  "measured_chloride_content": null,
+  "measured_so3_percent": null,
+  "cement_type": "OPC",
+  "water_ph": 6.0,
+  "water_organic_mg_l": 200.0,
+  "water_inorganic_mg_l": 3000.0,
+  "water_sulphates_mg_l": 500.0,
+  "water_chlorides_mg_l": 1000.0,
+  "water_suspended_matter_mg_l": 2000.0,
+  "source_quotes": {
+    "specified_min_cement": "REINFORCED CONCRETE - MINIMUM CEMENT CONTENT\n| Moderate - for example, sheltered from heavy and wind driven rain and against freezing, whilst saturated with water; buried concrete in soil and concrete continuously under water. | 250 | 0.6 | 290 | 0.55 |",
+    "specified_wc": "REINFORCED CONCRETE - MAXIMUM WATER CEMENT RATIO\n| Moderate - for example, sheltered from heavy and wind driven rain and against freezing, whilst saturated with water; buried concrete in soil and concrete continuously under water. | 250 | 0.6 | 290 | 0.55 |",
+    "cement_type": "A. Cement shall be ordinary Portland cement conforming to IS 269 for all purpose unless specified differently.",
+    "water_ph": "The PH value of water shall not be less than 6 and more than 9.",
+    "water_organic_mg_l": "|                    | Permissible Limit, Maximum                                                   |\n| Organic            | 200 mg/l                                                                     |",
+    "water_inorganic_mg_l": "|                    | Permissible Limit, Maximum                                                   |\n| Inorganic          | 3000 mg/l                                                                    |",
+    "water_sulphates_mg_l": "|                    | Permissible Limit, Maximum                                                   |\n| Sulphates (as SO4) | 500 mg/l                                                                     |",
+    "water_chlorides_mg_l": "|                    | Permissible Limit, Maximum                                                   |\n| Chlorides (as C1)  | 2000 mg/l for plain concrete work and 1000 mg/l for reinforced concrete work |",
+    "water_suspended_matter_mg_l": "|                    | Permissible Limit, Maximum                                                   |\n| Suspended matter   | 2000 mg/l                                                                    |"
+  }
+}

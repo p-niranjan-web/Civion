@@ -4,7 +4,11 @@
   (as body text or as a heading line).
 - check_quotes(): every source quote of an extraction is searched in
   clean.md (whitespace/case-normalized; "..." splits a quote into fragments
-  that must each be found). Table-row quotes ("a | b") are matched cell by cell.
+  that must each be found).
+- Table quotes (a quote with a "|" or more than one line) must be two lines:
+  line 1 a verbatim part of a table's header row, line 2 a verbatim part of
+  a data row of the SAME table. Each line is checked on its own against the
+  real table lines (pipe spacing, empty cells and list markers ignored).
 
 Usage: python verify.py <extraction.json> [clean.md] [sections.json]
 """
@@ -52,16 +56,71 @@ def quote_found(quote, clean_norm):
         # only as a fallback.
         if len(alnum(f)) >= 8 and alnum(f) in clean_alnum(clean_norm):
             continue
-        # Table-row quote: accept when every cell is present (Docling pads cells).
-        cells = [norm(c) for c in str(f).split("|") if norm(c)]
-        if len(cells) > 1 and all(c in clean_norm for c in cells):
-            continue
         missing.append(f)
     return not missing, missing
 
 
+SEPARATOR = re.compile(r"^\|[\s:|-]+\|?$")
+
+
+def norm_row(s):
+    """Normalize one table line or quote line: no list marker, cells joined by
+    ' | ', empty cells dropped, whitespace and case folded."""
+    s = re.sub(r"^\s*[-*]\s+", "", str(s).replace("’", "'"))
+    cells = [" ".join(c.split()).lower() for c in s.split("|")]
+    return " | ".join(c for c in cells if c)
+
+
+def parse_tables(clean_md):
+    """[{line, header, rows}] for every markdown table; header and rows normalized."""
+    tables, cur = [], None
+    for i, line in enumerate(clean_md.splitlines(), 1):
+        if line.strip().startswith("|"):
+            if cur is None:
+                cur = {"line": i, "header": norm_row(line), "rows": []}
+                tables.append(cur)
+            elif not SEPARATOR.match(line.strip()):
+                cur["rows"].append(norm_row(line))
+        else:
+            cur = None
+    return tables
+
+
+def is_table_quote(quote):
+    lines = [l for l in str(quote).splitlines() if l.strip()]
+    return len(lines) > 1 or "|" in str(quote)
+
+
+def number_in(n, text):
+    """True if number n (e.g. '0.55', '290', '200.0') appears as a number in text."""
+    want = float(n)
+    return any(float(x) == want for x in re.findall(r"\d+(?:\.\d+)?", text))
+
+
+def table_quote_found(quote, tables, value=None):
+    """Return (found, problems, info). found only if line 1 is part of a
+    table's header row and line 2 part of a data row of the same table."""
+    lines = [l for l in str(quote).splitlines() if l.strip()]
+    if len(lines) != 2:
+        return False, [f"table quote must be 2 lines (header row + data row), got {len(lines)}"], {}
+    head, row = norm_row(lines[0]), norm_row(lines[1])
+    head_in = [t for t in tables if head and head in t["header"]]
+    both = [t for t in head_in if row and any(row in r for r in t["rows"])]
+    problems = []
+    if not head_in:
+        problems.append(f"line 1 is not part of any table header row: {lines[0][:80]}")
+    elif not both:
+        problems.append(f"line 2 is not a data row of that table: {lines[1][:80]}")
+    info = {"table_line": both[0]["line"]} if both else {}
+    # Extra signal (does not affect found): is the extracted number in the quoted row?
+    if both and isinstance(value, (int, float)) and not isinstance(value, bool):
+        info["value_in_row"] = number_in(value, row)
+    return not problems, problems, info
+
+
 def check_quotes(extraction, clean_md):
     clean_norm = norm(clean_md)
+    tables = parse_tables(clean_md)
     rows = []
     quotes = extraction.get("source_quotes") or {}
     for field, q in quotes.items():
@@ -70,8 +129,13 @@ def check_quotes(extraction, clean_md):
         if str(q).startswith(("Exposure condition determined outside", "Concrete type determined outside")):
             rows.append({"field": field, "quote": q, "found": None, "note": "stamped from CLI arg"})
             continue
+        if is_table_quote(q):
+            ok, missing, info = table_quote_found(q, tables, extraction.get(field))
+            rows.append({"field": field, "value": extraction.get(field), "quote": q, "kind": "table",
+                         "found": ok, "missing_fragments": missing, **info})
+            continue
         ok, missing = quote_found(q, clean_norm)
-        rows.append({"field": field, "value": extraction.get(field), "quote": q, "found": ok,
+        rows.append({"field": field, "value": extraction.get(field), "quote": q, "kind": "text", "found": ok,
                      "missing_fragments": missing})
     for x in extraction.get("cross_references") or []:
         q = x.get("source_quote")
