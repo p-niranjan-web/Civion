@@ -98,6 +98,7 @@ const Ledger = ({ auditData }) => {
                     let badgeClass = 'status-badge ';
                     if (status.includes('fail')) badgeClass += 'status-fail';
                     else if (status.includes('warning')) badgeClass += 'status-warning';
+                    else if (status.includes('reference')) badgeClass += 'status-reference';
                     else badgeClass += 'status-pass';
 
                     return (
@@ -105,6 +106,11 @@ const Ledger = ({ auditData }) => {
                         <td>{item.Metric}</td>
                         <td style={{ fontFamily: 'monospace' }}>
                           {item['Extracted Value'] || item.ExtractedValue}
+                          {item['Source Quote'] && status.includes('reference') && (
+                            <div className="source-quote" style={{ fontSize: '12px', fontFamily: 'inherit' }}>
+                              "{item['Source Quote']}"
+                            </div>
+                          )}
                         </td>
                         <td className="text-secondary">
                           {item.Requirement}

@@ -30,6 +30,7 @@
   --status-pass: #00e87a;
   --status-fail: #ff2d55;
   --status-warn: #ffb800;
+  --status-reference: #4da3ff;
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -556,6 +557,12 @@ tr:hover td {
   background: rgba(255, 184, 0, 0.12);
   color: var(--status-warn);
   border: 1px solid rgba(255, 184, 0, 0.25);
+}
+
+.status-reference {
+  background: rgba(77, 163, 255, 0.12);
+  color: var(--status-reference);
+  border: 1px solid rgba(77, 163, 255, 0.25);
 }
 
 /* Value styling */

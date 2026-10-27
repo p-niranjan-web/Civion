@@ -88,6 +88,7 @@ const Dashboard = ({ auditData, onRemediate }) => {
         <div className="dashboard-summary">
           <h2>Overall Compliance</h2>
           <p>{getInterpretation(score)}</p>
+          {auditData.summary && <p className="text-secondary">{auditData.summary}</p>}
         </div>
       </div>
 
@@ -132,6 +133,7 @@ const Dashboard = ({ auditData, onRemediate }) => {
               let badgeClass = 'status-badge ';
               if (isFail) badgeClass += 'status-fail';
               else if (isWarning) badgeClass += 'status-warning';
+              else if (status.includes('reference')) badgeClass += 'status-reference';
               else badgeClass += 'status-pass';
 
               return (
