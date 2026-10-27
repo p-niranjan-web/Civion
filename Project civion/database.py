@@ -28,7 +28,7 @@ IS456_MASTER = {
         },
         "Transportation": {
             "clause": "IS 456:2000 Clause 13.1",
-            "max_time_mins": 30
+            "note": "Transport 'as rapidly as possible'; IS 456 gives no time limit"
         },
         "Compaction": {
             "clause": "IS 456:2000 Clause 13.3",
@@ -78,21 +78,34 @@ IS456_MASTER = {
         }
     },
     "WORKABILITY": {
-        "clause": "IS 456:2000 Page 17",
+        # IS 456 cl 7.1 table: slump (mm) by placing condition. "Very low" (blinding,
+        # shallow sections, pavers) and "very high" (tremie) are not given as slump.
+        "clause": "IS 456:2000 Clause 7.1",
         "categories": [
             {
-                "keywords": ["mass concrete", "lightly reinforced"],
+                "degree": "Low",
+                "keywords": ["mass concrete", "lightly reinforced", "floors", "hand placed pavements",
+                             "canal lining", "strip footings"],
                 "slump_min": 25, "slump_max": 75
             },
             {
-                "keywords": ["normal rcc"],
+                "degree": "Medium",
+                "keywords": ["heavily reinforced"],
                 "slump_min": 50, "slump_max": 100
             },
             {
-                "keywords": ["pumped concrete", "heavily reinforced"],
+                "degree": "Medium",
+                "keywords": ["slipform", "pumped concrete"],
+                "slump_min": 75, "slump_max": 100
+            },
+            {
+                "degree": "High",
+                "keywords": ["trench fill", "in-situ piling"],
                 "slump_min": 100, "slump_max": 150
             }
-        ]
+        ],
+        # Placing condition is usually unknown, so the audit uses the full span of the table.
+        "overall_slump_mm": [25, 150]
     },
     "CHLORIDE_LIMITS": {
         "clause": "IS 456:2000 Table 7 (Page 21)",

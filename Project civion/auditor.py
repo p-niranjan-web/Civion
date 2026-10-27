@@ -304,9 +304,9 @@ def run_civion_audit(user_data, is456_rules):
         u_trans = get_val('transport_time_minutes')
         if u_trans is not None:
             add_traceability('transport_time_minutes', u_trans)
-            evaluate("Transportation Time", f"{u_trans} mins", "Max 30 mins", float(u_trans) <= 30)
+            evaluate("Transportation Time", f"{u_trans} mins", "Stated (IS 456 cl 13.1 sets no time limit)", True)
         else:
-            evaluate("Transportation Time", "Not Provided", "Max 30 mins", False, True, field="transport_time_minutes")
+            evaluate("Transportation Time", "Not Provided", "Stated (IS 456 cl 13.1 sets no time limit)", False, True, field="transport_time_minutes")
 
         comp_method = get_val("compaction_method", "")
         if isinstance(comp_method, list): comp_method = comp_method[0] if comp_method else ""
