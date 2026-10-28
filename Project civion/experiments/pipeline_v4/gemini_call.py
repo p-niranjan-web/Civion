@@ -185,6 +185,7 @@ def call_gemini(name, model, system_prompt, user_prompt, max_retries=5, max_outp
             for k in ("input_tokens", "output_tokens", "reasoning_tokens", "total_tokens", "status", "error"):
                 summary[k] = entry.get(k)
             summary["finish_reason"] = entry["finish_reason"]
+            summary["ok_attempt_wall_s"] = entry["wall_s"]      # this attempt only; wall_s also holds retries + backoff
             break
         except Exception as e:
             msg = str(e)

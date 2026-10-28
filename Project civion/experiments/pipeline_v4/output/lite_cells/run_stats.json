@@ -20,7 +20,8 @@
     "wall_s": 11.34,
     "status": "ok",
     "error": null,
-    "finish_reason": "FinishReason.STOP"
+    "finish_reason": "FinishReason.STOP",
+    "ok_attempt_wall_s": 11.33
   },
   "steps": {
     "prepare": {

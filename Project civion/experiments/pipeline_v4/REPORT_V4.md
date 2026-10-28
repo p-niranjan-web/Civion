@@ -33,7 +33,7 @@ Formwork fields are not in `database.PARAMETERS`, so they are not asked for (set
 SO3 fields are in `PARAMETERS` and are now asked for (v2 forced them null).
 
 ## 2. Runs (all BLR, exposure Moderate, Reinforced Concrete)
-| Run | Model | Prompt | Tables | Input / output / reasoning tokens | Call wall | Quotes found / not |
+| Run | Model | Prompt | Tables | Input / output / reasoning tokens | Wall (successful attempt) | Quotes found / not |
 |---|---|---|---|---:|---:|---:|
 | lite1 | 3.5 Flash Lite | first | python | 29,788 / 4,122 / 0 | 10.0 s | 20 / 6 |
 | lite2 | 3.5 Flash Lite | + no IS knowledge, options tables, quote example, member_covers refs | python | 30,003 / 4,303 / 0 | 10.7 s | 21 / 5 |
@@ -41,7 +41,7 @@ SO3 fields are in `PARAMETERS` and are now asked for (v2 forced them null).
 | lite_cells | 3.5 Flash Lite | final | model copies cells | 30,028 / 5,707 / 0 | 11.3 s | 17 / 8 |
 | **main1** | 3.8 Flash | final | python | 30,045 / 4,323 / 7,920 | 226 s | **25 / 0** |
 | **main2** | 3.8 Flash | final | python | 30,045 / 4,419 / 8,875 | 361 s | **24 / 0** |
-| main_cells | 3.8 Flash | final | model copies cells | 30,028 / 6,772 / 8,134 | 314 s | 24 / 0 |
+| main_cells | 3.8 Flash | final | model copies cells | 30,028 / 6,772 / 8,134 | 229 s | 24 / 0 |
 
 Prompt iteration was done on Flash Lite only. Lite fixes that carried over: lite1 took the grade (M25) from the
 document's list of all grades and missed the "cover as specified in the Drawings" reference; lite2 fixed both.
@@ -112,22 +112,32 @@ document's own lines, and it costs fewer output tokens (main_cells 6,772 vs 4,32
 | Reasoning tokens | not reported | 7,920 | 8,875 |
 | **Total tokens** | **77,034** | **42,288** | **43,339** |
 | Largest single call (total) | 5,108 | 42,288 | 43,339 |
-| 429 / 5xx retries | 0 | 3 (503) | 3 (503) |
-| Call errors | 0 | 0 | 0 (an earlier attempt, below) |
-| Successful call wall time (s) | - | 226 | 361 |
+| 429 / 5xx retries, final invocation only (see below) | 0 | 3 (503) | 3 (503) |
+| Call errors | 0 | 0 | 0 |
+| Wall time of the successful attempt (s) | - | 226 | 361 |
+| Wall time of the call incl. retries and backoff (s) | 1,138 (sum of 20 calls) | 311 | 441 |
 | Whole run wall time (s) | 1,140 | 312 | 442 |
+
+Wall-time definition used everywhere in this report (tables in sections 2 and 6, `compare_main.md`):
+"successful attempt" = the one request that returned the answer (from `call_log.jsonl`;
+`run_stats.json` `call.ok_attempt_wall_s`); "incl. retries" = `call.wall_s`. main_cells: 229 s / 314 s.
+**The retry row counts only the invocation that produced the saved run.** Earlier invocations that also hit
+503s are in `call_log.jsonl` and listed in section 7.
 
 Per step (input / output incl. reasoning, calls): v2 run4 = section picking 2,171 / 2,937 (1), routing
 15,668 / 4,779 (5), extraction 44,883 / 6,596 (14); v4 = one extraction call 30,045 / 12,243 (main1),
 30,045 / 13,294 (main2).
 Main calls are slow: 226-361 s for one call, of which the model's thinking is most (7.9-8.9k reasoning
-tokens), plus 70+ s of 503 backoff per run. Flash Lite: 10-23 s, no reasoning tokens.
+tokens), plus 70-85 s of 503 backoff in the final invocation of each run. Flash Lite: 10-23 s, no reasoning tokens.
 main1's whole-run time (312.36 s) was overwritten by a later `--from-raw` re-post-process and restored by hand
 from the console output; `run_v4.py` now keeps it (noted in `run_stats.json`).
 
 ## 7. Failures and problems seen
-1. **503 "model is currently experiencing high demand"** on gemini-3.8-flash: every main run got 3-9 of them
-   before a successful answer (backoff 10/20/40 s). 503s are not counted against the daily budget.
+1. **503 "model is currently experiencing high demand"** on gemini-3.8-flash, 18 in total in `call_log.jsonl`:
+   main1 9 (a first invocation made 6 and gave up after its 5 retries, 373 s, saved nothing; the second made 3
+   and succeeded), main2 3 (after the dropped connection below), main_cells 3. Backoff 10/20/40 s. The first
+   main1 invocation's console output was not saved; its attempts are only in the log. 503s are not counted
+   against the daily budget.
 2. **Dropped connection**: main2's first attempt ended after 205 s with "Server disconnected without sending a
    response" (no HTTP code), which the first version did not retry. Now retried; that attempt is counted against
    the budget (it may have run on the server). Log: `output/main2_attempt1_disconnected.log`.
@@ -147,7 +157,9 @@ from the console output; `run_v4.py` now keeps it (noted in `run_stats.json`).
 3. The v4-side multi-line text-quote rule (section 7.4): keep it in v4, or move it into verify.py for all pipelines?
 4. Main-model latency (4-7 min per document with retries) vs Flash Lite (10-25 s, same values except the quote
    format and one transport-time pick). Is Lite + a Python fix for one-line table quotes worth testing?
-5. `Project civion/.env` is tracked by git (there is no .gitignore). The Gemini key is in it now. It was never
-   staged by this work; it should be ignored / untracked before anything is pushed.
+5. `Project civion/.env` was tracked by git. Done in the follow-up commit: untracked (`git rm --cached`; the file
+   stays on disk) and a root `.gitignore` added. History checked: the only commit that ever contained `.env`
+   (b8c9705, already on origin/main) holds a placeholder, no real Groq or Gemini key; no commit contains
+   GEMINI_API_KEY. No key rotation is needed because of git. Still do not push before reviewing the branch.
 6. An older interactive `experiments/pick_models.py` (untracked, not written in this work) exists; v4 uses
    `pipeline_v4/pick_models.py`. Delete the old one?

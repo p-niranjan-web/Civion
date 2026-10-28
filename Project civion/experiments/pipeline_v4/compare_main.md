@@ -92,7 +92,8 @@ Remarks:
 | Largest single call (total) | 5,108 | 42,288 | 43,339 |
 | 429 / 5xx retries | 0 | 3 | 3 |
 | Call errors | 0 | 0 | 0 |
-| LLM wall time, sum of calls (s) | 1138.2 | 311.4 | 441.3 |
+| Successful-attempt wall time (s) (v4 only; v2 has no per-attempt time) | - | 226.1 | 361.2 |
+| LLM wall time incl. retries and backoff (s) | 1138.2 | 311.4 | 441.3 |
 | Whole run wall time (s) | 1140.01 | 312.36 | 442.1 |
 
 **Per step: input / output tokens (calls)**

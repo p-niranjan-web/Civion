@@ -21,7 +21,8 @@
     "status": "ok",
     "error": null,
     "finish_reason": "FinishReason.STOP",
-    "reused_from": "lite3"
+    "reused_from": "lite3",
+    "ok_attempt_wall_s": 23.42
   },
   "steps": {
     "prepare": {

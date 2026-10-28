@@ -52,7 +52,8 @@ def load(spec):
         calls = [{"step": "1 extract: whole document", "input": c.get("input_tokens") or 0,
                   "output": c.get("output_tokens") or 0, "reasoning": c.get("reasoning_tokens") or 0,
                   "total": c.get("total_tokens") or 0, "retries": c.get("retries") or 0,
-                  "error": c.get("status") != "ok", "wall_s": c.get("wall_s") or 0, "model": c.get("model")}]
+                  "error": c.get("status") != "ok", "wall_s": c.get("wall_s") or 0, "model": c.get("model"),
+                  "ok_wall_s": c.get("ok_attempt_wall_s") or c.get("wall_s") or 0}]
     return {"name": f"{kind} {name}", "kind": kind, "ext": ext, "audit": audit, "quotes": quotes, "rows": rows,
             "stats": stats, "calls": calls}
 
@@ -114,7 +115,9 @@ def token_table(runs):
     row("Largest single call (total)", lambda r: f"{max(c['total'] for c in r['calls']):,}")
     row("429 / 5xx retries", lambda r: tot(r, "retries"))
     row("Call errors", lambda r: sum(1 for c in r["calls"] if c["error"]))
-    row("LLM wall time, sum of calls (s)", lambda r: f"{sum(c['wall_s'] for c in r['calls']):.1f}")
+    row("Successful-attempt wall time (s) (v4 only; v2 has no per-attempt time)",
+        lambda r: "-" if r["kind"] == "v2" else f"{sum(c['ok_wall_s'] for c in r['calls']):.1f}")
+    row("LLM wall time incl. retries and backoff (s)", lambda r: f"{sum(c['wall_s'] for c in r['calls']):.1f}")
     row("Whole run wall time (s)", lambda r: r["stats"].get("total_wall_s"))
     L += ["", "**Per step: input / output tokens (calls)**", "",
           "| Step | " + " | ".join(r["name"] for r in runs) + " |", "|---|" + "---:|" * len(runs)]

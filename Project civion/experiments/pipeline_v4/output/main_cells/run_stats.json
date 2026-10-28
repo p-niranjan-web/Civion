@@ -20,7 +20,8 @@
     "wall_s": 314.42,
     "status": "ok",
     "error": null,
-    "finish_reason": "FinishReason.STOP"
+    "finish_reason": "FinishReason.STOP",
+    "ok_attempt_wall_s": 228.92
   },
   "steps": {
     "prepare": {
