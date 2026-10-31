@@ -1,3 +1,24 @@
 # Secrets: never commit
 .env
 **/.env
+
+# Private specification documents and anything holding their text: keep local, never commit
+Project civion/demo_md/
+Project civion/sample_spec_docs/
+Project civion/IS Codes/
+Project civion/experiments/parse_test/
+Project civion/downloads/cache/
+Project civion/KNOWN_ISSUES.md
+**/extract_calls/
+**/doc.md
+**/clean.md
+**/sections.json
+**/outline.txt
+**/not_selected.txt
+**/selected.json
+**/localized.md
+**/units.json
+**/quote_check.json
+**/response.json
+Project civion/experiments/**/audit.json
+Project civion/experiments/**/extraction.json
