@@ -6,7 +6,7 @@ laptop** (not pushed) and is **not merged** into `main`.
 
 ```
 main:                   1eba41b ... 66d24d8
-pipeline-localization:                 \-- 843df8b -- 4565572 -- ... -- (latest)
+pipeline-localization:                 \-- 629cdc6 -- adb131a -- ... -- (latest)
 ```
 
 ## main (the app, 16 commits, oldest first)
@@ -27,31 +27,31 @@ pipeline-localization:                 \-- 843df8b -- 4565572 -- ... -- (latest)
 **Pipeline experiments (v1, v2)**
 | Commit | What |
 |---|---|
-| 843df8b | Pipeline v1 (section picking + chunked extraction) |
-| 4565572 | Snapshot before the shapes work: pipeline v2, fallback keyword search, parse tests, project docs |
+| 629cdc6 | Pipeline v1 (section picking + chunked extraction) |
+| adb131a | Snapshot before the shapes work: pipeline v2, fallback keyword search, parse tests, project docs |
 
 **Shapes / references work**
 | Commit | What |
 |---|---|
-| 8888225 | REFERENCE status (spec points to an IS code or the drawings) |
-| fc50c0a | UI: REFERENCE badge, quote, pass/reference summary |
-| 0b8467c | Table values quoted as header row + data row; verify.py checks it |
-| 795cbc9 | Database fixes vs IS 456: transport time (no limit), workability bands |
-| a4b0111 | Shape-driven audit: PARAMETERS + one check per shape; IS 383:2016 tables |
-| c45f8a7 | Ledger shows extraction remarks |
-| c821823 | Pipeline: cell-by-cell table merge, multi-row table quotes, BLR run3 |
-| 9e5b861 | BLR run4, token split per step, doc coverage, final shapes report |
-| a2b879b | Grading tables read by Python; prefer a document's own table over "as per IS 383" |
-| 245af57 | Curing per IS 456 cl 13.5.1: PPC/PSC 10 days, dry hot weather 10 days |
-| 2526ab9 | Water sulphates limit is 400 mg/l as SO3 (not SO4); SO4 values converted |
+| 7fa8e03 | REFERENCE status (spec points to an IS code or the drawings) |
+| 65d7351 | UI: REFERENCE badge, quote, pass/reference summary |
+| 7c1e0fb | Table values quoted as header row + data row; verify.py checks it |
+| cd97f72 | Database fixes vs IS 456: transport time (no limit), workability bands |
+| 5546b7d | Shape-driven audit: PARAMETERS + one check per shape; IS 383:2016 tables |
+| 79f6650 | Ledger shows extraction remarks |
+| 9b1c5b9 | Pipeline: cell-by-cell table merge, multi-row table quotes, BLR run3 |
+| 50a6498 | BLR run4, token split per step, doc coverage, final shapes report |
+| da1b03a | Grading tables read by Python; prefer a document's own table over "as per IS 383" |
+| dfd416d | Curing per IS 456 cl 13.5.1: PPC/PSC 10 days, dry hot weather 10 days |
+| adea54b | Water sulphates limit is 400 mg/l as SO3 (not SO4); SO4 values converted |
 
 **Documentation only**
 | Commit | What |
 |---|---|
-| 48106af | JOURNEY.md: wide-table issue |
-| 2a93403, 7d809c1, 3b34c7c | RUNS.md: what v1, v2 and each run are, step by step |
-| 75d705b | REPORT_GUIDE.md, LAYOUT_LIMITATIONS.md |
-| 5d4dadf, bcd5aa8 | Removed DIFFICULTIES_LOG.md and STATUS.md (owner's request) |
+| 3167b2b | JOURNEY.md: wide-table issue |
+| cf9b4f0, 0e7a435, 13399af | RUNS.md: what v1, v2 and each run are, step by step |
+| 7238cb1 | REPORT_GUIDE.md, LAYOUT_LIMITATIONS.md |
+| df9a813, 764d203 | Removed DIFFICULTIES_LOG.md and STATUS.md (owner's request) |
 
 ## Practical notes
 - Working branch now: `pipeline-localization`. The deployed app (`main`) has none of this work yet.
