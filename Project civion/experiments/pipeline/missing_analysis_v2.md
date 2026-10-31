@@ -28,3 +28,5 @@
 - `curing_days` = 7: 3.6 P says 7 days of flooding / damp Hessian, then "For the next 7 days the surface shall be kept wet". The groups.py "add consecutive periods" rule (14) was not followed. Both values PASS (min 7).
 - run2 quotes for `specified_min_cement` and `specified_wc` are composed, not verbatim (row label + column header + cell). The values match the Table 5 Moderate / RC cells (290, 0.55). The deterministic check correctly flags them.
 - run2 `cement_type` = OPC is right (2.5 A), but its quote is a Table 6 sulphate-class row that lists several cement types: weak support.
+
+> **SCOPE OF THIS CHECK:** like the v1 analysis, this traces each parameter's primary statement. It does not audit what Stage A cropping dropped. Sections still out of scope in v2 include `S010` (1.7, hot-weather concreting) and `S057` (3.8 FINISHES FOR FLATWORK, which holds the "6 cubes" sampling clause under a misleading heading). v2's safety nets added 2.10 and 3.6 E but not these two. Verify with `output_v2/<run>/not_selected.txt`.

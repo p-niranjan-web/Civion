@@ -234,6 +234,12 @@ Manual search of `output/clean.md` for each MISSING parameter (grep for the valu
 **Summary of the 20 non-formwork MISSING rows:**
 - 5 are **extraction misses**: transport time, slump, water pH, chloride limit, cube size. The value is in localized.md and was sent to the model.
 - **0 localization misses** for the primary statement of any parameter. One secondary statement was not selected: the 1.7 hot-weather "1-1/4 hrs" delivery time, which sits in a site-conditions section that the scope marks OUT.
+  - **SCOPE OF THIS CHECK (read before citing "0 localization misses"):** it only asks whether each parameter's *primary* statement landed in a selected section. It does NOT test whether cropping dropped other relevant text. A section-by-section check of `not_selected.txt` against `sections.json` found these in-scope or partly in-scope sections NOT selected in v1:
+    - `S057` (3.8 FINISHES FOR FLATWORK): contains the sampling clause "Quantity of test cubes and testing ... minimum frequency of cube casting ... Each sample shall consist of 6 cubes". The heading does not reveal this, so a headings-only Stage A cannot pick it. (The sampling tables S058/S060 were selected.)
+    - `S010` (1.7 PROJECT/SITE CONDITIONS): hot-weather delivery time 1-1/4 h.
+    - `S033` (2.10 CURING MATERIALS): curing compound.
+    - `S050` (3.6 E. Shrinkage cracks): covering concrete after placing in warm weather.
+    Transport time (S051), slump (S049), pH (S024), chloride limit (S026) and cube size 150 mm (S019/S024) were NOT lost at cropping; their primary statements were in selected sections.
 - 5 are **stated only by reference or as a rule**: covers x3 (drawings), grade (list / Table 4), sampling sets (volume-dependent rule).
 - 10 are **truly absent**: soil/groundwater SO3 x3, freezing, max cement, sigma, fire rating, SO3 content, total volume, and characteristic strength (follows the missing grade).
 
