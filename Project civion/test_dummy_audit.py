@@ -158,22 +158,19 @@ def check_remark():
 
 
 def check_sync():
-    """database.PARAMETERS (extracted ones), parser.py schema and groups.py agree."""
-    sys.path.insert(0, str(Path(__file__).parent / "experiments" / "pipeline"))
-    from groups import ALL_PARAMS
-    extracted = {f for f, s in PARAMETERS.items() if s.get("from") not in ("user", "derived")}
-    site = {"soil_total_so3_percent", "soil_extract_2_1_so3_gl", "groundwater_so3_gl"}  # supplied from outside in the pipeline
-    parser_src = Path(__file__).with_name("parser.py").read_text(encoding="utf-8")
-    schema = parser_src[parser_src.index("Return exactly this JSON structure"):parser_src.index('"cross_references"')]
-    parser_fields = set(re.findall(r'^\s*"(\w+)":', schema, re.M))
-    formwork = {"formwork_removal_hours", "formwork_removal_days", "formwork_span_m"}
+    """database.PARAMETERS (extracted ones) and the extraction prompt (extraction_prompt.py) agree.
+
+    The prompt module checks this itself when imported; the system prompt must also name every field."""
     problems = []
-    if extracted - site != set(ALL_PARAMS):
-        problems.append(f"database vs groups.py: only database {sorted(extracted - site - set(ALL_PARAMS))}, "
-                        f"only groups {sorted(set(ALL_PARAMS) - extracted)}")
-    if extracted | {"exposure", "concrete_type"} != parser_fields - formwork:
-        problems.append(f"database vs parser.py: only database {sorted(extracted - parser_fields)}, "
-                        f"only parser {sorted(parser_fields - formwork - extracted - {'exposure', 'concrete_type'})}")
+    try:
+        import extraction_prompt
+        system = extraction_prompt.build_system("Moderate", "Reinforced Concrete")
+        extracted = {f for f, s in PARAMETERS.items() if s.get("from") not in ("user", "derived")}
+        missing = sorted(f for f in extracted if f'"{f}":' not in system)
+        if missing:
+            problems.append(f"fields not in the prompt: {missing}")
+    except RuntimeError as e:
+        problems.append(str(e))
     print(("ok   schema sync" if not problems else "BAD  schema sync: " + "; ".join(problems)))
     return len(problems)
 

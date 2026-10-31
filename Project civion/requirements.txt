@@ -1,7 +1,9 @@
 pandas
 groq
-pdfplumber
+google-genai
 fastapi
 uvicorn
 python-multipart
 fpdf2
+# Only for CIVION_MD_SOURCE=docling (real PDF upload); the demo mode does not need it.
+# docling

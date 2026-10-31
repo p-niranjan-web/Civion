@@ -1,6 +1,7 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
+from starlette.concurrency import run_in_threadpool
 from pydantic import BaseModel
 import os
 import tempfile
@@ -52,15 +53,18 @@ async def audit_pdf(
             temp_pdf.write(content)
             temp_pdf_path = temp_pdf.name
 
-        # Run parsing
-        extracted_json = parse_user_specification(
-            temp_pdf_path,
-            detected_exposure=detected_exposure,
-            detected_concrete_type=detected_concrete_type,
-        )
-        
-        # Clean up temp file
-        os.remove(temp_pdf_path)
+        # Run parsing. One Gemini call on the whole document: minutes with the main model, so it runs
+        # in a worker thread and the server stays responsive meanwhile.
+        try:
+            extracted_json = await run_in_threadpool(
+                parse_user_specification,
+                temp_pdf_path,
+                detected_exposure=detected_exposure,
+                detected_concrete_type=detected_concrete_type,
+                source_name=file.filename,
+            )
+        finally:
+            os.remove(temp_pdf_path)
         
         if "error" in extracted_json:
             raise HTTPException(status_code=500, detail=f"Parsing Error: {extracted_json['error']}")
