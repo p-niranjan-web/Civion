@@ -64,9 +64,10 @@ function App() {
     if (concreteType) formData.append('concrete_type', concreteType);
 
     try {
-      // Simulate frontend processing stages
-      const stage2Timer = setTimeout(() => setScannerStage(2), 1500);
-      const stage3Timer = setTimeout(() => setScannerStage(3), 3000);
+      // Stage 2 (extraction) is where the time goes; stages 3-4 are shown once the answer is in.
+      const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+      const startedAt = Date.now();
+      const stage2Timer = setTimeout(() => setScannerStage(2), 1000);
       
       const response = await fetch(`${API_BASE}/api/audit`, {
         method: 'POST',
@@ -74,13 +75,19 @@ function App() {
       });
       
       clearTimeout(stage2Timer);
-      clearTimeout(stage3Timer);
-      setScannerStage(4);
       
       const data = await response.json();
       if (!response.ok) {
         throw new Error(data.detail || 'Audit failed');
       }
+
+      // Walk through every stage even when the answer is instant (cached / replayed), about 3 s in total.
+      await sleep(Math.max(0, 700 - (Date.now() - startedAt)));
+      setScannerStage(2);
+      await sleep(700);
+      setScannerStage(3);
+      await sleep(600);
+      setScannerStage(4);
       
       setTimeout(() => {
         setScannerComplete(true);
@@ -115,8 +122,8 @@ function App() {
             });
           }
           setAdjustments(initAdjs);
-        }, 800);
-      }, 500);
+        }, 600);
+      }, 300);
 
     } catch (err) {
       setError(err.message);
@@ -262,7 +269,7 @@ function App() {
 
         <div className="tab-content">
           {loading ? (
-            <ScannerAnimation stage={scannerStage} complete={scannerComplete} />
+            <ScannerAnimation stage={scannerStage} complete={scannerComplete} fileName={file?.name} />
           ) : (
             <>
               {activeTab === 'dashboard' && <Dashboard auditData={auditData} onRemediate={handleRemediate} />}

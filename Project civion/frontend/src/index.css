@@ -666,9 +666,43 @@ tr:hover td {
   gap: 40px;
 }
 
+.scanner-heading {
+  text-align: center;
+}
+
+.scanner-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 6px;
+}
+
+.scanner-file {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 420px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scanner-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.scanner-pulse {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--brand-green);
+}
+
 .scanner-stages {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0;
 }
 
@@ -731,8 +765,7 @@ tr:hover td {
   width: 60px;
   height: 2px;
   background: var(--border-color);
-  margin: 0 12px;
-  margin-bottom: 32px;
+  margin: 23px 12px 0;
   transition: background 0.4s ease;
 }
 
