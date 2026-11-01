@@ -5,7 +5,7 @@
 powershell -ExecutionPolicy Bypass -File run_local.ps1
 ```
 Opens the backend (http://127.0.0.1:8000) and the frontend (http://localhost:5173) in two windows. Use the conda env `civion`.
-Keys are read from `Project civion\.env`: `GEMINI_API_KEY` (extraction) and `GROQ_API_KEY` (chat only).
+The key is read from `Project civion\.env`: `GEMINI_API_KEY` (used for both the extraction and the chat).
 
 ## What happens on upload
 ```
@@ -33,4 +33,4 @@ PDF -> Markdown -> clean -> ONE Gemini call (gemini-3.8-flash) -> audit engine -
 | `GEMINI_API_KEY` | - | required |
 | `GEMINI_MODEL` | `gemini-3.8-flash` | `gemini-3.5-flash-lite` for speed |
 | `CIVION_MD_SOURCE` | `prebuilt` | `docling` for real uploads |
-| `GROQ_API_KEY` | - | chat endpoint only |
+| `GEMINI_CHAT_MODEL` | `gemini-3.5-flash-lite` | chat model (~3 s per answer) |

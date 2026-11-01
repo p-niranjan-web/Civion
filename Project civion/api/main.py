@@ -12,7 +12,7 @@ from fpdf import FPDF
 from parser import parse_user_specification
 from auditor import run_civion_audit
 from database import IS456_MASTER, EXTERNAL_CODE_REFERENCES
-from config import get_groq_client, GROQ_MODEL
+import gemini_client
 
 os.makedirs("downloads", exist_ok=True)
 
@@ -85,8 +85,6 @@ async def audit_pdf(
 @app.post("/api/chat")
 async def chat(request: ChatRequest):
     try:
-        client = get_groq_client()
-        
         # Build the system prompt
         system_prompt = "You are Civion AI, a professional civil engineering compliance assistant."
 
@@ -140,20 +138,7 @@ async def chat(request: ChatRequest):
             "Do not use informal language or emojis. Provide clear, professional engineering guidance based on IS 456:2000."
         )
             
-        # Format messages for Groq API
-        formatted_messages = [{"role": "system", "content": system_prompt}]
-        
-        for msg in request.messages:
-            role = "user" if msg.get("role") == "user" else "assistant"
-            formatted_messages.append({"role": role, "content": msg.get("content", "")})
-            
-        chat_completion = client.chat.completions.create(
-            model=GROQ_MODEL,
-            messages=formatted_messages,
-            temperature=0.3
-        )
-        
-        response_text = chat_completion.choices[0].message.content
+        response_text = await run_in_threadpool(gemini_client.chat, system_prompt, request.messages)
         return {"response": response_text}
         
     except Exception as e:

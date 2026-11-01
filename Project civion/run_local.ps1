@@ -1,6 +1,6 @@
 # Run CIVION locally (backend :8000 + frontend :5173) in two windows. Use the conda env "civion".
 #   powershell -ExecutionPolicy Bypass -File run_local.ps1
-# Keys come from Project civion\.env (GEMINI_API_KEY for extraction, GROQ_API_KEY for the chat).
+# Keys come from Project civion\.env (GEMINI_API_KEY: extraction and chat).
 # CIVION_MD_SOURCE: prebuilt (default, demo: Docling skipped, reads demo_md\<pdf name>.md) | docling
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $py = Join-Path $env:USERPROFILE "miniconda3\envs\civion\python.exe"

@@ -25,11 +25,13 @@ GROQ_MODEL = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
 if not GROQ_API_KEY:
     print("WARNING: GROQ_API_KEY environment variable is not set. Ensure it is set before running inference.")
 
-# Extraction (parser.py) runs on Gemini; Groq above is now used only by the chat endpoint.
+# Extraction (parser.py) and the chat (api/main.py) run on Gemini; Groq above is only used by the old experiments.
 # gemini-3.8-flash is the model the v4 pipeline was measured with (experiments/pipeline_v4/REPORT_V4.md).
 # GEMINI_MODEL=gemini-3.5-flash-lite is much faster but its table quotes are weaker (same report).
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.8-flash")
+# Chat is interactive: Flash Lite answered in ~3 s; gemini-3.8-flash returned 503 "high demand" for 75 s when tried.
+GEMINI_CHAT_MODEL = os.environ.get("GEMINI_CHAT_MODEL", "gemini-3.5-flash-lite")
 
 # Where the Markdown of an uploaded PDF comes from:
 #   "prebuilt" (demo)   - demo_md/<pdf name>.md, already converted; Docling is NOT run
