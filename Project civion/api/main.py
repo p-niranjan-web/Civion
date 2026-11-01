@@ -269,7 +269,7 @@ async def report_optimized(payload: dict):
             
         pdf.set_font("Helvetica", style="B", size=18)
         pdf.cell(40)
-        pdf.cell(0, 10, "RECTIFIED IDEAL SPECIFICATION", new_x="LMARGIN", new_y="NEXT", align="C")
+        pdf.cell(0, 10, "SPECIFICATION SUMMARY TABLE", new_x="LMARGIN", new_y="NEXT", align="C")
         pdf.ln(15)
         
         def trunc(s, max_len=30):
@@ -312,7 +312,7 @@ async def report_optimized(payload: dict):
         return StreamingResponse(
             io.BytesIO(pdf_bytes),
             media_type="application/pdf",
-            headers={"Content-Disposition": "attachment; filename=Optimized_Specification.pdf"}
+            headers={"Content-Disposition": "attachment; filename=Summary_Table.pdf"}
         )
     except Exception as e:
         import traceback

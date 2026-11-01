@@ -240,7 +240,7 @@ function App() {
       // Create a temporary link to download the file directly
       const a = document.createElement('a');
       a.href = downloadUrl;
-      a.download = 'CIVION_Optimized_Specification.pdf';
+      a.download = 'CIVION_Summary_Table.pdf';
       document.body.appendChild(a);
       a.click();
       a.remove();

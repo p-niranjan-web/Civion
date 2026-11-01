@@ -81,7 +81,7 @@ const Optimization = ({
 
   return (
     <div className="optimization">
-      <h2 className="section-title">Structural Optimization Engine</h2>
+      <h2 className="section-title">Summary Table</h2>
 
       {/* ── Score Section ── */}
       <div className="opt-score-section">
@@ -90,7 +90,7 @@ const Optimization = ({
           <h3>Compliance Score</h3>
           <p>
             {optimizedData
-              ? 'Optimized specification generated'
+              ? 'Summary table generated'
               : 'Adjust parameters below to reach 100% compliance'}
           </p>
         </div>
@@ -157,17 +157,17 @@ const Optimization = ({
             disabled={optLoading || !hasAdjustments}
             onClick={onOptimize}
           >
-            {optLoading ? 'Optimizing...' : 'Make the Specs Better'}
+            {optLoading ? 'Generating...' : 'Get Summary Table'}
           </button>
 
           {downloadUrl && (
             <div className="download-card glass-panel">
-              <h4>Rectified Specification Ready</h4>
+              <h4>Summary Table Ready</h4>
               <button
                 className="btn-outline btn-full-width"
                 onClick={onDownloadOptReport}
               >
-                Download Rectified PDF
+                Download Summary Table
               </button>
             </div>
           )}
