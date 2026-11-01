@@ -5,20 +5,30 @@
    ────────────────────────────────────────────── */
 const CATEGORIES = [
   {
+    name: 'General',
+    exact: ['Concrete Type', 'Environmental Exposure', 'Cement Type'],
+    keywords: [],
+  },
+  {
     name: 'Structural Safety',
-    keywords: ['Concrete Grade', 'Min Cement Content', 'W/C Ratio', 'Characteristic Strength', 'Cover', 'Sulfate'],
+    keywords: ['Concrete Grade', 'Min Cement Content', 'Max Cement Content', 'W/C Ratio', 'Standard Deviation', 'Characteristic Strength', 'Cover'],
   },
   {
     name: 'Construction Procedures',
-    keywords: ['Mixing', 'Compaction', 'Curing'],
+    keywords: ['Mixing', 'Compaction', 'Curing', 'Slump', 'Transportation'],
   },
   {
     name: 'Materials & Limits',
-    keywords: ['Aggregate', 'Chloride', 'SO3'],
+    keywords: ['Water', 'Aggregate', 'Chloride'],
   },
   {
     name: 'Quality Control',
     keywords: ['Sampling'],
+  },
+  {
+    name: 'Sulphate & Site Conditions',
+    exact: ['Soil Total SO3', 'Soil Extract SO3', 'Groundwater SO3', 'Sulfate Cement Type', 'Freezing and Thawing', 'Sulphate (SO3) Content'],
+    keywords: [],
   },
 ];
 
@@ -27,6 +37,9 @@ const CATEGORIES = [
  * Falls back to 'Other' if no keywords match.
  */
 const categorize = (metric) => {
+  for (const cat of CATEGORIES) {
+    if (cat.exact && cat.exact.includes(metric)) return cat.name;
+  }
   for (const cat of CATEGORIES) {
     if (cat.keywords.some((kw) => metric.includes(kw))) {
       return cat.name;
@@ -71,8 +84,9 @@ const Ledger = ({ auditData }) => {
 
   /* Maintain a stable render order: defined categories first, then 'Other' */
   const orderedNames = [
-    ...CATEGORIES.map((c) => c.name),
+    ...CATEGORIES.slice(0, -1).map((c) => c.name),
     'Other',
+    CATEGORIES[CATEGORIES.length - 1].name,   // sulphate / site conditions stay at the bottom
   ].filter((name) => groups[name] && groups[name].length > 0);
 
   return (

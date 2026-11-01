@@ -51,11 +51,10 @@ const Optimization = ({
   auditData,
   adjustments,
   onAdjustmentChange,
+  onAdjustmentReset,
   optimizedData,
   optLoading,
-  onOptimize,
-  downloadUrl,
-  onDownloadOptReport,
+  onDownloadSummary,
 }) => {
   /* ── Empty state ── */
   if (!auditData) {
@@ -70,8 +69,22 @@ const Optimization = ({
     );
   }
 
-  const adjustmentKeys = Object.keys(adjustments || {});
-  const hasAdjustments = adjustmentKeys.length > 0;
+  /* Sliders for the adjustable metrics that did not pass. They start at the value stated in the
+     document; only what the user moves is sent back, nothing is auto-corrected to the IS value. */
+  const raw = auditData.raw_extracted_data || {};
+  const adjustable = (auditData.ledger || [])
+    .filter((row) => metricMap[row.Metric] && /fail|warning/i.test(row.Status || ''))
+    .map((row) => {
+      const key = metricMap[row.Metric];
+      let stated = Array.isArray(raw[key]) ? raw[key][raw[key].length - 1] : raw[key];
+      const notStated = stated === null || stated === undefined || stated === '';
+      if (notStated) {
+        const m = String(row.Requirement || '').match(/\d+(\.\d+)?|M\d+/);
+        stated = m ? m[0] : '';
+      }
+      return { key, stated, notStated };
+    });
+  const hasAdjustments = adjustable.length > 0;
 
   /* Score: use optimized score when available, else derive from counts */
   const baseScore = Math.round(
@@ -91,7 +104,7 @@ const Optimization = ({
           <p>
             {optimizedData
               ? 'Summary table generated'
-              : 'Adjust parameters below to reach 100% compliance'}
+              : 'Optionally try different values below, then download the summary table'}
           </p>
         </div>
       </div>
@@ -101,19 +114,31 @@ const Optimization = ({
         {/* Left: Adjustment Controls */}
         <div>
           <h3>Adjustment Controls</h3>
+          <p className="text-secondary">Optional. Parameters stay exactly as stated in your document unless you move a slider.</p>
 
           {!hasAdjustments ? (
             <p className="text-secondary">
-              No failed metrics to optimize. Your specification is fully compliant.
+              Nothing to adjust: every adjustable parameter already passes.
             </p>
           ) : (
-            adjustmentKeys.map((key) => {
+            adjustable.map(({ key, stated, notStated }) => {
               const config = getSliderConfig(key);
-              const value = adjustments[key];
+              const changed = adjustments[key] !== undefined;
+              const value = changed ? adjustments[key] : stated;
+              const numericValue = value !== '' && Number.isFinite(Number(value)) ? Number(value) : config.min;
 
               return (
                 <div key={key} className="slider-group">
-                  <label>{getKeyName(key)}</label>
+                  <label>
+                    {getKeyName(key)}
+                    {notStated && !changed && <span className="text-secondary"> (not stated in the document)</span>}
+                    {changed && (
+                      <button type="button" className="btn-outline" style={{ marginLeft: 8, padding: '0 8px' }}
+                              onClick={() => onAdjustmentReset(key)}>
+                        Reset
+                      </button>
+                    )}
+                  </label>
 
                   {config.isText ? (
                     /* Text input for grade-style values */
@@ -121,7 +146,7 @@ const Optimization = ({
                       <input
                         type="text"
                         className="custom-slider"
-                        value={value}
+                        value={value ?? ''}
                         onChange={(e) =>
                           onAdjustmentChange(key, e.target.value)
                         }
@@ -130,14 +155,14 @@ const Optimization = ({
                   ) : (
                     /* Range slider for numeric values */
                     <div className="slider-wrapper">
-                      <div className="slider-value-bubble">{value}</div>
+                      <div className="slider-value-bubble">{numericValue}</div>
                       <input
                         type="range"
                         className="custom-slider"
                         min={config.min}
                         max={config.max}
                         step={config.step}
-                        value={value}
+                        value={numericValue}
                         onChange={(e) =>
                           onAdjustmentChange(key, Number(e.target.value))
                         }
@@ -154,36 +179,26 @@ const Optimization = ({
         <div>
           <button
             className="premium-btn"
-            disabled={optLoading || !hasAdjustments}
-            onClick={onOptimize}
+            disabled={optLoading}
+            onClick={onDownloadSummary}
+            title="Download summary table (PDF)"
           >
-            {optLoading ? 'Generating...' : 'Get Summary Table'}
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: 8, verticalAlign: 'text-bottom' }}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            {optLoading ? 'Preparing...' : 'Download Summary Table'}
           </button>
-
-          {downloadUrl && (
-            <div className="download-card glass-panel">
-              <h4>Summary Table Ready</h4>
-              <button
-                className="btn-outline btn-full-width"
-                onClick={onDownloadOptReport}
-              >
-                Download Summary Table
-              </button>
-            </div>
-          )}
         </div>
       </div>
 
       {/* ── Optimized Compliance Matrix ── */}
       {optimizedData && optimizedData.ledger && (
         <div className="comparison-section glass-panel table-container">
-          <h3 className="table-title">Optimized Compliance Matrix</h3>
+          <h3 className="table-title">Summary Table</h3>
           <table>
             <thead>
               <tr>
                 <th>Metric</th>
-                <th>Extracted Value</th>
-                <th>Requirement</th>
+                <th>Stated Value</th>
+                <th>Required Value</th>
                 <th>Status</th>
               </tr>
             </thead>

@@ -37,14 +37,12 @@ function App() {
   const [adjustments, setAdjustments] = useState({});
   const [optimizedData, setOptimizedData] = useState(null);
   const [optLoading, setOptLoading] = useState(false);
-  const [downloadUrl, setDownloadUrl] = useState(null);
 
   const handleFileChange = (selectedFile) => {
     setFile(selectedFile);
     // Reset state on new file
     setAuditData(null);
     setOptimizedData(null);
-    setDownloadUrl(null);
     setAdjustments({});
     setError(null);
   };
@@ -54,7 +52,6 @@ function App() {
     setLoading(true);
     setError(null);
     setOptimizedData(null);
-    setDownloadUrl(null);
     setScannerStage(1);
     setScannerComplete(false);
     
@@ -98,30 +95,7 @@ function App() {
           setLoading(false);
           setScannerStage(0);
           
-          // Initialize adjustments for failed metrics
-          const metricMap = {
-            "Concrete Grade": "specified_grade",
-            "Min Cement Content": "specified_min_cement",
-            "W/C Ratio": "specified_wc",
-            "Sampling Sets": "specified_sampling_sets",
-            "Mixing Time": "mixing_time_minutes",
-            "Curing Days": "curing_days"
-          };
-          
-          const initAdjs = {};
-          if (data.ledger) {
-            data.ledger.forEach(item => {
-              if (item.Status.includes('Fail') || item.Status.includes('Warning')) {
-                const key = metricMap[item.Metric];
-                if (key) {
-                  let req = item.Requirement.replace('Min ', '').replace('Max ', '').replace('Req ', '').trim();
-                  if (req.includes(' ')) req = req.split(' ')[0];
-                  initAdjs[key] = req;
-                }
-              }
-            });
-          }
-          setAdjustments(initAdjs);
+          setAdjustments({});
         }, 600);
       }, 300);
 
@@ -209,7 +183,7 @@ function App() {
       const data = await response.json();
       setOptimizedData(data);
       
-      // Generate Rectified Report
+      // Summary table PDF: stated values (plus the user's own changes), required values, re-evaluated status
       const reportRes = await fetch(`${API_BASE}/api/report/optimized`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -221,7 +195,13 @@ function App() {
       if (!reportRes.ok) throw new Error('Report generation failed');
       const blob = await reportRes.blob();
       const url = window.URL.createObjectURL(blob);
-      setDownloadUrl(url);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'CIVION_Summary_Table.pdf';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
 
     } catch (err) {
       console.error(err);
@@ -235,16 +215,12 @@ function App() {
     setAdjustments(prev => ({ ...prev, [key]: value }));
   };
 
-  const handleDownloadOptReport = () => {
-    if (downloadUrl) {
-      // Create a temporary link to download the file directly
-      const a = document.createElement('a');
-      a.href = downloadUrl;
-      a.download = 'CIVION_Summary_Table.pdf';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    }
+  const handleAdjustmentReset = (key) => {
+    setAdjustments(prev => {
+      const next = { ...prev };
+      delete next[key];
+      return next;
+    });
   };
 
   return (
@@ -282,9 +258,8 @@ function App() {
                   onAdjustmentChange={handleAdjustmentChange}
                   optimizedData={optimizedData}
                   optLoading={optLoading}
-                  onOptimize={optimizeSpecs}
-                  downloadUrl={downloadUrl}
-                  onDownloadOptReport={handleDownloadOptReport}
+                  onDownloadSummary={optimizeSpecs}
+                  onAdjustmentReset={handleAdjustmentReset}
                 />
               )}
             </>

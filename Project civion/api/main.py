@@ -11,6 +11,7 @@ from fpdf import FPDF
 
 from parser import parse_user_specification
 from auditor import run_civion_audit
+from display_order import order_audit
 from database import IS456_MASTER, EXTERNAL_CODE_REFERENCES
 import gemini_client
 
@@ -70,7 +71,7 @@ async def audit_pdf(
             raise HTTPException(status_code=500, detail=f"Parsing Error: {extracted_json['error']}")
             
         # Run audit
-        audit_results = run_civion_audit(extracted_json, IS456_MASTER)
+        audit_results = order_audit(run_civion_audit(extracted_json, IS456_MASTER))
         
         # We can also return the extracted raw json for the chat context
         audit_results["raw_extracted_data"] = extracted_json
@@ -244,7 +245,7 @@ async def optimize_specs(payload: dict):
     for k, v in adjustments.items():
         optimized_data[k] = v
         
-    audit_results = run_civion_audit(optimized_data, IS456_MASTER)
+    audit_results = order_audit(run_civion_audit(optimized_data, IS456_MASTER))
     audit_results["raw_extracted_data"] = optimized_data
     
     counts = audit_results.get("counts", {})
@@ -279,35 +280,46 @@ async def report_optimized(payload: dict):
             return val[:max_len] + "..." if len(val) > max_len else val
 
         pdf.set_font("Helvetica", style="B", size=10)
-        col_widths = [50, 40, 50, 40]
-        headers = ["Metric", "Original Value", "Optimized Value", "Status"]
+        # Stated value = what the uploaded document says, unless the user moved a slider for that
+        # parameter (shown in green). Required value and Status come from the re-run audit of those
+        # values; no parameter is silently corrected to what the code demands.
+        col_widths = [48, 42, 62, 28]
+        headers = ["Metric", "Stated Value", "Required Value", "Status"]
+        pdf.set_font("Helvetica", style="B", size=10)
         for i, h in enumerate(headers):
             pdf.cell(col_widths[i], 10, h, border=1)
         pdf.ln()
-        
+
         pdf.set_font("Helvetica", size=9)
-        opt_map = {row.get("Metric", ""): row for row in optimized_ledger}
-        
-        for orig_row in original_ledger:
-            metric = orig_row.get("Metric", "")
-            orig_val = orig_row.get("Extracted Value", orig_row.get("ExtractedValue", ""))
-            opt_row = opt_map.get(metric, {})
-            opt_val = opt_row.get("Extracted Value", opt_row.get("ExtractedValue", ""))
-            status = opt_row.get("Status", "")
-            
-            pdf.cell(col_widths[0], 8, trunc(metric, 30), border=1)
-            pdf.cell(col_widths[1], 8, trunc(orig_val, 25), border=1)
-            
-            if orig_val != opt_val:
+        orig_map = {row.get("Metric", ""): row for row in original_ledger}
+        status_colors = {"pass": (0, 150, 50), "reference": (0, 110, 200), "fail": (220, 40, 80), "warning": (220, 140, 0)}
+        changed = False
+
+        for row in optimized_ledger:
+            metric = row.get("Metric", "")
+            value = row.get("Extracted Value", row.get("ExtractedValue", ""))
+            orig_row = orig_map.get(metric)
+            orig_value = orig_row.get("Extracted Value", orig_row.get("ExtractedValue", "")) if orig_row else value
+            status = row.get("Status", "")
+
+            pdf.cell(col_widths[0], 8, trunc(metric, 28), border=1)
+            if value != orig_value:
+                changed = True
                 pdf.set_text_color(0, 150, 50)
-                pdf.cell(col_widths[2], 8, trunc(opt_val, 30), border=1)
-                pdf.set_text_color(0, 0, 0)
-            else:
-                pdf.cell(col_widths[2], 8, trunc(opt_val, 30), border=1)
-                
-            pdf.cell(col_widths[3], 8, trunc(status, 20), border=1)
+            pdf.cell(col_widths[1], 8, trunc(value, 24), border=1)
+            pdf.set_text_color(0, 0, 0)
+            pdf.cell(col_widths[2], 8, trunc(row.get("Requirement", ""), 36), border=1)
+            pdf.set_text_color(*status_colors.get(str(status).lower(), (0, 0, 0)))
+            pdf.cell(col_widths[3], 8, trunc(status, 10), border=1)
+            pdf.set_text_color(0, 0, 0)
             pdf.ln()
-            
+
+        if changed:
+            pdf.ln(4)
+            pdf.set_font("Helvetica", style="I", size=8)
+            pdf.cell(0, 6, "Values in green were changed by the user in CIVION; their status was re-evaluated.",
+                     new_x="LMARGIN", new_y="NEXT")
+
         pdf_bytes = pdf.output()
         return StreamingResponse(
             io.BytesIO(pdf_bytes),
